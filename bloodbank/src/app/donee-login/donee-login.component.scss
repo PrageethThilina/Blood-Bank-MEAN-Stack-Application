@@ -1,0 +1,80 @@
+body{
+	background-size: cover;
+	font-family: calibri;
+}
+h1{
+	font-size: 50px;
+	color: rgb(0, 0, 0);
+	margin-top: 30px;
+	margin-bottom: 60px;
+}
+.col{
+	background: rgb(255, 255, 255);
+    margin-top: 40px;
+    background: rgb(245, 221, 191);
+}
+.label{
+	font-size: 17px;
+	font-weight: normal;
+	color: rgb(0, 0, 0);
+}
+.input-group{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.input-group-addon{
+	background: transparent;
+	border-radius: 0px;
+	border: 0px;
+	border-bottom: 1px solid gray;
+	font-size: 15px;
+	color: gray;
+}
+.form-control{
+	background: transparent;
+	border-radius: 0px;
+	border: 0px;
+	border-bottom: 1px solid gray;
+	padding: 15px;
+	color: rgb(0, 0, 0);
+	font-size: 16px;
+}
+input[type="checkbox"]{
+	height: 15px;
+    width: 15px;
+    font-size: 17px;
+}
+small{
+	font-size: 16px;
+	color: rgb(0, 0, 0);
+}
+p{
+	font-size: 16px;
+	color: rgb(0, 0, 0);
+}
+.btn-default{
+    background: rgba(4, 38, 230, 0.651);
+	border-radius: 0px;
+	width: 450px;
+	font-size: 20px;
+	margin-top: 20px;
+    margin-bottom: 25px;
+    color: black;
+}
+.btn-default:hover{
+    background: red;
+}
+#img2{
+    width: 40%;
+    height: 20%;
+    margin-top: 50px;
+    margin-left: 10%;
+}
+a{
+    color: rgb(32, 10, 161);
+    font-weight: bold;
+}
+a:hover{
+    color: rgb(223, 12, 23);
+    font-weight: bold;
+}

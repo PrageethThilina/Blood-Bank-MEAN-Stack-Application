@@ -1,0 +1,80 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.container{
+	margin-top: 20px;
+}
+body{
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: new time roman;
+}
+.row{
+	background: rgba(0,0,0,0.8);
+	box-shadow: -1px 1px 60px 10px black;
+	margin-top: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.label{
+	color: white;
+	font-size: 18px;
+	float: left;
+	width: 150px;
+	text-align: right;
+}
+.form-control{
+	border: 1px;
+	font-size: 15px;
+	color: white;
+	margin-left: 60px;
+}
+.radio{
+	height: 20px;
+	width: 20px;
+	color: white;
+	margin-left: 60px;
+}
+#rd{
+	font-size: 15px;
+	color: white;
+}
+.input-group{
+	margin-top: 10px;
+}
+#h2{
+	font-weight: bold;
+	font-style: italic;
+	background-color: orange;
+	margin-top: 0px;
+}
+#cont1{
+	background-color: grey;
+	margin-top: 0%;
+	height: 60px;
+	padding-top: 10px;
+}
+#cont1 button{
+	border-radius: 1px;
+	border-color: black;
+	font-size: 18px;
+}
+input[type="submit"]{
+	width: 20%;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 5%;
+	border-color: red;
+	margin-left: 30%;
+	margin-top: 30px;
+}
+input[type="reset"]{
+	width: 20%;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 5%;
+	border-color: white;
+	margin-left: 10px;
+	margin-top: 30px;
+}
