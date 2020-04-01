@@ -14,10 +14,10 @@
             <label class="label control-label">Password</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fas fa-lock" style="font-size: 35px"></i></span>
-            <input type="Password" class="form-control" name="password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            <input type="Password" #x class="form-control" name="password" id="password" placeholder="Password" required>
             <p class="passErr"></p>
           </div>
-            <input type="checkbox" onclick="pswrdvisible()"><small>&nbsp; Show Password</small><br>
+            <input type="checkbox" (click)="x.type=x.type=='password'?'text':'password'"><small>&nbsp; Show Password</small><br>
             <input type="checkbox"><small>&nbsp; Remember me</small>		
             <p class="text-right"><a href="#">Forget Password</a></p>
           <div class="form-group"> 

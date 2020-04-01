@@ -4,6 +4,7 @@
 }
 .container{
 	margin-top: 20px;
+	width: 100%;
 }
 body{
 	background-attachment: fixed;
@@ -11,14 +12,15 @@ body{
 	font-family: new time roman;
 }
 .row{
-	background: rgba(0,0,0,0.8);
-	box-shadow: -1px 1px 60px 10px black;
+	border: double;
 	margin-top: 30px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	margin-left: 20%;
+
 }
 .label{
-	color: white;
+	color: rgb(0, 0, 0);
 	font-size: 18px;
 	float: left;
 	width: 150px;
@@ -27,18 +29,19 @@ body{
 .form-control{
 	border: 1px;
 	font-size: 15px;
-	color: white;
-	margin-left: 60px;
+	margin-left: 40px;
+	background: rgb(226, 224, 224);
+	color: black;
+	padding-left: 10px;
 }
 .radio{
 	height: 20px;
 	width: 20px;
-	color: white;
-	margin-left: 60px;
+	margin-left: 40px;
 }
 #rd{
 	font-size: 15px;
-	color: white;
+	color: rgb(0, 0, 0);
 }
 .input-group{
 	margin-top: 10px;
@@ -55,26 +58,19 @@ body{
 	height: 60px;
 	padding-top: 10px;
 }
-#cont1 button{
-	border-radius: 1px;
-	border-color: black;
-	font-size: 18px;
+::placeholder{
+	color: black;
 }
-input[type="submit"]{
-	width: 20%;
-	font-size: 18px;
-	font-weight: bold;
-	border-radius: 5%;
-	border-color: red;
-	margin-left: 30%;
-	margin-top: 30px;
+h2{
+	margin-left: 17%;
+	margin-top: -1%;
 }
-input[type="reset"]{
+.btn{
 	width: 20%;
-	font-size: 18px;
-	font-weight: bold;
-	border-radius: 5%;
-	border-color: white;
-	margin-left: 10px;
-	margin-top: 30px;
+	height: 50px;
+	margin-right: 20px;
+	margin-top: 2%;
+}
+.wrapper{
+	position: relative;	
 }

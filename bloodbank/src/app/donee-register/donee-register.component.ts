@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoneeRegisterComponent implements OnInit {
 
+  passwordType: string = 'password';
+  passwordShown: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+

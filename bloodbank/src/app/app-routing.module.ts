@@ -9,6 +9,8 @@ import { DonorLoginComponent } from './donor-login/donor-login.component';
 import { DoneeLoginComponent } from './donee-login/donee-login.component';
 import { DonorRegisterComponent } from './donor-register/donor-register.component';
 import { DoneeRegisterComponent } from './donee-register/donee-register.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+
 
 const routes: Routes = [
   { path: 'footer', component: FooterComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'donor-login', component: DonorLoginComponent},
   { path: 'donee-login', component: DoneeLoginComponent},
   { path: 'donor-register', component: DonorRegisterComponent},
-  { path: 'donee-register', component: DoneeRegisterComponent}
+  { path: 'donee-register', component: DoneeRegisterComponent},
+  { path: 'appointments', component: AppointmentsComponent}
+
 ];
 
 @NgModule({
@@ -38,5 +42,6 @@ export const routingComponents = [
   DonorLoginComponent,
   DoneeLoginComponent,
   DonorRegisterComponent,
-  DoneeRegisterComponent
+  DoneeRegisterComponent,
+  AppointmentsComponent
 ]
