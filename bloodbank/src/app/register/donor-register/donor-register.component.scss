@@ -1,0 +1,80 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.container{
+	margin-top: 20px;
+	width: 100%;
+}
+body{
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: new time roman;
+}
+.row{
+	border: double;
+	margin-top: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-left: 20%;
+
+}
+.label{
+	color: rgb(0, 0, 0);
+	font-size: 18px;
+	float: left;
+	width: 150px;
+	text-align: right;
+}
+.form-control{
+	border: 1px;
+	font-size: 15px;
+	margin-left: 40px;
+	background: rgb(226, 224, 224);
+	color: black;
+	padding-left: 10px;
+}
+.radio{
+	height: 20px;
+	width: 20px;
+	margin-left: 40px;
+}
+#rd{
+	font-size: 15px;
+	color: rgb(0, 0, 0);
+}
+.input-group{
+	margin-top: 10px;
+}
+#h2{
+	font-weight: bold;
+	font-style: italic;
+	background-color: orange;
+	margin-top: 0px;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+#cont1{
+	background-color: grey;
+	margin-top: 0%;
+	height: 60px;
+	padding-top: 10px;
+}
+::placeholder{
+	color: black;
+}
+h2{
+	margin-left: 17%;
+	margin-top: -1%;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+.btn{
+	width: 20%;
+	height: 50px;
+	margin-right: 20px;
+	margin-top: 2%;
+}
+.wrapper{
+	position: relative;	
+}

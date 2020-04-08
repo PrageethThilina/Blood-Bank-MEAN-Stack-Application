@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <form>
+   	   <div class="row align-items-center">
+           <div class="col text-center">
+            <h2 class="text-center">Register a Blood Donation Campaign</h2>
+
+              <div class="input-group">
+           	    <label class="label control-label">Blood Campaign ID :</label>
+                <input type="text" name="blood_camp_id" class="form-control" placeholder="Blood Campaign ID" readonly style="background-color: rgb(173, 170, 165);">
+              </div>
+              <div class="input-group">
+                <label class="label control-label">City :</label>
+                <input type="text" name="city" class="form-control" placeholder="City" required>
+              </div>  
+              <div class="input-group">
+                <label class="label control-label">Address :</label>
+                <textarea name="address" class="form-control" placeholder="Address" required></textarea>
+              </div>  
+              <div class="input-group">
+                <label class="label control-label">Organiser :</label>
+                <input type="text" name="name" class="form-control" placeholder="Organiser" required>
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Date :</label>
+                <input type="date" name="date" class="form-control" required>
+              </div> 
+              <div class="input-group">
+                <label class="label control-label">Time :</label>
+                <input type="time" name="time" class="form-control" required>
+              </div>                     
+              <div class="input-group">
+                <label class="label control-label">Organiser Contact No :</label>
+                <input type="tel" name="contact" class="form-control" placeholder="Organiser Contact No" required>
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Organiser Email Address :</label>
+                <input type="email" name="email" class="form-control" placeholder="Organiser Email Address" required>
+              </div> 
+              <div class="text-center">
+                 <input type="submit" name="registersubmit" class="btn btn-success" value="submit" style="margin-right: 10px;">
+                 <input type="reset" name="registerclear" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
+                 <input type="reset" name="registerreset" class="btn btn-danger" value="Cancel">
+              </div>
+            </div>  
+        </div>
+    </form>
+</div>
+
+<app-footer></app-footer>

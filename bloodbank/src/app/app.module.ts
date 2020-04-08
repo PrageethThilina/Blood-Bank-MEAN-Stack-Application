@@ -4,7 +4,6 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 
-
 @NgModule({
   declarations: [
     AppComponent,

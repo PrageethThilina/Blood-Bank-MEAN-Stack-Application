@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <form>
+   	   <div class="row align-items-center">
+           <div class="col text-center">
+            <h2 class="text-center">Book an Appointment</h2>
+
+              <div class="input-group">
+           	    <label class="label control-label">Appointment ID :</label>
+                <input type="text" name="blood_camp_id" class="form-control" placeholder="Blood Campaign ID" readonly style="background-color: rgb(173, 170, 165);">
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Location :</label>
+                <select class="form-control" required>
+                  <option selected>Select a Location</option>
+                  <option value="1">National Blood Center - Narahenpita</option>
+                  <option value="2">Ampara Hospital</option>
+                  <option value="3">Anuradapura Hospital</option>
+                  <option value="4">Badulla Hospital</option>
+                  <option value="5">Batticaloa Hospital</option>
+                  <option value="6">Gampaha Hospital</option>
+                  <option value="7">Hambanthota Hospital</option>
+                  <option value="8">Kaluthara Hospital</option>
+                  <option value="8">Kandy Hospital</option>
+                  <option value="8">Karapitiya Hospital</option>
+                  <option value="8">Kegalle Hospital</option>
+                  <option value="8">Kurunegala Hospital</option>
+                  <option value="8">Kaburugamuwa Blood Collection Center</option>
+                  <option value="8">Monaragala Hospital</option>
+                  <option value="8">NuwaraEliya Hospital</option>
+                  <option value="8">Peradeniya Hospital</option>
+                  <option value="8">Polonnaruwa Hospital</option>
+                  <option value="8">Rathnapura Hospital</option>
+                  <option value="8">Trincomalee Hospital</option>
+                  <option value="8">Vavuniya Hospital</option>
+                  <option value="8">CIM</option>
+                  <option value="8">CNTH</option>
+                  <option value="8">Sri Jayawardanapura Hospital</option>
+                  <option value="8">Blood Donation Camp - Dompe Namuluwa</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Date :</label>
+                <select class="form-control" required>
+                  <option selected>Select a Date</option>            
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Time :</label>
+                <select class="form-control" required>
+                  <option selected>Select a Time</option>            
+                </select>
+              </div>                   
+              <div class="text-center">
+                 <input type="submit" name="registersubmit" class="btn btn-success" value="Schedule Now" style="margin-right: 10px;">
+                 <input type="reset" name="registerclear" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
+                 <input type="reset" name="registerreset" class="btn btn-danger" value="Cancel">
+              </div>
+            </div>  
+        </div>
+    </form>
+</div>
+
+<app-footer></app-footer>
