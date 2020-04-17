@@ -1,0 +1,64 @@
+.container-fluid{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.label{
+	color: rgb(0, 0, 0);
+	font-size: 18px;
+	float: left;
+	width: 150px;
+    text-align: right;
+    font-family: sans-serif;
+}
+h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.form-control{
+	border: 1px;
+	font-size: 15px;
+	margin-left: 40px;
+	background: rgb(226, 224, 224);
+	color: black;
+    padding-left: 10px;
+    width: 200px;
+}
+.btn{
+	width: 20%;
+	height: 40px;
+	margin-right: 20px;
+	margin-top: 2%;
+}
+.btn:hover{
+    background: rgb(11, 215, 241);
+}
+.col-md-6{
+    border: double;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+img{
+    width: 300px;
+    height: 300px;
+}
+#img{
+    width: 450px;
+    height: 300px;
+}
+h5{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+h4{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#condition{
+    margin-left: 20px;
+    color: #f72222;
+}

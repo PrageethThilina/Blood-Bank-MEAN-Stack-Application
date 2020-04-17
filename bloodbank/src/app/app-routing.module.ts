@@ -39,6 +39,8 @@ import { WBD17Component } from './nbts-other-services/wbd17/wbd17.component';
 import { Wbd16Component } from './nbts-other-services/wbd16/wbd16.component';
 import { TermsOfReferenceComponent } from './nbts-other-services/terms-of-reference/terms-of-reference.component';
 import { NewsAndEventsComponent } from './nbts-other-services/news-and-events/news-and-events.component';
+import { AboutNbtsComponent } from './nbts-other-services/about-nbts/about-nbts.component';
+
 
 
 const routes: Routes = [
@@ -80,7 +82,9 @@ const routes: Routes = [
   { path: 'wbd17', component: WBD17Component},
   { path: 'wbd16', component: Wbd16Component},
   { path: 'terms-of-reference', component: TermsOfReferenceComponent},
-  { path: 'news-and-events', component: NewsAndEventsComponent}
+  { path: 'news-and-events', component: NewsAndEventsComponent},
+  { path: 'about-nbts', component: AboutNbtsComponent}
+
 ];
 
 @NgModule({
@@ -129,5 +133,7 @@ export const routingComponents = [
   WBD17Component,
   Wbd16Component,
   TermsOfReferenceComponent,
-  NewsAndEventsComponent
+  NewsAndEventsComponent,
+  AboutNbtsComponent
+
 ]

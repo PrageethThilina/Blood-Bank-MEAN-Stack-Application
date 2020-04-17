@@ -4,7 +4,7 @@
 <div class="container-fluid" id="bannernbts">
    <div class="row">
       <div class="col-md-2 text-center" style="padding-top: 15px;">
-        <button class="btn btn-success special-btn">Make an appointment to Donate</button>
+        <button class="btn btn-success special-btn" routerLink="/donor-login">Make an appointment to Donate</button>
         <button class="btn btn-success special-btn" style="margin-top: 120px;">Organize a Blood Donation Campaign</button>
         <button class="btn btn-success special-btn" style="margin-top: 120px;">Find the nearest Blood Bank</button>
       </div>
@@ -91,7 +91,7 @@
         <div class="col-md-4">
           <div class="blog-box">
             <img src="assets/images/img1.jpg" alt="blog1" />
-            <h3>COVID-19 Instrauctions for Blood Donation Campaigns</h3>
+            <h3>COVID-19 Instrauctions for Blood Campaigns</h3>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
             <a href="detail.html" class="btn btn-danger">Read more...</a>
           </div>
@@ -144,6 +144,7 @@
   <!-- Available blood storage section -->
     <div class="container-fluid available-storage">
       <h2 class="text-center">Available Blood Storage</h2>
+      <h5 class="text-center headx">Last Blood Stock Update :</h5>
       <div class="row">
         <div class="col-md-3 group-blood text-center">
           <h3>A+</h3>
@@ -195,8 +196,27 @@
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>
         </div>
+    </div>
+
+    <div class="row align-items-center" style="margin-top: -10%;">
+      <div class="col-md-3 text-center">
+        <label for="" class="lbl1">Healthy</label>
+        <div class="status" style="background-color: rgb(29, 230, 29);"></div>
+      </div>
+      <div class="col-md-3 text-center">
+        <label for="" class="lbl1">Moderate</label>
+        <div class="status" style="background-color: rgb(247, 226, 40);"></div>
+      </div>
+      <div class="col-md-3 text-center">
+        <label for="" class="lbl1">Low</label>
+        <div class="status" style="background-color: rgb(228, 194, 5);"></div>
+      </div>
+      <div class="col-md-3 text-center">
+        <label for="" class="lbl1">Critical</label>
+        <div class="status" style="background-color: rgb(240, 23, 23);"></div>
       </div>
     </div>
+  </div>
  <!-- Available blood storage section -->
 
   <!-- Nbts section -->

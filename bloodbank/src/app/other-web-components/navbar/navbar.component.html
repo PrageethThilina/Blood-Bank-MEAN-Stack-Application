@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="#">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <a class="navbar-brand" routerLink="/homepage">
     <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
     National Blood Transfusion Service
   </a>
@@ -10,13 +10,13 @@
          About
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Vision and Mission</a>
-          <a class="dropdown-item" href="#">Our Journey</a>
-          <a class="dropdown-item" href="#">About NBTS</a>
-          <a class="dropdown-item" href="#">Organization Chart</a>
-          <a class="dropdown-item" href="#">Cluster System</a>
-          <a class="dropdown-item" href="#">Performance of NBTS</a>
-          <a class="dropdown-item" href="#">Contact Us</a>
+          <a class="dropdown-item" routerLink="/vission-mission">Vision and Mission</a>
+          <a class="dropdown-item" routerLink="/our-journey">Our Journey</a>
+          <a class="dropdown-item" routerLink="/about-nbts">About NBTS</a>
+          <a class="dropdown-item" routerLink="/organization-chart">Organization Chart</a>
+          <a class="dropdown-item" routerLink="/other-blood-banks">Cluster System</a>
+          <a class="dropdown-item" routerLink="/performances-of-nbts">Performance of NBTS</a>
+          <a class="dropdown-item" routerLink="/contact-us">Contact Us</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -24,10 +24,10 @@
           Donate
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">About Blood</a>
-          <a class="dropdown-item" href="#">Functions of Blood</a>
-          <a class="dropdown-item" href="#">Blood Groups</a>
-          <a class="dropdown-item" href="#">Who Can Donate Blood</a>
+          <a class="dropdown-item" routerLink="/about-blood">About Blood</a>
+          <a class="dropdown-item" routerLink="/functions-of-blood">Functions of Blood</a>
+          <a class="dropdown-item" routerLink="/blood-groups">Blood Groups</a>
+          <a class="dropdown-item" routerLink="/who-can-donate-blood">Who Can Donate Blood</a>
 
         </div>
       </li>
@@ -36,8 +36,8 @@
           Services
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Lab Services</a>
-          <a class="dropdown-item" href="#">Training Section</a>
+          <a class="dropdown-item" routerLink="/lab-section">Lab Services</a>
+          <a class="dropdown-item" routerLink="/training-section">Training Section</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -45,10 +45,9 @@
           Publications
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Mobile Calender</a>
-          <a class="dropdown-item" href="#">Donor Magazine</a>
-          <a class="dropdown-item" href="#">News</a>
-          <a class="dropdown-item" href="#">Annual Reports</a>
+          <a class="dropdown-item" routerLink="/donor-magazines">Donor Magazine</a>
+          <a class="dropdown-item" routerLink="/news">News</a>
+          <a class="dropdown-item" routerLink="/anual-reports">Annual Reports</a>
 
         </div>
       </li>
@@ -57,8 +56,8 @@
           WBDD
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">World Blood Donors Day 2019</a>
-          <a class="dropdown-item" href="#">World Blood Donors Day 2018</a>
+          <a class="dropdown-item" routerLink="/wbd17">World Blood Donors Day 2017</a>
+          <a class="dropdown-item" routerLink="/wbd16">World Blood Donors Day 2016</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -66,8 +65,8 @@
           WHO CC
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Terms of Reference</a>
-          <a class="dropdown-item" href="#">News and Events</a>
+          <a class="dropdown-item" routerLink="/terms-of-reference">Terms of Reference</a>
+          <a class="dropdown-item" routerLink="/news-and-events">News and Events</a>
         </div>
       </li>
     </ul>
@@ -83,8 +82,8 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" style="background: springgreen;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-user" style="font-size: 20px"></i>&nbsp;Login
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/donee-login">Donee Login</a>
+        <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown" style="background: aqua;">
+          <a class="dropdown-item" routerLink="/donee-login" >Donee Login</a>
           <a class="dropdown-item" routerLink="/donor-login">Donor Login</a>
           <a class="dropdown-item" routerLink="/admin-login">Admin Login</a>
         </div>

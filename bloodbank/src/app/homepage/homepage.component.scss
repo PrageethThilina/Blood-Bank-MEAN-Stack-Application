@@ -2,7 +2,7 @@
 .blog-box h3 { margin:20px 0; font-size:22px; color:#000;}
 .blog-box p { color:#666; }
 .blog-box span, .posted-on span { font-style: italic; color:#000; }
-.blog-box img { width:100%;}
+.blog-box img { width:100%;height: 300px;}
 .mtb-40 { margin:40px 0; min-height:450px;}
 .banner-box {position: relative;}
 .intro-text { width:100%; position: absolute; top:30%; text-align: center; color:#fff;}
@@ -94,16 +94,31 @@ footer {background-color: #000;color:#fff; padding:20px;}
     height: 50%;
 }
 .available-storage{
-    background: rgb(247, 217, 217);
     margin-bottom: 20px;
-    padding-bottom: -100%;
 }
 .available-storage h2{
-    background: red;
+    color:#fd3c3c;
     font-weight: bold;
-    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .available-storage h3{
-    background: rgb(255, 0, 200);
+    font-weight: bold;
+    color: #fce51b;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.status{
+    width: 360px;
+    height: 25px;
+}
+.lbl1{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.headx{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
 }

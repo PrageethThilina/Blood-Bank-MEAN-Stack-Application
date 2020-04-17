@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare const analyseData: any;
 
 @Component({
   selector: 'app-analyse-data',
@@ -10,6 +11,10 @@ export class AnalyseDataComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  analyseData(){
+    analyseData();
   }
 
 }
