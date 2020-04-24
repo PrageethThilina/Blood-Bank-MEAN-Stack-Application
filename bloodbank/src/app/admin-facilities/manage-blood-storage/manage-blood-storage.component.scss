@@ -1,0 +1,25 @@
+.container{
+    margin: 70px 15px 0 315px;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+h4{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 20px;
+}
+th{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+td{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.btn:hover{
+    background-color: rgb(248, 45, 45);
+}

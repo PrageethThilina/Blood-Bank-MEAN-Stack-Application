@@ -142,63 +142,79 @@
   <!-- cards -->
 
   <!-- Available blood storage section -->
-    <div class="container-fluid available-storage">
+<div class="container-fluid available-storage">
       <h2 class="text-center">Available Blood Storage</h2>
       <h5 class="text-center headx">Last Blood Stock Update :</h5>
       <div class="row">
         <div class="col-md-3 group-blood text-center">
           <h3>A+</h3>
-          <img src="../../assets/images/body.png" alt="">
+            <div id="divChart1">
+              <canvas id="myChart1"></canvas>
+            </div>            
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>        
         </div> 
         <div class="col-md-3 group-blood text-center">
           <h3>B+</h3>
-          <img src="../../assets/images/body.png" alt="">
+          <div id="divChart2">
+            <canvas id="myChart2"></canvas>
+          </div> 
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>
         </div>
         <div class="col-md-3 group-blood text-center">
           <h3>AB+</h3>
-          <img src="../../assets/images/body.png" alt="">
+          <div id="divChart3">
+            <canvas id="myChart3"></canvas>
+          </div>           
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>
         </div>
         <div class="col-md-3 group-blood text-center">
           <h3>O+</h3>
-          <img src="../../assets/images/body.png" alt="">
+          <div id="divChart4">
+            <canvas id="myChart4"></canvas>
+          </div>           
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>
         </div>
       </div>
-      <div class="row" style="margin-top: -100px;padding-bottom: -100px;">
+      <div class="row">
         <div class="col-md-3 group-blood text-center">
           <h3>A-</h3>
-          <img src="../../assets/images/body.png" alt="">
+          <div id="divChart5">
+            <canvas id="myChart5"></canvas>
+          </div>           
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>        
         </div> 
         <div class="col-md-3 group-blood text-center">
           <h3>B-</h3>
-          <img src="../../assets/images/body.png" alt="">
+          <div id="divChart6">
+            <canvas id="myChart6"></canvas>
+          </div>           
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>
         </div>
         <div class="col-md-3 group-blood text-center">
           <h3>AB-</h3>
-          <img src="../../assets/images/body.png" alt="">
+          <div id="divChart7">
+            <canvas id="myChart7"></canvas>
+          </div>           
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>
         </div>
         <div class="col-md-3 group-blood text-center">
           <h3>O-</h3>
-          <img src="../../assets/images/body.png" alt="">
+          <div id="divChart8">
+            <canvas id="myChart8"></canvas>
+          </div>           
           <h5>Percentage : </h5>  
           <h5>Amount : </h5>
         </div>
     </div>
 
-    <div class="row align-items-center" style="margin-top: -10%;">
+    <div class="row align-items-center">
       <div class="col-md-3 text-center">
         <label for="" class="lbl1">Healthy</label>
         <div class="status" style="background-color: rgb(29, 230, 29);"></div>
@@ -216,7 +232,7 @@
         <div class="status" style="background-color: rgb(240, 23, 23);"></div>
       </div>
     </div>
-  </div>
+</div>
  <!-- Available blood storage section -->
 
   <!-- Nbts section -->

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 declare const analyseData: any;
+declare const analyseData_Clear_Values: any;
+declare const  analyseData_reload: any;
+
 
 @Component({
   selector: 'app-analyse-data',
@@ -13,8 +16,17 @@ export class AnalyseDataComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  analyseData(){
+  analyseData()
+  {
     analyseData();
+  }
+  analyseData_Clear_Values()
+  {
+    analyseData_Clear_Values();
+  }
+  analyseData_reload()
+  {
+    analyseData_reload();
   }
 
 }

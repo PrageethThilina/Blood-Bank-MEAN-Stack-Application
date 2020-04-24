@@ -9,19 +9,20 @@
         <div class="col-md-6 mx-auto">
             <div class="input-group">
                 <label class="label control-label">Glucose Level :<br>(mg/dL)</label>
-                <input type="number" name="glucose" id="glucose" class="form-control" placeholder="Glucose Level" required>
+                <input type="number" name="glucose" id="glucose" class="form-control" placeholder="Glucose Level">
             </div>
             <div class="input-group">
-                <label class="label control-label">Cholestorol Level :<br>()</label>
-                <input type="number" name="cholestorol" id="cholestorol" class="form-control" placeholder="Cholestorol Level" required>
+                <label class="label control-label">Cholestorol Level :<br>(md/dl)</label>
+                <input type="number" name="cholestorol" id="cholestorol" class="form-control" placeholder="Cholestorol Level">
             </div>  
             <div class="input-group">
-                <label class="label control-label">Blood Pressure :<br>()</label>
-                <input type="number" name="pressure" id="pressure" class="form-control" placeholder="Blood Pressure" required>
+                <label class="label control-label">Blood Pressure :<br>(mm Hg)</label>
+                <input type="number" name="s_pressure" id="s_pressure" class="form-control" placeholder="Systolic(Higher value)" style="margin-right: 10px;">
+                <input type="number" name="d_pressure" id="d_pressure" class="form-control" placeholder="Diastolic(lower value)">
             </div> 
             <input type="submit" name="check" class="btn btn-success" value="Check" (click)="analyseData()" style="margin-left: 18%;">
-            <input type="reset" name="clear" class="btn btn-danger" value="Clear">
-            <input type="reset" name="cancel" class="btn btn-danger" value="Cancel">   
+            <input type="reset" name="clear" class="btn btn-danger" value="Clear" (click)="analyseData_Clear_Values()">
+            <input type="reset" name="cancel" class="btn btn-danger" value="Cancel" routerLink="">   
         </div>
         <div class="col-md-3">
             <img class="img-fluid" src="assets/images/analyse2.jpg" alt="">
@@ -29,35 +30,38 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" id="content">
     <h3 class="text-center"></h3>
     <div class="row align-items-center">
-        <div class="col-md-4">
+        <div class="col-md-4" id="col1">
           <h4 class="text-center">Glucose Level</h4>
           <div class="input-group">
             <h5>Condition : </h5>
-            <h5 id="condition">Normal</h5><br><br>
+            <h5 id="condition1">Normal</h5><br><br>
           </div>
-          <p class="caption bg-light" id="caption">You are Safe..</p>
-          <img src="assets/images/analyse1.jpg" alt="" id="img">
+            <h5 id="do-dont">Things Should do and Should not Do</h5>
+            <p class="caption1 bg-light" id="caption1">You are Safe..</p>
+            <img src="assets/images/normal-display-sugar.jpg" alt="" id="img1">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" id="col2">
           <h4 class="text-center">Cholestorol Level</h4>
           <div class="input-group">
             <h5>Condition : </h5>
-            <h5 id="condition">Normal</h5><br><br>
+            <h5 id="condition2">Normal</h5><br><br>
           </div>
-          <p class="caption bg-light" id="caption">You are Safe..</p>
-          <img src="assets/images/analyse1.jpg" alt="" id="img">
-        </div>
-        <div class="col-md-4">
+            <h5 id="do-dont">Things Should do and Should not Do</h5>
+            <p class="caption2 bg-light" id="caption2">You are Safe..</p>
+            <img src="assets/images/lower-cholestorol.jpg" alt="" id="img2">
+          </div>
+        <div class="col-md-4" id="col3">
           <h4 class="text-center">Blood-Pressure</h4>
           <div class="input-group">
             <h5>Condition : </h5>
-            <h5 id="condition">Normal</h5><br><br>
+            <h5 id="condition3">Normal</h5><br><br>
           </div>
-          <p class="caption bg-light" id="caption">You are Safe..</p>
-          <img src="assets/images/analyse1.jpg" alt="" id="img">
+            <h5 id="do-dont">Things Should do and Should not Do</h5>
+            <p class="caption3 bg-light" id="caption">You are Safe..</p>
+            <img src="assets/images/Foods-to-Lower-Blood-Pressure.jpg" alt="" id="img3">
         </div>
     </div>
 </div>

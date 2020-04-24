@@ -35,7 +35,7 @@
 }
 #navbarDropdown:hover{
     font-size: 17px;
-    color: rgb(255, 255, 255);
+    color: white;
 }
 .dropdown-item:hover{
     font-size: 17px;
@@ -44,4 +44,11 @@
 }
 .btn-search{
     margin-left: -7px;
+}
+#login-user{
+    color: #050505;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#userDropdown{
+    background: #2af7a8;
 }

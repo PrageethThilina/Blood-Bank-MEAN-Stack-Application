@@ -1,0 +1,175 @@
+<app-admin-header></app-admin-header>
+<app-admin-side-nav></app-admin-side-nav>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-pink hover-expand-effect" style="background: rgb(103, 223, 99);">
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="content">
+                    <div class="text">DONORS</div>
+                   20
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-pink hover-expand-effect" style="background: rgb(243, 33, 149);">
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="content">
+                    <div class="text">DONEE REQUESTS</div>
+                       10
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-cyan hover-expand-effect" style="background: rgb(78, 240, 240);">
+                <div class="icon">
+                    <i class="fa fa-file"></i>
+                </div>
+                <div class="content">
+                    <div class="text">UPCOMING CAMPAIGNS 12</div>               
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-orange hover-expand-effect" style="background: rgb(236, 157, 11);">
+                <div class="icon">
+                    <i class="fa fa-home"></i>
+                </div>
+                <div class="content">
+                    <div class="text">APPOINTMENTS</div>
+                    <div class="number count-to" data-from="0" data-to="87" data-speed="1000" data-fresh-interval="20"></div>
+                    7
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-5">
+            <h4 class="text-center">Available Blood Storage</h4>
+            <button class="btn btn-danger">Print</button>
+            <div id="divChart">
+                <canvas id="myChart"></canvas>
+            </div>            
+        </div>
+
+        <div class="col-md-6" style="margin-left: 90px;">
+            <h4 class="text-center">Hospital Blood Requests</h4>
+            <button class="btn btn-danger">Print</button>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th class="table-danger">Hospital Name</th>
+                    <th class="table-danger">Blood Group</th>
+                    <th class="table-danger">Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Colombo National Hospital</td>
+                    <td>A+</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Karapitiya National Hospital</td>
+                    <td>B-</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Kalubowila National Hospital</td>
+                    <td>AB+</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Badulla National Hospital</td>
+                    <td>O+</td>
+                    <td>3</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row clearfix" style="margin-top: -40%;">
+        <div class="col-md-5" style="margin-right: 80px;">
+            <h4 class="text-center">Received Blood Storage</h4>
+            <div class="filter-section">
+                <div class="input-group">
+                    <label class="label control-label">Year :</label>
+                    <select class="form-control">
+                      <option selected>Select an option</option>
+                      <option value="1">2018</option>
+                      <option value="2">2019</option>
+                      <option value="3">2020</option>
+                      <option value="4">2021</option>
+                      <option value="5">2022</option>
+                      <option value="6">2023</option>
+                      <option value="7">2024</option>
+                      <option value="8">2025</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="label control-label">Blood Group :</label>
+                    <select class="form-control">
+                      <option selected>Select an option</option>
+                      <option value="1">A+</option>
+                      <option value="2">A-</option>
+                      <option value="3">B+</option>
+                      <option value="4">B-</option>
+                      <option value="5">AB+</option>
+                      <option value="6">AB-</option>
+                      <option value="7">O+</option>
+                      <option value="8">O-</option>
+                    </select>
+                </div>
+                 <button class="btn btn-danger">Print</button>
+            </div>
+            <div id="divChart2">
+                <canvas id="myChart2"></canvas>
+            </div>            
+        </div>
+        <div class="col-md-5">
+            <h4 class="text-center">Issued Blood Storage</h4>
+            <div class="filter-section">
+                <div class="input-group">
+                    <label class="label control-label">Year :</label>
+                    <select class="form-control">
+                      <option selected>Select an option</option>
+                      <option value="1">2018</option>
+                      <option value="2">2019</option>
+                      <option value="3">2020</option>
+                      <option value="4">2021</option>
+                      <option value="5">2022</option>
+                      <option value="6">2023</option>
+                      <option value="7">2024</option>
+                      <option value="8">2025</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="label control-label">Blood Group :</label>
+                    <select class="form-control">
+                      <option selected>Select an option</option>
+                      <option value="1">A+</option>
+                      <option value="2">A-</option>
+                      <option value="3">B+</option>
+                      <option value="4">B-</option>
+                      <option value="5">AB+</option>
+                      <option value="6">AB-</option>
+                      <option value="7">O+</option>
+                      <option value="8">O-</option>
+                    </select>
+                </div>
+                 <button class="btn btn-danger">Print</button>
+            </div>
+            <div id="divChart3">
+                <canvas id="myChart3"></canvas>
+            </div>            
+        </div>
+    </div>
+</div>
+

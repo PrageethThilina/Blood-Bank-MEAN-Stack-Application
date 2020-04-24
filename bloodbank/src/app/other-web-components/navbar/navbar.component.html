@@ -77,18 +77,33 @@
           <button class="btn btn-secondary btn-search" type="button"><i class="fa fa-search"></i></button>
         </div>
       </div>&#160;
-    <ul class="navbar-nav ml-auto" style="border: 1px;">
-      <li class="nav-item dropdown" style="margin-right: 20px;">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" style="background: springgreen;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-user" style="font-size: 20px"></i>&nbsp;Login
-        </a>
-        <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown" style="background: aqua;">
-          <a class="dropdown-item" routerLink="/donee-login" >Donee Login</a>
-          <a class="dropdown-item" routerLink="/donor-login">Donor Login</a>
-          <a class="dropdown-item" routerLink="/admin-login">Admin Login</a>
-        </div>
-      </li>
-    </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <h5 class="mr-2 d-none d-lg-inline" id="login-user"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Login</h5>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" routerLink="/donor-login">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Donor Login
+                </a>
+                <a class="dropdown-item" routerLink="/donee-login">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Donee Login
+                </a> 
+                <a class="dropdown-item" routerLink="/donee-login">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Hospital Login
+                </a>
+                <a class="dropdown-item" routerLink="/admin-login">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Admin Login
+                </a>                
+              </div>
+            </li>
+        </ul>
     </form>
   </div>
 </nav>

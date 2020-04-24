@@ -42,7 +42,7 @@ img{
     width: 300px;
     height: 300px;
 }
-#img{
+#img1,#img2,#img{
     width: 450px;
     height: 300px;
 }
@@ -58,7 +58,10 @@ h4{
 p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-#condition{
+#condition1,#condition2,#condition3{
     margin-left: 20px;
     color: #f72222;
+}
+#do-dont{
+    color: #1d4dec;
 }
