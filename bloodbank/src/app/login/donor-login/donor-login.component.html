@@ -8,20 +8,20 @@
             <label class="label control-label">NIC</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fas fa-user" style="font-size: 35px"></i></span>
-            <input type="text" class="form-control" name="nic" placeholder="NIC" required>
+            <input type="text" class="form-control" name="nic" placeholder="NIC">
             <p class="nameErr"></p>
           </div>
             <label class="label control-label">Password</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fas fa-lock" style="font-size: 35px"></i></span>
-            <input type="Password" class="form-control" name="password" id="password" placeholder="Password" required>
+            <input type="Password" class="form-control" name="password" id="password" placeholder="Password">
             <p class="passErr"></p>
           </div>
             <input type="checkbox" (click)=" angpswrdVisible()"><small>&nbsp; Show Password</small><br>
             <input type="checkbox"><small>&nbsp; Remember me</small>		
-            <p class="text-right"><a href="#">Forget Password</a></p>
+            <p class="text-right"><a routerLink="/forget-password">Forget Password</a></p>
           <div class="form-group"> 
-            <input type="submit" name="loginsubmit" class="btn btn-default btn-outline-primary" value="SIGN IN">
+            <input type="submit" name="loginsubmit" class="btn btn-default btn-outline-primary" value="SIGN IN" routerLink="/donor-facilities">
             <p class="text-center">Don't have an account yet? <a routerLink="/donor-register">SIGN UP</a></p>
           </div> 
         </div>

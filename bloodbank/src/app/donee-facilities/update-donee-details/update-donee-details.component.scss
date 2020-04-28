@@ -1,0 +1,50 @@
+.container-fluid{
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    height: 1100px;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    background:url('/../../assets/images/img1.1.jpg') no-repeat;
+	background-position:center;
+    background-attachment:fixed;
+    background-size:100% 100%;
+    padding-top: 30px;
+}
+h4{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 20px;
+    color: white;
+}
+th{
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 70px;
+    font-size: 20px;
+    color: white;
+    background: transparent;
+}
+td{
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 60px;
+    color: white;
+}
+.tbl{
+    display: block;
+    overflow: scroll;
+    white-space: nowrap;
+}
+.btn{
+    width: 10%;
+    margin-bottom: 20px;
+}
+.btn:hover{
+    background: red;
+}
+

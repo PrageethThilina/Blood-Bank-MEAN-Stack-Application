@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+declare const pswrdvisible: any;
+declare const repswrdvisible: any;
 
 @Component({
   selector: 'app-add-donors',
@@ -10,6 +12,15 @@ export class AddDonorsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  angpswrdVisible(){
+    pswrdvisible();
+  }
+
+  angrepswrdVisible(){
+    repswrdvisible();
   }
 
 }

@@ -15,26 +15,44 @@
             <li class="header">Admin Dashboard</li>                                     
         </ul>
         <ul class="menu-bar">
-            <li><a href="#"><i class="fa fa-user"></i>Dashboard</a></li>
+            <li><a routerLink="/main-admin-dashboard"><i class="fa fa-file"></i>Dashboard</a></li>
             <li>
-               <a href="#"><i class="fa fa-user"></i>Blood Storage</a>
+               <a routerLink="/view-blood-storage"><i class="fa fa-file"></i>Blood Storage</a>
                <ul class="sub-menu">
-                  <li><a href="#"><i class="fa fa-circle"></i>View Blood Storage</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i>Manage Blood Storage</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i>Add Blood Storage</a></li>
+                  <li><a routerLink="/view-blood-storage"><i class="fa fa-circle"></i>View Blood Storage</a></li>
+                  <li><a routerLink="/manage-blood-storage"><i class="fa fa-circle"></i>Manage Blood Storage</a></li>
+                  <li><a routerLink="/add-blood-storage"><i class="fa fa-circle"></i>Add Blood Storage</a></li>
                </ul>
-            </li> 
+            </li>
             <li>
-                <a href="#"><i class="fa fa-user"></i>Blood Camps</a>
+                <a routerLink="/admin-view-aapointments"><i class="fa fa-file"></i>Appointments</a>
                 <ul class="sub-menu">
-                   <li><a href="#"><i class="fa fa-circle"></i>View Blood Camps</a></li>
-                   <li><a href="#"><i class="fa fa-circle"></i>Add Blood Camps</a></li>
-                   <li><a href="#"><i class="fa fa-circle"></i>Manage Blood Camps</a></li>
+                   <li><a routerLink="/admin-view-aapointments"><i class="fa fa-circle"></i>View Appointments</a></li>
+                   <li><a routerLink="/admin-accept-delete-appointments"><i class="fa fa-circle"></i>Manage Appointments</a></li>
+                </ul>
+            </li>  
+            <li>
+                <a routerLink="/view-blood-campaigns"><i class="fa fa-file"></i>Blood Camps</a>
+                <ul class="sub-menu">
+                   <li><a routerLink="/view-blood-campaigns"><i class="fa fa-circle"></i>View Blood Camps</a></li>
+                   <li><a routerLink="/register-blood-campaign"><i class="fa fa-circle"></i>Add Blood Camps</a></li>
+                   <li><a routerLink="/manage-blood-campaigns"><i class="fa fa-circle"></i>Manage Blood Camps</a></li>
                 </ul>
             </li> 
-            <li><a href="#"><i class="fa fa-link"></i>View Hospital Blood Orders</a></li>
-            <li><a href="#"><i class="fa fa-link"></i>Post Blood Details</a></li>
-            <li><a href="#"><i class="fa fa-user"></i>Send Notifications to Donors</a></li>
+            <li>
+                <a routerLink="/manage-registered-donors"><i class="fa fa-file"></i>Manage Registered Donors</a>
+                <ul class="sub-menu">
+                   <li><a routerLink="/manage-registered-donors"><i class="fa fa-file"></i>Manage & Contact</a></li>
+                </ul>
+            </li> 
+            <li>
+                <a routerLink="/manage-registered-donee"><i class="fa fa-file"></i>Manage Registered Donee</a>
+                <ul class="sub-menu">
+                   <li><a routerLink="/manage-registered-donee"><i class="fa fa-file"></i>Manage & Contact</a></li>
+                </ul>
+            </li> 
+            <li><a routerLink="/hospital-register"><i class="fa fa-link"></i>Add a New Hospital</a></li>
+            <li><a routerLink="/manage-hopital-blood-orders"><i class="fa fa-link"></i>Manage Hospital Blood Orders</a></li>
         </ul>
     </div>
 </aside>

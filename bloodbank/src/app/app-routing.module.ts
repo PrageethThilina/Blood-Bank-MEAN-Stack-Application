@@ -45,16 +45,12 @@ import { ContactRegisteredDonorsComponent } from './donee-facilities/contact-reg
 import { UpdateDoneeDetailsComponent } from './donee-facilities/update-donee-details/update-donee-details.component';
 import { DoneeHeaderComponent } from './donee-facilities/donee-header/donee-header.component';
 import { DonorHeaderComponent } from './donor-facilities/donor-header/donor-header.component';
-import { ContactRegisteredDoneeComponent } from './donor-facilities/contact-registered-donee/contact-registered-donee.component';
-import { RegisteredDoneeComponent } from './donor-facilities/registered-donee/registered-donee.component';
+import { ContactRequestedDoneeComponent } from './donor-facilities/contact-requested-donee/contact-requested-donee.component';
 import { UpdateDonorDetailsComponent } from './donor-facilities/update-donor-details/update-donor-details.component';
 import { MainAdminDashboardComponent } from './admin-facilities/main-admin-dashboard/main-admin-dashboard.component';
-import { SendNotificationComponent } from './admin-facilities/send-notification/send-notification.component';
 import { AdminHeaderComponent } from './admin-facilities/admin-header/admin-header.component';
 import { ManageBloodStorageComponent } from './admin-facilities/manage-blood-storage/manage-blood-storage.component';
 import { ViewBloodStorageComponent } from './admin-facilities/view-blood-storage/view-blood-storage.component';
-import { PostBloodDetailsComponent } from './admin-facilities/post-blood-details/post-blood-details.component';
-import { PostBloodCampDetailsComponent } from './admin-facilities/post-blood-camp-details/post-blood-camp-details.component';
 import { AdminSideNavComponent } from './admin-facilities/admin-side-nav/admin-side-nav.component';
 import { AddBloodStorageComponent } from './admin-facilities/add-blood-storage/add-blood-storage.component';
 import { ViewBloodCampaignsComponent } from './organize-blood-campaign/view-blood-campaigns/view-blood-campaigns.component';
@@ -62,14 +58,19 @@ import { ManageBloodCampaignsComponent } from './admin-facilities/manage-blood-c
 import { HospitalLoginComponent } from './login/hospital-login/hospital-login.component';
 import { HospitalFacilitiesComponent } from './hospital-facilities/hospital-facilities.component';
 import { HospitalOrderBloodComponent } from './hospital-facilities/hospital-order-blood/hospital-order-blood.component';
-import { EditBloodRequestComponent } from './hospital-facilities/edit-blood-request/edit-blood-request.component';
 import { ViewOrderComponent } from './hospital-facilities/view-order/view-order.component';
 import { AddDonorsComponent } from './hospital-facilities/add-donors/add-donors.component';
-import { ViewRegisteredDonorsComponent } from './donee-facilities/view-registered-donors/view-registered-donors.component';
 import { AdminViewAppointmentsComponent } from './admin-facilities/admin-view-appointments/admin-view-appointments.component';
 import { AdminAcceptDeleteAppointmentsComponent } from './admin-facilities/admin-accept-delete-appointments/admin-accept-delete-appointments.component';
 import { DoneeRequestBloodComponent } from './donee-facilities/donee-request-blood/donee-request-blood.component';
-
+import { HospitalRegisterComponent } from './register/hospital-register/hospital-register.component';
+import { ManageRegisteredDonorsComponent } from './admin-facilities/manage-registered-donors/manage-registered-donors.component';
+import { ManageRegisteredDoneeComponent } from './admin-facilities/manage-registered-donee/manage-registered-donee.component';
+import { ViewDoneeRequestsComponent } from './donor-facilities/view-donee-requests/view-donee-requests.component';
+import { ManageHopitalBloodOrdersComponent } from './admin-facilities/manage-hopital-blood-orders/manage-hopital-blood-orders.component';
+import { HospitalHeaderComponent } from './hospital-facilities/hospital-header/hospital-header.component';
+import { ViewBloodRequestComponent } from './donee-facilities/view-blood-request/view-blood-request.component';
+import { UpdateBloodRequestComponent } from './donee-facilities/update-blood-request/update-blood-request.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -117,16 +118,12 @@ const routes: Routes = [
   { path: 'update-donee-details', component: UpdateDoneeDetailsComponent},
   { path: 'donee-header', component: DoneeHeaderComponent},
   { path: 'donor-header', component: DonorHeaderComponent},
-  { path: 'contact-registered-donee', component: ContactRegisteredDoneeComponent},
-  { path: 'registered-donee', component: RegisteredDoneeComponent},
+  { path: 'contact-requested-donee', component: ContactRequestedDoneeComponent},
   { path: 'update-donor-details', component: UpdateDonorDetailsComponent},
   { path: 'main-admin-dashboard', component: MainAdminDashboardComponent},
-  { path: 'send-notification', component: SendNotificationComponent},
   { path: 'admin-header', component: AdminHeaderComponent},
   { path: 'manage-blood-storage', component: ManageBloodStorageComponent},
   { path: 'view-blood-storage', component: ViewBloodStorageComponent},
-  { path: 'post-blood-details', component: PostBloodDetailsComponent},
-  { path: 'post-blood-camp-details', component: PostBloodCampDetailsComponent},
   { path: 'admin-side-nav', component: AdminSideNavComponent},
   { path: 'add-blood-storage', component: AddBloodStorageComponent},
   { path: 'view-blood-campaigns', component: ViewBloodCampaignsComponent},
@@ -134,13 +131,21 @@ const routes: Routes = [
   { path: 'hospital-login', component: HospitalLoginComponent},
   { path: 'hospital-facilities', component: HospitalFacilitiesComponent},
   { path: 'hospital-order-blood', component: HospitalOrderBloodComponent},
-  { path: 'edit-blood-request', component: EditBloodRequestComponent},
   { path: 'view-order', component: ViewOrderComponent},
   { path: 'add-donors', component: AddDonorsComponent},
-  { path: 'view-registered-donors', component: ViewRegisteredDonorsComponent},
   { path: 'admin-view-appointments', component: AdminViewAppointmentsComponent},
   { path: 'admin-accept-delete-appointments', component: AdminAcceptDeleteAppointmentsComponent},
   { path: 'donee-request-blood', component: DoneeRequestBloodComponent},
+  { path: 'hospital-register', component: HospitalRegisterComponent},
+  { path: 'manage-registered-donors', component:   ManageRegisteredDonorsComponent},
+  { path: 'manage-registered-donee', component:   ManageRegisteredDoneeComponent},
+  { path: 'view-donee-requests', component:   ViewDoneeRequestsComponent},
+  { path: 'manage-hopital-blood-orders', component:   ManageHopitalBloodOrdersComponent},
+  { path: 'hospital-header', component:   HospitalHeaderComponent},
+  { path: 'view-blood-request', component:   ViewBloodRequestComponent},
+  { path: 'update-blood-request', component:   UpdateBloodRequestComponent},
+
+
 ];
 
 @NgModule({
@@ -196,16 +201,12 @@ export const routingComponents = [
   UpdateDoneeDetailsComponent,
   DoneeHeaderComponent,
   DonorHeaderComponent,
-  ContactRegisteredDoneeComponent,
-  RegisteredDoneeComponent,
+  ContactRequestedDoneeComponent,
   UpdateDonorDetailsComponent,
   MainAdminDashboardComponent,
-  SendNotificationComponent,
   AdminHeaderComponent,
   ManageBloodStorageComponent,
   ViewBloodStorageComponent,
-  PostBloodDetailsComponent,
-  PostBloodCampDetailsComponent,
   AdminSideNavComponent,
   AddBloodStorageComponent,
   ViewBloodCampaignsComponent,
@@ -213,12 +214,17 @@ export const routingComponents = [
   HospitalLoginComponent,
   HospitalFacilitiesComponent,
   HospitalOrderBloodComponent,
-  EditBloodRequestComponent,
   ViewOrderComponent,
   AddDonorsComponent,
-  ViewRegisteredDonorsComponent,
   AdminViewAppointmentsComponent,
   AdminAcceptDeleteAppointmentsComponent,
   DoneeRequestBloodComponent,
-
+  HospitalRegisterComponent,
+  ManageRegisteredDonorsComponent,
+  ManageRegisteredDoneeComponent,
+  ViewDoneeRequestsComponent,
+  ManageHopitalBloodOrdersComponent,
+  HospitalHeaderComponent,
+  ViewBloodRequestComponent,
+  UpdateBloodRequestComponent,
 ]

@@ -31,6 +31,8 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/fontawesome/css/all.min.css",
               "./node_modules/chart.js/dist/Chart.min.css",
+              "node_modules/aos/dist/aos.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -38,6 +40,9 @@
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./node_modules/chart.js/dist/Chart.min.js",
               "./node_modules/sweetalert/dist/sweetalert.min.js",
+              "node_modules/owl.carousel/dist/owl.carousel.min.js",
+              "node_modules/aos/dist/aos.js",
+              "node_modules/sweetalert/dist/sweetalert.min.js",
               "src/assets/js/custom.js"
             ]
           },

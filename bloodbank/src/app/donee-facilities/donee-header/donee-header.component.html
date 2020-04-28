@@ -1,1 +1,23 @@
-<p>donee-header works!</p>
+<nav class="navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" routerLink="/homepage">
+      <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      National Blood Transfusion Service
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>    
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <ul class="navbar-nav ml-auto">
+       <button class="btn btn-primary" routerLink="/registered-donors">View Donors</button>
+       <button class="btn btn-primary" routerLink="/contact-registered-donors">Contact Donors</button>
+       <button class="btn btn-primary" routerLink="/donee-request-blood">Request Blood</button>
+       <button class="btn btn-primary" routerLink="/update-donee-details">Update My Details</button>
+       <button class="btn btn-primary" routerLink="/view-blood-request">View Blood Request</button>
+       <button class="btn btn-primary" routerLink="/update-blood-request">Update Blood Request</button>
+
+       <button class="btn btn-success my-2 my-sm-0"><i class="fa fa-user" style="margin-right: 10px;"></i>Logout</button> 
+     </ul>
+    </div>
+</nav>

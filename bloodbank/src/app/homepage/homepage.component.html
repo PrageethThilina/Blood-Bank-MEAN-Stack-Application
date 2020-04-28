@@ -5,8 +5,8 @@
    <div class="row">
       <div class="col-md-2 text-center" style="padding-top: 15px;">
         <button class="btn btn-success special-btn" routerLink="/donor-login">Make an appointment to Donate</button>
-        <button class="btn btn-success special-btn" style="margin-top: 120px;">Organize a Blood Donation Campaign</button>
-        <button class="btn btn-success special-btn" style="margin-top: 120px;">Find the nearest Blood Bank</button>
+        <button class="btn btn-success special-btn" style="margin-top: 120px;" routerLink="/register-blood-campaign">Organize a Blood Donation Campaign</button>
+        <button class="btn btn-success special-btn" style="margin-top: 120px;" routerLink="/analyse-data">Analyse Your Health Condtion</button>
       </div>
       <div class="col-md-8 text-center">
         <div class="banner">
@@ -22,7 +22,7 @@
                    <img src="../../assets/images/banner1.1.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5 class="heading">National Blood Transfusion Service</h5>
-                  <p>To ensure the quality, safety, adequacy
+                  <p style="text-align: justify;">To ensure the quality, safety, adequacy
                     and cost effectiveness
                     of the blood supply
                     and related laboratory, clinical,
@@ -84,7 +84,7 @@
 <!-- banner -->
 
 <!-- cards -->
-  <section class="featured-blog mtb-40">
+<section class="featured-blog mtb-40">
     <div class="container-fluid" id="cont-cards">
       <h3 class="text-center head5">Latest News</h3>
       <div class="row">
@@ -92,24 +92,24 @@
           <div class="blog-box">
             <img src="assets/images/img1.jpg" alt="blog1" />
             <h3>COVID-19 Instrauctions for Blood Campaigns</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
+            <p>WHO Instructions for Blood campaigns in order to Covid-19. </p>
+            <a href="#" class="btn btn-danger">Read more...</a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="blog-box">
             <img src="assets/images/img2.jpg" alt="blog1" />
             <h3>COVID-19 Instructions</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
+            <p>Covid 19 Instruction for all must know. </p>
+            <a href="#" class="btn btn-danger">Read more...</a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="blog-box">
             <img src="assets/images/img3.jpg" alt="blog1" />
             <h3>World Blood Donor Date</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
+            <p>World Blood Donor day Events in Sri Lanka. </p>
+            <a routerLink="/wbd17" class="btn btn-danger">Read more...</a>
           </div>
         </div>
         <div class="col-md-4">
@@ -124,24 +124,24 @@
           <div class="blog-box">
             <img src="assets/images/img5.jpg" alt="blog1" />
             <h3>How to Become a Donor</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
+            <p>Things you Should Know Before going to donate Blood. </p>
+            <a routerLink="/who-can-donate-blood" class="btn btn-danger">Read more...</a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="blog-box">
             <img src="assets/images/img6.png" alt="blog1" />
             <h3>Upcoming Blood Donation Campaigns</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
+            <p>Details About Upcoming Blood Donation Campaigns in the Country. </p>
+            <a routerLink="/view-blood-campaigns" class="btn btn-danger">Read more...</a>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- cards -->
+</section>
+<!-- cards -->
 
-  <!-- Available blood storage section -->
+<!-- Available blood storage section -->
 <div class="container-fluid available-storage">
       <h2 class="text-center">Available Blood Storage</h2>
       <h5 class="text-center headx">Last Blood Stock Update :</h5>
@@ -233,11 +233,15 @@
       </div>
     </div>
 </div>
- <!-- Available blood storage section -->
+<!-- Available blood storage section -->
 
-  <!-- Nbts section -->
+<!-- Upcoming Blood Campaigns -->
+<app-view-blood-campaigns></app-view-blood-campaigns>
+<!-- Upcoming Blood Campaigns -->
+
+<!-- Nbts section -->
 <section>
-  <div class="container-fluid" id="aboutnbts">
+  <div class="container-fluid" data-aos="fade-right" id="aboutnbts">
     <div class="row">
       <div class="col-md-6 text-center">
           <h5 class="text-center" style="font-weight: bold;font-style: italic;color: red;">NBTS Videos</h5>
@@ -261,12 +265,12 @@
     </div>
   </div>
 </section>
- <!-- Nbts section -->
+<!-- Nbts section -->
 
-  <!-- Footer links-->
+<!-- Footer links-->
 <footer class="page-footer font-small unique-color-dark">
     <div class="container text-center text-md-left mt-5"> 
-      <div class="row mt-3">
+      <div class="row mt-3" data-aos="fade-right">
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"> 
           <h6 class="text-uppercase font-weight-bold">National Blood Transfusion Service</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
@@ -279,16 +283,16 @@
           <h6 class="text-uppercase font-weight-bold">Useful links</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a href="#!">Organize a blood Camp</a>
+            <a routerLink="/register-blood-campaign">Organize a blood Camp</a>
           </p>
           <p>
-            <a href="#!">Anual reports</a>
+            <a routerLink="/anual-reports">Anual reports</a>
           </p>
           <p>
-            <a href="#!">Things need to become a donor</a>
+            <a routerLink="/who-can-donate-blood">Things need to become a donor</a>
           </p>
           <p>
-            <a href="#!">About Blood</a>
+            <a routerLink="/about-blood">About Blood</a>
           </p>
         </div>
   
@@ -296,16 +300,16 @@
           <h6 class="text-uppercase font-weight-bold">Useful links</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a href="#!">Make an appointment</a>
+            <a routerLink="/donor-login">Make an appointment</a>
           </p>
           <p>
-            <a href="#!">Become a Donor</a>
+            <a routerLink="/who-can-donate-blood">Become a Donor</a>
           </p>
           <p>
-            <a href="#!">Search Donors</a>
+            <a routerLink="/donee-login">Search Donors</a>
           </p>
           <p>
-            <a href="#!">Blood Storage</a>
+            <a routerLink="/view-blood-storage">Blood Storage</a>
           </p>  
         </div>
   
@@ -324,6 +328,6 @@
       </div>  
     </div>
   </footer>
-  <!-- Footer links-->
+<!-- Footer links-->
 
-  <app-footer></app-footer>
+<app-footer></app-footer>

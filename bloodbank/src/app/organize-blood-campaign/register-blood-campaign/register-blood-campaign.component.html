@@ -3,12 +3,12 @@
 <div class="container">
     <form>
    	   <div class="row align-items-center">
-           <div class="col text-center">
-            <h2 class="text-center">Register a Blood Donation Campaign</h2>
+           <div class="col-md-6 mx-auto">
+            <h3 class="text-center">Register a Blood Donation Campaign</h3>
 
               <div class="input-group">
            	    <label class="label control-label">Blood Campaign ID :</label>
-                <input type="text" name="blood_camp_id" class="form-control" placeholder="Blood Campaign ID" readonly style="background-color: rgb(173, 170, 165);">
+                <input type="text" name="blood_camp_id" class="form-control" placeholder="Blood Campaign ID" readonly>
               </div>
               <div class="input-group">
                 <label class="label control-label">City :</label>
@@ -37,6 +37,10 @@
               <div class="input-group">
                 <label class="label control-label">Organiser Email Address :</label>
                 <input type="email" name="email" class="form-control" placeholder="Organiser Email Address" required>
+              </div> 
+              <div class="input-group">
+                <label class="label control-label">Image :</label>
+                <input type="file" name="file" class="form-control" placeholder="Image">
               </div> 
               <div class="text-center">
                  <input type="submit" name="registersubmit" class="btn btn-success" value="submit" style="margin-right: 10px;">

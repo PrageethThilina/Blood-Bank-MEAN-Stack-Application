@@ -1,0 +1,67 @@
+.container{
+	margin-top: 20px;
+}
+.row{
+	border: 1px solid red;
+	margin-top: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.label{
+	color: rgb(0, 0, 0);
+	font-size: 18px;
+	float: left;
+	width: 150px;
+	text-align: right;
+}
+.form-control{
+	margin-left: 40px;
+	padding-left: 10px;
+}
+.radio{
+	height: 20px;
+	width: 20px;
+	margin-left: 40px;
+}
+#rd{
+	font-size: 15px;
+	color: rgb(0, 0, 0);
+}
+.input-group{
+	margin-top: 10px;
+}
+#h2{
+	font-weight: bold;
+	font-style: italic;
+	background-color: orange;
+	margin-top: 0px;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+#cont1{
+	background-color: grey;
+	margin-top: 0%;
+	height: 60px;
+	padding-top: 10px;
+}
+::placeholder{
+	color: black;
+}
+h2{
+	margin-left: 17%;
+	margin-top: -1%;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+.btn{
+	width: 20%;
+	height: 50px;
+	margin-right: 20px;
+	margin-top: 2%;
+}
+textarea{
+	height: 45px;
+}
+.wrapper{
+	position: relative;	
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Chart} from 'node_modules/chart.js';
+import * as AOS from 'aos';
 
 
 @Component({
@@ -13,6 +14,10 @@ export class HomepageComponent implements OnInit
   constructor() { }
 
   ngOnInit(): void {
+
+    AOS.init({
+        duration: 1000,
+    });
 
     var myChart = new Chart("myChart1", {
       type: 'doughnut',
