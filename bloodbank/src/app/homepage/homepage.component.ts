@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit
   ngOnInit(): void {
 
     AOS.init({
-        duration: 1000,
+        duration: 2000,
     });
 
     var myChart = new Chart("myChart1", {

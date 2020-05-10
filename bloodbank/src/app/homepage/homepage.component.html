@@ -88,7 +88,7 @@
     <div class="container-fluid" id="cont-cards">
       <h3 class="text-center head5">Latest News</h3>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="flip-left">
           <div class="blog-box">
             <img src="assets/images/img1.jpg" alt="blog1" />
             <h3>COVID-19 Instrauctions for Blood Campaigns</h3>
@@ -96,7 +96,7 @@
             <a href="#" class="btn btn-danger">Read more...</a>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="flip-down">
           <div class="blog-box">
             <img src="assets/images/img2.jpg" alt="blog1" />
             <h3>COVID-19 Instructions</h3>
@@ -104,7 +104,7 @@
             <a href="#" class="btn btn-danger">Read more...</a>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="flip-right">
           <div class="blog-box">
             <img src="assets/images/img3.jpg" alt="blog1" />
             <h3>World Blood Donor Date</h3>
@@ -112,7 +112,7 @@
             <a routerLink="/wbd17" class="btn btn-danger">Read more...</a>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="flip-left">
           <div class="blog-box">
             <img src="assets/images/img4.jpg" alt="blog1" />
             <h3>Donate Blood</h3>
@@ -120,15 +120,15 @@
             <a href="detail.html" class="btn btn-danger">Read more...</a>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="flip-down">
           <div class="blog-box">
             <img src="assets/images/img5.jpg" alt="blog1" />
             <h3>How to Become a Donor</h3>
-            <p>Things you Should Know Before going to donate Blood. </p>
+            <p>Things you Should Know Before going to donate Blood. Really Important for you...</p>
             <a routerLink="/who-can-donate-blood" class="btn btn-danger">Read more...</a>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="flip-right">
           <div class="blog-box">
             <img src="assets/images/img6.png" alt="blog1" />
             <h3>Upcoming Blood Donation Campaigns</h3>
@@ -145,7 +145,7 @@
 <div class="container-fluid available-storage">
       <h2 class="text-center">Available Blood Storage</h2>
       <h5 class="text-center headx">Last Blood Stock Update :</h5>
-      <div class="row">
+      <div class="row" data-aos="fade-left">
         <div class="col-md-3 group-blood text-center">
           <h3>A+</h3>
             <div id="divChart1">
@@ -179,7 +179,7 @@
           <h5>Amount : </h5>
         </div>
       </div>
-      <div class="row">
+      <div class="row" data-aos="fade-right">
         <div class="col-md-3 group-blood text-center">
           <h3>A-</h3>
           <div id="divChart5">
@@ -236,13 +236,15 @@
 <!-- Available blood storage section -->
 
 <!-- Upcoming Blood Campaigns -->
-<app-view-blood-campaigns></app-view-blood-campaigns>
+<div class="view-blood-campaigns" data-aos="fade-right">
+   <app-view-blood-campaigns></app-view-blood-campaigns>
+</div>
 <!-- Upcoming Blood Campaigns -->
 
 <!-- Nbts section -->
 <section>
-  <div class="container-fluid" data-aos="fade-right" id="aboutnbts">
-    <div class="row">
+  <div class="container-fluid" id="aboutnbts">
+    <div class="row"  data-aos="fade-left">
       <div class="col-md-6 text-center">
           <h5 class="text-center" style="font-weight: bold;font-style: italic;color: red;">NBTS Videos</h5>
           <iframe width="400" height="200" src="https://www.youtube.com/embed/wsXNeOTtNgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-top: 20px;"></iframe><br>
@@ -327,7 +329,7 @@
         </div> 
       </div>  
     </div>
-  </footer>
+</footer>
 <!-- Footer links-->
 
 <app-footer></app-footer>

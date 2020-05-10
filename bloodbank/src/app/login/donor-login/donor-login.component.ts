@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient,HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+
 declare const pswrdvisible: any;
 
 @Component({
@@ -8,11 +10,13 @@ declare const pswrdvisible: any;
 })
 export class DonorLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
   }
+
   angpswrdVisible() {
     pswrdvisible();
   }
+
 }

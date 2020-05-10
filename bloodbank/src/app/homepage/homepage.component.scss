@@ -20,14 +20,11 @@
 .recent-post a:hover {text-decoration: none;}
 .recent-post a:hover h4 {color:#007EDB;}
 
-footer {background-color: #000;color:#fff; padding:20px;}
-
-/*validation*/
-
-.ng-valid[required], .ng-valid.required {border: 1px solid #42A948;}
-.error {color:#ff0000;}
-.success { color:green; }
-.contact-message { text-align: center; }
+footer {
+    background-color: #000;
+    color:#fff; padding:20px;
+    overflow: hidden;
+}
 
 @media (max-width: 767px) {
 .intro-text {display: none;}
@@ -95,6 +92,7 @@ footer {background-color: #000;color:#fff; padding:20px;}
 }
 .available-storage{
     margin-bottom: 30px;
+    overflow: hidden;
 }
 .available-storage h2{
     color:#fd3c3c;
@@ -132,4 +130,12 @@ h3{
     margin-top: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
+    overflow: hidden;
+}
+.featured-blog
+{
+    overflow: hidden;
+}
+.view-blood-campaigns{
+    overflow: hidden;
 }

@@ -8,7 +8,7 @@
             <h2 class="text-center">Add Blood Storage</h2>
               <div class="input-group">
            	    <label class="label control-label">Blood Bag ID :</label>
-                <input type="text" name="cusid" class="form-control" placeholder="Donor ID" readonly>
+                <input type="text" name="blood_bag_id" class="form-control" placeholder="Donor ID" readonly>
               </div>
               <div class="input-group">
                 <label class="label control-label">Blood Group :</label>
@@ -25,12 +25,16 @@
                 </select>
               </div>
               <div class="input-group">
+                <label class="label control-label">Volume :</label>
+               <input type="number" name="volume" class="form-control" placeholder="Volume">
+              </div>
+              <div class="input-group">
                 <label class="label control-label">Blood Received Date :</label>
-                <input type="date" name="birthday" class="form-control" required>
+                <input type="date" name="received_date" class="form-control" required>
               </div>
               <div class="input-group">
                 <label class="label control-label">Blood Expiry Date :</label>
-                <input type="date" name="birthday" class="form-control" required>
+                <input type="date" name="expiry_date" class="form-control" required>
               </div> 
               <input type="submit" name="storagesubmit" class="btn btn-success" value="Add"  style="margin-left: 18%;">
               <input type="reset" name="storageclear" class="btn btn-danger" value="Clear">
