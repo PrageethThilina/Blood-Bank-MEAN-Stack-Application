@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient,HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
+import { DonorService } from '../../shared/donor.service';
 
 declare const pswrdvisible: any;
 
@@ -10,9 +12,32 @@ declare const pswrdvisible: any;
 })
 export class DonorLoginComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private donorService: DonorService,private router : Router) { }
 
-  ngOnInit(): void {
+  model = {
+
+    nic :'',
+    password:'',
+    
+  };
+  
+  serverErrorMessages: string;
+
+  ngOnInit() {
+    if(this.donorService.isLoggedIn())
+    this.router.navigateByUrl('/donor-facilities');
+  }
+
+  onSubmit(form : NgForm){
+    this.donorService.login(form.value).subscribe(
+      res => {
+        this.donorService.setToken(res['token']);
+        this.router.navigateByUrl('/donor-facilities');
+      },
+      err => {
+        this.serverErrorMessages = err.error.message;
+      }
+    );
   }
 
   angpswrdVisible() {

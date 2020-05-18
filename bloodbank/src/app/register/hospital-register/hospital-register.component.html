@@ -1,46 +1,71 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <form>
+
+<!-- Success message -->
+<div class="success" *ngIf="showSucessMessage">
+  Saved successfully
+</div>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
+
+    <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
    	   <div class="row">
            <div class="col-md-6 mx-auto">
             <h2 class="text-center">Hospital Register Form</h2>
               <div class="input-group">
-           	    <label class="label control-label">Hospital ID :</label>
-                <input type="text" name="hospital_id" class="form-control" placeholder="Hospital ID" readonly>
-              </div>
-              <div class="input-group">
                 <label class="label control-label">Hospital Name :</label>
-                <input type="text" name="hospital_name" class="form-control" placeholder="Hospital Name" required>
+                <input type="text" name="hospital_name" #hospital_name="ngModel" [(ngModel)]="hospitalService.selectedUser.hospital_name" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !hospital_name.valid }" class="form-control" placeholder="Hospital Name" required>
+                <div *ngIf="signUpForm.submitted && !hospital_name.valid">
+                  <label class="validation-message">This field is required.</label>
+                </div>
               </div>  
               <div class="input-group">
                 <label class="label control-label">Address :</label>
-                <textarea name="address" class="form-control" placeholder="Address" required></textarea>
+                <textarea name="address" #address="ngModel" [(ngModel)]="hospitalService.selectedUser.address" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !address.valid }" class="form-control" placeholder="Address" required></textarea>
+                <div *ngIf="signUpForm.submitted && !address.valid">
+                  <label class="validation-message">This field is required.</label>
+                </div>
               </div> 
               <div class="input-group">
                 <label class="label control-label">Contact No :</label>
-                <input type="tel" name="contact_no" class="form-control" placeholder="Contact No." required>
+                <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="hospitalService.selectedUser.contact" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !contact.valid }" class="form-control" placeholder="Contact No." required>
+                <div *ngIf="signUpForm.submitted && !contact.valid">
+                  <label class="validation-message">This field is required.</label>
+                </div>
               </div> 
               <div class="input-group">
                 <label class="label control-label">Email :</label>
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
-              </div>  
+                <input type="email" name="email" #email="ngModel" [(ngModel)]="hospitalService.selectedUser.email" [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }" class="form-control" placeholder="Email" required>
+                <div *ngIf="signUpForm.submitted && email.errors">
+                  <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+                  <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+                </div> 
+              </div> 
               <div class="input-group">
                 <label class="label control-label">Username :</label>
-                <input type="text" name="username" class="form-control" placeholder="username" required>
+                <input type="text" name="username" #username="ngModel" [(ngModel)]="hospitalService.selectedUser.username" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !username.valid }" class="form-control" placeholder="username" required>
+                <div *ngIf="signUpForm.submitted && !username.valid">
+                  <label class="validation-message">This field is required.</label>
+                </div>
               </div>                   
               <div class="input-group">
                 <label class="label control-label">Password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" #password="ngModel" [(ngModel)]="hospitalService.selectedUser.password" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }" class="form-control" placeholder="Password" minlength="4" required>
+                <div *ngIf="signUpForm.submitted && password.errors">
+                  <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+                  <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+                </div>
               </div>
               <div class="text-center">
                  <input type="submit" name="registersubmit" class="btn btn-success" value="Register" style="margin-right: 10px;">
                  <input type="reset" name="registerclear" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
-                 <input type="reset" name="registerreset" class="btn btn-danger" value="Cancel">
+                 <input type="reset" name="registerreset" class="btn btn-danger" value="Cancel" routerLink="">
               </div>
             </div>  
         </div>
     </form>
 </div>
-
-<app-footer></app-footer>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
+import { DoneeService } from '../../shared/donee.service';
+
 declare const pswrdvisible: any;
 
 
@@ -9,10 +13,34 @@ declare const pswrdvisible: any;
 })
 export class DoneeLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private doneeService: DoneeService,private router : Router) { }
 
-  ngOnInit(): void {
+  model = {
+
+    nic :'',
+    password:'',
+    
+  };
+  
+  serverErrorMessages: string;
+
+  ngOnInit() {
+    if(this.doneeService.isLoggedIn())
+    this.router.navigateByUrl('/donee-facilities');
   }
+
+  onSubmit(form : NgForm){
+    this.doneeService.login(form.value).subscribe(
+      res => {
+        this.doneeService.setToken(res['token']);
+        this.router.navigateByUrl('/donee-facilities');
+      },
+      err => {
+        this.serverErrorMessages = err.error.message;
+      }
+    );
+  }
+
   angpswrdVisible() {
     pswrdvisible();
   }

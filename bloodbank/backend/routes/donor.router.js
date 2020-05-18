@@ -1,8 +1,14 @@
 const express = require('express');
-const router = express.Router();
+const donorrouter = express.Router();
+const jwtHelper = require('../config/jwtHelper');
 
 const ctrlDonor = require('../controllers/donor.controller');
 
-router.post('/donor-register', ctrlDonor.donor_register);
+donorrouter.post('/donor-register', ctrlDonor.donor_register);
+donorrouter.post('/donor-login', ctrlDonor.donor_login);
+donorrouter.get('/donor-facilities',jwtHelper.donorverifyJwtToken, ctrlDonor.donor_profile);
 
-module.exports = router;
+module.exports = donorrouter;
+
+
+

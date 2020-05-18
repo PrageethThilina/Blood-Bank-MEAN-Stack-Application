@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Blood Bank Sri-Lanka';
+  title = 'Bank Sri-Lanka';
+  constructor() {}
 }

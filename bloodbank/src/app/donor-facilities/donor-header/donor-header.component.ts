@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DonorService } from '../../shared/donor.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-donor-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonorHeaderComponent implements OnInit {
 
-  constructor() { }
+constructor(private donorService: DonorService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+ 
+  onLogout(){
+    this.donorService.deleteToken();
+    this.router.navigate(['/donor-login']);
   }
 
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
 
 import { DonorService } from '../../shared/donor.service'
+
 
 declare const pswrdvisible: any;
 declare const repswrdvisible: any;
@@ -10,42 +12,37 @@ declare const repswrdvisible: any;
   selector: 'app-donor-register',
   templateUrl: './donor-register.component.html',
   styleUrls: ['./donor-register.component.scss'],
-  providers : [DonorService]
-})
-export class DonorRegisterComponent implements OnInit {
 
-  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+})
+export class DonorRegisterComponent {
+
+emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   showSucessMessage: boolean;
   serverErrorMessages: string;
 
-  constructor( public donorService: DonorService ) {}
-
-  ngOnInit(): void {
-
-  }
+  constructor(public donorService: DonorService, private router : Router) { }
 
   onSubmit(form: NgForm) {
-    this.donorService.postDonor(form.value).subscribe(
-     res => {
+    this.donorService.postUser(form.value).subscribe(
+      res => {
         this.showSucessMessage = true;
         setTimeout(() => this.showSucessMessage = false, 4000);
         this.resetForm(form);
+        setTimeout(() => this.router.navigateByUrl('/donor-login'), 6000);
       },
       err => {
         if (err.status === 422) {
           this.serverErrorMessages = err.error.join('<br/>');
         }
         else
-        {
           this.serverErrorMessages = 'Something went wrong.Please contact admin.';
-        }
       }
-    );  
+    );
   }
 
   resetForm(form: NgForm) {
+
     this.donorService.selectedUser = {
-      donor_id : '',
       nic : '',
       full_name : '',
       gender : '',
@@ -59,14 +56,15 @@ export class DonorRegisterComponent implements OnInit {
       email : '',
       contact : '',
       password : '',
-      re_password : '',
       spouce : '',
       health : '',
-      photo : '',
-
+      photo : ''
     };
     form.resetForm();
     this.serverErrorMessages = '';
+  }
+
+  ngOnInit(): void {
   }
 
   angpswrdVisible(){

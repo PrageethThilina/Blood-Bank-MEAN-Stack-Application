@@ -1,48 +1,45 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 var donorSchema = new mongoose.Schema({
-
-    donor_id: {
-        type: String,
-        unique: true
-    },
     nic: {
         type: String,
-        required: 'NIC can\'t be empty',
-        unique: true
+        required: 'nic can\'t be empty',
+        index:true, 
+        unique:true,
+        sparse:true
     },
     full_name: {
         type: String,
-        required: 'Full name can\'t be empty',
+        required: 'Full name can\'t be empty'
     },
     gender: {
         type: String,
-        required: 'gender can\'t be empty',
+        required: 'gender can\'t be empty'
     },
     birthday: {
         type: String,
-        required: 'birthday can\'t be empty'
+        required: 'Birthday can\'t be empty'
     },
     last_donate_date: {
-        type: String,
-        required: 'last donate date can\'t be empty'
+        type: String,        
     },
     city: {
         type: String,
-        required: 'City can\'t be empty'
+        required: 'city can\'t be empty'
     },
     weight: {
         type: String,
-        required: 'Weight can\'t be empty'
+        required: 'Current weight can\'t be empty'
     },
     height: {
         type: String,
-        required: 'Height can\'t be empty'
+        required: 'Current height can\'t be empty'
     },
     blood_group: {
         type: String,
-        required: 'Blood group can\'t be empty'
+        required: 'Blood Group can\'t be empty'
     },
     address: {
         type: String,
@@ -50,21 +47,18 @@ var donorSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: 'email can\'t be empty',
-        unique: true
+        required: 'Email can\'t be empty',
+        index:true, 
+        unique:true,
+        sparse:true
     },
     contact: {
         type: String,
-        required: 'Contact number can\'t be empty'
+        required: 'Contact Number can\'t be empty'
     },
     password: {
         type: String,
         required: 'Password can\'t be empty',
-        minlength: [4, 'Password must be atleast 4 character long']
-    },
-    re_password: {
-        type: String,
-        required: ' Re-type Password can\'t be empty',
         minlength: [4, 'Password must be atleast 4 character long']
     },
     spouce: {
@@ -73,6 +67,7 @@ var donorSchema = new mongoose.Schema({
     },
     health: {
         type: String,
+        required: 'Health issues can\'t be empty'
     },
     photo: {
         type: String,
@@ -97,4 +92,20 @@ donorSchema.pre('save', function (next) {
     });
 });
 
-mongoose.model('donors', donorSchema);
+
+// Methods
+donorSchema.methods.verifyPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+donorSchema.methods.generateJwt = function () {
+    return jwt.sign({ _id: this._id},
+        process.env.JWT_SECRET,
+    {
+        expiresIn: process.env.JWT_EXP
+    });
+}
+
+
+
+mongoose.model('Donor', donorSchema);

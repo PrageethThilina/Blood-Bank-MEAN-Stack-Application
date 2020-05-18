@@ -10,11 +10,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
      <ul class="navbar-nav ml-auto">
-       <button class="btn btn-primary" routerLink="/add-donors">Add Donors</button>
-       <button class="btn btn-primary" routerLink="/hospital-order-blood">Order Blood</button>
-       <button class="btn btn-primary" routerLink="/view-order">View Order</button>
+       <button class="btn btn-primary" routerLink="/add-donors" routerLinkActive="active">Add Donors</button>
+       <button class="btn btn-primary" routerLink="/hospital-order-blood" routerLinkActive="active">Order Blood</button>
+       <button class="btn btn-primary" routerLink="/view-order" routerLinkActive="active">View Order</button>
 
-       <button class="btn btn-success my-2 my-sm-0"><i class="fa fa-user" style="margin-right: 10px;"></i>Logout</button> 
+       <button class="btn btn-success my-2 my-sm-0" (click)="onLogout()"><i class="fa fa-user" style="margin-right: 10px;"></i>Logout</button> 
      </ul>
     </div>
 </nav>

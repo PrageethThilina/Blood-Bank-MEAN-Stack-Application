@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AdminService } from '../../shared/admin.service';
+
 declare const pswrdvisible: any;
 
 @Component({
@@ -8,11 +12,34 @@ declare const pswrdvisible: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adminService: AdminService,private router : Router) { }
 
-  ngOnInit(): void {
-  }
+  model = {
+
+    username :'',
+    password:'',
+    
+  };
   
+  serverErrorMessages: string;
+
+  ngOnInit() {
+    if(this.adminService.isLoggedIn())
+    this.router.navigateByUrl('/main-admin-dashboard');
+  }
+
+  onSubmit(form : NgForm){
+    this.adminService.login(form.value).subscribe(
+      res => {
+        this.adminService.setToken(res['token']);
+        this.router.navigateByUrl('/main-admin-dashboard');
+      },
+      err => {
+        this.serverErrorMessages = err.error.message;
+      }
+    );
+  }
+
   angpswrdVisible() {
     pswrdvisible();
   }

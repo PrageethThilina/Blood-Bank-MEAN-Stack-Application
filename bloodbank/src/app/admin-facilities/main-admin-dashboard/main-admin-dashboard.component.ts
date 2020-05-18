@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Chart} from 'node_modules/chart.js';
+import { AdminService } from '../../shared/admin.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-main-admin-dashboard',
@@ -8,7 +10,12 @@ import {Chart} from 'node_modules/chart.js';
 })
 export class MainAdminDashboardComponent implements OnInit {
 
-  constructor() { }
+constructor(private adminService: AdminService, private router: Router) { }
+
+onLogout(){
+    this.adminService.deleteToken();
+    this.router.navigate(['/admin-login']);
+  }
 
   ngOnInit() {
 

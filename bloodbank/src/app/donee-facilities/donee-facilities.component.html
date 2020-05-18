@@ -1,6 +1,76 @@
 <app-donee-header></app-donee-header>
 
 <div class="container">
+    
+  <div class="row align-items-center">     
+    <div class="col">
+
+      <table *ngIf="doneeDetails" class="table-fill">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center">Donee Profile</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>NIC</td>
+              <td>{{doneeDetails.nic}}</td>
+            </tr>
+            <tr>
+              <td>Full Name</td>
+              <td>{{doneeDetails.full_name}}</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>{{doneeDetails.gender}}</td>
+            </tr>
+            <tr>
+              <td>Birtday</td>
+              <td>{{doneeDetails.birthday}}</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>{{doneeDetails.city}}</td>
+            </tr>
+            <tr>
+              <td>Contact</td>
+              <td>{{doneeDetails.contact}}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{doneeDetails.email}}</td>
+            </tr>
+            <tr>
+              <td>Blood Group</td>
+              <td>{{doneeDetails.blood_group}}</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>{{doneeDetails.address}}</td>
+            </tr>
+            <tr>
+              <td>Spouce Details</td>
+              <td>{{doneeDetails.spouce}}</td>
+            </tr>
+            <tr>
+              <td>Health Condition</td>
+              <td>{{doneeDetails.health}}</td>
+            </tr>
+            <tr>
+              <td>Medical Report</td>
+              <td>{{doneeDetails.medical_report}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <input type="button" class="btn btn-primary" (click)="onLogout()" value="Logout"/>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+      
+    </div>
+    </div>
+
     <div class="row align-items-center">
         <div class="col-md-6 mx-auto">
           <img class="img-fluid" src="assets/images/doneebg.jpg" alt="">

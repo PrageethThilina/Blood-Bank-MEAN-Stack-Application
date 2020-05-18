@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HospitalService } from '../../shared/hospital.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-hospital-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HospitalHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private hospitalService: HospitalService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+ 
+  onLogout(){
+    this.hospitalService.deleteToken();
+    this.router.navigate(['/hospital-login']);
   }
 
 }

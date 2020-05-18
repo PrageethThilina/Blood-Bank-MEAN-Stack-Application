@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DoneeService } from '../../shared/donee.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-donee-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoneeHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private doneeService: DoneeService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+ 
+  onLogout(){
+    this.doneeService.deleteToken();
+    this.router.navigate(['/donee-login']);
   }
 
 }
