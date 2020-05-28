@@ -7,10 +7,11 @@ import { Donee } from './donee.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DoneeService {
 
   selectedUser: Donee = {
-    nic : '', 
+    donee_nic : '', 
     full_name : '',
     gender : '',
     birthday : '',

@@ -10,7 +10,7 @@ import { Admin } from './admin.model';
 export class AdminService {
 
   selectedUser: Admin = {
-    username : '',
+    admin_username : '',
     password : '',
   };
 

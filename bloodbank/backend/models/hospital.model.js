@@ -22,7 +22,7 @@ var hospitalSchema = new mongoose.Schema({
         unique:true,
         sparse:true
     },
-    username: {
+    hospital_username: {
         type: String,
         required: 'username can\'t be empty',
         index:true, 

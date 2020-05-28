@@ -1,5 +1,5 @@
 export class Donor {
-    nic : string; 
+    donor_nic : string; 
     full_name : string;
     gender : string;
     birthday : string;

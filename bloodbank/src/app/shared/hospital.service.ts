@@ -15,7 +15,7 @@ export class HospitalService {
     address : '',
     contact : '',
     email : '',
-    username : '',
+    hospital_username : '',
     password : '',
   };
 

@@ -42,7 +42,7 @@ export class HospitalRegisterComponent implements OnInit {
       address : '',
       contact : '',
       email : '',
-      username : '',
+      hospital_username : '',
       password : '',
     };
     form.resetForm();

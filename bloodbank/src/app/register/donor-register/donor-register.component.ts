@@ -43,7 +43,7 @@ emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[
   resetForm(form: NgForm) {
 
     this.donorService.selectedUser = {
-      nic : '',
+      donor_nic : '',
       full_name : '',
       gender : '',
       birthday : '',

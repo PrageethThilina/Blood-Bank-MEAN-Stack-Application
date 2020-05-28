@@ -2,8 +2,18 @@
 <app-admin-side-nav></app-admin-side-nav>
 
 <div class="container">
-    <div class="col-md-4">
-        <button class="btn btn-success">Add New Inventory</button>
+    <div class="row">
+        <div class="col">
+          <!-- Success message -->
+            <div class="success" *ngIf="showSucessMessage">
+             Deleted successfully
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+          <button class="btn btn-success" routerLink="/add-blood-storage">Add New Inventory</button>
+        </div>
     </div>
     <div class="row align-items-center">
         <div class="col">
@@ -16,38 +26,25 @@
                 <th class="table-danger">Volume</th>
                 <th class="table-danger">Blood Received Date</th>
                 <th class="table-danger">Blood Expiry Date</th>
-                <th class="table-danger">Percentage</th>
                 <th class="table-danger">Operation</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>B001</td>
-                <td>A+</td>
-                <td>0.9</td>
-                <td>2020-04-10</td>
-                <td>2020-08-10</td>
-                <td>20%</td>
-                <td>Delete </td>
-            </tr>
-            <tr>
-                <td>B002</td>
-                <td>B+</td>
-                <td>0.7</td>
-                <td>2020-04-10</td>
-                <td>2020-08-10</td>
-                <td>10%</td>
-                <td>Delete </td>
-            </tr>
-            <tr>
-                <td>B003</td>
-                <td>A-</td>
-                <td>0.6</td>
-                <td>2020-04-10</td>
-                <td>2020-08-10</td>
-                <td>30%</td>
-                <td>Delete </td>
-            </tr>
+                <tr *ngFor="let bloodinv of bloodinventoryService.blood_inventories">
+                    <td>{{bloodinv._id}}</td>
+                    <td>{{bloodinv.blood_group}}</td>
+                    <td>{{bloodinv.volume}}</td>
+                    <td>{{bloodinv.received_date}}</td>
+                    <td>{{bloodinv.expiry_date}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(bloodinv)">
+                          <i class="fas fa-pencil-alt" style="margin-right: 20px;"></i>
+                        </a>
+                        <a class="action-btn" (click)="onDelete(bloodinv._id)">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
             </tbody>
            </table>
         </div>

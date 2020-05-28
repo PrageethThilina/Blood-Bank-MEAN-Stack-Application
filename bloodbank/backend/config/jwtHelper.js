@@ -3,37 +3,15 @@ const donorjwt = require('jsonwebtoken');
 const doneejwt = require('jsonwebtoken');
 const adminjwt = require('jsonwebtoken');
 
-
-module.exports.hospitalverifyJwtToken = (req, res, next) => {
-    var hospitaltoken;
+module.exports.adminverifyJwtToken = (req, res, next) => {
+    var admintoken;
     if ('authorization' in req.headers)
-    hospitaltoken = req.headers['authorization'].split(' ')[1];
+    admintoken = req.headers['authorization'].split(' ')[1];
 
-    if (!hospitaltoken)
+    if (!admintoken)
         return res.status(403).send({ auth: false, message: 'No token provided.' });
     else {
-        hospitaljwt.verify(hospitaltoken, process.env.JWT_SECRET,
-            (err, decoded) => {
-                if (err)
-                    return res.status(500).send({ auth: false, message: 'Token authentication failed.' });
-                else {
-                    req._id = decoded._id;
-                    next();
-                }
-            }
-        )
-    }
-}
-
-module.exports.donorverifyJwtToken = (req, res, next) => {
-    var donortoken;
-    if ('authorization' in req.headers)
-    donortoken = req.headers['authorization'].split(' ')[1];
-
-    if (!donortoken)
-        return res.status(403).send({ auth: false, message: 'No token provided.' });
-    else {
-        donorjwt.verify(donortoken, process.env.JWT_SECRET,
+        adminjwt.verify(admintoken, process.env.JWT_SECRET,
             (err, decoded) => {
                 if (err)
                     return res.status(500).send({ auth: false, message: 'Token authentication failed.' });
@@ -67,15 +45,15 @@ module.exports.doneeverifyJwtToken = (req, res, next) => {
     }
 }
 
-module.exports.adminverifyJwtToken = (req, res, next) => {
-    var admintoken;
+module.exports.donorverifyJwtToken = (req, res, next) => {
+    var donortoken;
     if ('authorization' in req.headers)
-    admintoken = req.headers['authorization'].split(' ')[1];
+    donortoken = req.headers['authorization'].split(' ')[1];
 
-    if (!admintoken)
+    if (!donortoken)
         return res.status(403).send({ auth: false, message: 'No token provided.' });
     else {
-        adminjwt.verify(admintoken, process.env.JWT_SECRET,
+        donorjwt.verify(donortoken, process.env.JWT_SECRET,
             (err, decoded) => {
                 if (err)
                     return res.status(500).send({ auth: false, message: 'Token authentication failed.' });
@@ -87,3 +65,25 @@ module.exports.adminverifyJwtToken = (req, res, next) => {
         )
     }
 }
+
+module.exports.hospitalverifyJwtToken = (req, res, next) => {
+    var hospitaltoken;
+    if ('authorization' in req.headers)
+    hospitaltoken = req.headers['authorization'].split(' ')[1];
+
+    if (!hospitaltoken)
+        return res.status(403).send({ auth: false, message: 'No token provided.' });
+    else {
+        hospitaljwt.verify(hospitaltoken, process.env.JWT_SECRET,
+            (err, decoded) => {
+                if (err)
+                    return res.status(500).send({ auth: false, message: 'Token authentication failed.' });
+                else {
+                    req._id = decoded._id;
+                    next();
+                }
+            }
+        )
+    }
+}
+

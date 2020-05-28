@@ -3,6 +3,6 @@ export class Hospital {
     address : string;
     contact : string;
     email : string;
-    username : string;
+    hospital_username : string;
     password : string;
 }

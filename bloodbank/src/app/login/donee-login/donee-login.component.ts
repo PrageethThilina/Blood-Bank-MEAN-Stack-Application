@@ -17,7 +17,7 @@ export class DoneeLoginComponent implements OnInit {
 
   model = {
 
-    nic :'',
+    donee_nic :'',
     password:'',
     
   };

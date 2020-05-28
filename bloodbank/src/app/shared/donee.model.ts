@@ -1,5 +1,5 @@
 export class Donee {
-    nic : string; 
+    donee_nic : string; 
     full_name : string;
     gender : string;
     birthday : string;

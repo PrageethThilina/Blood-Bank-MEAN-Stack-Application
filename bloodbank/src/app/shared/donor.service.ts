@@ -10,7 +10,7 @@ import { Donor } from './donor.model';
 export class DonorService {
 
   selectedUser: Donor = {
-    nic : '', 
+    donor_nic : '', 
     full_name : '',
     gender : '',
     birthday : '',

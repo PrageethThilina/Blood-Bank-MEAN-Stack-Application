@@ -8,15 +8,16 @@ const passport = require('passport');
 require('././backend/config/config');
 require('././backend/models/db');
 
-require('././backend/config/hospitalpassportConfig');
-require('././backend/config/donorpassportConfig');
-require('././backend/config/doneepassportConfig');
 require('././backend/config/adminpassportConfig');
+require('././backend/config/doneepassportConfig');
+require('././backend/config/donorpassportConfig');
+require('././backend/config/hospitalpassportConfig');
 
-const rtsHospital = require('././backend/routes/hospital.router');
-const rtsDonor = require('././backend/routes/donor.router');
-const rtsDonee = require('././backend/routes/donee.router');
 const rtsAdmin= require('././backend/routes/admin.router');
+const rtsDonee = require('././backend/routes/donee.router');
+const rtsDonor = require('././backend/routes/donor.router');
+const rtsHospital = require('././backend/routes/hospital.router');
+const rtsBlood_Inventory = require('././backend/routes/blood_inventory.router');
 
 
 var app = express();
@@ -25,10 +26,13 @@ var app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
-app.use('/api', rtsHospital);
-app.use('/api', rtsDonor);
-app.use('/api', rtsDonee);
+
 app.use('/api', rtsAdmin);
+app.use('/api', rtsDonee);
+app.use('/api', rtsDonor);
+app.use('/api', rtsHospital);
+app.use('/api', rtsBlood_Inventory);
+
 
 // error handler
 app.use((err, req, res, next) => {

@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 var Hospital = mongoose.model('Hospital');
 
 /*hospitalpassport.use(Hospital,
-    new hospitallocalStrategy({ usernameField: 'username' },
+    new hospitallocalStrategy({ usernameField: 'hospital_username' },
         (username, password, done) => {
-            Hospital.findOne({ username: username },
+            Hospital.findOne({ hospital_username: username },
                 (err, hospital) => {
                     if (err)
                         return done(err);

@@ -17,8 +17,8 @@
            <div class="col-md-6">
               <div class="input-group">
                 <label class="label control-label">NIC No :</label>
-                <input type="text" name="nic" #nic="ngModel" [(ngModel)]="donorService.selectedUser.nic" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !nic.valid }" required  class="form-control" placeholder="NIC No">
-                <div *ngIf="signUpForm.submitted && !nic.valid">
+                <input type="text" name="donor_nic" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !donor_nic.valid }" required  class="form-control" placeholder="NIC No">
+                <div *ngIf="signUpForm.submitted && !donor_nic.valid">
                   <label class="validation-message">This field is required.</label>
                 </div>
               </div>

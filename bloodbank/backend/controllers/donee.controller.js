@@ -6,7 +6,7 @@ const Donee = mongoose.model('Donee');
 
 module.exports.donee_register = (req, res, next) => {
     var donee = new Donee();
-    donee.nic = req.body.nic,
+    donee.donee_nic = req.body.donee_nic,
     donee.full_name = req.body.full_name,
     donee.gender = req.body.gender,
     donee.birthday = req.body.birthday,
@@ -51,7 +51,7 @@ module.exports.donee_profile = (req, res, next) =>{
                 return res.status(404).json({ status: false, message: 'Record not found.' });
             else
                 return res.status(200).json({ status: true, donee : _.pick(donee,
-                    ['nic',
+                    ['donee_nic',
                     'full_name',
                     'gender',
                     'birthday',

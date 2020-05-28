@@ -17,7 +17,7 @@ export class HospitalLoginComponent implements OnInit {
 
   model = {
 
-    username :'',
+    hospital_username :'',
     password:'',
     
   };

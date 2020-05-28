@@ -16,7 +16,7 @@ export class DonorLoginComponent implements OnInit {
 
   model = {
 
-    nic :'',
+    donor_nic :'',
     password:'',
     
   };

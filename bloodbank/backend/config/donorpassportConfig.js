@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 
 var Donor = mongoose.model('Donor');
 
-donorpassport.use(
-    new donorlocalStrategy({ usernameField: 'nic' },
+/*donorpassport.use(
+    new donorlocalStrategy({ usernameField: 'donor_nic' },
         (username, password, done) => {
-            Donor.findOne({ nic: username },
+            Donor.findOne({ donor_nic: username },
                 (err, donor) => {
                     if (err)
                         return done(err);
@@ -22,4 +22,4 @@ donorpassport.use(
                         return done(null, donor);
                 });
         })
-);
+);*/

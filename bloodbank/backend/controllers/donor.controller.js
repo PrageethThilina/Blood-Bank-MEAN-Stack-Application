@@ -6,7 +6,7 @@ const Donor = mongoose.model('Donor');
 
 module.exports.donor_register = (req, res, next) => {
     var donor = new Donor();
-    donor.nic = req.body.nic,
+    donor.donor_nic = req.body.donor_nic,
     donor.full_name = req.body.full_name,
     donor.gender = req.body.gender,
     donor.birthday = req.body.birthday,
@@ -54,7 +54,7 @@ module.exports.donor_profile = (req, res, next) =>{
                 return res.status(404).json({ status: false, message: 'Record not found.' });
             else
                 return res.status(200).json({ status: true, donor : _.pick(donor,
-                    ['nic',
+                    ['donor_nic',
                     'full_name',
                     'gender',
                     'birthday',

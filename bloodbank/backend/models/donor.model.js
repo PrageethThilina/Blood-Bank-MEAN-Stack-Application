@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 var donorSchema = new mongoose.Schema({
-    nic: {
+    donor_nic: {
         type: String,
         required: 'nic can\'t be empty',
         index:true, 

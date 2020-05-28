@@ -42,7 +42,7 @@ export class DoneeRegisterComponent implements OnInit {
   resetForm(form: NgForm) {
 
     this.doneeService.selectedUser = {
-      nic : '',
+      donee_nic : '',
       full_name : '',
       gender : '',
       birthday : '',

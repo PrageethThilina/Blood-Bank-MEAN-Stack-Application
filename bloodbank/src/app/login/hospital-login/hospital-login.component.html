@@ -14,7 +14,7 @@
             <label class="label control-label">Username</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fas fa-user" style="font-size: 35px"></i></span>
-            <input type="text" class="form-control" name="username" #username="ngModel" [(ngModel)]="model.username" [ngClass]="{'invalid-textbox' :signInForm.submitted && !username.valid }" placeholder="username" required>          
+            <input type="text" class="form-control" name="hospital_username" #hospital_username="ngModel" [(ngModel)]="model.hospital_username" [ngClass]="{'invalid-textbox' :signInForm.submitted && !hospital_username.valid }" placeholder="username" required>          
           </div>
             <label class="label control-label">Password</label>
           <div class="input-group">

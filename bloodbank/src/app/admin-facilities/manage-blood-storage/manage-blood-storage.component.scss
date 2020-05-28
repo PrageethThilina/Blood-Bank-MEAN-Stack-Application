@@ -4,6 +4,9 @@
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
     transition: 0.5s;
+    height: 1100px;
+    overflow: hidden;
+    width: 1030px;
 }
 h4{
     font-weight: bold;
@@ -23,3 +26,9 @@ td{
 .btn:hover{
     background-color: rgb(248, 45, 45);
 }
+.success{
+	padding: 20px;
+	background-color:#249424; /* Green */
+	color: white;
+	margin-bottom: 15px;
+  }

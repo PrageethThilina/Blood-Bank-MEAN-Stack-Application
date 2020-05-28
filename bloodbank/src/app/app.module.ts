@@ -80,11 +80,12 @@ import { ManageHopitalBloodOrdersComponent } from './admin-facilities/manage-hop
 import { HospitalHeaderComponent } from './hospital-facilities/hospital-header/hospital-header.component';
 import { ViewBloodRequestComponent } from './donee-facilities/view-blood-request/view-blood-request.component';
 import { UpdateBloodRequestComponent } from './donee-facilities/update-blood-request/update-blood-request.component';
+import { UpdateBloodStorageComponent } from './admin-facilities/update-blood-storage/update-blood-storage.component';
 import { HospitalService } from './shared/hospital.service';
 import { AdminService } from './shared/admin.service';
 import { DonorService } from './shared/donor.service';
 import { DoneeService } from './shared/donee.service';
-
+import { BloodInventoryService } from './shared/blood-inventory.service';
 
 //other
 import { HospitalGuard } from './auth/hospital.guard';
@@ -168,6 +169,7 @@ const routes: Routes = [
   { path: 'hospital-header', component:   HospitalHeaderComponent},
   { path: 'view-blood-request', component:   ViewBloodRequestComponent},
   { path: 'update-blood-request', component:   UpdateBloodRequestComponent},
+  { path: 'update-blood-storage', component:   UpdateBloodStorageComponent},
 
 ];
 
@@ -248,6 +250,7 @@ const routes: Routes = [
       HospitalHeaderComponent,
       ViewBloodRequestComponent,
       UpdateBloodRequestComponent,
+      UpdateBloodStorageComponent,
 
   ],
   imports: [
@@ -272,6 +275,7 @@ const routes: Routes = [
     DoneeService,
     DoneeGuard,  
     {provide: HTTP_INTERCEPTORS, useClass: DoneeInterceptor,multi: true},
+    BloodInventoryService,
   ],
 
   bootstrap: [AppComponent]

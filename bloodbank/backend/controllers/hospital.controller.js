@@ -10,7 +10,7 @@ module.exports.hospital_register = (req, res, next) => {
     hospital.address = req.body.address,
     hospital.contact = req.body.contact,
     hospital.email = req.body.email,
-    hospital.username = req.body.username,
+    hospital.hospital_username = req.body.hospital_username,
     hospital.password = req.body.password,
     hospital.save((err, doc) => {
         if (!err)

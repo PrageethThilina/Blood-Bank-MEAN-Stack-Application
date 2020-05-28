@@ -47,8 +47,8 @@
               </div> 
               <div class="input-group">
                 <label class="label control-label">Username :</label>
-                <input type="text" name="username" #username="ngModel" [(ngModel)]="hospitalService.selectedUser.username" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !username.valid }" class="form-control" placeholder="username" required>
-                <div *ngIf="signUpForm.submitted && !username.valid">
+                <input type="text" name="hospital_username" #hospital_username="ngModel" [(ngModel)]="hospitalService.selectedUser.hospital_username" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !hospital_username.valid }" class="form-control" placeholder="username" required>
+                <div *ngIf="signUpForm.submitted && !hospital_username.valid">
                   <label class="validation-message">This field is required.</label>
                 </div>
               </div>                   

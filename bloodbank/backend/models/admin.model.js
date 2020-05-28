@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 var adminSchema = new mongoose.Schema({
-    username: {
+    admin_username: {
         type: String,
         required: 'username can\'t be empty',
         index:true, 
