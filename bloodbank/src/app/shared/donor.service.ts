@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Donor } from './donor.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonorService {
 
+  dnrs: Donor[];
   selectedUser: Donor = {
+    _id : '',
     donor_nic : '', 
     full_name : '',
     gender : '',
@@ -46,6 +50,9 @@ getUserProfile() {
   return this.http.get(environment.apiBaseUrl + '/donor-facilities');
 }
 
+insertRecords(donor: Donor) {
+  return this.http.post(environment.apiBaseUrl + `/book-appointments/${donor._id}`, donor);
+}
 
 //Helper Methods
 

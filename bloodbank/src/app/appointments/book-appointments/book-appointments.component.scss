@@ -15,11 +15,8 @@
 	text-align: right;
 }
 .form-control{
-	border: 1px;
 	font-size: 15px;
 	margin-left: 40px;
-	background: rgb(226, 224, 224);
-	color: black;
     padding-left: 10px;
     width: 50px;
 }
@@ -55,3 +52,16 @@ textarea{
 .wrapper{
 	position: relative;	
 }
+.alert {
+	padding: 20px;
+	background-color: #f44336; /* Red */
+	color: white;
+	margin-bottom: 15px;
+  }
+  
+  .success{
+	padding: 20px;
+	background-color:#249424; /* Green */
+	color: white;
+	margin-bottom: 15px;
+  }

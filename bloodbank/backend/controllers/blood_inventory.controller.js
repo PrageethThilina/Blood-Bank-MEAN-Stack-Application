@@ -38,33 +38,6 @@ module.exports.add_blood_storage = (req, res) => {
     });
 }
 
-/*module.exports.update_blood_bag = (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`);
-
-    var inventory = {
-        blood_group: req.body.blood_group,
-        volume: req.body.volume,
-        received_date: req.body.received_date,
-        expiry_date: req.body.expiry_date,
-    };
-    Blood_Inventory.findByIdAndUpdate(req.params.id, { $set: inventory }, { new: true }, (err, doc) => {
-        if (!err) { res.send(doc); }
-        else { console.log('Error in Blood Bag Update :' + JSON.stringify(err, undefined, 2)); }
-    });
-}*/
-
-/*module.exports.manage_blood_storage = (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`);
-
-    Blood_Inventory.findByIdAndRemove(req.params.id, (err, doc) => {
-        if (!err) { res.send(doc); }
-        else { console.log('Error in Blood Bag Delete :' + JSON.stringify(err, undefined, 2)); }
-    });
-}*/
-
-
 // To Update The Blood Inventory Details
 module.exports.update_blood_bag = (req, res) => {
     Blood_Inventory.findById(req.params.id, function (err, bloodinventory) {

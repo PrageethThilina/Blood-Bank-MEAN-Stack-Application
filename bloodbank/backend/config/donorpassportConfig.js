@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 var Donor = mongoose.model('Donor');
 
-/*donorpassport.use(
+donorpassport.use(
     new donorlocalStrategy({ usernameField: 'donor_nic' },
         (username, password, done) => {
             Donor.findOne({ donor_nic: username },
@@ -22,4 +22,4 @@ var Donor = mongoose.model('Donor');
                         return done(null, donor);
                 });
         })
-);*/
+);

@@ -1,59 +1,109 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <form>
+    <form #appointmentbookForm="ngForm" (ngSubmit)="appointmentbookForm.valid && onSubmit(appointmentbookForm)">
    	   <div class="row align-items-center">
            <div class="col text-center">
             <h2 class="text-center">Book an Appointment</h2>
 
+            <!-- Success message -->
+            <div class="success" *ngIf="showSucessMessage">
+              Appointment Booked Successfully..!!
+            </div>
+
+            <!-- Error message -->
+            <div class="alert" *ngIf="serverErrorMessages">
+              {{serverErrorMessages}}
+            </div>
+
               <div class="input-group">
-           	    <label class="label control-label">Appointment ID :</label>
-                <input type="text" name="appointment-id" class="form-control" placeholder="Blood Campaign ID" readonly style="background-color: rgb(173, 170, 165);">
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="appointmentService.selectedAppointment._id" class="form-control">
+              </div>
+
+              <div class="input-group">
+                <label class="label control-label">Donor Id :</label>
+                <input type="text" name="_id" #_id="ngModel" [(ngModel)]="donorService.selectedUser._id" class="form-control" required readonly>
+              </div>
+
+              <div class="input-group">
+                <label class="label control-label">NIC No :</label>
+                <input type="text" name="donor_nic" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic" class="form-control" required readonly>
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Full Name :</label>
+                <input type="text" name="full_name" #full_name="ngModel" [(ngModel)]="donorService.selectedUser.full_name" class="form-control" required readonly>
               </div>
               <div class="input-group">
                 <label class="label control-label">Location :</label>
-                <select class="form-control" required>
+                <select class="form-control" name="location" #location="ngModel" [(ngModel)]="appointmentService.selectedAppointment.location" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !location.valid }" class="form-control" required>
                   <option selected>Select a Location</option>
-                  <option value="1">National Blood Center - Narahenpita</option>
-                  <option value="2">Ampara Hospital</option>
-                  <option value="3">Anuradapura Hospital</option>
-                  <option value="4">Badulla Hospital</option>
-                  <option value="5">Batticaloa Hospital</option>
-                  <option value="6">Gampaha Hospital</option>
-                  <option value="7">Hambanthota Hospital</option>
-                  <option value="8">Kaluthara Hospital</option>
-                  <option value="8">Kandy Hospital</option>
-                  <option value="8">Karapitiya Hospital</option>
-                  <option value="8">Kegalle Hospital</option>
-                  <option value="8">Kurunegala Hospital</option>
-                  <option value="8">Kaburugamuwa Blood Collection Center</option>
-                  <option value="8">Monaragala Hospital</option>
-                  <option value="8">NuwaraEliya Hospital</option>
-                  <option value="8">Peradeniya Hospital</option>
-                  <option value="8">Polonnaruwa Hospital</option>
-                  <option value="8">Rathnapura Hospital</option>
-                  <option value="8">Trincomalee Hospital</option>
-                  <option value="8">Vavuniya Hospital</option>
-                  <option value="8">CIM</option>
-                  <option value="8">CNTH</option>
-                  <option value="8">Sri Jayawardanapura Hospital</option>
-                  <option value="8">Blood Donation Camp - Dompe Namuluwa</option>
+                  <option value="National Blood Center - Narahenpita">National Blood Center - Narahenpita</option>
+                  <option value="Ampara Hospital">Ampara Hospital</option>
+                  <option value="Anuradapura Hospital">Anuradapura Hospital</option>
+                  <option value="Badulla Hospital">Badulla Hospital</option>
+                  <option value="Batticaloa Hospital">Batticaloa Hospital</option>
+                  <option value="Gampaha Hospital">Gampaha Hospital</option>
+                  <option value="Hambanthota Hospital">Hambanthota Hospital</option>
+                  <option value="Kaluthara Hospital">Kaluthara Hospital</option>
+                  <option value="Kandy Hospital">Kandy Hospital</option>
+                  <option value="Karapitiya Hospital">Karapitiya Hospital</option>
+                  <option value="Kegalle Hospital">Kegalle Hospital</option>
+                  <option value="Kurunegala Hospital">Kurunegala Hospital</option>
+                  <option value="Kaburugamuwa Blood Collection Center">Kaburugamuwa Blood Collection Center</option>
+                  <option value="Monaragala Hospital">Monaragala Hospital</option>
+                  <option value="NuwaraEliya Hospital">NuwaraEliya Hospital</option>
+                  <option value="Peradeniya Hospital">Peradeniya Hospital</option>
+                  <option value="Polonnaruwa Hospital">Polonnaruwa Hospital</option>
+                  <option value="Rathnapura Hospital">Rathnapura Hospital</option>
+                  <option value="Trincomalee Hospital">Trincomalee Hospital</option>
+                  <option value="Vavuniya Hospital">Vavuniya Hospital</option>
+                  <option value="CIM">CIM</option>
+                  <option value="CNTH">CNTH</option>
+                  <option value="Sri Jayawardanapura Hospital">Sri Jayawardanapura Hospital</option>
+                  <option value="Blood Donation Camp - Dompe Namuluwa">Blood Donation Camp - Dompe Namuluwa</option>
                 </select>
+                <div *ngIf="appointmentbookForm.submitted && !location.valid">
+                  <label class="validation-message">This field is required.</label>
+                </div>
               </div>
               <div class="input-group">
                 <label class="label control-label">Date :</label>
-                <select class="form-control" required>
-                  <option selected>Select a Date</option>            
-                </select>
+                <input type="date" name="date" #date="ngModel" [(ngModel)]="appointmentService.selectedAppointment.date" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !date.valid }" class="form-control" required>
+                <div *ngIf="appointmentbookForm.submitted && !date.valid">
+                  <label class="validation-message">This field is required.</label>
+                </div>
               </div>
               <div class="input-group">
                 <label class="label control-label">Time :</label>
-                <select class="form-control" required>
-                  <option selected>Select a Time</option>            
+                <select class="form-control"name="time" #time="ngModel" [(ngModel)]="appointmentService.selectedAppointment.time" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !time.valid }" class="form-control" required>
+                  <option selected>Select a Time</option>   
+                  <option value="9.00-9.30">9.00-9.30</option>
+                  <option value="9.30-10.00">9.30-10.00</option>
+                  <option value="10.00-10.30">10.00-10.30</option>
+                  <option value="10.30-11.00">10.30-11.00</option>
+                  <option value="11.00-11.30">11.00-11.30</option>
+                  <option value="11.30-12.00">11.30-12.00</option>
+                  <option value="1.00-1.30">1.00-1.30</option>
+                  <option value="1.30-2.00">1.30-2.00</option>
+                  <option value="2.00-2.30">2.00-2.30</option>
+                  <option value="2.30-3.00">2.30-3.00</option>
+                  <option value="3.00-3.30">3.00-3.30</option>
+                  <option value="3.30-4.00">3.30-4.00</option>
                 </select>
-              </div>                   
+                <div *ngIf="appointmentbookForm.submitted && !time.valid">
+                  <label class="validation-message">This field is required.</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Email Address :</label>
+                <input type="email" name="email" #email="ngModel" [(ngModel)]="donorService.selectedUser.email" class="form-control" required>                
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Contact No :</label>
+                <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="donorService.selectedUser.contact" class="form-control" required>
+              </div>                    
               <div class="text-center">
-                 <input type="submit" name="registersubmit" class="btn btn-success" value="Schedule Now" style="margin-right: 10px;">
+                 <input type="submit" name="registersubmit" [disabled]="!appointmentbookForm.valid" class="btn btn-success" value="Schedule Now" style="margin-right: 10px;">
                  <input type="reset" name="registerclear" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
                  <input type="reset" name="registerreset" class="btn btn-danger" value="Cancel">
               </div>

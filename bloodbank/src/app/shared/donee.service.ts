@@ -44,7 +44,6 @@ getUserProfile() {
   return this.http.get(environment.apiBaseUrl + '/donee-facilities');
 }
 
-
 //Helper Methods
 
 setToken(token: string) {

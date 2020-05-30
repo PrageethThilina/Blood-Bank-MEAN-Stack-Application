@@ -54,7 +54,8 @@ module.exports.donor_profile = (req, res, next) =>{
                 return res.status(404).json({ status: false, message: 'Record not found.' });
             else
                 return res.status(200).json({ status: true, donor : _.pick(donor,
-                    ['donor_nic',
+                    ['_id',
+                    'donor_nic',
                     'full_name',
                     'gender',
                     'birthday',
@@ -72,4 +73,25 @@ module.exports.donor_profile = (req, res, next) =>{
                 ]) });
         }
     );
+}
+
+module.exports.insert_record_details = (req, res) => {
+    Donor.findById(req.params.id, function (err, donor) {
+    if (!donor)
+    return next(new Error('Unable To Find Donor With This Id'));
+    else {
+        donor._id = req.body._id;
+        donor.donor_nic = req.body.donor_nic;
+        donor.full_name = req.body.full_name;
+        donor.contact = req.body.contact;
+        donor.email = req.body.email;
+   
+    donor.save().then(dnr => {
+    res.json('Appointment Booked Successfully');
+    })
+    .catch(err => {
+    res.status(400).send("Appointment Booking failed..!!!");
+    });
+    }
+    });
 }

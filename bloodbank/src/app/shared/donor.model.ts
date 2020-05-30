@@ -1,4 +1,5 @@
 export class Donor {
+    _id : string;
     donor_nic : string; 
     full_name : string;
     gender : string;

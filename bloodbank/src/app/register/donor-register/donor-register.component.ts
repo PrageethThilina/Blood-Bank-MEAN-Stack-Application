@@ -28,7 +28,7 @@ emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[
         this.showSucessMessage = true;
         setTimeout(() => this.showSucessMessage = false, 4000);
         this.resetForm(form);
-        setTimeout(() => this.router.navigateByUrl('/donor-login'), 6000);
+        setTimeout(() => this.router.navigateByUrl('/donor-login'), 5000);
       },
       err => {
         if (err.status === 422) {
@@ -43,6 +43,7 @@ emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[
   resetForm(form: NgForm) {
 
     this.donorService.selectedUser = {
+      _id : '',
       donor_nic : '',
       full_name : '',
       gender : '',

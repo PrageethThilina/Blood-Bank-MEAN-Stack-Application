@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Chart} from 'node_modules/chart.js';
+import { Chart } from 'node_modules/chart.js'
 import * as AOS from 'aos';
-
 
 @Component({
   selector: 'app-homepage',
