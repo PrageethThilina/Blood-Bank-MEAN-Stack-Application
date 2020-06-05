@@ -1,9 +1,12 @@
 <nav class="navbar navbar-dark navbar-expand-lg">
-    <a class="navbar-brand" routerLink="/homepage">
-      <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      National Blood Transfusion Service
-    </a>
-
+    <div *ngIf="donorDetails" class="row">
+        <div class="col-md-2">
+          <div class="profile-image">{{donorDetails.photo}}</div>
+        </div>
+        <div class="col-md-8">
+          <h5 class="profile-status">{{donorDetails.full_name}}</h5>
+        </div>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>    
@@ -14,7 +17,7 @@
        <button class="btn btn-primary" routerLink="/appointments">Appointments</button>
        <button class="btn btn-primary" routerLink="/view-donee-requests">View Blood Requests</button>
        <button class="btn btn-primary" routerLink="/contact-requested-donee">Contact Donee</button>
-       <button class="btn btn-primary" routerLink="/update-donee-details">Update My Details</button>
+       <button class="btn btn-primary" (click)="onEdit(donorDetails)">Update My Details</button>
 
        <button class="btn btn-success my-2 my-sm-0" (click)="onLogout()"><i class="fa fa-user" style="margin-right: 10px;"></i>Logout</button> 
 

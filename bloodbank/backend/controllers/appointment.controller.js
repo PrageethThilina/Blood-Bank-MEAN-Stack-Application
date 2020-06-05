@@ -4,13 +4,43 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var { Appointment } = require('../models/appointment.model');
 
+//blood bank view appoitnment
 module.exports.view_appointments = (req, res, next) => {
-    Appointment.find((err, docs) => {
-        if (!err) { res.send(docs); }
-        else { console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); }
+    Appointment.find({"location": "National Blood Center - Narahenpita"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
     });
 }
 
+//hospital view appoitnment
+module.exports.view_hospital_appointments = (req, res, next) => {
+    Appointment.find({"hospital_id": "5ec7dbbf5c89242d5c6a9377"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// to view puticular donor's appointments
+module.exports.view_donors_appointments = (req, res, next) => {
+    Appointment.find({"donor_id": "5ed2c2d2bfb0cd4050fe48c9"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+//view one appoitnment by id
 module.exports.view_appointment = (req, res, next) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
@@ -21,6 +51,7 @@ module.exports.view_appointment = (req, res, next) => {
     });
 }
 
+//add appoitment
 module.exports.add_appointment = (req, res, next) => {
     var appointment = new Appointment({
         donor_id: req.body._id,
@@ -42,6 +73,7 @@ module.exports.add_appointment = (req, res, next) => {
     });
 }
 
+//delete appointment
 module.exports.delete_appointment = (req, res, next) => {
     Appointment.findByIdAndRemove({ _id: req.params.id }, function (err, appointment) {
         if (err) res.json(err);

@@ -22,21 +22,47 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) { }
 
+  //add an appointment
   postAppointment(appointment: Appointment){
     return this.http.post(environment.apiBaseUrl+'/book-appointments',appointment);
   }
 
+  //get bloodbank appointments
   getAppointments() {
     return this.http.get(environment.apiBaseUrl + '/admin-view-appointmets');
   }
+
+  //to get purticular Hospital appointments
+  getHospitalAppointments() {
+    return this.http.get(environment.apiBaseUrl + '/hospital-manage-appointments');
+  }
   
-  // To Get Employee Details For Single Record Using Id
+  //to get purticular donors appointments
+  getDonorsAppointments() {
+    return this.http.get(environment.apiBaseUrl + '/appointments');
+  }
+
+  // To Get Appointment Details For Single Record Using Id
   getAppointment(_id) {
     return this.http.get( environment.apiBaseUrl + `/appointments/${_id}`);
   } 
 
+  onAccept(_id){
+
+  }
+
+  onCancel(apnts,_id){
+
+  }
+
+  //admin delete appointments
   manageappointments(_id) {
     return this.http.get(environment.apiBaseUrl + `/admin-accept-delete-appointments/${_id}`);
+  }
+  
+  //donor delete appointments 
+  managedonorappointments(_id) {
+    return this.http.get(environment.apiBaseUrl + `/appointments/${_id}`);
   }
 
 }

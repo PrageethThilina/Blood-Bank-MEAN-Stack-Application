@@ -14,7 +14,10 @@
 
       <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
    	    <div class="row fadeInDown">
-           <div class="col-md-6">
+            <div class="col-md-6">
+              <div class="input-group">
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="donorService.selectedUser._id">
+              </div>
               <div class="input-group">
                 <label class="label control-label">NIC No :</label>
                 <input type="text" name="donor_nic" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !donor_nic.valid }" required  class="form-control" placeholder="NIC No">
@@ -36,7 +39,7 @@
               </div>
               <div class="input-group">
                 <label class="label control-label">Birthday :</label>
-                <input type="date" name="birthday" #birthday="ngModel" [(ngModel)]="donorService.selectedUser.birthday" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !birthday.valid }"  class="form-control" required>
+                <input type="date" id="birthday" name="birthday" #birthday="ngModel" [(ngModel)]="donorService.selectedUser.birthday" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !birthday.valid }" (blur)="validateDetails()"  class="form-control" required>
                 <div *ngIf="signUpForm.submitted && !birthday.valid">
                   <label class="validation-message">This field is required.</label>
                 </div>
@@ -54,14 +57,14 @@
               </div>
               <div class="input-group">
                 <label class="label control-label">Current Weight :</label>
-                <input type="number" name="weight" #weight="ngModel" [(ngModel)]="donorService.selectedUser.weight" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !weight.valid }" class="form-control" placeholder="Weight" required>
+                <input type="number" id="weight" name="weight" #weight="ngModel" [(ngModel)]="donorService.selectedUser.weight" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !weight.valid }" (blur)="validateDetails()" class="form-control" placeholder="Weight" required>
                 <div *ngIf="signUpForm.submitted && !weight.valid">
                   <label class="validation-message">This field is required.</label>
                 </div>
               </div>
               <div class="input-group">
                 <label class="label control-label">Current Height :</label>
-                <input type="number" name="height" #height="ngModel" [(ngModel)]="donorService.selectedUser.height" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !height.valid }" class="form-control" placeholder="Height" required>
+                <input type="number" id="height" name="height" #height="ngModel" [(ngModel)]="donorService.selectedUser.height" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !height.valid }"(blur)="validateDetails()" class="form-control" placeholder="Height" required>
                 <div *ngIf="signUpForm.submitted && !height.valid">
                   <label class="validation-message">This field is required.</label>
                 </div>

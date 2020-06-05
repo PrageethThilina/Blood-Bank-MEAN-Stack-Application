@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DonorService } from '../../shared/donor.service';
+import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+
+import { Donor } from '../../shared/donor.model';
+import { DonorService } from '../../shared/donor.service';
 
 @Component({
   selector: 'app-donor-header',
@@ -9,11 +12,27 @@ import { Router } from "@angular/router";
 })
 export class DonorHeaderComponent implements OnInit {
 
-constructor(private donorService: DonorService, private router: Router) { }
+  donorDetails;
+
+  constructor(private donorService: DonorService, private router: Router) { }
 
   ngOnInit(): void {
+    this.donorService.getUserProfile().subscribe(
+      res => {
+        this.donorDetails = res['donor'];
+      },
+      err => { 
+        console.log(err);
+        
+      }
+    );
   }
  
+  onEdit(donor: Donor) {
+    this.donorService.selectedUser = donor;
+    setTimeout(() => this.router.navigateByUrl('/update-donor-details'));
+  }
+
   onLogout(){
     this.donorService.deleteToken();
     this.router.navigate(['/donor-login']);

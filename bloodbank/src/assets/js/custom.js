@@ -44,16 +44,12 @@ function pswrdvisible() {
     }
     else
     {
-       if(500<glucose || glucose<50)
-       {
-         swal("Error!","Enter a Valid Glucose Value","error");
-         col1.style.opacity = 0.2;
-       }
-       else if(50 < glucose && glucose < 70)
+       if(50 < glucose && glucose < 70)
        {
          condition1.innerHTML = "Low Sugar";
          caption1.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
          img1.src = "assets/images/Lower-blood-sugar.jpg";
+         document.getElementById("glucose").value = '';
        }
        else if(70<= glucose && glucose <= 100)
        {
@@ -83,12 +79,7 @@ function pswrdvisible() {
     }
     else
     {
-        if(500<cholestorol || cholestorol<0)
-        {
-          swal("Error!","Enter a Valid Cholestorol Value","error");
-          col2.style.opacity = 0.2;
-        }
-        else if(0 < cholestorol && cholestorol < 100)
+        if(0 < cholestorol && cholestorol < 100)
         {
           condition2.innerHTML = "Optimum";
           caption2.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
@@ -128,12 +119,7 @@ function pswrdvisible() {
     } 
     else
     { 
-       if((300 < s_pressure || s_pressure < 50) || (300 < d_pressure || d_pressure < 50))
-       {
-         swal("Error!","Enter a Valid Pressure Values","error");
-         col3.style.opacity = 0.2;
-       }
-       else if(50<= s_pressure && s_pressure < 120 && 50<= d_pressure && d_pressure <= 80)
+       if(50<= s_pressure && s_pressure < 120 && 50<= d_pressure && d_pressure <= 80)
        {
          condition3.innerHTML = "Normal";
          caption3.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
@@ -166,14 +152,98 @@ function pswrdvisible() {
     }
 }
 
+function validate_glucose_Data()
+{
+    var glucose = document.getElementById("glucose").value;
+
+    if(500<glucose || glucose<50)
+    {
+      swal("Error!","Enter a Valid Glucose Value","error");
+      document.getElementById("glucose").value = '';
+    }
+}
+function validate_cholestorol_Data()
+{
+  var cholestorol  = document.getElementById("cholestorol").value;
+
+  if(500<cholestorol || cholestorol<0)
+  {
+    swal("Error!","Enter a Valid Cholestorol Value","error");
+    document.getElementById("cholestorol").value = '';
+  }
+}
+function validate_s_pressure_Data()
+{
+  var s_pressure = document.getElementById("s_pressure").value;
+
+  if((300 < s_pressure || s_pressure < 50))
+  {
+    swal("Error!","Enter a Valid Systolic Pressure Values","error");
+    document.getElementById("s_pressure").value = '';
+  }
+}
+function validate_d_pressure_Data()
+{
+  var d_pressure = document.getElementById("d_pressure").value;
+
+  if((300 < d_pressure || d_pressure < 50)){
+    swal("Error!","Enter a Valid Diastolic Pressure Values","error");
+    document.getElementById("d_pressure").value = '';
+  }
+}
 
 function analyseData_Clear_Values()
-  {
+{
     glucose.value = '';
     cholestorol.value = '';
     d_pressure.value = '';
     s_pressure.value = '';
     location.reload();
 }
+
+  function validateDetails() {
+
+    var weight = document.getElementById("weight").value;
+    var height = document.getElementById("height").value;
+    var date = new Date(document.getElementById("birthday").value);
+    var today = new Date();
+
+    var timeDiff = Math.abs(today.getTime() - date.getTime());
+    var age = Math.ceil(timeDiff / (1000 * 3600 * 24)) / 365;
+
+      if (age < 18) {
+        swal("Error!","You should be atleast 18 years old to donate Blood...!!!","error");
+        document.getElementById("birthday").value = '';    
+      }
+      else if (0 < weight && weight < 50)
+      {
+        swal("Error!","Weight Should be minimum 50kg...!!!","error");
+        document.getElementById("weight").value = '';    
+      }
+      else if (0 < height && height < 140){
+        swal("Error!","Height Should be minimum 140cm...!!!","error");
+        document.getElementById("height").value = '';    
+      }
+
+  }
+
+  function validateUpdateDetails() {
+
+    var weight = document.getElementById("weight").value;
+    var height = document.getElementById("height").value;
+
+      if (0 < weight && weight < 50)
+      {
+        swal("Error!","Weight Should be minimum 50kg...!!!","error");
+        document.getElementById("weight").value = '';    
+      }
+      else if (0 < height && height < 140){
+        swal("Error!","Height Should be minimum 140cm...!!!","error");
+        document.getElementById("height").value = '';    
+      }
+
+  }
+
+
 
 

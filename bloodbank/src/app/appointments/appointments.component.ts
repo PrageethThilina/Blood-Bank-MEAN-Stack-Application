@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 
-declare var M: any;
-
 import { Donor } from '../shared/donor.model';
 import { DonorService } from '../shared/donor.service';
+
+import { Appointment } from '../shared/appointment.model';
+import { AppointmentService } from '../shared/appointment.service'
 
 @Component({
   selector: 'app-appointments',
@@ -14,8 +15,9 @@ import { DonorService } from '../shared/donor.service';
 })
 export class AppointmentsComponent implements OnInit {
 
-  constructor(public donorService: DonorService, private router : Router) { }
-
+  constructor(public donorService: DonorService, public appointmentService: AppointmentService, private router : Router) { }
+  
+  showSucessMessage: boolean;
   donorDetails;
   
   ngOnInit(): void {
@@ -28,6 +30,9 @@ export class AppointmentsComponent implements OnInit {
         
       }
     );
+
+    this.getDonorsAppointments();
+
   }
 
   onEdit(donor: Donor) {
@@ -35,5 +40,25 @@ export class AppointmentsComponent implements OnInit {
     setTimeout(() => this.router.navigateByUrl('/book-appointments'));
   }
   
+  getDonorsAppointments() {
+    this.appointmentService.getDonorsAppointments().subscribe((res) => {
+      this.appointmentService.appointments = res as Appointment[];
+    });
+  }
+  
+  onCancel(appointment: Appointment) {
+    this.appointmentService.selectedAppointment = appointment;
+    setTimeout(() => this.router.navigateByUrl('/update-blood-storage'));
+  }
+
+  onDelete(_id) {
+    if (confirm('Are you sure to delete this record ?') == true) {
+      this.appointmentService.managedonorappointments(_id).subscribe((res) => {
+        this.showSucessMessage = true;
+        setTimeout(() => this.showSucessMessage = false, 3000);
+        this.getDonorsAppointments();
+      });
+    }
+  }
 
 }

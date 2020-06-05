@@ -1,12 +1,6 @@
-.container{
-    margin: 70px 15px 0 315px;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    height: 1100px;
+.container-fluid{
+    margin-top: 30px;
     overflow: hidden;
-    width: 1030px;
 }
 .table{
     display: block;
@@ -14,6 +8,7 @@
     white-space: nowrap;
 }
 h4{
+    margin-top: 20px;
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-bottom: 20px;
@@ -21,7 +16,6 @@ h4{
 th{
     padding-left: 10px;
     padding-right: 10px;
-    width: 250px;
 
 }
 td{
@@ -29,3 +23,12 @@ td{
     padding-right: 10px;
 
 }
+.btn{
+    color: white;
+}
+.success{
+	padding: 20px;
+	background-color:#249424; /* Green */
+	color: white;
+	margin-bottom: 15px;
+  }

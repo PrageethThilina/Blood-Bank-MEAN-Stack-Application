@@ -50,6 +50,10 @@ getUserProfile() {
   return this.http.get(environment.apiBaseUrl + '/donor-facilities');
 }
 
+updateDonor(donor: Donor) {
+  return this.http.post(environment.apiBaseUrl + `/update-donor-details/${donor._id}`, donor);
+}
+
 insertRecords(donor: Donor) {
   return this.http.post(environment.apiBaseUrl + `/book-appointments/${donor._id}`, donor);
 }

@@ -9,20 +9,26 @@
         <div class="col-md-6 mx-auto">
             <div class="input-group">
                 <label class="label control-label">Glucose Level :<br>(mg/dL)</label>
-                <input type="number" name="glucose" id="glucose" class="form-control" placeholder="Glucose Level">
+                <input type="number" name="glucose" id="glucose" (blur)="validate_glucose_Data()" class="form-control" placeholder="Glucose Level">
             </div>
             <div class="input-group">
                 <label class="label control-label">Cholestorol Level :<br>(md/dl)</label>
-                <input type="number" name="cholestorol" id="cholestorol" class="form-control" placeholder="Cholestorol Level">
+                <input type="number" name="cholestorol" id="cholestorol" (blur)="validate_cholestorol_Data()" class="form-control" placeholder="Cholestorol Level">
             </div>  
             <div class="input-group">
                 <label class="label control-label">Blood Pressure :<br>(mm Hg)</label>
-                <input type="number" name="s_pressure" id="s_pressure" class="form-control" placeholder="Systolic(Higher value)" style="margin-right: 10px;">
-                <input type="number" name="d_pressure" id="d_pressure" class="form-control" placeholder="Diastolic(lower value)">
+                <input type="number" name="s_pressure" id="s_pressure" (blur)="validate_s_pressure_Data()" class="form-control" placeholder="Systolic(Higher value)" style="margin-right: 10px;">
+                <input type="number" name="d_pressure" id="d_pressure" (blur)="validate_d_pressure_Data()" class="form-control" placeholder="Diastolic(lower value)">
             </div> 
             <input type="submit" name="check" class="btn btn-success" value="Check" (click)="analyseData()" style="margin-left: 18%;">
             <input type="reset" name="clear" class="btn btn-danger" value="Clear" (click)="analyseData_Clear_Values()">
-            <input type="reset" name="cancel" class="btn btn-danger" value="Cancel" routerLink="">   
+            <input type="reset" name="cancel" class="btn btn-danger" value="Cancel" routerLink="">
+            <div class="caption">
+              <p class="instructions">
+                *These values are announced by the WHO. So, According to Age, Health Condition these values can be changed.
+                Better to contact Doctor for more Details..
+              </p>
+            </div>   
         </div>
         <div class="col-md-3">
             <img class="img-fluid" src="assets/images/analyse2.jpg" alt="">

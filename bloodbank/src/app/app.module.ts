@@ -81,6 +81,7 @@ import { HospitalHeaderComponent } from './hospital-facilities/hospital-header/h
 import { ViewBloodRequestComponent } from './donee-facilities/view-blood-request/view-blood-request.component';
 import { UpdateBloodRequestComponent } from './donee-facilities/update-blood-request/update-blood-request.component';
 import { UpdateBloodStorageComponent } from './admin-facilities/update-blood-storage/update-blood-storage.component';
+import { HospitalManageAppointmentsComponent } from './hospital-facilities/hospital-manage-appointments/hospital-manage-appointments.component';
 
 import { HospitalService } from './shared/hospital.service';
 import { AdminService } from './shared/admin.service';
@@ -172,6 +173,7 @@ const routes: Routes = [
   { path: 'view-blood-request', component:   ViewBloodRequestComponent},
   { path: 'update-blood-request', component:   UpdateBloodRequestComponent},
   { path: 'update-blood-storage', component:   UpdateBloodStorageComponent},
+  { path: 'hospital-manage-appointments', component:   HospitalManageAppointmentsComponent},
 
 ];
 
@@ -253,6 +255,8 @@ const routes: Routes = [
       ViewBloodRequestComponent,
       UpdateBloodRequestComponent,
       UpdateBloodStorageComponent,
+      HospitalManageAppointmentsComponent,
+      HospitalManageAppointmentsComponent,
 
   ],
   imports: [

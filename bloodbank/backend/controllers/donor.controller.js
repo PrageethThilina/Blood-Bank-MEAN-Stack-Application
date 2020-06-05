@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 const Donor = mongoose.model('Donor');
 
@@ -94,4 +95,35 @@ module.exports.insert_record_details = (req, res) => {
     });
     }
     });
+
+}
+
+// To Update The Donor Details
+module.exports.update_donor_details = (req, res) => {
+    Donor.findById(req.params.id, function (err, donor) {
+    if (!donor)
+    return next(new Error('Unable To Find Donor With This Id'));
+    else {
+
+        donor.last_donate_date = req.body.last_donate_date;
+        donor.city = req.body.city;
+        donor.weight = req.body.weight;
+        donor.height = req.body.height;
+        donor.address = req.body.address;
+        donor.email = req.body.email;
+        donor.contact = req.body.contact;
+        donor.password = req.body.password;
+        donor.spouce = req.body.spouce;
+        donor.health = req.body.health;
+        donor.photo = req.body.photo;
+   
+    donor.save().then(dnr => {
+    res.json('Updated Successfully....');
+    })
+    .catch(err => {
+    res.status(400).send("Updated failed..!!!");
+    });
+    }
+    });
+
 }

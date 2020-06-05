@@ -7,11 +7,11 @@ import { Appointment } from '../../shared/appointment.model';
 import { AppointmentService } from '../../shared/appointment.service'
 
 @Component({
-  selector: 'app-admin-accept-delete-appointments',
-  templateUrl: './admin-accept-delete-appointments.component.html',
-  styleUrls: ['./admin-accept-delete-appointments.component.scss']
+  selector: 'app-hospital-manage-appointments',
+  templateUrl: './hospital-manage-appointments.component.html',
+  styleUrls: ['./hospital-manage-appointments.component.scss']
 })
-export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
+export class HospitalManageAppointmentsComponent implements OnInit {
 
   showSucessMessage: boolean;
 
@@ -22,7 +22,7 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
   }
 
   getAppointments() {
-    this.appointmentService.getAppointments().subscribe((res) => {
+    this.appointmentService.getHospitalAppointments().subscribe((res) => {
       this.appointmentService.appointments = res as Appointment[];
     });
   }

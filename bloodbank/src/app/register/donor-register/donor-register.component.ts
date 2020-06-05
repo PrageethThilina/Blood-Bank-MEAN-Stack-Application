@@ -7,6 +7,7 @@ import { DonorService } from '../../shared/donor.service'
 
 declare const pswrdvisible: any;
 declare const repswrdvisible: any;
+declare const validateDetails: any;
 
 @Component({
   selector: 'app-donor-register',
@@ -23,6 +24,7 @@ emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[
   constructor(public donorService: DonorService, private router : Router) { }
 
   onSubmit(form: NgForm) {
+    
     this.donorService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
@@ -74,6 +76,10 @@ emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[
 
   angrepswrdVisible(){
     repswrdvisible();
+  } 
+
+  validateDetails(){
+    validateDetails();
   } 
 
 }
