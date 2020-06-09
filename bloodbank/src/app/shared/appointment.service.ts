@@ -29,7 +29,7 @@ export class AppointmentService {
 
   //get bloodbank appointments
   getAppointments() {
-    return this.http.get(environment.apiBaseUrl + '/admin-view-appointmets');
+    return this.http.get(environment.apiBaseUrl+ '/admin-view-appointmets');
   }
 
   //to get purticular Hospital appointments

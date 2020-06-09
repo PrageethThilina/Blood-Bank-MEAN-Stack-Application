@@ -21,9 +21,8 @@ constructor(private http: HttpClient) { }
 //HttpMethods
 
 login(authCredentials) {
-  return this.http.post(environment.apiBaseUrl + '/hospital-login', authCredentials,this.noAuthHeader);
+  return this.http.post(environment.apiBaseUrl + '/admin-login', authCredentials,this.noAuthHeader);
 }
-
 
 //Helper Methods
 

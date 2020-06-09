@@ -28,7 +28,7 @@ export class BloodInventoryService {
   }
 
   getBloodStorage() {
-    return this.http.get(environment.apiBaseUrl + '/view-blood-storage');
+    return this.http.get(environment.apiBaseUrl+ '/view-blood-storage');
   }
   
   // To Get Employee Details For Single Record Using Id

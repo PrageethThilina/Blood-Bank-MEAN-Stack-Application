@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const uniqueValidator = require('mongoose-unique-validator');
 
 var doneeSchema = new mongoose.Schema({
     donee_nic: {
@@ -64,6 +65,8 @@ var doneeSchema = new mongoose.Schema({
     },
     saltSecret: String
 });
+
+doneeSchema.plugin(uniqueValidator);
 
 // Custom validation for email
 doneeSchema.path('email').validate((val) => {

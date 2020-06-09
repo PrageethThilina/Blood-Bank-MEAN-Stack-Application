@@ -1,16 +1,16 @@
-<app-navbar></app-navbar>
+<app-admin-header></app-admin-header>
 
 <div class="container">
 
-<!-- Success message -->
-<div class="success" *ngIf="showSucessMessage">
-  Saved successfully
-</div>
+      <!-- Success message -->
+      <div class="success" *ngIf="showSucessMessage">
+        Saved successfully
+      </div>
 
-<!-- Error message -->
-<div class="alert" *ngIf="serverErrorMessages">
-  {{serverErrorMessages}}
-</div>
+      <!-- Error message -->
+      <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+      </div>
 
     <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
    	   <div class="row">

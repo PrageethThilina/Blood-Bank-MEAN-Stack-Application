@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+
 
 import { DonorService } from '../../shared/donor.service'
 

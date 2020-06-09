@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const uniqueValidator = require('mongoose-unique-validator');
 
 var adminSchema = new mongoose.Schema({
     admin_username: {
@@ -18,6 +19,8 @@ var adminSchema = new mongoose.Schema({
     saltSecret: String
 });
 
+adminSchema.plugin(uniqueValidator);
+
 // Events
 adminSchema.pre('save', function (next) {
     bcrypt.genSalt(10, (err, salt) => {
@@ -28,7 +31,6 @@ adminSchema.pre('save', function (next) {
         });
     });
 });
-
 
 // Methods
 adminSchema.methods.verifyPassword = function (password) {

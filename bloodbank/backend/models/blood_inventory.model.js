@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
 var Blood_Inventory = mongoose.model('Blood_Inventory', {
     blood_group: { 

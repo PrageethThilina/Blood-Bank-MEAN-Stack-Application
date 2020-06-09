@@ -18,7 +18,7 @@ module.exports.view_appointments = (req, res, next) => {
 
 //hospital view appoitnment
 module.exports.view_hospital_appointments = (req, res, next) => {
-    Appointment.find({"hospital_id": "5ec7dbbf5c89242d5c6a9377"},(err, docs) => {
+    Appointment.find({"hospital_name": "Karapitiya Hospital"},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }
@@ -30,7 +30,7 @@ module.exports.view_hospital_appointments = (req, res, next) => {
 
 // to view puticular donor's appointments
 module.exports.view_donors_appointments = (req, res, next) => {
-    Appointment.find({"donor_id": "5ed2c2d2bfb0cd4050fe48c9"},(err, docs) => {
+    Appointment.find({"donor_NIC": "951043028v"},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }

@@ -86,4 +86,3 @@ module.exports.hospitalverifyJwtToken = (req, res, next) => {
         )
     }
 }
-

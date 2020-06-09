@@ -4,14 +4,14 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var { Blood_Inventory } = require('../models/blood_inventory.model');
 
-module.exports.view_blood_storage = (req, res) => {
+module.exports.view_blood_storage = (req, res, next) => {
     Blood_Inventory.find((err, docs) => {
         if (!err) { res.send(docs); }
         else { console.log('Error in Retriving Blood Inventory :' + JSON.stringify(err, undefined, 2)); }
     });
 }
 
-module.exports.view_blood_bag = (req, res) => {
+module.exports.view_blood_bag = (req, res, next) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
@@ -21,7 +21,7 @@ module.exports.view_blood_bag = (req, res) => {
     });
 }
 
-module.exports.add_blood_storage = (req, res) => {
+module.exports.add_blood_storage = (req, res, next) => {
     var inventory = new Blood_Inventory({
         blood_group: req.body.blood_group,
         volume: req.body.volume,
@@ -39,7 +39,7 @@ module.exports.add_blood_storage = (req, res) => {
 }
 
 // To Update The Blood Inventory Details
-module.exports.update_blood_bag = (req, res) => {
+module.exports.update_blood_bag = (req, res, next) => {
     Blood_Inventory.findById(req.params.id, function (err, bloodinventory) {
     if (!bloodinventory)
     return next(new Error('Unable To Find Blood Inventory With This Id'));
@@ -60,7 +60,7 @@ module.exports.update_blood_bag = (req, res) => {
 }
 
 // To Delete The Blood Inventory
-module.exports.manage_blood_storage = (req, res) => {
+module.exports.manage_blood_storage = (req, res, next) => {
     Blood_Inventory.findByIdAndRemove({ _id: req.params.id }, function (err, bloodinventory) {
     if (err) res.json(err);
     else res.json('Blood Inventory Deleted Successfully');

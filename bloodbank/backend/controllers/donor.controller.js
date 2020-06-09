@@ -76,7 +76,7 @@ module.exports.donor_profile = (req, res, next) =>{
     );
 }
 
-module.exports.insert_record_details = (req, res) => {
+module.exports.insert_record_details = (req, res, next) => {
     Donor.findById(req.params.id, function (err, donor) {
     if (!donor)
     return next(new Error('Unable To Find Donor With This Id'));
@@ -99,7 +99,7 @@ module.exports.insert_record_details = (req, res) => {
 }
 
 // To Update The Donor Details
-module.exports.update_donor_details = (req, res) => {
+module.exports.update_donor_details = (req, res, next) => {
     Donor.findById(req.params.id, function (err, donor) {
     if (!donor)
     return next(new Error('Unable To Find Donor With This Id'));

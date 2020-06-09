@@ -11,6 +11,3 @@ donorrouter.post('/book-appointments/:id', ctrlDonor.insert_record_details);
 donorrouter.post('/update-donor-details/:id', ctrlDonor.update_donor_details);
 
 module.exports = donorrouter;
-
-
-

@@ -10,3 +10,4 @@ require('./donor.model');
 require('./donee.model');
 require('./admin.model');
 require('./blood_inventory.model');
+require('./appointment.model');
