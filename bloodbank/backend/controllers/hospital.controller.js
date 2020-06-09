@@ -27,7 +27,7 @@ module.exports.hospital_register = (req, res, next) => {
 
 module.exports.hospital_login = (req, res, next) => {
     // call for passport authentication
-    passport.authenticate('local', (err, hospital, info) => {       
+    passport.authenticate('hospital', (err, hospital, info) => {       
         // error from passport middleware
         if (err) return res.status(400).json(err);
         // registered user

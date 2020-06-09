@@ -38,7 +38,7 @@ module.exports.donor_register = (req, res, next) => {
 
 module.exports.donor_login = (req, res, next) => {
     // call for passport authentication
-    passport.authenticate('local', (err, donor, info) => {       
+    passport.authenticate('donor', (err, donor, info) => {       
         // error from passport middleware
         if (err) return res.status(400).json(err);
         // registered user

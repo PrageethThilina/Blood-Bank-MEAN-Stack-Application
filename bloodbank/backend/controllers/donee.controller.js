@@ -34,7 +34,7 @@ module.exports.donee_register = (req, res, next) => {
 
 module.exports.donee_login = (req, res, next) => {
     // call for passport authentication
-    passport.authenticate('local', (err, donee, info) => {       
+    passport.authenticate('donee', (err, donee, info) => {       
         // error from passport middleware
         if (err) return res.status(400).json(err);
         // registered user

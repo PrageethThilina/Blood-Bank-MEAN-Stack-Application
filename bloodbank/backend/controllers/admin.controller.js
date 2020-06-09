@@ -6,7 +6,7 @@ const Admin = mongoose.model('Admin');
 
 module.exports.admin_login = (req, res, next) => {
     // call for passport authentication
-    passport.authenticate('local', (err, admin, info) => {       
+    passport.authenticate('admin', (err, admin, info) => {       
         // error from passport middleware
         if (err) return res.status(400).json(err);
         // registered user

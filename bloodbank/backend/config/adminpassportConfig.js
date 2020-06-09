@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 var Admin = mongoose.model('Admin');
 
-/*adminpassport.use(
+adminpassport.use('admin',
     new adminlocalStrategy({ usernameField: 'admin_username', session: false },
         (username, password, done) => {
             Admin.findOne({ admin_username: username },
@@ -22,4 +22,4 @@ var Admin = mongoose.model('Admin');
                         return done(null, admin);
                 });
         })
-);*/
+);
