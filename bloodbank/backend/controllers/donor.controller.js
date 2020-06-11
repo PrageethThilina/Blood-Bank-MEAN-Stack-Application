@@ -36,6 +36,13 @@ module.exports.donor_register = (req, res, next) => {
     });
 }
 
+module.exports.view_donors = (req, res, next) => {
+    Donor.find((err, docs) => {
+        if (!err) { res.send(docs); }
+        else { console.log('Error in Retriving Donors :' + JSON.stringify(err, undefined, 2)); }
+    });
+}
+
 module.exports.donor_login = (req, res, next) => {
     // call for passport authentication
     passport.authenticate('donor', (err, donor, info) => {       

@@ -21,9 +21,8 @@ export class HospitalRegisterComponent implements OnInit {
     this.hospitalService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
-        setTimeout(() => this.showSucessMessage = false, 4000);
+        setTimeout(() => this.showSucessMessage = false, 2000);
         this.resetForm(form);
-        setTimeout(() => this.router.navigateByUrl('/hospital-login'), 6000);
       },
       err => {
         if (err.status === 422) {

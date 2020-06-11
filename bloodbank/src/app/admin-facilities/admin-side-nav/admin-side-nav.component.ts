@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-declare var $: any;
+import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
+
+import { Admin } from '../../shared/admin.model';
+import { AdminService } from '../../shared/admin.service';
 
 @Component({
   selector: 'app-admin-side-nav',
@@ -8,10 +12,20 @@ declare var $: any;
 })
 export class AdminSideNavComponent implements OnInit {
 
-  constructor() { }
+  adminDetails; 
+
+  constructor(private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.adminService.getUserProfile().subscribe(
+      res => {
+        this.adminDetails = res['admin'];
+      },
+      err => { 
+        console.log(err);
+        
+      }
+    );
 
   }
 

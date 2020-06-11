@@ -24,9 +24,9 @@ export class BookAppointmentsComponent implements OnInit {
       this.appointmentService.postAppointment(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
-        setTimeout(() => this.showSucessMessage = false, 3000);
+        setTimeout(() => this.showSucessMessage = false, 2000);
         this.resetForm(form);
-        setTimeout(() => this.router.navigateByUrl('/appointments'), 4000);
+        setTimeout(() => this.router.navigateByUrl('/appointments'), 2500);
       },
       err => {
         if (err.status === 422) {

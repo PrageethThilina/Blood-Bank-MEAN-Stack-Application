@@ -18,7 +18,7 @@ module.exports.view_appointments = (req, res, next) => {
 
 //hospital view appoitnment
 module.exports.view_hospital_appointments = (req, res, next) => {
-    Appointment.find({"hospital_name": "Karapitiya Hospital"},(err, docs) => {
+    Appointment.find({"location": "Karapitiya Hospital"},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }

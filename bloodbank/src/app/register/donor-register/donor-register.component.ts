@@ -30,9 +30,9 @@ emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[
     this.donorService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
-        setTimeout(() => this.showSucessMessage = false, 4000);
+        setTimeout(() => this.showSucessMessage = false, 2000);
         this.resetForm(form);
-        setTimeout(() => this.router.navigateByUrl('/donor-login'), 5000);
+        setTimeout(() => this.router.navigateByUrl('/donor-login'), 2500);
       },
       err => {
         if (err.status === 422) {

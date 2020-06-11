@@ -42,6 +42,10 @@ postUser(donor: Donor){
   return this.http.post(environment.apiBaseUrl+'/donor-register',donor,this.noAuthHeader);
 }
 
+getDonorList() {
+  return this.http.get(environment.apiBaseUrl+ '/registered-donors');
+}
+
 login(authCredentials) {
   return this.http.post(environment.apiBaseUrl + '/donor-login', authCredentials,this.noAuthHeader);
 }

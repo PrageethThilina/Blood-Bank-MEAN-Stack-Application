@@ -25,9 +25,9 @@ export class DoneeRegisterComponent implements OnInit {
     this.doneeService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
-        setTimeout(() => this.showSucessMessage = false, 4000);
+        setTimeout(() => this.showSucessMessage = false, 2000);
         this.resetForm(form);
-        setTimeout(() => this.router.navigateByUrl('/donee-login'), 6000);
+        setTimeout(() => this.router.navigateByUrl('/donee-login'), 2500);
       },
       err => {
         if (err.status === 422) {

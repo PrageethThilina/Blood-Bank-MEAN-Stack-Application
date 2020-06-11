@@ -5,6 +5,8 @@ const jwtHelper = require('../config/jwtHelper');
 const ctrlDonor = require('../controllers/donor.controller');
 
 donorrouter.post('/donor-register', ctrlDonor.donor_register);
+donorrouter.post('/add-donors', ctrlDonor.donor_register);
+donorrouter.get('/registered-donors', ctrlDonor.view_donors);
 donorrouter.post('/donor-login', ctrlDonor.donor_login);
 donorrouter.get('/donor-facilities',jwtHelper.donorverifyJwtToken, ctrlDonor.donor_profile);
 donorrouter.post('/book-appointments/:id', ctrlDonor.insert_record_details);

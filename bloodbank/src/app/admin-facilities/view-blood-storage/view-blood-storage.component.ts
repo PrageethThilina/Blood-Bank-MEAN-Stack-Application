@@ -32,8 +32,11 @@ export class ViewBloodStorageComponent implements OnInit {
 
     const doc = new jsPDF()
     autoTable(doc, { html: '#my-table',
+    body:[[{styles:{halign:'center'}}]],
     theme:'plain',
-    headStyles:{halign:'center',fontSize: 20,fontStyle: 'bold', fillColor:[221, 221, 221]},
+    headStyles:{ halign:'center',fontSize: 12,fontStyle: 'bold', fillColor:[221, 221, 221]},
+    pageBreak:'avoid',
+    showHead:'firstPage',
     margin: {top:10}
    })
     doc.save('Available_Blood_Storage.pdf')

@@ -27,9 +27,9 @@ constructor(public donorService: DonorService, private router : Router) { }
   onSubmit(form: NgForm) {
     this.donorService.updateDonor(form.value).subscribe((res) => {
       this.showupdateSucessMessage = true;
-      setTimeout(() => this.showupdateSucessMessage = false, 3000);
+      setTimeout(() => this.showupdateSucessMessage = false, 2000);
       this.resetForm(form);
-      setTimeout(() => this.router.navigateByUrl('/donor-facilities'), 4000);
+      setTimeout(() => this.router.navigateByUrl('/donor-facilities'), 2500);
     });
   }
 

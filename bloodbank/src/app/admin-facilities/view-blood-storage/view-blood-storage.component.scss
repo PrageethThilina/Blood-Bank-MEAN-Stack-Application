@@ -5,7 +5,7 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
   height: 1100px;
-  overflow: hidden;
+  overflow: auto;
   width: 1030px;
 }
 h4{
@@ -122,4 +122,10 @@ td{
 }
 .table-danger{
   background: rgb(69, 117, 206);
+}
+.table{
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
+  white-space: nowrap;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 
 import { BloodInventory } from '../../shared/blood-inventory.model';
 import { BloodInventoryService } from '../../shared/blood-inventory.service'
@@ -35,7 +37,7 @@ export class ManageBloodStorageComponent implements OnInit {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.bloodinventoryService.deleteBloodStorage(_id).subscribe((res) => {
         this.showSucessMessage = true;
-        setTimeout(() => this.showSucessMessage = false, 3000);
+        setTimeout(() => this.showSucessMessage = false, 2000);
         this.refreshBloodInventoryList();
       });
     }

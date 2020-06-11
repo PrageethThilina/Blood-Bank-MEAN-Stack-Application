@@ -36,7 +36,7 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.appointmentService.manageappointments(_id).subscribe((res) => {
         this.showSucessMessage = true;
-        setTimeout(() => this.showSucessMessage = false, 3000);
+        setTimeout(() => this.showSucessMessage = false, 2000);
         this.getAppointments();
       });
     }

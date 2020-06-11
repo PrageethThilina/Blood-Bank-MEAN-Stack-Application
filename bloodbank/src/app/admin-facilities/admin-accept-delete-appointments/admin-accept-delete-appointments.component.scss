@@ -5,14 +5,29 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
     height: 1100px;
-    overflow: hidden;
+    overflow: auto;
     width: 1030px;
-}
-.table{
+  }
+  .tbl-section{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .tbl-header{
+    background: rgb(5, 173, 56);
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
+  }
+  .table-danger{
+    background: rgb(69, 117, 206);
+  }
+  .table{
     display: block;
     overflow-x: auto;
+    overflow-y: auto;
     white-space: nowrap;
-}
+  }
 h4{
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

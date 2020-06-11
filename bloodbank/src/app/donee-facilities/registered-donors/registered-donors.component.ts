@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
 
+import { Donor } from '../../shared/donor.model';
+import { DonorService } from '../../shared/donor.service'
 
 @Component({
   selector: 'app-registered-donors',
@@ -8,11 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisteredDonorsComponent implements OnInit {
 
+  constructor(public donorService: DonorService, private router : Router) { }
 
+  ngOnInit() {
+    this.getDonorList();
+  }
 
-  constructor() { }
+  getDonorList() {
+    this.donorService.getDonorList().subscribe((res) => {
+      this.donorService.dnrs = res as Donor[];
+    });
+  }
+  
 
-  ngOnInit(): void {
+  onCall(_id){
+
+  }
+  onEmail(_id){
 
   }
 }

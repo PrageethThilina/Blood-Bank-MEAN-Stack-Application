@@ -9,6 +9,7 @@ import { Admin } from './admin.model';
 })
 export class AdminService {
 
+  admn: Admin[];
   selectedUser: Admin = {
     admin_username : '',
     password : '',
@@ -22,6 +23,10 @@ constructor(private http: HttpClient) { }
 
 login(authCredentials) {
   return this.http.post(environment.apiBaseUrl + '/admin-login', authCredentials,this.noAuthHeader);
+}
+
+getUserProfile() {
+  return this.http.get(environment.apiBaseUrl + '/admin-side-nav');
 }
 
 //Helper Methods

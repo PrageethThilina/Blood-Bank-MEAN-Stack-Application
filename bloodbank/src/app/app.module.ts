@@ -143,7 +143,7 @@ const routes: Routes = [
   { path: 'terms-of-reference', component: TermsOfReferenceComponent},
   { path: 'news-and-events', component: NewsAndEventsComponent},
   { path: 'about-nbts', component: AboutNbtsComponent},
-  { path: 'registered-donors', component: RegisteredDonorsComponent},
+  { path: 'registered-donors', component: RegisteredDonorsComponent,canActivate:[DoneeGuard]},
   { path: 'contact-registered-donors', component: ContactRegisteredDonorsComponent},
   { path: 'update-donee-details', component: UpdateDoneeDetailsComponent,canActivate:[DoneeGuard]},
   { path: 'donee-header', component: DoneeHeaderComponent,canActivate:[DoneeGuard]},
