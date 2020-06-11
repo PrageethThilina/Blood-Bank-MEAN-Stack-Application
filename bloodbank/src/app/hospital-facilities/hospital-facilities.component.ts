@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HospitalService } from '../shared/hospital.service';
 import { Router } from "@angular/router";
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 
 @Component({
   selector: 'app-hospital-facilities',
@@ -29,5 +31,18 @@ export class HospitalFacilitiesComponent implements OnInit {
     this.hospitalService.deleteToken();
     this.router.navigate(['/hospital-login']);
   }
+
+  onDownload(){
+
+    const doc = new jsPDF()
+    autoTable(doc, { html: '#my-table',
+    theme:'plain',
+    headStyles:{halign:'center',fontSize: 20,fontStyle: 'bold', fillColor:[221, 221, 221]},
+    columnStyles:{0: {fontSize: 10,fontStyle: 'bold'}},
+    margin: {top:10}
+   })
+    doc.save('Hospital_Profile.pdf')
+
+}
 
 }

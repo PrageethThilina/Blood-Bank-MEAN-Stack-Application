@@ -1,5 +1,7 @@
 .container{
   margin-top: 20px;
+  height: 750px;
+  overflow: hidden;
 }
 img{
   width: 500px;
@@ -14,4 +16,12 @@ td{
 font-size: 15px;
 font-weight: bold;
 font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.medical{
+  width: 75px;
+  height: 75px;
+}
+#my-table{
+  border: 2px solid rgb(0, 0, 0);
+  margin-top: 50px;
 }

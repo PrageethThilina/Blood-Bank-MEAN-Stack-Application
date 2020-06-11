@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-registered-donors',
   templateUrl: './registered-donors.component.html',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisteredDonorsComponent implements OnInit {
 
+
+
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+  }
 }
+

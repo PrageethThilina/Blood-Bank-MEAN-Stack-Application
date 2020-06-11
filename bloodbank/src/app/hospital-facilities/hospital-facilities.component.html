@@ -27,17 +27,44 @@
                 <td>{{hospitalDetails.email}}</td>
               </tr>
               <tr>
+                  <th colspan="1" class="text-center">
+                    <input type="button" class="btn btn-danger" (click)="onDownload()" value="Download the Hospital Details"/>
+                  </th>
                   <th colspan="2" class="text-center">
                       <input type="button" class="btn btn-danger" (click)="onLogout()" value="Logout"/>
                   </th>
               </tr>
           </tbody>
-        </table>
+        </table>        
+      </div>  
         
-      </div>
-    
       <div class="col-md-6">
-        <img class="img-fluid" src="assets/images/doneebg.jpg" alt="">
+        <img class="img-fluid" src="assets/images/hospital-removebg-preview.png" alt="">
       </div>
   </div>
+
+  <table *ngIf="hospitalDetails" id="my-table"  class="table table-striped table-bordered table-hover">
+    <thead>
+          <tr><th colspan="2" class="text-center">National Blood Transfussion Service</th></tr>
+          <tr><th colspan="2" class="text-center">Hospital Profile</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="table-success">Hospital Name</td>
+          <td>{{hospitalDetails.hospital_name}}</td>
+        </tr>
+        <tr>
+          <td class="table-success">Address</td>
+          <td>{{hospitalDetails.address}}</td>
+        </tr>
+        <tr>
+            <td class="table-success">Contact</td>
+            <td>{{hospitalDetails.contact}}</td>
+        </tr>
+        <tr>
+          <td class="table-success">Email</td>
+          <td>{{hospitalDetails.email}}</td>
+        </tr>
+    </tbody>
+  </table>
 </div>

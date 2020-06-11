@@ -114,9 +114,12 @@ td{
   margin-bottom: 20px;
 }
 .tbl-header{
-  background: chartreuse;
+  background: rgb(5, 173, 56);
   font-size: 25px;
   font-weight: bold;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
+}
+.table-danger{
+  background: rgb(69, 117, 206);
 }

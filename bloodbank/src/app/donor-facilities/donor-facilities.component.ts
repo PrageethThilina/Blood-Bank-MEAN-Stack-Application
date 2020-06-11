@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DonorService } from '../shared/donor.service';
 import { Router } from "@angular/router";
-import * as html2pdf from 'html2pdf.js'
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 
 @Component({
   selector: 'app-donor-facilities',
@@ -32,19 +33,16 @@ export class DonorFacilitiesComponent {
   }
 
   onDownload(){
-    const options = {
-      name: 'output.pdf',
-      image: { type: 'jpeg'},
-      html2canvas: {},
-      jspdf:{orientation: 'landscape'},
-    }
 
-    const element: Element = document.getElementById('donor_profile');
+      const doc = new jsPDF()
+      autoTable(doc, { html: '#my-table',
+      theme:'plain',
+      headStyles:{halign:'center',fontSize: 20,fontStyle: 'bold', fillColor:[221, 221, 221]},
+      columnStyles:{0: {fontSize: 10,fontStyle: 'bold'}},
+      margin: {top:10}
+     })
+      doc.save('Donor_Profile.pdf')
 
-    html2pdf()
-      .from(element)
-      .set(options)
-      .save('Donor_Profile.pdf')
   }
 
 }

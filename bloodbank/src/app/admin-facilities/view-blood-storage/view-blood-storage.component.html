@@ -105,23 +105,22 @@
     <div class="row align-items-center">
         <div class="col">
             <div class="tbl-section">
-                <input type="button" class="btn btn-success" (click)="onDownload()" value="Print the Avalable Blood Storage"/>
+                <input type="button" class="btn btn-success" (click)="onDownload()" value="Generate Documents"/>
             </div>
-            <table class="table table-striped table-bordered table-hover" id="available_blood_storage">
+            <table datatable style="width: 100%;" class="table table-striped table-bordered table-hover display" id="my-table">
             <thead>
-                <tr>
-                    <th colspan="5" class="text-center tbl-header">Available Blood Storage</th>
-                </tr>
+                <tr><th colspan="5" class="text-center tbl-header">National Blood Transfussion Service Sri Lanka</th></tr>
+                <tr><th colspan="5" class="text-center tbl-header">Available Blood Storage</th></tr>
+            </thead>
+            <tbody >
                 <tr>
                     <th class="table-danger">Blood Bag ID</th>
                     <th class="table-danger">Blood Group</th>
-                    <th class="table-danger">Volume</th>
-                    <th class="table-danger">Blood Received Date</th>
-                    <th class="table-danger">Blood Expiry Date</th>
+                    <th class="table-danger">Volume(ml)</th>
+                    <th class="table-danger">Blood Bag Received Date</th>
+                    <th class="table-danger">Blood Bag Expiry Date</th>
                 </tr>
-            </thead>
-            <tbody *ngFor="let bloodinv of bloodinventoryService.blood_inventories">
-                <tr>
+                <tr *ngFor="let bloodinv of bloodinventoryService.blood_inventories">
                     <td>{{bloodinv._id}}</td>
                     <td>{{bloodinv.blood_group}}</td>
                     <td>{{bloodinv.volume}}</td>
