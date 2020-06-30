@@ -55,10 +55,61 @@
               <label class="label control-label">Last Donate<br> Date :</label>
               <input type="date" name="last_donate_date" #last_donate_date="ngModel" [(ngModel)]="donorService.selectedUser.last_donate_date" class="form-control">             
             </div>
+
             <div class="input-group">
-              <label class="label control-label">City :</label>
-              <input type="text" name="city" #city="ngModel" [(ngModel)]="donorService.selectedUser.city" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !city.valid }" class="form-control" placeholder="City" required>
-              <div *ngIf="signUpForm.submitted && !city.valid">
+              <label class="label control-label">Province :</label>
+              <select class="form-control" name="province" #province="ngModel"
+                [(ngModel)]="donorService.selectedUser.province"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !province.valid }" required>
+                <option selected>Select an option</option>
+                <option value="Southern Province">Southern Province</option>
+                <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
+                <option value="Western Province">Western Province</option>
+                <option value="Uva Province">Uva Province</option>
+                <option value="Eastern Province">Eastern Province</option>
+                <option value="Central Province">Central Province</option>
+                <option value="North-Western Province">North-Western Province</option>
+                <option value="North-Central Province">North-Central Province</option>
+                <option value="Nothern Province">Nothern Province</option>
+              </select>
+              <div *ngIf="signUpForm.submitted && !province.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">District :</label>
+              <select class="form-control" name="district" #district="ngModel"
+                [(ngModel)]="donorService.selectedUser.district"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !district.valid }" required>
+                <option selected>Select an option</option>
+                <option value="Ampara">Ampara</option>
+                <option value="Anuradhapura">Anuradhapura</option>
+                <option value="Badulla">Badulla</option>
+                <option value="Baticaloa">Baticaloa</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Galle">Galle</option>
+                <option value="Gampaha">Gampaha</option>
+                <option value="Hambanthota">Hambanthota</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Kalutara">Kalutara</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Kegalle">Kegalle</option>
+                <option value="Kilinochchi">Kilinochchi</option>
+                <option value="Kurunegala">Kurunegala</option>
+                <option value="Mannar">Mannar</option>
+                <option value="Matale">Matale</option>
+                <option value="Matara">Matara</option>
+                <option value="Monaragala">Monaragala</option>
+                <option value="Mullaitivu">Mullaitivu</option>
+                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                <option value="Polonnaruwa">Polonnaruwa</option>
+                <option value="Puttalam">Puttalam</option>
+                <option value="Rathnapura">Rathnapura</option>
+                <option value="Trincomalee">Trincomalee</option>
+                <option value="Vavuniya">Vavuniya</option>
+              </select>
+              <div *ngIf="signUpForm.submitted && !district.valid">
                 <label class="validation-message">This field is required.</label>
               </div>
             </div>

@@ -19,6 +19,8 @@ const rtsDonor = require('././backend/routes/donor.router');
 const rtsHospital = require('././backend/routes/hospital.router');
 const rtsBlood_Inventory = require('././backend/routes/blood_inventory.router');
 const rtsAppointment = require('././backend/routes/appointment.router');
+const rtsHospitalBloodRequest = require('././backend/routes/hospital_blood_request.router');
+
 
 
 var app = express();
@@ -34,6 +36,7 @@ app.use('/api', rtsDonor);
 app.use('/api', rtsHospital);
 app.use('/api', rtsBlood_Inventory);
 app.use('/api', rtsAppointment);
+app.use('/api', rtsHospitalBloodRequest);
 
 
 // error handler

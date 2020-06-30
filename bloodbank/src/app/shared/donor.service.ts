@@ -19,7 +19,8 @@ export class DonorService {
     gender : '',
     birthday : '',
     last_donate_date : '',
-    city : '',
+    province : '',
+    district : '',
     weight : '',
     height : '',
     blood_group : '',
@@ -60,6 +61,10 @@ updateDonor(donor: Donor) {
 
 insertRecords(donor: Donor) {
   return this.http.post(environment.apiBaseUrl + `/book-appointments/${donor._id}`, donor);
+}
+
+deleteDonor(_id) {
+  return this.http.get(environment.apiBaseUrl + `/manage-registered-donors/${_id}`);
 }
 
 //Helper Methods

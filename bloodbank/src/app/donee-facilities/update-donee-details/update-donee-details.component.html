@@ -1,50 +1,110 @@
 <app-donee-header></app-donee-header>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h4 class="text-center">Update Details</h4>
-            <button class="btn btn-success">Update</button>
-            <div class="tbl">
-                <table class="table table-striped table-bordered table-hover">
-                 <thead>
-                 <tr>
-                     <th class="table-danger">Donee ID</th>
-                     <th class="table-danger">NIC</th>
-                     <th class="table-danger">Full Name</th>
-                     <th class="table-danger">Gender</th>
-                     <th class="table-danger">Birthday</th>
-                     <th class="table-danger">City</th>
-                     <th class="table-danger">Contact No</th>
-                     <th class="table-danger">Email</th>
-                     <th class="table-danger">Blood Group</th>
-                     <th class="table-danger">Address</th>
-                     <th class="table-danger">Password</th>
-                     <th class="table-danger">Re-Type Password</th>
-                     <th class="table-danger">Spouce Details</th>
-                     <th class="table-danger">Health Issues</th>
-                     <th class="table-danger">Medical Reports</th>
-                 </tr>
-                 </thead>
-                 <tbody>
-                 <tr>
-                     <td>D001</td>
-                     <td>951043028v</td>
-                     <td>Prageeth Thilina</td>
-                     <td>Male</td>
-                     <td>1995-04-13</td>
-                     <td>Benthota</td>
-                     <td>0716925323</td>
-                     <td>ptg@gmail.com</td>
-                     <td>A+</td>
-                     <td>Ranthotuwila</td>
-                     <td>Chathuri</td>
-                     <td>No</td>
-                     <td></td>
-                 </tr>
-                </tbody>
-                </table>
-            </div>
-        </div>
+<div class="container">
+  <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+
+    <!-- Success message -->
+    <div class="success" *ngIf="showupdateSucessMessage">
+      Updated successfully....
     </div>
+
+    <!-- Error message -->
+    <div class="alert" *ngIf="serverErrorMessages">
+      {{serverErrorMessages}}
+    </div>
+
+    <h2 class="text-center">Update Profile</h2>
+    <div class="row fadeInDown">
+      <div class="col-md-6">
+
+        <div class="input-group">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="doneeService.selectedUser._id" class="form-control">
+        </div>
+
+        <div class="input-group">
+          <label class="label control-label">Province :</label>
+          <select class="form-control" name="province" #province="ngModel" [(ngModel)]="doneeService.selectedUser.province" required>
+            <option selected>Select an option</option>
+            <option value="Southern Province">Southern Province</option>
+            <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
+            <option value="Western Province">Western Province</option>
+            <option value="Uva Province">Uva Province</option>
+            <option value="Eastern Province">Eastern Province</option>
+            <option value="Central Province">Central Province</option>
+            <option value="North-Western Province">North-Western Province</option>
+            <option value="North-Central Province">North-Central Province</option>
+            <option value="Nothern Province">Nothern Province</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label class="label control-label">District :</label>
+          <select class="form-control" name="district" #district="ngModel" [(ngModel)]="doneeService.selectedUser.district" required>
+            <option selected>Select an option</option>
+            <option value="Ampara">Ampara</option>
+            <option value="Anuradhapura">Anuradhapura</option>
+            <option value="Badulla">Badulla</option>
+            <option value="Baticaloa">Baticaloa</option>
+            <option value="Colombo">Colombo</option>
+            <option value="Galle">Galle</option>
+            <option value="Gampaha">Gampaha</option>
+            <option value="Hambanthota">Hambanthota</option>
+            <option value="Jaffna">Jaffna</option>
+            <option value="Kalutara">Kalutara</option>
+            <option value="Kandy">Kandy</option>
+            <option value="Kegalle">Kegalle</option>
+            <option value="Kilinochchi">Kilinochchi</option>
+            <option value="Kurunegala">Kurunegala</option>
+            <option value="Mannar">Mannar</option>
+            <option value="Matale">Matale</option>
+            <option value="Matara">Matara</option>
+            <option value="Monaragala">Monaragala</option>
+            <option value="Mullaitivu">Mullaitivu</option>
+            <option value="Nuwara Eliya">Nuwara Eliya</option>
+            <option value="Polonnaruwa">Polonnaruwa</option>
+            <option value="Puttalam">Puttalam</option>
+            <option value="Rathnapura">Rathnapura</option>
+            <option value="Trincomalee">Trincomalee</option>
+            <option value="Vavuniya">Vavuniya</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Email Address :</label>
+          <input type="email" name="email" #email="ngModel" [(ngModel)]="doneeService.selectedUser.email" [pattern]="emailRegex" class="form-control" placeholder="Email Address" required>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Contact No :</label>
+          <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="doneeService.selectedUser.contact"  class="form-control" placeholder="Contact No" required>
+        </div>
+
+        <div class="input-group wrapper">
+          <label class="label control-label">Password :</label>
+          <input type="password" name="password" #password="ngModel" [(ngModel)]="doneeService.selectedUser.password"  id="password" class="form-control" placeholder="Password" minlength="4" required>
+          <i class="fa fa-eye" style="position: absolute;margin-left: 93%;margin-top: 12px;" (click)="pswrdvisible()"></i>
+        </div>
+      </div>
+      <div class="col-md-6">
+
+        <div class="input-group">
+          <label class="label control-label">Address :</label>
+          <textarea name="address" #address="ngModel" [(ngModel)]="doneeService.selectedUser.address"  class="form-control" placeholder="Address" required></textarea>
+        </div>
+
+        <div class="input-group">
+          <label class="label control-label">Spouce Details :</label>
+          <textarea name="spouce" #spouce="ngModel" [(ngModel)]="doneeService.selectedUser.spouce" class="form-control"  placeholder="Spouce Details" required></textarea>
+        </div>
+
+        <div class="input-group">
+          <label class="label control-label">Health Issues :</label>
+          <textarea name="health" #health="ngModel" [(ngModel)]="doneeService.selectedUser.health" class="form-control"      placeholder="Health Issues" required></textarea>
+        </div>
+
+      </div>
+      <input type="submit" class="btn btn-success" [disabled]="!signUpForm.valid" value="Update"    style="margin-left: 18%;">
+      <input type="reset" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
+      <input type="reset" class="btn btn-danger" value="Cancel" routerLink="">
+    </div>
+  </form>
+  
 </div>

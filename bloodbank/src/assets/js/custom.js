@@ -47,26 +47,26 @@ function pswrdvisible() {
        if(50 < glucose && glucose < 70)
        {
          condition1.innerHTML = "Low Sugar";
-         caption1.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption1.innerHTML = "Attention ASAP!<br>Seek Medicine!<br>Consume Sugar upon experiencing symptoms of low Blood Sugar<br>Intake of simple sugars with little or no fiber<br>avoid High fat Food<br>Intake of Glucose(tablets,Supplements)<br>Eat peanut, Butter,Crackers, Banana daily";
          img1.src = "assets/images/Lower-blood-sugar.jpg";
          document.getElementById("glucose").value = '';
        }
        else if(70<= glucose && glucose <= 100)
        {
          condition1.innerHTML = "Normal";
-         caption1.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption1.innerHTML = "You Are Safe Happy Life.But Keep theGood Health Activities!";
          img1.src = "assets/images/normal-sugar.jpg";
        }
        else if(101<= glucose && glucose < 125)
        {
          condition1.innerHTML = "PreDiabetees";
-         caption1.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption1.innerHTML = "Seek Medicine!<br>Pay Attention to the Health<br>Do Excercices<br>Work to bring Down Blood Sugar<br>limiting carbohidrate intake not fasting<br>Increase H2O intake to maintain hydration,Eating more fiber,Engage in physical Activities";
          img1.src = "assets/images/prediabetees.jpg";
        }
        else if(125<= glucose && glucose < 500)
        {
          condition1.innerHTML = "Diabetees";
-         caption1.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption1.innerHTML = "Seek Medicine Immediately<br>Meet the Doctor Immediately!<br>Increase H2O intake to maintain hydration,Eating more fiber,Engage in physical Activities";
          img1.src = "assets/images/diabetees.jpg";
        }
     }
@@ -82,31 +82,31 @@ function pswrdvisible() {
         if(0 < cholestorol && cholestorol < 100)
         {
           condition2.innerHTML = "Optimum";
-          caption2.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+          caption2.innerHTML = "Seek Medicine<br>Eat heart Healthy Diet<br>Regular Excercise<Dont Smoke<br>Mental Health Evaluation<br>Eat Cholestorol rich food<br>Limit Alchohol!";
           img2.src = "assets/images/higher-cholestorol.jpg";
         }
         else if(100<= cholestorol && cholestorol <= 129)
         {
           condition2.innerHTML = "Fairly Good";
-          caption2.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+          caption2.innerHTML = "Normal<br>Happy life<br>Keep up the Good Health activities";
           img2.src = "assets/images/higher-cholestorol.jpg";
         }
         else if(130<= cholestorol && cholestorol < 159)
         {
           condition2.innerHTML = "Borderline High";
-          caption2.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+          caption2.innerHTML = "Drink Much Water<br>Keep up the Good Health activities!";
           img2.src = "assets/images/lower-cholesorol.jpg";
         }
         else if(160<= cholestorol && cholestorol <= 189)
         {
           condition2.innerHTML = "High";
-          caption2.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+          caption2.innerHTML = "Therapentic life style Changes(TLC,(Diet,Excercise,weight management)<br>Meet doctor !<br>Use drugs that lower cholestorol or reduce absorption";
           img2.src = "assets/images/lower-cholestorol.jpg";
         }
         else if(190<= cholestorol && cholestorol <= 500)
         {
           condition2.innerHTML = "Very High";
-          caption2.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+          caption2.innerHTML = "Meet doctor Immediately!<br>Therapentic life style Changes(TLC,(Diet,Excercise,weight management)<br>Meet doctor !<br>Use drugs that lower cholestorol or reduce absorption<br>Medications(Bile Acid,Omega 3 fatty acid";
           img2.src = "assets/images/lower-cholestorol.jpg";
         }
     }
@@ -122,31 +122,31 @@ function pswrdvisible() {
        if(50<= s_pressure && s_pressure < 120 && 50<= d_pressure && d_pressure <= 80)
        {
          condition3.innerHTML = "Normal";
-         caption3.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption3.innerHTML = "Normal Condition!<br>Keep the good health activities";
          img3.src = "assets/images/higher-blood-p.jpeg";
        }
        else if(120<= s_pressure && s_pressure <= 129 && 50<= d_pressure && d_pressure <= 80)
        {
          condition3.innerHTML = "Elevated";
-         caption3.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption3.innerHTML = "Eat heart healthy diet with less salt!<br>Getting regular physical activity 30-60min/day<br>Limit Alchohol";
          img3.src = "assets/images/higher-blood-p.jpeg";
        }
        else if(130<= s_pressure && s_pressure <= 139 || 80<= d_pressure && d_pressure <= 89)
        {
          condition3.innerHTML = "High Blood Pressure(Stage 1)";
-         caption3.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption3.innerHTML = "Excercise(30-60min/day)<br>Meet doctor Immediately!<Follow Dash Diet(fruits/vegetables/low-fat products<br>reduce salt intake<br>lose excess weight";
          img3.src = "assets/images/lower-blood-p2.jpg";
        }
        else if(140<= s_pressure && s_pressure <= 180 || 90<= d_pressure && d_pressure <= 120)
        {
          condition3.innerHTML = "High Blood Pressure(Stage 2)";
-         caption3.innerHTML = "Drink Much Water<br>Meet doctor Immediately!";
+         caption3.innerHTML = "Excercise(30-60min/day)<br>Meet doctor Immediately!<Follow Dash Diet(fruits/vegetables/low-fat products<br>reduce salt intake<br>lose excess weight<br>Reduce salt intake<br>Prevent Nicotine<br>";
          img3.src = "assets/images/lower-blood-p.jpg";
        }
        else if(180< s_pressure && s_pressure <= 300 || 120<= d_pressure && d_pressure <= 300)
        {
          condition3.innerHTML = "High Blood Pressure(Stage 3)";
-         caption3.innerHTML = "Meet the doctor immediatetly!<br>Meet doctor Immediately!";
+         caption3.innerHTML = "Meet the doctor immediatetly!<br>Lose Excess weight<br>Prevent Nicotine<br>Limit Stress";
          img3.src = "assets/images/Foods-to-Lower-Blood-Pressure.jpg";
        }
     }

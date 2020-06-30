@@ -1,4 +1,5 @@
 <app-admin-header></app-admin-header>
+<app-admin-side-nav></app-admin-side-nav>
 
 <div class="container">
 
@@ -14,7 +15,7 @@
 
     <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
    	   <div class="row">
-           <div class="col-md-6 mx-auto">
+           <div class="col-md-10 mx-auto">
             <h2 class="text-center">Hospital Register Form</h2>
               <div class="input-group">
                 <label class="label control-label">Hospital Name :</label>
@@ -61,7 +62,7 @@
                 </div>
               </div>
               <div class="text-center">
-                 <input type="submit" name="registersubmit" class="btn btn-success" value="Register" style="margin-right: 10px;">
+                 <input type="submit" name="registersubmit" [disabled]="!signUpForm.valid" class="btn btn-success" value="Register" style="margin-right: 10px;">
                  <input type="reset" name="registerclear" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
                  <input type="reset" name="registerreset" class="btn btn-danger" value="Cancel" routerLink="">
               </div>

@@ -12,7 +12,8 @@ module.exports.donor_register = (req, res, next) => {
     donor.gender = req.body.gender,
     donor.birthday = req.body.birthday,
     donor.last_donate_date = req.body.last_donate_date,
-    donor.city = req.body.city,
+    donor.province = req.body.province,
+    donor.district = req.body.district,
     donor.weight = req.body.weight,
     donor.height = req.body.height,
     donor.blood_group = req.body.blood_group,
@@ -68,7 +69,8 @@ module.exports.donor_profile = (req, res, next) =>{
                     'gender',
                     'birthday',
                     'last_donate_date',
-                    'city',
+                    'province',
+                    'district',
                     'weight',
                     'height',
                     'blood_group',
@@ -113,7 +115,8 @@ module.exports.update_donor_details = (req, res, next) => {
     else {
 
         donor.last_donate_date = req.body.last_donate_date;
-        donor.city = req.body.city;
+        donor.province = req.body.province,
+        donor.district = req.body.district,
         donor.weight = req.body.weight;
         donor.height = req.body.height;
         donor.address = req.body.address;
@@ -133,4 +136,12 @@ module.exports.update_donor_details = (req, res, next) => {
     }
     });
 
+}
+
+// To Delete The Donor
+module.exports.delete_donors = (req, res, next) => {
+    Donor.findByIdAndRemove({ _id: req.params.id }, function (err, donor) {
+    if (err) res.json(err);
+    else res.json('Donor Account Deleted Successfully..!!!');
+    });
 }

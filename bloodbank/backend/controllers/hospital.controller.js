@@ -47,3 +47,23 @@ module.exports.hospital_profile = (req, res, next) =>{
         }
     );
 }
+
+module.exports.insert_record_details = (req, res, next) => {
+    Hospital.findById(req.params.id, function (err, hospital) {
+    if (!hospital)
+    return next(new Error('Unable To Find Hospital With This Id'));
+    else {
+        hospital._id = req.body._id;
+        hospital.hospital_name = req.body.hospital_name;
+        hospital.address = req.body.address;
+   
+    hospital.save().then(hsptl => {
+    res.json('Record Added Successfully');
+    })
+    .catch(err => {
+    res.status(400).send("Record not added..!!!");
+    });
+    }
+    });
+
+}

@@ -23,9 +23,13 @@ var doneeSchema = new mongoose.Schema({
         type: String,
         required: 'Birthday can\'t be empty'
     },
-    city: {
+    province: {
         type: String,
-        required: 'city can\'t be empty'
+        required: 'province can\'t be empty'
+    },
+    district: {
+        type: String,
+        required: 'District can\'t be empty'
     },
     contact: {
         type: String,

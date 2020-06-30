@@ -25,9 +25,13 @@ var donorSchema = new mongoose.Schema({
     last_donate_date: {
         type: String,        
     },
-    city: {
+    province: {
         type: String,
-        required: 'city can\'t be empty'
+        required: 'province can\'t be empty'
+    },
+    district: {
+        type: String,
+        required: 'District can\'t be empty'
     },
     weight: {
         type: String,

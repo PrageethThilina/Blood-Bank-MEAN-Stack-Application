@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 const Donee = mongoose.model('Donee');
 
@@ -10,7 +11,8 @@ module.exports.donee_register = (req, res, next) => {
     donee.full_name = req.body.full_name,
     donee.gender = req.body.gender,
     donee.birthday = req.body.birthday,
-    donee.city = req.body.city,
+    donee.province = req.body.province,
+    donee.district = req.body.district,
     donee.contact = req.body.contact,
     donee.email = req.body.email,
     donee.blood_group = req.body.blood_group,
@@ -55,7 +57,8 @@ module.exports.donee_profile = (req, res, next) =>{
                     'full_name',
                     'gender',
                     'birthday',
-                    'city',
+                    'province',
+                    'district',
                     'contact',
                     'email',
                     'blood_group',
@@ -66,4 +69,48 @@ module.exports.donee_profile = (req, res, next) =>{
                 ]) });
         }
     );
+}
+
+// To Update The Donee Details
+module.exports.update_donee_details = (req, res, next) => {
+    Donee.findById(req.params.id, function (err, donee) {
+    if (!donee)
+    return next(new Error('Unable To Find Donee With This Id'));
+    else {
+
+        donee.province = req.body.province,
+        donee.district = req.body.district,
+        donee.contact = req.body.contact;
+        donee.email = req.body.email;
+        donee.address = req.body.address;
+        donee.password = req.body.password;
+        donee.spouce = req.body.spouce;
+        donee.health = req.body.health;
+       // donee.medical_report = req.body.medical_report;
+   
+    donee.save().then(dn => {
+    res.json('Updated Successfully....');
+    })
+    .catch(err => {
+    res.status(400).send("Updated failed..!!!");
+    });
+    }
+    });
+
+}
+
+module.exports.view_donee = (req, res, next) => {
+    Donee.find((err, docs) => {
+        if (!err) { res.send(docs); }
+        else { console.log('Error in Retriving Donee :' + JSON.stringify(err, undefined, 2)); }
+    });
+}
+
+
+// To Delete The Donee
+module.exports.delete_donee = (req, res, next) => {
+    Donee.findByIdAndRemove({ _id: req.params.id }, function (err, donee) {
+    if (err) res.json(err);
+    else res.json('Donee Account Deleted Successfully..!!!');
+    });
 }

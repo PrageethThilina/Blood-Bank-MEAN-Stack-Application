@@ -1,11 +1,13 @@
 export class Donor {
+    
     _id : string;
     donor_nic : string; 
     full_name : string;
     gender : string;
     birthday : string;
     last_donate_date : string;
-    city : string;
+    province : string;
+    district : string;
     weight : string;
     height : string;
     blood_group : string;

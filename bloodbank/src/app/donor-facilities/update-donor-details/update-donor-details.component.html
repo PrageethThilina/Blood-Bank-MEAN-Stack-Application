@@ -15,20 +15,62 @@
                     <h2 class="text-center">Update Profile</h2>
                     <div class="row fadeInDown">
                         <div class="col-md-6">
+
                             <div class="input-group">
                                 <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="donorService.selectedUser._id" class="form-control">
                             </div>
+
                             <div class="input-group">
                                 <label class="label control-label">Last Donate<br> Date :</label>
                                 <input type="date" name="last_donate_date" #last_donate_date="ngModel" [(ngModel)]="donorService.selectedUser.last_donate_date" class="form-control">             
                             </div>
+
                             <div class="input-group">
-                                <label class="label control-label">City :</label>
-                                <input type="text" name="city" #city="ngModel" [(ngModel)]="donorService.selectedUser.city" class="form-control" placeholder="City" required>
+                                <label class="label control-label">Province :</label>
+                                <select class="form-control" name="province" #province="ngModel" [(ngModel)]="donorService.selectedUser.province" required>
+                                  <option selected>Select an option</option>
+                                  <option value="Southern Province">Southern Province</option>
+                                  <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
+                                  <option value="Western Province">Western Province</option>
+                                  <option value="Uva Province">Uva Province</option>
+                                  <option value="Eastern Province">Eastern Province</option>
+                                  <option value="Central Province">Central Province</option>
+                                  <option value="North-Western Province">North-Western Province</option>
+                                  <option value="North-Central Province">North-Central Province</option>
+                                  <option value="Nothern Province">Nothern Province</option>
+                                </select>
                             </div>
+                    
                             <div class="input-group">
-                                <label class="label control-label">Address :</label>
-                                <textarea name="address" #address="ngModel" [(ngModel)]="donorService.selectedUser.address" class="form-control" placeholder="Address" required></textarea>
+                                <label class="label control-label">District :</label>
+                                <select class="form-control" name="district" #district="ngModel" [(ngModel)]="donorService.selectedUser.district" required>
+                                  <option selected>Select an option</option>
+                                  <option value="Ampara">Ampara</option>
+                                  <option value="Anuradhapura">Anuradhapura</option>
+                                  <option value="Badulla">Badulla</option>
+                                  <option value="Baticaloa">Baticaloa</option>
+                                  <option value="Colombo">Colombo</option>
+                                  <option value="Galle">Galle</option>
+                                  <option value="Gampaha">Gampaha</option>
+                                  <option value="Hambanthota">Hambanthota</option>
+                                  <option value="Jaffna">Jaffna</option>
+                                  <option value="Kalutara">Kalutara</option>
+                                  <option value="Kandy">Kandy</option>
+                                  <option value="Kegalle">Kegalle</option>
+                                  <option value="Kilinochchi">Kilinochchi</option>
+                                  <option value="Kurunegala">Kurunegala</option>
+                                  <option value="Mannar">Mannar</option>
+                                  <option value="Matale">Matale</option>
+                                  <option value="Matara">Matara</option>
+                                  <option value="Monaragala">Monaragala</option>
+                                  <option value="Mullaitivu">Mullaitivu</option>
+                                  <option value="Nuwara Eliya">Nuwara Eliya</option>
+                                  <option value="Polonnaruwa">Polonnaruwa</option>
+                                  <option value="Puttalam">Puttalam</option>
+                                  <option value="Rathnapura">Rathnapura</option>
+                                  <option value="Trincomalee">Trincomalee</option>
+                                  <option value="Vavuniya">Vavuniya</option>
+                                </select>
                             </div>
                             <div class="input-group">
                                 <label class="label control-label">Email Address :</label>
@@ -48,11 +90,13 @@
                                 <label class="label control-label">Contact No :</label>
                                 <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="donorService.selectedUser.contact" class="form-control" placeholder="Contact No" required>
                             </div>   
+    
                             <div class="input-group wrapper">
                                 <label class="label control-label">Password :</label>
                                 <input type="password" name="password" #password="ngModel" [(ngModel)]="donorService.selectedUser.password" id="password" class="form-control" placeholder="Password" minlength="4" required>
-                                <i class="fa fa-eye" style="position: absolute;margin-left: 93%;margin-top: 12px;" (click)="pswrdvisible()"></i>                                  
+                                <i class="fa fa-eye" style="position: absolute;margin-left: 93%;margin-top: 12px;" (click)="pswrdvisible()"></i>
                             </div>
+
                             <div class="input-group">
                                 <label class="label control-label">Spouce Details :</label>
                                 <textarea name="spouce" #spouce="ngModel" [(ngModel)]="donorService.selectedUser.spouce" class="form-control" placeholder="Spouce Details" required></textarea>                     
@@ -60,6 +104,10 @@
                             <div class="input-group">
                                 <label class="label control-label">Health Issues :</label>
                                 <textarea name="health" #health="ngModel" [(ngModel)]="donorService.selectedUser.health" class="form-control" placeholder="Health Issues" required></textarea>
+                            </div>
+                            <div class="input-group">
+                              <label class="label control-label">Address :</label>
+                              <textarea name="address" #address="ngModel" [(ngModel)]="donorService.selectedUser.address" class="form-control" placeholder="Address" required></textarea>
                             </div>
                             <div class="input-group">
                                 <label class="label control-label">Photo :</label>

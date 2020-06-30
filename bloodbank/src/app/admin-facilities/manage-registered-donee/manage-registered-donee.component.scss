@@ -1,20 +1,38 @@
-.container-fluid{
-    margin-top: 10px;
-    margin-left: 315px;
+.container{
+    margin: 70px 15px 0 315px;
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     height: 1100px;
-    width: 1200px;
-    position: fixed;
-    overflow: hidden;
-    padding-right: 20px;
-}
+    overflow: auto;
+    width: 1030px;
+  }
+  .tbl-section{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .tbl-header{
+    background: rgb(5, 173, 56);
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
+  }
+  .table-danger{
+    background: rgb(69, 117, 206);
+  }
+  .table{
+    display: block;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+  }
 h4{
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-bottom: 20px;
+    margin-top: 30px;
 }
 th{
     padding-left: 10px;
@@ -26,15 +44,7 @@ td{
     padding-right: 10px;
 
 }
-.filter{
-    margin-bottom: 20px;
+.medical{
+  width: 50px;
+  height: 50px;
 }
-.form-control{
-    margin-left: 10px;    
-}
-.tbl{
-    display: block;
-    overflow: scroll;
-    white-space: nowrap;
-}
-

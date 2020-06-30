@@ -91,6 +91,7 @@ import { DonorService } from './shared/donor.service';
 import { DoneeService } from './shared/donee.service';
 import { BloodInventoryService } from './shared/blood-inventory.service';
 import { AppointmentService } from './shared/appointment.service';
+import { HospitalBloodRequestService } from './shared/hospital-blood-request.service';
 
 //other
 import { HospitalGuard } from './auth/hospital.guard';
@@ -101,6 +102,7 @@ import { DonorGuard } from './auth/donor.guard';
 import { DonorInterceptor } from './auth/donor.interceptor';
 import { DoneeGuard } from './auth/donee.guard';
 import { DoneeInterceptor } from './auth/donee.interceptor';
+import { HospitalBloodRequest } from './shared/hospital-blood-request.model';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -287,6 +289,7 @@ const routes: Routes = [
     {provide: HTTP_INTERCEPTORS, useClass: DoneeInterceptor,multi: true},
     BloodInventoryService,
     AppointmentService,
+    HospitalBloodRequest,
   ],
 
   bootstrap: [AppComponent]

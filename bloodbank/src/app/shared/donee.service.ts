@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Donee } from './donee.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,15 @@ import { Donee } from './donee.model';
 
 export class DoneeService {
 
+  dne: Donee[];
   selectedUser: Donee = {
+    _id : '',
     donee_nic : '', 
     full_name : '',
     gender : '',
     birthday : '',
-    city : '',
+    province : '',
+    district : '',
     contact : '',
     email : '',
     blood_group : '',
@@ -42,6 +47,18 @@ login(authCredentials) {
 
 getUserProfile() {
   return this.http.get(environment.apiBaseUrl + '/donee-facilities');
+}
+
+updateDonee(donee: Donee) {
+  return this.http.post(environment.apiBaseUrl + `/update-donee-details/${donee._id}`, donee);
+}
+
+getDoneeList() {
+  return this.http.get(environment.apiBaseUrl+ '/registered-donee');
+}
+
+deleteDonee(_id) {
+  return this.http.get(environment.apiBaseUrl + `/manage-registered-donee/${_id}`);
 }
 
 //Helper Methods

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DoneeService } from '../../shared/donee.service';
+import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+
 import { Donee } from '../../shared/donee.model';
+import { DoneeService } from '../../shared/donee.service';
 
 
 
@@ -27,6 +29,12 @@ export class DoneeHeaderComponent implements OnInit {
       }
     );
   }
+
+  onEdit(donee: Donee) {
+    this.doneeService.selectedUser = donee;
+    setTimeout(() => this.router.navigateByUrl('/update-donee-details'));
+  }
+
  
   onLogout(){
     this.doneeService.deleteToken();
