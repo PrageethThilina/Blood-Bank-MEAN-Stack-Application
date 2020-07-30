@@ -14,9 +14,14 @@ export class AppointmentService {
   selectedAppointment: Appointment = {
 
     _id: '',
+    donor_id: '',
     location: '',
     date: '',
     time: '',
+    full_name: '',
+    donor_nic: '',
+    email: '',
+    contact: '',
 
   };
 
@@ -42,10 +47,14 @@ export class AppointmentService {
     return this.http.get(environment.apiBaseUrl + '/appointments');
   }
 
-  // To Get Appointment Details For Single Record Using Id
-  getAppointment(_id) {
-    return this.http.get( environment.apiBaseUrl + `/appointments/${_id}`);
-  } 
+  donorcancelAppointment(appointment: Appointment) {
+    return this.http.post(environment.apiBaseUrl + `/appointments/${appointment._id}`, appointment);
+  }
+
+  // // To Get Appointment Details For Single Record Using Id
+  // getAppointment(donor_id) {
+  //   return this.http.get( environment.apiBaseUrl + `/appointments/${donor_id}`);
+  // }
 
   onAccept(_id){
 
@@ -64,5 +73,7 @@ export class AppointmentService {
   managedonorappointments(_id) {
     return this.http.get(environment.apiBaseUrl + `/appointments/${_id}`);
   }
+
+
 
 }

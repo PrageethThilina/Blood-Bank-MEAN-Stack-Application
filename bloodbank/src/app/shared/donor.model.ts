@@ -18,4 +18,5 @@ export class Donor {
     spouce : string;
     health : string;
     photo : string;
+    profile_status : string;
 }

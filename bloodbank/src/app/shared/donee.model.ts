@@ -1,4 +1,5 @@
 export class Donee {
+
     _id : string;
     donee_nic : string; 
     full_name : string;
@@ -13,5 +14,4 @@ export class Donee {
     password : string;
     spouce : string;
     health : string;
-    medical_report : string;
 }

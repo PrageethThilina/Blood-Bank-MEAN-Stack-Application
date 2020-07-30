@@ -1,22 +1,37 @@
 .container{
-    margin-top: 30px;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
-h4{
-    font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-bottom: 20px;
-}
-th{
-    padding-left: 10px;
-    padding-right: 10px;
 
+h2{
+	margin-top: 30px;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-weight: bold;
 }
-td{
-    padding-left: 10px;
-    padding-right: 10px;
-
-}
+.alert {
+	padding: 20px;
+	background-color: #f44336; /* Red */
+	color: white;
+	margin-bottom: 15px;
+  }
+  
+  .success{
+	padding: 20px;
+	background-color:#13aa57; /* Green */
+	color: white;
+	margin-bottom: 15px;
+  }
+  .medical{
+      width: 150px;
+      height: 150px;
+  }
+  th{
+      background: #39d37e;
+  }
+  .td-btn{
+      display: block;
+      width: 100px;
+      height: 40px;
+      align-items: center;
+      margin-bottom: 5px;
+  }

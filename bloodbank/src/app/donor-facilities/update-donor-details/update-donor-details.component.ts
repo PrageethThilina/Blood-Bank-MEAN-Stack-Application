@@ -54,6 +54,7 @@ constructor(public donorService: DonorService, private router : Router) { }
       spouce : '',
       health : '',
       photo : '',
+      profile_status: '',
     };
 
     form.resetForm();

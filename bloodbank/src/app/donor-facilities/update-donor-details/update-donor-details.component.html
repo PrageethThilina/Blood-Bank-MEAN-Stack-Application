@@ -1,6 +1,8 @@
 <app-donor-header></app-donor-header>
 
 <div class="container">
+    <div class="row">
+        <div class="col">
     <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
             <!-- Success message -->
             <div class="success" *ngIf="showupdateSucessMessage">
@@ -22,12 +24,12 @@
 
                             <div class="input-group">
                                 <label class="label control-label">Last Donate<br> Date :</label>
-                                <input type="date" name="last_donate_date" #last_donate_date="ngModel" [(ngModel)]="donorService.selectedUser.last_donate_date" class="form-control">             
+                                <input type="date" name="last_donate_date" #last_donate_date="ngModel" [(ngModel)]="donorService.selectedUser.last_donate_date" class="form-control" style="color: black;background: rgb(255, 255, 255);">             
                             </div>
 
                             <div class="input-group">
                                 <label class="label control-label">Province :</label>
-                                <select class="form-control" name="province" #province="ngModel" [(ngModel)]="donorService.selectedUser.province" required>
+                                <select class="form-control" name="province" #province="ngModel" [(ngModel)]="donorService.selectedUser.province" required style="color: black;background: rgb(255, 255, 255);">
                                   <option selected>Select an option</option>
                                   <option value="Southern Province">Southern Province</option>
                                   <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
@@ -43,7 +45,7 @@
                     
                             <div class="input-group">
                                 <label class="label control-label">District :</label>
-                                <select class="form-control" name="district" #district="ngModel" [(ngModel)]="donorService.selectedUser.district" required>
+                                <select class="form-control" name="district" #district="ngModel" [(ngModel)]="donorService.selectedUser.district" required style="color: black;background: rgb(255, 255, 255);">
                                   <option selected>Select an option</option>
                                   <option value="Ampara">Ampara</option>
                                   <option value="Anuradhapura">Anuradhapura</option>
@@ -94,7 +96,7 @@
                             <div class="input-group wrapper">
                                 <label class="label control-label">Password :</label>
                                 <input type="password" name="password" #password="ngModel" [(ngModel)]="donorService.selectedUser.password" id="password" class="form-control" placeholder="Password" minlength="4" required>
-                                <i class="fa fa-eye" style="position: absolute;margin-left: 93%;margin-top: 12px;" (click)="pswrdvisible()"></i>
+                                <i class="fa fa-eye" style="position: absolute;margin-left: 93%;margin-top: 12px; color: white;" (click)="pswrdvisible()"></i>
                             </div>
 
                             <div class="input-group">
@@ -118,5 +120,7 @@
                             <input type="reset" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
                             <input type="reset" class="btn btn-danger" value="Cancel" routerLink="">
                     </div>
-            </form>  
+            </form> 
+        </div>
+    </div> 
 </div>

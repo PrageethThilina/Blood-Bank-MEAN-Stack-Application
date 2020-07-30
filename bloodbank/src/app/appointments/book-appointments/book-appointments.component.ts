@@ -4,6 +4,9 @@ import { Router } from "@angular/router";
 
 import { AppointmentService } from '../../shared/appointment.service'
 import { DonorService } from '../../shared/donor.service'
+import { Appointment } from 'src/app/shared/appointment.model';
+
+declare const checkDonateEligibility: any; 
 
 @Component({
   selector: 'app-book-appointments',
@@ -38,16 +41,27 @@ export class BookAppointmentsComponent implements OnInit {
       );
   }
 
+
   resetForm(form: NgForm) {
 
     this.appointmentService.selectedAppointment = {
       _id : '',
+      donor_id: '',
       location : '',
       date : '',
       time : '',
+      full_name : '',
+      email: '',
+      donor_nic: '',
+      contact: '',
+
     };
     form.resetForm();
     this.serverErrorMessages = '';
+  }
+
+  checkDonateEligibility(){
+    checkDonateEligibility();
   }
 
 }

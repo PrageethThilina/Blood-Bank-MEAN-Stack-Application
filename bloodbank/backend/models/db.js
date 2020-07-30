@@ -12,3 +12,5 @@ require('./admin.model');
 require('./blood_inventory.model');
 require('./appointment.model');
 require('./hospital_blood_request.model');
+require('./donee_blood_request.model');
+require('./blood_campaigns.model');

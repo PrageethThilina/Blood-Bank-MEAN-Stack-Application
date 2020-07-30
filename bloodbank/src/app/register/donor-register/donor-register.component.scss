@@ -3,13 +3,13 @@
 	margin-bottom: 20px;
 }
 .row{
-	border: 1px solid red;
+	background: rgb(0, 0, 0);
 	margin-top: 30px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
 .label{
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 	font-size: 18px;
 	float: left;
 	width: 150px;
@@ -18,6 +18,8 @@
 .form-control{
 	margin-left: 40px;
 	padding-left: 10px;
+	color: rgb(255, 255, 255);
+	background: transparent;
 }
 .radio{
 	height: 20px;
@@ -26,33 +28,17 @@
 }
 #rd{
 	font-size: 15px;
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 .input-group{
 	margin-top: 10px;
-}
-#h2{
-	font-weight: bold;
-	font-style: italic;
-	background-color: orange;
-	margin-top: 0px;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-}
-#cont1{
-	background-color: grey;
-	margin-top: 0%;
-	height: 60px;
-	padding-top: 10px;
-}
-::placeholder{
-	color: black;
 }
 h2{
 	margin-left: 17%;
 	margin-top: -1%;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+	font-weight: bold;
+	color: rgb(255, 255, 255);
 }
 .btn{
 	width: 20%;

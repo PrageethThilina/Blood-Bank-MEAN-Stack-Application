@@ -20,7 +20,6 @@ module.exports.donee_register = (req, res, next) => {
     donee.password = req.body.password,
     donee.spouce = req.body.spouce,
     donee.health = req.body.health,
-    donee.medical_report = req.body.medical_report,
     donee.save((err, doc) => {
         if (!err)
             res.send(doc);
@@ -53,7 +52,8 @@ module.exports.donee_profile = (req, res, next) =>{
                 return res.status(404).json({ status: false, message: 'Record not found.' });
             else
                 return res.status(200).json({ status: true, donee : _.pick(donee,
-                    ['donee_nic',
+                    ['_id',
+                    'donee_nic',
                     'full_name',
                     'gender',
                     'birthday',
@@ -65,7 +65,6 @@ module.exports.donee_profile = (req, res, next) =>{
                     'address',
                     'spouce',
                     'health',
-                    'medical_report',
                 ]) });
         }
     );
@@ -86,7 +85,6 @@ module.exports.update_donee_details = (req, res, next) => {
         donee.password = req.body.password;
         donee.spouce = req.body.spouce;
         donee.health = req.body.health;
-       // donee.medical_report = req.body.medical_report;
    
     donee.save().then(dn => {
     res.json('Updated Successfully....');
@@ -113,4 +111,35 @@ module.exports.delete_donee = (req, res, next) => {
     if (err) res.json(err);
     else res.json('Donee Account Deleted Successfully..!!!');
     });
+}
+
+module.exports.insert_record_details = (req, res, next) => {
+    Donee.findById(req.params.id, function (err, donee) {
+    if (!donee)
+    return next(new Error('Unable To Find Hospital With This Id'));
+    else {
+        
+        donee._id = req.body._id;
+        donee.donee_nic = req.body.donee_nic;
+        donee.full_name = req.body.full_name;
+        donee.gender = req.body.gender;
+        donee.birthday = req.body.birthday;
+        donee.province = req.body.province;
+        donee.district = req.body.district;
+        donee.contact = req.body.contact;
+        donee.email = req.body.email;
+        donee.blood_group = req.body.blood_group;
+        donee.address = req.body.address;
+        donee.spouce = req.body.spouce;
+        donee.health = req.body.health;
+  
+    donee.save().then(hsptl => {
+    res.json('Record Added Successfully');
+    })
+    .catch(err => {
+    res.status(400).send("Record not added..!!!");
+    });
+    }
+    });
+
 }

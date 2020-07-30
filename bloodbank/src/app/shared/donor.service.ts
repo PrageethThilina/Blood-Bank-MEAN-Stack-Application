@@ -31,6 +31,7 @@ export class DonorService {
     spouce : '',
     health : '',
     photo : '',
+    profile_status: '',
   };
 
 noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
@@ -66,6 +67,10 @@ insertRecords(donor: Donor) {
 deleteDonor(_id) {
   return this.http.get(environment.apiBaseUrl + `/manage-registered-donors/${_id}`);
 }
+
+// getAppointment(_id) {
+//   return this.http.get( environment.apiBaseUrl + `/appointments/${_id}`);
+// }
 
 //Helper Methods
 

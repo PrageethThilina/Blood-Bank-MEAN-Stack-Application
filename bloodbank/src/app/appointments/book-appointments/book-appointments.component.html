@@ -1,9 +1,9 @@
 <app-donor-header></app-donor-header>
 
 <div class="container">
-    <form #appointmentbookForm="ngForm" (ngSubmit)="appointmentbookForm.valid && onSubmit(appointmentbookForm)">
+    <form #appointmentbookForm="ngForm" (ngSubmit)="appointmentbookForm.valid && onSubmit(appointmentbookForm)" action="/book-appointments">
    	   <div class="row align-items-center">
-           <div class="col text-center">
+           <div class="col-md-6">
             <h2 class="text-center">Book an Appointment</h2>
 
             <!-- Success message -->
@@ -20,22 +20,32 @@
                 <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="appointmentService.selectedAppointment._id" class="form-control">
               </div>
 
+              <input type="hidden" name="last_donate_date" #last_donate_date="ngModel" [(ngModel)]="donorService.selectedUser.last_donate_date" class="form-control" id="last_donate_date">
+
               <div class="input-group">
                 <label class="label control-label">Donor Id :</label>
-                <input type="text" name="_id" #_id="ngModel" [(ngModel)]="donorService.selectedUser._id" class="form-control" required readonly>
+                <input type="text" name="_id" #_id="ngModel" [(ngModel)]="donorService.selectedUser._id" class="form-control read-only" required readonly>
               </div>
 
               <div class="input-group">
                 <label class="label control-label">NIC No :</label>
-                <input type="text" name="donor_nic" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic" class="form-control" required readonly>
+                <input type="text" name="donor_nic" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic" class="form-control  read-only" required readonly>
               </div>
               <div class="input-group">
                 <label class="label control-label">Full Name :</label>
-                <input type="text" name="full_name" #full_name="ngModel" [(ngModel)]="donorService.selectedUser.full_name" class="form-control" required readonly>
+                <input type="text" name="full_name" #full_name="ngModel" [(ngModel)]="donorService.selectedUser.full_name" class="form-control  read-only" required readonly>
               </div>
               <div class="input-group">
+                <label class="label control-label">Email Address :</label>
+                <input type="email" name="email" #email="ngModel" [(ngModel)]="donorService.selectedUser.email" class="form-control" required>                
+              </div>
+              <div class="input-group">
+                <label class="label control-label">Contact No :</label>
+                <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="donorService.selectedUser.contact" class="form-control" required>
+              </div>  
+              <div class="input-group">
                 <label class="label control-label">Location :</label>
-                <select class="form-control" name="location" #location="ngModel" [(ngModel)]="appointmentService.selectedAppointment.location" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !location.valid }" class="form-control" required>
+                <select class="form-control" (blur)="checkDonateEligibility()" name="location" #location="ngModel" [(ngModel)]="appointmentService.selectedAppointment.location" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !location.valid }" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
                   <option selected>Select a Location</option>
                   <option value="National Blood Center - Narahenpita">National Blood Center - Narahenpita</option>
                   <option value="Ampara Hospital">Ampara Hospital</option>
@@ -68,14 +78,14 @@
               </div>
               <div class="input-group">
                 <label class="label control-label">Date :</label>
-                <input type="date" name="date" #date="ngModel" [(ngModel)]="appointmentService.selectedAppointment.date" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !date.valid }" class="form-control" required>
+                <input type="date" (blur)="checkDonateEligibility()" name="date" #date="ngModel" [(ngModel)]="appointmentService.selectedAppointment.date" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !date.valid }" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
                 <div *ngIf="appointmentbookForm.submitted && !date.valid">
                   <label class="validation-message">This field is required.</label>
                 </div>
               </div>
               <div class="input-group">
                 <label class="label control-label">Time :</label>
-                <select class="form-control"name="time" #time="ngModel" [(ngModel)]="appointmentService.selectedAppointment.time" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !time.valid }" class="form-control" required>
+                <select class="form-control" (blur)="checkDonateEligibility()" name="time" #time="ngModel" [(ngModel)]="appointmentService.selectedAppointment.time" [ngClass]="{'invalid-textbox' :appointmentbookForm.submitted && !time.valid }" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
                   <option selected>Select a Time</option>   
                   <option value="9.00 - 9.30">9.00a.m - 9.30a.m</option>
                   <option value="9.30 - 10.00">9.30a.m - 10.00a.m</option>
@@ -93,17 +103,9 @@
                 <div *ngIf="appointmentbookForm.submitted && !time.valid">
                   <label class="validation-message">This field is required.</label>
                 </div>
-              </div>
-              <div class="input-group">
-                <label class="label control-label">Email Address :</label>
-                <input type="email" name="email" #email="ngModel" [(ngModel)]="donorService.selectedUser.email" class="form-control" required>                
-              </div>
-              <div class="input-group">
-                <label class="label control-label">Contact No :</label>
-                <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="donorService.selectedUser.contact" class="form-control" required>
-              </div>                    
+              </div>                  
               <div class="text-center">
-                 <input type="submit" name="registersubmit" [disabled]="!appointmentbookForm.valid" class="btn btn-success" value="Schedule Now" style="margin-right: 10px;">
+                 <input type="submit" name="registersubmit" [disabled]="!appointmentbookForm.valid" class="btn btn-success" value="Schedule Now" style="margin-right: 10px;" data-submit=”…Sending”>
                  <input type="reset" name="registerclear" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
                  <input type="reset" name="registerreset" class="btn btn-danger" value="Cancel">
               </div>

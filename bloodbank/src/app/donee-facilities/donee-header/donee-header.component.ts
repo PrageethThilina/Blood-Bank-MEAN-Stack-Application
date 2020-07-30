@@ -35,6 +35,11 @@ export class DoneeHeaderComponent implements OnInit {
     setTimeout(() => this.router.navigateByUrl('/update-donee-details'));
   }
 
+  onRequest(donee: Donee) {
+    this.doneeService.selectedUser = donee;
+    setTimeout(() => this.router.navigateByUrl('/donee-request-blood'));
+  }
+
  
   onLogout(){
     this.doneeService.deleteToken();

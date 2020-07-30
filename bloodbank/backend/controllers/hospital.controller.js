@@ -43,7 +43,7 @@ module.exports.hospital_profile = (req, res, next) =>{
             if (!hospital)
                 return res.status(404).json({ status: false, message: 'Record not found.' });
             else
-                return res.status(200).json({ status: true, hospital : _.pick(hospital,['hospital_name','address','contact','email']) });
+                return res.status(200).json({ status: true, hospital : _.pick(hospital,['_id','hospital_name','address','contact','email']) });
         }
     );
 }
@@ -53,10 +53,13 @@ module.exports.insert_record_details = (req, res, next) => {
     if (!hospital)
     return next(new Error('Unable To Find Hospital With This Id'));
     else {
+        
         hospital._id = req.body._id;
         hospital.hospital_name = req.body.hospital_name;
         hospital.address = req.body.address;
-   
+        hospital.contact = req.body.contact;
+        hospital.email = req.body.email;
+  
     hospital.save().then(hsptl => {
     res.json('Record Added Successfully');
     })

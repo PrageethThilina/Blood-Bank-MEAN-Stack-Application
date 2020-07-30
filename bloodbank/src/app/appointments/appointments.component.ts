@@ -20,7 +20,7 @@ export class AppointmentsComponent implements OnInit {
   showSucessMessage: boolean;
   donorDetails;
   
-  ngOnInit(): void {
+  ngOnInit() {
     this.donorService.getUserProfile().subscribe(
       res => {
         this.donorDetails = res['donor'];
@@ -30,9 +30,7 @@ export class AppointmentsComponent implements OnInit {
         
       }
     );
-
-    this.getDonorsAppointments();
-
+    this.getDonorsAppointments()
   }
 
   onEdit(donor: Donor) {
@@ -46,9 +44,14 @@ export class AppointmentsComponent implements OnInit {
     });
   }
   
-  onCancel(appointment: Appointment) {
-    this.appointmentService.selectedAppointment = appointment;
-    setTimeout(() => this.router.navigateByUrl('/update-blood-storage'));
+  onCancel(_id) {
+    if (confirm('Are you sure want to Cancel the appointment ?') == true) {
+      this.appointmentService.donorcancelAppointment(_id).subscribe((res) => {
+        this.showSucessMessage = true;
+        setTimeout(() => this.showSucessMessage = false, 3000);
+        this.getDonorsAppointments();
+      });
+    }
   }
 
   onDelete(_id) {

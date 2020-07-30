@@ -1,247 +1,254 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <h2 class="text-center" style="margin-left: -2%;">Donor Registration Form</h2>
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center" style="margin-left: -2%;">Donor Registration Form</h2>
 
-  <!-- Success message -->
-  <div class="success" *ngIf="showSucessMessage">
-    Saved successfully
-  </div>
-
-  <!-- Error message -->
-  <div class="alert" *ngIf="serverErrorMessages">
-    {{serverErrorMessages}}
-  </div>
-
-  <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" enctype="multipart/form-data">
-    <div class="row fadeInDown">
-      <div class="col-md-6">
-
-        <div class="input-group">
-          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="donorService.selectedUser._id">
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">NIC No :</label>
-          <input type="text" name="donor_nic" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !donor_nic.valid }" required class="form-control"
-            placeholder="NIC No">
-          <div *ngIf="signUpForm.submitted && !donor_nic.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Full Name :</label>
-          <input type="text" name="full_name" #full_name="ngModel" [(ngModel)]="donorService.selectedUser.full_name"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !full_name.valid }" class="form-control"
-            placeholder="Name" required>
-          <div *ngIf="signUpForm.submitted && !full_name.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Gender :</label>
-          <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="donorService.selectedUser.gender" id="male"
-            class="radio" value="male">&nbsp;<label id="rd">Male</label>
-          <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="donorService.selectedUser.gender" id="female"
-            class="radio" value="female">&nbsp;<label id="rd">Female</label>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Birthday :</label>
-          <input type="date" id="birthday" name="birthday" #birthday="ngModel"
-            [(ngModel)]="donorService.selectedUser.birthday"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !birthday.valid }" (blur)="validateDetails()"
-            class="form-control" required>
-          <div *ngIf="signUpForm.submitted && !birthday.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Last Donate<br> Date :</label>
-          <input type="date" name="last_donate_date" #last_donate_date="ngModel"
-            [(ngModel)]="donorService.selectedUser.last_donate_date" class="form-control">
-        </div>
-
-        <div class="input-group">
-            <label class="label control-label">Province :</label>
-            <select class="form-control" name="province" #province="ngModel"
-              [(ngModel)]="donorService.selectedUser.province"
-              [ngClass]="{'invalid-textbox' :signUpForm.submitted && !province.valid }" required>
-              <option selected>Select an option</option>
-              <option value="Southern Province">Southern Province</option>
-              <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
-              <option value="Western Province">Western Province</option>
-              <option value="Uva Province">Uva Province</option>
-              <option value="Eastern Province">Eastern Province</option>
-              <option value="Central Province">Central Province</option>
-              <option value="North-Western Province">North-Western Province</option>
-              <option value="North-Central Province">North-Central Province</option>
-              <option value="Nothern Province">Nothern Province</option>
-            </select>
-            <div *ngIf="signUpForm.submitted && !province.valid">
-              <label class="validation-message">This field is required.</label>
-            </div>
-        </div>
-
-        <div class="input-group">
-            <label class="label control-label">District :</label>
-            <select class="form-control" name="district" #district="ngModel"
-              [(ngModel)]="donorService.selectedUser.district"
-              [ngClass]="{'invalid-textbox' :signUpForm.submitted && !district.valid }" required>
-              <option selected>Select an option</option>
-              <option value="Ampara">Ampara</option>
-              <option value="Anuradhapura">Anuradhapura</option>
-              <option value="Badulla">Badulla</option>
-              <option value="Baticaloa">Baticaloa</option>
-              <option value="Colombo">Colombo</option>
-              <option value="Galle">Galle</option>
-              <option value="Gampaha">Gampaha</option>
-              <option value="Hambanthota">Hambanthota</option>
-              <option value="Jaffna">Jaffna</option>
-              <option value="Kalutara">Kalutara</option>
-              <option value="Kandy">Kandy</option>
-              <option value="Kegalle">Kegalle</option>
-              <option value="Kilinochchi">Kilinochchi</option>
-              <option value="Kurunegala">Kurunegala</option>
-              <option value="Mannar">Mannar</option>
-              <option value="Matale">Matale</option>
-              <option value="Matara">Matara</option>
-              <option value="Monaragala">Monaragala</option>
-              <option value="Mullaitivu">Mullaitivu</option>
-              <option value="Nuwara Eliya">Nuwara Eliya</option>
-              <option value="Polonnaruwa">Polonnaruwa</option>
-              <option value="Puttalam">Puttalam</option>
-              <option value="Rathnapura">Rathnapura</option>
-              <option value="Trincomalee">Trincomalee</option>
-              <option value="Vavuniya">Vavuniya</option>
-            </select>
-            <div *ngIf="signUpForm.submitted && !district.valid">
-              <label class="validation-message">This field is required.</label>
-            </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Current Weight :</label>
-          <input type="number" id="weight" name="weight" #weight="ngModel"
-            [(ngModel)]="donorService.selectedUser.weight"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !weight.valid }" (blur)="validateDetails()"
-            class="form-control" placeholder="Weight" required>
-          <div *ngIf="signUpForm.submitted && !weight.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Current Height :</label>
-          <input type="number" id="height" name="height" #height="ngModel"
-            [(ngModel)]="donorService.selectedUser.height"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !height.valid }" (blur)="validateDetails()"
-            class="form-control" placeholder="Height" required>
-          <div *ngIf="signUpForm.submitted && !height.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
+      <!-- Success message -->
+      <div class="success" *ngIf="showSucessMessage">
+        Saved successfully
       </div>
-      <div class="col-md-6">
-        <div class="input-group">
-          <label class="label control-label">Blood Group :</label>
-          <select class="form-control" name="blood_group" #blood_group="ngModel"
-            [(ngModel)]="donorService.selectedUser.blood_group"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !blood_group.valid }" required>
-            <option selected>Select an option</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-          </select>
-          <div *ngIf="signUpForm.submitted && !blood_group.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
 
-        <div class="input-group">
-          <label class="label control-label">Address :</label>
-          <textarea name="address" #address="ngModel" [(ngModel)]="donorService.selectedUser.address"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !address.valid }" class="form-control"
-            placeholder="Address" required></textarea>
-          <div *ngIf="signUpForm.submitted && !address.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Email Address :</label>
-          <input type="email" name="email" #email="ngModel" [(ngModel)]="donorService.selectedUser.email"
-            [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }"
-            class="form-control" placeholder="Email Address" required>
-          <div *ngIf="signUpForm.submitted && email.errors">
-            <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
-            <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Contact No :</label>
-          <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="donorService.selectedUser.contact"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !contact.valid }" class="form-control"
-            placeholder="Contact No" required>
-          <div *ngIf="signUpForm.submitted && !contact.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group wrapper">
-          <label class="label control-label">Password :</label>
-          <input type="password" name="password" #password="ngModel" [(ngModel)]="donorService.selectedUser.password"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }" id="password" class="form-control"
-            placeholder="Password" minlength="4" required>
-          <i class="fa fa-eye" style="position: absolute;margin-left: 93%;margin-top: 12px;"
-            (click)="angpswrdVisible()"></i>
-          <div *ngIf="signUpForm.submitted && password.errors">
-            <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
-            <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Spouce Details :</label>
-          <textarea name="spouce" #spouce="ngModel" [(ngModel)]="donorService.selectedUser.spouce"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !spouce.valid }" class="form-control"
-            placeholder="Spouce Details" required></textarea>
-          <div *ngIf="signUpForm.submitted && !spouce.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Health Issues :</label>
-          <textarea name="health" #health="ngModel" [(ngModel)]="donorService.selectedUser.health"
-            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !health.valid }" class="form-control"
-            placeholder="Health Issues" required></textarea>
-          <div *ngIf="signUpForm.submitted && !health.valid">
-            <label class="validation-message">This field is required.</label>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Photo :</label>
-          <input type="file" name="photo" #photo="ngModel" [(ngModel)]="donorService.selectedUser.photo"
-            class="form-control">
-        </div>
-
+      <!-- Error message -->
+      <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
       </div>
-      <input type="submit" class="btn btn-success" [disabled]="!signUpForm.valid" value="Sign Up" style="margin-left: 18%;">
-      <input type="reset" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
-      <input type="reset" class="btn btn-danger" value="Cancel" routerLink="">
+
+      <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" enctype="multipart/form-data">
+        <div class="row fadeInDown">
+          <div class="col-md-6">
+
+            <div class="input-group">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="donorService.selectedUser._id">
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">NIC No :</label>
+              <input type="text" name="donor_nic" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !donor_nic.valid }" required class="form-control"
+                placeholder="NIC No">
+              <div *ngIf="signUpForm.submitted && !donor_nic.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Full Name :</label>
+              <input type="text" name="full_name" #full_name="ngModel" [(ngModel)]="donorService.selectedUser.full_name"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !full_name.valid }" class="form-control"
+                placeholder="Name" required>
+              <div *ngIf="signUpForm.submitted && !full_name.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Gender :</label>
+              <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="donorService.selectedUser.gender"
+                id="male" class="radio" value="male">&nbsp;<label id="rd">Male</label>
+              <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="donorService.selectedUser.gender"
+                id="female" class="radio" value="female">&nbsp;<label id="rd">Female</label>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Birthday :</label>
+              <input type="date" id="birthday" name="birthday" #birthday="ngModel"
+                [(ngModel)]="donorService.selectedUser.birthday"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !birthday.valid }" (blur)="validateDetails()"
+                class="form-control" required style="color: black;background: rgb(255, 255, 255);">
+              <div *ngIf="signUpForm.submitted && !birthday.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Last Donate<br> Date :</label>
+              <input type="date" name="last_donate_date" #last_donate_date="ngModel"
+                [(ngModel)]="donorService.selectedUser.last_donate_date" class="form-control" style="color: black;background: rgb(255, 255, 255);">
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Province :</label>
+              <select class="form-control" name="province" #province="ngModel"
+                [(ngModel)]="donorService.selectedUser.province"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !province.valid }" required style="color: black;background: rgb(255, 255, 255);">
+                <option selected>Select an option</option>
+                <option value="Southern Province">Southern Province</option>
+                <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
+                <option value="Western Province">Western Province</option>
+                <option value="Uva Province">Uva Province</option>
+                <option value="Eastern Province">Eastern Province</option>
+                <option value="Central Province">Central Province</option>
+                <option value="North-Western Province">North-Western Province</option>
+                <option value="North-Central Province">North-Central Province</option>
+                <option value="Nothern Province">Nothern Province</option>
+              </select>
+              <div *ngIf="signUpForm.submitted && !province.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">District :</label>
+              <select class="form-control" name="district" #district="ngModel"
+                [(ngModel)]="donorService.selectedUser.district"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !district.valid }" required style="color: black;background: rgb(255, 255, 255);">
+                <option selected>Select an option</option>
+                <option value="Ampara">Ampara</option>
+                <option value="Anuradhapura">Anuradhapura</option>
+                <option value="Badulla">Badulla</option>
+                <option value="Baticaloa">Baticaloa</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Galle">Galle</option>
+                <option value="Gampaha">Gampaha</option>
+                <option value="Hambanthota">Hambanthota</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Kalutara">Kalutara</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Kegalle">Kegalle</option>
+                <option value="Kilinochchi">Kilinochchi</option>
+                <option value="Kurunegala">Kurunegala</option>
+                <option value="Mannar">Mannar</option>
+                <option value="Matale">Matale</option>
+                <option value="Matara">Matara</option>
+                <option value="Monaragala">Monaragala</option>
+                <option value="Mullaitivu">Mullaitivu</option>
+                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                <option value="Polonnaruwa">Polonnaruwa</option>
+                <option value="Puttalam">Puttalam</option>
+                <option value="Rathnapura">Rathnapura</option>
+                <option value="Trincomalee">Trincomalee</option>
+                <option value="Vavuniya">Vavuniya</option>
+              </select>
+              <div *ngIf="signUpForm.submitted && !district.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Current Weight :</label>
+              <input type="number" id="weight" name="weight" #weight="ngModel"
+                [(ngModel)]="donorService.selectedUser.weight"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !weight.valid }" (blur)="validateDetails()"
+                class="form-control" placeholder="Weight" required>
+              <div *ngIf="signUpForm.submitted && !weight.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Current Height :</label>
+              <input type="number" id="height" name="height" #height="ngModel"
+                [(ngModel)]="donorService.selectedUser.height"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !height.valid }" (blur)="validateDetails()"
+                class="form-control" placeholder="Height" required>
+              <div *ngIf="signUpForm.submitted && !height.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <label class="label control-label">Blood Group :</label>
+              <select class="form-control" name="blood_group" #blood_group="ngModel"
+                [(ngModel)]="donorService.selectedUser.blood_group"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !blood_group.valid }" required style="color: black;background: rgb(255, 255, 255);">
+                <option selected>Select an option</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+              <div *ngIf="signUpForm.submitted && !blood_group.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Address :</label>
+              <textarea name="address" #address="ngModel" [(ngModel)]="donorService.selectedUser.address"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !address.valid }" class="form-control"
+                placeholder="Address" required></textarea>
+              <div *ngIf="signUpForm.submitted && !address.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Email Address :</label>
+              <input type="email" name="email" #email="ngModel" [(ngModel)]="donorService.selectedUser.email"
+                [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }"
+                class="form-control" placeholder="Email Address" required>
+              <div *ngIf="signUpForm.submitted && email.errors">
+                <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+                <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Contact No :</label>
+              <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="donorService.selectedUser.contact"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !contact.valid }" class="form-control"
+                placeholder="Contact No" required>
+              <div *ngIf="signUpForm.submitted && !contact.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group wrapper">
+              <label class="label control-label">Password :</label>
+              <input type="password" name="password" #password="ngModel"
+                [(ngModel)]="donorService.selectedUser.password"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }" id="password"
+                class="form-control" placeholder="Password" minlength="4" required>
+              <i class="fa fa-eye" style="position: absolute;margin-left: 93%;margin-top: 12px;"
+                (click)="angpswrdVisible()"></i>
+              <div *ngIf="signUpForm.submitted && password.errors">
+                <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+                <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Spouce Details :</label>
+              <textarea name="spouce" #spouce="ngModel" [(ngModel)]="donorService.selectedUser.spouce"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !spouce.valid }" class="form-control"
+                placeholder="Spouce Details" required></textarea>
+              <div *ngIf="signUpForm.submitted && !spouce.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Health Issues :</label>
+              <textarea name="health" #health="ngModel" [(ngModel)]="donorService.selectedUser.health"
+                [ngClass]="{'invalid-textbox' :signUpForm.submitted && !health.valid }" class="form-control"
+                placeholder="Health Issues" required></textarea>
+              <div *ngIf="signUpForm.submitted && !health.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Photo :</label>
+              <input type="file" name="photo" #photo="ngModel" [(ngModel)]="donorService.selectedUser.photo"
+                class="form-control">
+            </div>
+
+          </div>
+          <input type="submit" class="btn btn-success" [disabled]="!signUpForm.valid" value="Sign Up"
+            style="margin-left: 18%;">
+          <input type="reset" class="btn btn-danger" value="Clear" style="margin-right: 10px;">
+          <input type="reset" class="btn btn-danger" value="Cancel" routerLink="">
+        </div>
+      </form>
+
     </div>
-  </form>
+  </div>
 </div>

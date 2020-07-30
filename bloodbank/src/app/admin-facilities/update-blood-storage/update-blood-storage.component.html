@@ -37,11 +37,11 @@
               </div>
               <div class="input-group">
                 <label class="label control-label">Blood Received Date :</label>
-                <input type="date" name="received_date" #received_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.received_date" class="form-control" required>
+                <input type="date" name="received_date" #received_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.received_date" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
               </div>
               <div class="input-group">
                 <label class="label control-label">Blood Expiry Date :</label>
-                <input type="date" name="expiry_date" #expiry_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.expiry_date" class="form-control" required>
+                <input type="date" name="expiry_date" #expiry_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.expiry_date" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
               </div> 
               <input type="submit" name="storagesubmit" [disabled]="!bloodinventoryForm.valid" class="btn btn-success" value="Update"  style="margin-left: 18%;">
               <input type="reset" name="storageclear" (click)="resetForm(bloodinventoryForm)" class="btn btn-danger" value="Clear">

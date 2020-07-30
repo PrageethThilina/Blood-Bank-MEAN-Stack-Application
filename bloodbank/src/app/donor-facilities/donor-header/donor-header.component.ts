@@ -14,7 +14,7 @@ export class DonorHeaderComponent implements OnInit {
 
   donorDetails;
 
-  constructor(private donorService: DonorService, private router: Router) { }
+  constructor(public donorService: DonorService, private router: Router) { }
 
   ngOnInit(): void {
     this.donorService.getUserProfile().subscribe(

@@ -6,8 +6,8 @@
            <h4 class="text-center">Registered Donors</h4>
            <table *ngIf="donorService.dnrs" datatable="ng" class="table table-striped table-bordered table-hover display" id="my-table">
             <thead>
-                <tr><td colspan="14" class="tbl-header" style="padding-left: 27%">National Blood Transfussion Service</td></tr>
-                <tr><td colspan="14" class="tbl-header" style="padding-left: 32%">Volunteer Donors</td></tr>
+                <tr><td colspan="15" class="tbl-header" style="padding-left: 27%">National Blood Transfussion Service</td></tr>
+                <tr><td colspan="15" class="tbl-header" style="padding-left: 32%">Volunteer Donors</td></tr>
                 <tr>
                     <th >Donor ID</th>
                     <th >Full Name</th>
@@ -43,7 +43,7 @@
                     <td>{{dnr.contact}}</td>
                     <td>{{dnr.spouce}}</td>
                     <td>{{dnr.health}}</td>
-                    <td><img src="assets/images/praggeth_donor.jpg" alt="" class="medical"></td>
+                    <td><img src='assets/images/donors/{{dnr.email}}.jpg' alt="" class="medical"></td>
                     <td>
                         <a class="action-btn" (click)="onCall(dnr)">
                           <i class="fa fa-phone" style="margin-right: 20px;"></i>

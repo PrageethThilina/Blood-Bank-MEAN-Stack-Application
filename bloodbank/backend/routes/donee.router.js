@@ -10,7 +10,7 @@ doneerouter.get('/donee-facilities',jwtHelper.doneeverifyJwtToken, ctrlDonee.don
 doneerouter.post('/update-donee-details/:id', ctrlDonee.update_donee_details);
 doneerouter.get('/registered-donee', ctrlDonee.view_donee);
 doneerouter.get('/manage-registered-donee/:id', ctrlDonee.delete_donee);
-
+doneerouter.post('/donee-request-blood/:id', ctrlDonee.insert_record_details);
 
 module.exports = doneerouter;
 

@@ -244,6 +244,21 @@ function analyseData_Clear_Values()
 
   }
 
+  
+  function checkDonateEligibility() {
+
+    var date = new Date(document.getElementById("last_donate_date").value);
+    var today = new Date();
+
+    var timeDiff = Math.abs(today.getTime() - date.getTime());
+    var days = Math.ceil(timeDiff / (1000 * 3600 * 24)) / 365;
+
+      if (days < 0.12) {
+        swal("Error!","You should wait atleast 45 days from last donation...!!!","error");
+        setTimeout(() => location.reload(),3000);   
+      }
+
+}
 
 
 

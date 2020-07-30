@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 
 import { HospitalBloodRequestService } from '../../shared/hospital-blood-request.service'
 import { HospitalService } from '../../shared/hospital.service'
+import { HospitalBloodRequest } from 'src/app/shared/hospital-blood-request.model';
 
 @Component({
   selector: 'app-hospital-order-blood',
@@ -14,10 +15,21 @@ export class HospitalOrderBloodComponent implements OnInit {
 
   showSucessMessage: boolean;
   serverErrorMessages: string;
+  ordershowSucessMessage: boolean;
+  orderserverErrorMessages: string;
+
+  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(public hospitalbloodrequestService: HospitalBloodRequestService, public hospitalService: HospitalService, private router : Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getHospitalOrders();
+  }
+
+  getHospitalOrders() {
+    this.hospitalbloodrequestService.getHospitalOrders().subscribe((res) => {
+      this.hospitalbloodrequestService.hospitalbloodrequests = res as HospitalBloodRequest[];
+    });
   }
 
   onSubmit(form: NgForm) {
@@ -25,8 +37,7 @@ export class HospitalOrderBloodComponent implements OnInit {
     res => {
       this.showSucessMessage = true;
       setTimeout(() => this.showSucessMessage = false, 2000);
-      this.resetForm(form);
-      setTimeout(() => this.router.navigateByUrl('/hospital-order-blood'), 2500);
+      location.reload();
     },
     err => {
       if (err.status === 422) {
@@ -36,20 +47,19 @@ export class HospitalOrderBloodComponent implements OnInit {
         this.serverErrorMessages = 'Something went wrong when adding.Please contact admin.';
     }
     );
+    this.getHospitalOrders();
 }
 
-resetForm(form: NgForm) {
+  onCancel(_id) {
+    if (confirm('Are you sure to Cancel the Order ?') == true) {
+      this.hospitalbloodrequestService.hospital_cancel_order(_id).subscribe((res) => {
+        this.ordershowSucessMessage = true;
+        setTimeout(() => this.ordershowSucessMessage = false, 3000);
+        location.reload();
+        this.getHospitalOrders();
+      });
+    }
+  }
 
-  this.hospitalbloodrequestService.selectedhospitalbloodrequest = {
-    _id : '',
-    date : '',
-    contact : '',
-    email : '',
-    blood_group : '',
-    quantity : '',
-  };
-  form.resetForm();
-  this.serverErrorMessages = '';
-}
 
 }

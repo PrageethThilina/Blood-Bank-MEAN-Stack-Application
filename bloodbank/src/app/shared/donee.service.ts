@@ -14,6 +14,7 @@ export class DoneeService {
 
   dne: Donee[];
   selectedUser: Donee = {
+
     _id : '',
     donee_nic : '', 
     full_name : '',
@@ -28,7 +29,6 @@ export class DoneeService {
     password : '',
     spouce : '',
     health : '',
-    medical_report : '',
   };
 
 noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
@@ -59,6 +59,10 @@ getDoneeList() {
 
 deleteDonee(_id) {
   return this.http.get(environment.apiBaseUrl + `/manage-registered-donee/${_id}`);
+}
+
+insertRecords(donee: Donee) {
+  return this.http.post(environment.apiBaseUrl + `/donee-request-blood/${donee._id}`, donee);
 }
 
 //Helper Methods

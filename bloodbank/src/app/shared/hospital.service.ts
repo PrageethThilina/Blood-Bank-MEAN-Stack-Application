@@ -10,7 +10,9 @@ import { Hospital } from './hospital.model';
 })
 export class HospitalService {
 
+  hsptl: Hospital[];
   selectedUser: Hospital = {
+    _id: '',
     hospital_name : '',
     address : '',
     contact : '',
@@ -37,6 +39,9 @@ getUserProfile() {
   return this.http.get(environment.apiBaseUrl + '/hospital-facilities');
 }
 
+insertRecords(hospital: Hospital) {
+  return this.http.post(environment.apiBaseUrl + `/hospital-order-blood/${hospital._id}`, hospital);
+}
 
 //Helper Methods
 

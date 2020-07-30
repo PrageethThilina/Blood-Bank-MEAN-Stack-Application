@@ -9,12 +9,12 @@
     width: 1030px;
 }
 .col-md-10{
-	border: 1px solid red;
+	background: rgb(0, 0, 0);
 	padding-top: 10px;
     padding-bottom: 10px;
 }
 .label{
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 	font-size: 18px;
 	float: left;
 	width: 150px;
@@ -22,28 +22,21 @@
 }
 .form-control{
 	margin-left: 40px;
-    padding-left: 10px;
+	padding-left: 10px;
+	color: white;
+	background: transparent;
 }
-.radio{
-	height: 20px;
-	width: 20px;
-	margin-left: 40px;
-}
-#rd{
-	font-size: 15px;
-	color: rgb(0, 0, 0);
-}
+
 .input-group{
     margin-top: 10px;
     width: 90%;
 }
-::placeholder{
-	color: black;
-}
+
 h2{
 	margin-top: -1%;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+	font-weight: bold;
+	color: rgb(255, 255, 255);
 }
 .btn{
 	width: 20%;

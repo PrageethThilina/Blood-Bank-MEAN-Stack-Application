@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
+
+import { DoneeBloodRequest } from 'src/app/shared/donee-blood-request.model';
+import { DoneeBloodRequestService } from '../../shared/donee-blood-request.service'
 
 @Component({
   selector: 'app-view-donee-requests',
@@ -7,9 +12,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewDoneeRequestsComponent implements OnInit {
 
-  constructor() { }
+  showSucessMessage: boolean;
+  serverErrorMessages: string;
 
-  ngOnInit(): void {
+  constructor(public doneebloodrequestService: DoneeBloodRequestService, private router : Router) { }
+
+  ngOnInit() {
+
+    this.getAllDoneeOrders();
+
+  }
+
+  getAllDoneeOrders() {
+    this.doneebloodrequestService.getAllDoneeOrders().subscribe((res) => {
+      this.doneebloodrequestService.doneebloodrequests = res as DoneeBloodRequest[];
+    });
+  }
+
+  onCall(_id){
+
+  }
+
+  onEmail(_id){
+
+  }
+
+  onComment(_id){
+
   }
 
 }

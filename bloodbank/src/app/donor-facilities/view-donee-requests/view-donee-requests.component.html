@@ -3,105 +3,52 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-           <h4 class="text-center">View Donee Requested</h4>
-               <div class="row filter">
-                   <div class="col-md-4">
-                      <div class="input-group">
-                        <label class="label control-label">Blood Group :</label>
-                        <select class="form-control">
-                           <option selected>Select an option</option>
-                           <option value="1">A+</option>
-                           <option value="2">A-</option>
-                           <option value="3">B+</option>
-                           <option value="4">B-</option>
-                           <option value="5">AB+</option>
-                           <option value="6">AB-</option>
-                           <option value="7">O+</option>
-                           <option value="8">O-</option>
-                        </select>
-                      </div>
-                   </div>
-                   <div class="col-md-4">
-                      <div class="input-group">
-                          <label class="label control-label">District :</label>
-                           <select class="form-control">
-                             <option selected>Select an option</option>
-                             <option value="1">Galle</option>
-                             <option value="2">Matara</option>
-                             <option value="3">Hambanthota</option>
-                             <option value="4">Colombo</option>
-                             <option value="5">Kalutara</option>
-                             <option value="6">Gampaha</option>
-                             <option value="7">Kurunegala</option>
-                             <option value="8">Anuradapura</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <table class="table table-striped table-bordered table-hover">
-                     <thead>
-                     <tr>
-                         <th class="table-danger">Donee ID</th>
-                         <th class="table-danger">Full Name</th>
-                         <th class="table-danger">Gender</th>
-                         <th class="table-danger">Birthday</th>
-                         <th class="table-danger">City</th>
-                         <th class="table-danger">Contact No</th>
-                         <th class="table-danger">Email</th>
-                         <th class="table-danger">Blood Group</th>
-                         <th class="table-danger">Address</th>
-                         <th class="table-danger">Spouce Details</th>
-                         <th class="table-danger">Health Issues</th>
-                         <th class="table-danger">Medical Reports</th>
-                     </tr>
-                     </thead>
-                     <tbody>
-                     <tr>
-                         <td>D001</td>
-                         <td>Prageeth Thilina</td>
-                         <td>Male</td>
-                         <td>1995-04-13</td>
-                         <td>Benthota</td>
-                         <td>0716925323</td>
-                         <td>ptg@gmail.com</td>
-                         <td>A+</td>
-                         <td>Ranthotuwila</td>
-                         <td>Chathuri</td>
-                         <td>Kidney Decease</td>
-                         <td></td>
-                     </tr>
-                     <tr>
-                        <td>D001</td>
-                        <td>Prageeth Thilina</td>
-                        <td>Male</td>
-                        <td>1995-04-13</td>
-                        <td>Benthota</td>
-                        <td>0716925323</td>
-                        <td>ptg@gmail.com</td>
-                        <td>A+</td>
-                        <td>Ranthotuwila</td>
-                        <td>Chathuri</td>
-                        <td>Kidney Decease</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>D001</td>
-                        <td>Prageeth Thilina</td>
-                        <td>Male</td>
-                        <td>1995-04-13</td>
-                        <td>Benthota</td>
-                        <td>0716925323</td>
-                        <td>ptg@gmail.com</td>
-                        <td>A+</td>
-                        <td>Ranthotuwila</td>
-                        <td>Chathuri</td>
-                        <td>Kidney Decease</td>
-                        <td></td>
-                     </tr>
-                     </tbody>
-                    </table>
-                </div>
+
+             <!-- Success message -->
+        <div class="success" *ngIf="showSucessMessage">
+            Saved successfully
+          </div>
+        
+          <!-- Error message -->
+          <div class="alert" *ngIf="serverErrorMessages">
+            {{serverErrorMessages}}
+          </div>
+  
+            <h4 class="text-center">Donee Requests</h4>
+            <table *ngIf="doneebloodrequestService.doneebloodrequests" class="table table-primary table-bordered table-hover" datatable="ng">
+                <thead>
+                    <tr>
+                        <th class="table-success">Date</th>
+                        <th class="table-success">Email</th>
+                        <th class="table-success">Blood Group</th>
+                        <th class="table-success">Spouce Details</th>
+                        <th class="table-success">Health Issues</th>
+                        <th class="table-success">Medical Reports</th>
+                        <th class="table-success">Order Status</th>
+                        <th class="table-success" style="width: 150px;">Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dnebldrqst of doneebloodrequestService.doneebloodrequests">
+                        <td>{{dnebldrqst.date}}</td>
+                        <td>{{dnebldrqst.email}}</td>
+                        <td>{{dnebldrqst.blood_group}}</td>
+                        <td>{{dnebldrqst.spouce}}</td>
+                        <td>{{dnebldrqst.health}}</td>
+                        <td><img src='assets/images/donee-requests/{{dnebldrqst.email}}.jpg' alt="" class="medical"></td>
+                        <td>{{dnebldrqst.status}}</td>
+                        <td class="text-center">
+                            <a class="action-btn btn btn-primary" (click)="onComment(dnebldrqst)" style="margin-right: 5px;">Comment</a>
+                            <a class="action-btn" (click)="onCall(dnebldrqst)">
+                                <i class="fa fa-phone" style="margin-right: 5px;"></i>
+                            </a>
+                            <a class="action-btn" (click)="onEmail(dnebldrqst)">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

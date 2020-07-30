@@ -1,4 +1,5 @@
 export class Hospital {
+    _id : string;
     hospital_name : string;
     address : string;
     contact : string;

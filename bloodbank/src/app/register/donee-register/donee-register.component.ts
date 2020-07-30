@@ -56,7 +56,6 @@ export class DoneeRegisterComponent implements OnInit {
       password : '',
       spouce : '',
       health : '',
-      medical_report : ''
     };
     form.resetForm();
     this.serverErrorMessages = '';

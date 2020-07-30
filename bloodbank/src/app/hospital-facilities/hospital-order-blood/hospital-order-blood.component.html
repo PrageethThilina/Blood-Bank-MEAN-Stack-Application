@@ -1,59 +1,227 @@
 <app-hospital-header></app-hospital-header>
 
-<div class="container">
-  <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" enctype="multipart/form-data">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <h4 class="text-center">Order Blood</h4>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col">
+     <h4 class="text-center" style="color: black;">Available Blood Storage Inventory In Blood Bank</h4>
+    </div>
+ </div>
+ 
+ <div class="row clearfix">
+     <div class="col-md-3">
+         <div class="info-box bg-pink hover-expand-effect" style="background: rgb(103, 223, 99);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">A+</div>
+                 <h4>20%</h4>
+             </div>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="info-box bg-pink hover-expand-effect" style="background: rgb(243, 33, 149);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">B+</div>
+                 <h4>20%</h4>
+             </div>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="info-box bg-cyan hover-expand-effect" style="background: rgb(78, 240, 240);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">AB+</div>
+                 <h4>20%</h4>          
+             </div>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="info-box bg-orange hover-expand-effect" style="background: rgb(236, 157, 11);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">O+</div>
+                 <h4>20%</h4>
+             </div>
+         </div>
+     </div>
+ </div>
+
+ <div class="row clearfix">
+     <div class="col-md-3">
+         <div class="info-box bg-pink hover-expand-effect" style="background: rgb(103, 223, 99);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">A-</div>
+                 <h4>20%</h4>
+             </div>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="info-box bg-pink hover-expand-effect" style="background: rgb(243, 33, 149);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">B-</div>
+                 <h4>20%</h4>
+             </div>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="info-box bg-cyan hover-expand-effect" style="background: rgb(78, 240, 240);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">AB-</div>
+                 <h4>20%</h4>             
+             </div>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="info-box bg-orange hover-expand-effect" style="background: rgb(236, 157, 11);">
+             <div class="icon">
+                 <i class="fa fa-file"></i>
+             </div>
+             <div class="content">
+                 <div class="text">O-</div>
+                 <h4>20%</h4>
+             </div>
+         </div>
+     </div>
+ </div>
+
+  <div class="row">
+    <div class="col-md-5 col1">
+      <h4 class="text-center">Order Blood</h4>
+
+        <!-- Success message -->
+        <div class="success" *ngIf="showSucessMessage">
+          Order Added successfully
+        </div>
+      
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
+        </div>
+
+      <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" enctype="multipart/form-data">   
+
         <div class="input-group">
           <label class="label control-label">Hospital ID :</label>
-          <input type="text" name="hospital_id" #donor_nic="ngModel" [(ngModel)]="donorService.selectedUser.donor_nic" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !donor_nic.valid }" class="form-control" placeholder="Donor ID" readonly>
-          <div *ngIf="signUpForm.submitted && !donor_nic.valid">
+          <input type="text" name="_id" #_id="ngModel" [(ngModel)]="hospitalService.selectedUser._id" class="form-control read-only" placeholder="Hospital ID" readonly>
+        </div>
+
+        <div class="input-group">
+          <label class="label control-label">Hospital Name :</label>
+          <input type="text" name="hospital_name" #hospital_name="ngModel" [(ngModel)]="hospitalService.selectedUser.hospital_name" class="form-control read-only" placeholder="Hospital Name" required readonly>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Address :</label>
+          <input type="text" name="address" #address="ngModel" [(ngModel)]="hospitalService.selectedUser.address" class="form-control read-only" placeholder="Address" required readonly>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Contact No :</label>
+          <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="hospitalService.selectedUser.contact" class="form-control" placeholder="Contact No" required>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Email :</label>
+          <input type="email" name="email" #email="ngModel" [(ngModel)]="hospitalService.selectedUser.email" class="form-control" [pattern]="emailRegex" placeholder="Email" required>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Blood Group :</label>
+          <select class="form-control" name="blood_group" #blood_group="ngModel" [(ngModel)]="hospitalbloodrequestService.selectedhospitalbloodrequest.blood_group" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !blood_group.valid }" required style="color: black;background: rgb(255, 255, 255);">
+            <option selected>Select an option</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
+          <div *ngIf="signUpForm.submitted && !blood_group.valid">
             <label class="validation-message">This field is required.</label>
           </div>
         </div>
         <div class="input-group">
-          <label class="label control-label">Hospital Name :</label>
-          <input type="text" name="city" class="form-control" placeholder="Hospital Name" required>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Date :</label>
-          <input type="date" name="date" class="form-control" placeholder="Date" readonly>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Address :</label>
-          <input type="text" name="address" class="form-control" placeholder="Address" required>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Contact No :</label>
-          <input type="tel" name="contact" class="form-control" placeholder="Contact No" required>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Email :</label>
-          <input type="email" name="email" class="form-control" placeholder="Email" required>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Blood Group :</label>
-          <select class="form-control" required>
-            <option selected>Select an option</option>
-            <option value="1">A+</option>
-            <option value="2">A-</option>
-            <option value="3">B+</option>
-            <option value="4">B-</option>
-            <option value="5">AB+</option>
-            <option value="6">AB-</option>
-            <option value="7">O+</option>
-            <option value="8">O-</option>
-          </select>
-        </div>
-        <div class="input-group">
           <label class="label control-label">Quantity :</label>
-          <input type="number" name="quantity" class="form-control" placeholder="Quantity" required>
+          <select class="form-control"name="quantity" #quantity="ngModel" [(ngModel)]="hospitalbloodrequestService.selectedhospitalbloodrequest.quantity" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !quantity.valid }" required style="color: black;background: rgb(255, 255, 255);">
+            <option selected>Select an option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+          </select>
+          <div *ngIf="signUpForm.submitted && !quantity.valid">
+            <label class="validation-message">This field is required.</label>
+          </div>
         </div>
-        <input type="Order" name="check" class="btn btn-success" value="Order" style="margin-left: 18%;">
-        <input type="reset" name="clear" class="btn btn-danger" value="Clear">
-        <input type="reset" name="cancel" class="btn btn-danger" value="Cancel">
+        <input type="submit" name="check" [disabled]="!signUpForm.valid" class="btn btn-form btn-success" value="Order" style="margin-left: 18%;">
+        <input type="reset" name="clear" class="btn btn-form btn-danger" value="Clear">
+        <input type="reset" name="cancel" class="btn btn-form btn-danger" value="Cancel">
+      </form>
       </div>
+
+      <div class="col-md-7 col2">
+
+        <!-- Success message -->
+          <div class="order-success" *ngIf="ordershowSucessMessage">
+              Cancelled successfully...
+          </div>
+              
+        <!-- Error message -->
+          <div class="order-alert" *ngIf="orderserverErrorMessages">
+            {{orderserverErrorMessages}}
+          </div>
+
+        <h4 class="text-center" style="color: black;">Previous Orders</h4>
+          <table *ngIf="hospitalbloodrequestService.hospitalbloodrequests" class="table table-danger table-bordered table-hover display" datatable="ng">
+           <thead>
+           <tr>
+               <th class="table-success">Date</th>
+               <th class="table-success">Blood Group</th>
+               <th class="table-success">Quantity</th>
+               <th class="table-success">Order Status</th>
+               <th class="table-success" style="width: 150px;">Action </th>
+           </tr>
+           </thead>
+           <tbody>
+               <tr *ngFor="let hsptlbldrqst of hospitalbloodrequestService.hospitalbloodrequests">
+                   <td>{{hsptlbldrqst.date}}</td>
+                   <td>{{hsptlbldrqst.blood_group}}</td>
+                   <td>{{hsptlbldrqst.quantity}}</td>
+                   <td>{{hsptlbldrqst.order_status}}</td>
+                   <td>
+                       <a class="btn btn-small btn-danger" style="margin-left: 35px;" (click)="onCancel(hsptlbldrqst._id)">Cancel</a>
+                   </td>
+             </tr>
+           </tbody>
+          </table>
+      </div>
+
     </div>
-  </form>
 </div>

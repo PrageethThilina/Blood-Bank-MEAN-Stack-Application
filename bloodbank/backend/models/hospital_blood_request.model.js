@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
+var DateOnly = require('dateonly');
 
 var Hospital_Blood_Request = mongoose.model('Hospital_Blood_Request', {
     hospital_id: { 
@@ -11,8 +12,8 @@ var Hospital_Blood_Request = mongoose.model('Hospital_Blood_Request', {
         required: 'Hospital Name can\'t be empty',
     },
     date: { 
-        type: String,
-        required: 'Date can\'t be empty',
+        type: Date,
+        default: Date.now,      
     },
     address: { 
         type: String,
@@ -33,7 +34,11 @@ var Hospital_Blood_Request = mongoose.model('Hospital_Blood_Request', {
     quantity: { 
         type: String,
         required: 'Quantity can\'t be empty',
-    }
+    },
+    order_status: { 
+        type: String,
+        default: 'Pending',      
+    },
 });
 
 module.exports = { Hospital_Blood_Request };

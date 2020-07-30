@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
+
+import { DoneeBloodRequest } from 'src/app/shared/donee-blood-request.model';
+import { DoneeBloodRequestService } from '../../shared/donee-blood-request.service'
 
 @Component({
   selector: 'app-view-blood-request',
@@ -7,9 +12,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewBloodRequestComponent implements OnInit {
 
-  constructor() { }
+  requestshowSucessMessage: boolean;
+  requestserverErrorMessages: string;
 
-  ngOnInit(): void {
+  constructor(public doneebloodrequestService: DoneeBloodRequestService, private router : Router) { }
+
+  ngOnInit() {
+    this.getDoneeOrders();
+  }
+
+  getDoneeOrders() {
+    this.doneebloodrequestService.getDoneeOrders().subscribe((res) => {
+      this.doneebloodrequestService.doneebloodrequests = res as DoneeBloodRequest[];
+    });
+  }
+
+  onCancel(_id) {
+    if (confirm('Are you sure to Cancel the Request ?') == true) {
+      this.doneebloodrequestService.donee_cancel_request(_id).subscribe((res) => {
+        this.requestshowSucessMessage = true;
+        setTimeout(() => this.requestshowSucessMessage = false, 3000);
+        this.getDoneeOrders();
+        location.reload();
+      });
+    }
+  }
+
+  onSuccess(_id)
+  {
+
+  }
+  
+  onUpdate(doneebloodrequest: DoneeBloodRequest) {
+    this.doneebloodrequestService.selecteddoneebloodrequest = doneebloodrequest;
+    setTimeout(() => this.router.navigateByUrl('/update-blood-request'));
   }
 
 }

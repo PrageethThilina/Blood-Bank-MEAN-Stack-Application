@@ -25,6 +25,11 @@ export class HospitalHeaderComponent implements OnInit {
       }
     );
   }
+
+  onEdit(hospital: Hospital) {
+    this.hospitalService.selectedUser = hospital;
+    setTimeout(() => this.router.navigateByUrl('/hospital-order-blood'));
+  }
  
   onLogout(){
     this.hospitalService.deleteToken();

@@ -1,57 +1,37 @@
 <div class="container-fluid">
     <div class="row align-items-center">
         <div class="col">
-           <h4 class="text-center">Upcoming Blood Campaigns</h4>
-           <table class="table table-striped table-bordered table-hover">
-            <thead>
-            <tr>
-                <th class="table-danger">Blood Campaign ID</th>
-                <th class="table-danger">City</th>
-                <th class="table-danger">Address</th>
-                <th class="table-danger">Organizer</th>
-                <th class="table-danger">Date</th>
-                <th class="table-danger">Time</th>
-                <th class="table-danger">Organiser Contact No</th>
-                <th class="table-danger">Organiser Email Address</th>
-                <th class="table-danger">Image</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>B001</td>
-                <td>Aluthgama</td>
-                <td>Aluthgama maha Vidyalaya</td>
-                <td>Lions Club</td>
-                <td>2020-08-10</td>
-                <td>10.00am</td>
-                <td>0716925323</td>
-                <td>prageeth@gmail.com</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>B001</td>
-                <td>Aluthgama</td>
-                <td>Aluthgama maha Vidyalaya</td>
-                <td>Lions Club</td>
-                <td>2020-08-10</td>
-                <td>10.00am</td>
-                <td>0716925323</td>
-                <td>prageeth@gmail.com</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>B001</td>
-                <td>Aluthgama</td>
-                <td>Aluthgama maha Vidyalaya</td>
-                <td>Lions Club</td>
-                <td>2020-08-10</td>
-                <td>10.00am</td>
-                <td>0716925323</td>
-                <td>prageeth@gmail.com</td>
-                <td></td>
-            </tr>
-            </tbody>
-           </table>
+            <h4 class="text-center">Appointment History</h4>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="table-success">Province</th>
+                        <th class="table-success">District</th>
+                        <th class="table-success">Address</th>
+                        <th class="table-success">Organiser</th>
+                        <th class="table-success">Date</th>
+                        <th class="table-success">Time</th>
+                        <th class="table-success">Organiser Contact</th>
+                        <th class="table-success">Organiser Email</th>
+                        <th class="table-success">Published Date</th>
+                        <th class="table-success">Event Posters</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bloodcampaign of api.bloodcampaigns">
+                        <td>{{bloodcampaign.province}}</td>
+                        <td>{{bloodcampaign.district}}</td>
+                        <td>{{bloodcampaign.address}}</td>
+                        <td>{{bloodcampaign.organiser}}</td>
+                        <td>{{bloodcampaign.date}}</td>
+                        <td>{{bloodcampaign.time}}</td>
+                        <td>{{bloodcampaign.contact}}</td>
+                        <td>{{bloodcampaign.email}}</td>
+                        <td>{{bloodcampaign.created}}</td>
+                        <td><img src={{bloodcampaign.imageUrl}}></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

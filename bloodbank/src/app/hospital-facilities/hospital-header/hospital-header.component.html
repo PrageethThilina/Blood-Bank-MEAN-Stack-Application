@@ -17,8 +17,7 @@
 
        <button class="btn btn-primary" routerLink="/hospital-manage-appointments" routerLinkActive="active">Manage Appointments</button>
        <button class="btn btn-primary" routerLink="/add-donors" routerLinkActive="active">Add Donors</button>
-       <button class="btn btn-primary" routerLink="/hospital-order-blood" routerLinkActive="active">Order Blood</button>
-       <button class="btn btn-primary" routerLink="/view-order" routerLinkActive="active">View Order</button>
+       <button class="btn btn-primary" (click)="onEdit(hospitalDetails)">Order Blood From Blood Bank</button>
        
        <div *ngIf="hospitalDetails">
        <button class="btn btn-success my-2 my-sm-0" (click)="onLogout()"><i class="fa fa-user" style="margin-right: 10px;"></i>Logout</button>

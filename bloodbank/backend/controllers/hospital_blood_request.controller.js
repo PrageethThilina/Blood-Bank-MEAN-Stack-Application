@@ -9,7 +9,6 @@ module.exports.order_blood = (req, res, next) => {
     var hospital_blood_request = new Hospital_Blood_Request({
         hospital_id: req.body._id,
         hospital_name:  req.body.hospital_name,
-        date:  req.body.date,
         address: req.body.address,
         contact: req.body.contact,
         email: req.body.email,
@@ -23,5 +22,25 @@ module.exports.order_blood = (req, res, next) => {
         else { 
             console.log('Error in Ordering Blood :' + JSON.stringify(err, undefined, 2)); 
         }
+    });
+}
+
+// to view purticular hospital's orders
+module.exports.view_hospital_orders = (req, res, next) => {
+    Hospital_Blood_Request.find({"hospital_name": "Karapitiya Hospital"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Orders :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+//delete orders
+module.exports.delete_orders = (req, res, next) => {
+    Hospital_Blood_Request.findByIdAndRemove({ _id: req.params.id }, function (err, hospital_blood_request) {
+        if (err) res.json(err);
+        else res.json('Order Deleted Successfully');
     });
 }

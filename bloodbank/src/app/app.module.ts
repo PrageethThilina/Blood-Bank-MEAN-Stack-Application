@@ -7,6 +7,17 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Angular materials
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 //components
 import { AppComponent } from './app.component';
@@ -52,7 +63,6 @@ import { TermsOfReferenceComponent } from './nbts-other-services/terms-of-refere
 import { NewsAndEventsComponent } from './nbts-other-services/news-and-events/news-and-events.component';
 import { AboutNbtsComponent } from './nbts-other-services/about-nbts/about-nbts.component';
 import { RegisteredDonorsComponent } from './donee-facilities/registered-donors/registered-donors.component';
-import { ContactRegisteredDonorsComponent } from './donee-facilities/contact-registered-donors/contact-registered-donors.component';
 import { UpdateDoneeDetailsComponent } from './donee-facilities/update-donee-details/update-donee-details.component';
 import { DoneeHeaderComponent } from './donee-facilities/donee-header/donee-header.component';
 import { DonorHeaderComponent } from './donor-facilities/donor-header/donor-header.component';
@@ -92,6 +102,9 @@ import { DoneeService } from './shared/donee.service';
 import { BloodInventoryService } from './shared/blood-inventory.service';
 import { AppointmentService } from './shared/appointment.service';
 import { HospitalBloodRequestService } from './shared/hospital-blood-request.service';
+import { DoneeBloodRequestService } from './shared/donee-blood-request.service';
+import { BloodCampaignsService } from './shared/blood-campaigns.service';
+
 
 //other
 import { HospitalGuard } from './auth/hospital.guard';
@@ -102,7 +115,6 @@ import { DonorGuard } from './auth/donor.guard';
 import { DonorInterceptor } from './auth/donor.interceptor';
 import { DoneeGuard } from './auth/donee.guard';
 import { DoneeInterceptor } from './auth/donee.interceptor';
-import { HospitalBloodRequest } from './shared/hospital-blood-request.model';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -146,7 +158,6 @@ const routes: Routes = [
   { path: 'news-and-events', component: NewsAndEventsComponent},
   { path: 'about-nbts', component: AboutNbtsComponent},
   { path: 'registered-donors', component: RegisteredDonorsComponent,canActivate:[DoneeGuard]},
-  { path: 'contact-registered-donors', component: ContactRegisteredDonorsComponent},
   { path: 'update-donee-details', component: UpdateDoneeDetailsComponent,canActivate:[DoneeGuard]},
   { path: 'donee-header', component: DoneeHeaderComponent,canActivate:[DoneeGuard]},
   { path: 'donor-header', component: DonorHeaderComponent,canActivate:[DonorGuard]},
@@ -156,7 +167,7 @@ const routes: Routes = [
   { path: 'admin-header', component: AdminHeaderComponent,canActivate:[AdminGuard]},
   { path: 'manage-blood-storage', component: ManageBloodStorageComponent,canActivate:[AdminGuard]},
   { path: 'view-blood-storage', component: ViewBloodStorageComponent,canActivate:[AdminGuard]},
-  { path: 'admin-side-nav', component: AdminSideNavComponent},
+  { path: 'admin-side-nav', component: AdminSideNavComponent,canActivate:[AdminGuard]},
   { path: 'add-blood-storage', component: AddBloodStorageComponent,canActivate:[AdminGuard]},
   { path: 'view-blood-campaigns', component: ViewBloodCampaignsComponent},
   { path: 'manage-blood-campaigns', component: ManageBloodCampaignsComponent,canActivate:[AdminGuard]},
@@ -171,13 +182,13 @@ const routes: Routes = [
   { path: 'hospital-register', component: HospitalRegisterComponent,canActivate:[AdminGuard]},
   { path: 'manage-registered-donors', component:   ManageRegisteredDonorsComponent,canActivate:[AdminGuard]},
   { path: 'manage-registered-donee', component:   ManageRegisteredDoneeComponent,canActivate:[AdminGuard]},
-  { path: 'view-donee-requests', component:   ViewDoneeRequestsComponent},
+  { path: 'view-donee-requests', component:   ViewDoneeRequestsComponent,canActivate:[DonorGuard]},
   { path: 'manage-hopital-blood-orders', component:   ManageHopitalBloodOrdersComponent,canActivate:[AdminGuard]},
   { path: 'hospital-header', component:   HospitalHeaderComponent , canActivate:[HospitalGuard]},
   { path: 'view-blood-request', component:   ViewBloodRequestComponent,canActivate:[AdminGuard]},
-  { path: 'update-blood-request', component:   UpdateBloodRequestComponent},
+  { path: 'update-blood-request', component:   UpdateBloodRequestComponent,canActivate:[DoneeGuard]},
   { path: 'update-blood-storage', component:   UpdateBloodStorageComponent,canActivate:[AdminGuard]},
-  { path: 'hospital-manage-appointments', component:   HospitalManageAppointmentsComponent},
+  { path: 'hospital-manage-appointments', component:   HospitalManageAppointmentsComponent,canActivate:[HospitalGuard]},
 
 ];
 
@@ -228,7 +239,6 @@ const routes: Routes = [
       NewsAndEventsComponent,
       AboutNbtsComponent,
       RegisteredDonorsComponent,
-      ContactRegisteredDonorsComponent,
       UpdateDoneeDetailsComponent,
       DoneeHeaderComponent,
       DonorHeaderComponent,
@@ -270,6 +280,15 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     DataTablesModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MaterialFileInputModule,
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({ apiKey: ''}),
     
@@ -289,7 +308,9 @@ const routes: Routes = [
     {provide: HTTP_INTERCEPTORS, useClass: DoneeInterceptor,multi: true},
     BloodInventoryService,
     AppointmentService,
-    HospitalBloodRequest,
+    HospitalBloodRequestService,
+    DoneeBloodRequestService,
+    BloodCampaignsService,
   ],
 
   bootstrap: [AppComponent]

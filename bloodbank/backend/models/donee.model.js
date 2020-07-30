@@ -63,10 +63,6 @@ var doneeSchema = new mongoose.Schema({
         type: String,
         required: 'Health issues can\'t be empty'
     },
-    medical_report: {
-        type: String,
-        required: 'Medical can\'t be empty'
-    },
     saltSecret: String
 });
 

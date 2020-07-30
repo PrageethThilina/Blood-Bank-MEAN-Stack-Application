@@ -6,7 +6,7 @@ var Appointment = mongoose.model('Appointment', {
         type: String,
         required: 'Donor Id can\'t be empty',
     },
-    donor_NIC: { 
+    donor_nic: { 
         type: String,
         required: 'NIC can\'t be empty',
     },
@@ -30,11 +30,19 @@ var Appointment = mongoose.model('Appointment', {
         type: String,
         required: 'Contact Number can\'t be empty',
     },
-    donor_email: { 
+    email: { 
         type: String,
         required: 'Email can\'t be empty',
         sparse:true,
-    }
+    },
+    date_now: { 
+        type: Date,
+        default: Date.now,      
+    },
+    status: { 
+        type: String,
+        default: 'Pending',
+    },
 });
 
 module.exports = { Appointment };

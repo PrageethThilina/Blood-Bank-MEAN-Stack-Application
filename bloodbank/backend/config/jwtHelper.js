@@ -59,6 +59,8 @@ module.exports.donorverifyJwtToken = (req, res, next) => {
                     return res.status(500).send({ auth: false, message: 'Token authentication failed.' });
                 else {
                     req._id = decoded._id;
+                    req.donor_nic = decoded.donor_nic;
+                    req.email = decoded.email;
                     next();
                 }
             }

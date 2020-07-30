@@ -1,6 +1,9 @@
 var express = require('express');
 var appointmentrouter = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
+var nodemailer = require('nodemailer');
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 var { Appointment } = require('../models/appointment.model');
 
@@ -30,7 +33,7 @@ module.exports.view_hospital_appointments = (req, res, next) => {
 
 // to view puticular donor's appointments
 module.exports.view_donors_appointments = (req, res, next) => {
-    Appointment.find({"donor_NIC": "951043028v"},(err, docs) => {
+    Appointment.find({"donor_nic": "951043028v"},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }
@@ -40,38 +43,88 @@ module.exports.view_donors_appointments = (req, res, next) => {
     });
 }
 
-//view one appoitnment by id
-module.exports.view_appointment = (req, res, next) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`);
+// //view one appoitnment by id
+// module.exports.view_appointment = (req, res, next) => {
+//     if (!ObjectId.isValid(req.params.donor_id))
+//         return res.status(400).send(`No record with given id : ${req.params.donor_id}`);
 
-    Appointment.findById(req.params.id, (err, doc) => {
-        if (!err) { res.send(doc); }
-        else { console.log('Error in Retriving Appointment :' + JSON.stringify(err, undefined, 2)); }
-    });
-}
+//     Appointment.find({donor_id: req.params.donor_id}, (err, doc) => {
+//         if (!err) { res.send(doc); }
+//         else { console.log('Error in Retriving Appointment :' + JSON.stringify(err, undefined, 2)); }
+//     });
+// }
 
-//add appoitment
+//add appoitment & send mail
 module.exports.add_appointment = (req, res, next) => {
     var appointment = new Appointment({
         donor_id: req.body._id,
-        donor_NIC:  req.body.donor_nic,
+        donor_nic:  req.body.donor_nic,
         full_name:  req.body.full_name,
         location: req.body.location,
         date: req.body.date,
         time: req.body.time,
         contact: req.body.contact,
-        donor_email: req.body.email,
+        email: req.body.email,
+        
     });
     appointment.save((err, doc) => {
-        if (!err) { 
-            res.send(doc); 
+        if (!err) {
+            res.send(doc);  
+            
+            console.log("request came");
+            let appointment = req.body;
+            sendMail(appointment, info => {
+              console.log(`The mail has been send and the id is ${info.messageId}`);
+              //res.send(info);
+            });
         }
         else { 
             console.log('Error in Adding Appointment :' + JSON.stringify(err, undefined, 2)); 
         }
     });
+
 }
+
+
+async function sendMail(appointment, callback) {
+    // reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: "prageeththilina8@gmail.com",
+        pass: "prageeth199541312345"
+      },
+      tls: {
+          rejectUnauthorized: false
+      }
+    });
+
+    let mailOptions = {
+      from: '"National Blood Transfussion service"<example.gmail.com>', // sender address
+      to: appointment.email, // list of receivers
+      subject: "We Recived Request", // Subject line
+      html: `
+      <head>
+      </head>
+      <body>
+      <h1>Dear : ${appointment.full_name}</h1><br>
+      <h3>Thanks for Join to donate blood Appointment Booked successfully for : </h3><br>
+      <h5>Venue : ${appointment.location}</h5><br>
+      <h5>Date : ${appointment.date}</h5><br>
+      <h5>Time : ${appointment.time}</h5><br>
+      <h2>Your Apppointment has been verified</h2><br>
+      <h4>If there is any issue reagrding the appointment booking free to contact us or email us (prageeththilina8@gmail.com)</h4>
+      </body>
+      `
+    };
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail(mailOptions);
+
+    callback(info);
+  }
 
 //delete appointment
 module.exports.delete_appointment = (req, res, next) => {
@@ -80,3 +133,5 @@ module.exports.delete_appointment = (req, res, next) => {
         else res.json('Appointment Deleted Successfully');
     });
 }
+
+

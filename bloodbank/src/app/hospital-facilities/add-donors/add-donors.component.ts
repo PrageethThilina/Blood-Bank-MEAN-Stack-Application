@@ -65,7 +65,8 @@ export class AddDonorsComponent {
       password : '',
       spouce : '',
       health : '',
-      photo : ''
+      photo : '',
+      profile_status: '',
     };
     form.resetForm();
     this.serverErrorMessages = '';

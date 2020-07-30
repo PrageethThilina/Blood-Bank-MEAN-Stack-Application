@@ -31,7 +31,7 @@ export class BloodInventoryService {
     return this.http.get(environment.apiBaseUrl+ '/view-blood-storage');
   }
   
-  // To Get Employee Details For Single Record Using Id
+  // To Get Inventory Details For Single Record Using Id
   getBloodBagById(_id) {
     return this.http.get( environment.apiBaseUrl + `/add-blood-storage/${_id}`);
   } 

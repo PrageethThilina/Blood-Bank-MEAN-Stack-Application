@@ -10,15 +10,13 @@ import { HospitalBloodRequest } from './hospital-blood-request.model';
 })
 export class HospitalBloodRequestService {
 
-  hospitalbloodrequest: HospitalBloodRequest[];
+  hospitalbloodrequests: HospitalBloodRequest[];
   selectedhospitalbloodrequest: HospitalBloodRequest = {
 
     _id: '',
-    date: '',
-    contact: '',
-    email: '',
     blood_group: '',
     quantity: '',
+    order_status: '',
 
   };
 
@@ -29,4 +27,14 @@ export class HospitalBloodRequestService {
       return this.http.post(environment.apiBaseUrl+'/hospital-order-blood',hospitalbloodrequest);
     }
 
+    //to get purticular hspital orders
+    getHospitalOrders() {
+      return this.http.get(environment.apiBaseUrl + '/hospital-order-blood');
+    }
+
+    //hospital cancel orders 
+    hospital_cancel_order(_id) {
+      return this.http.get(environment.apiBaseUrl + `/hospital-order-blood/${_id}`);
+    }
+    
 }

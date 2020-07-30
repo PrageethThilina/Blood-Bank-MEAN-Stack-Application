@@ -7,31 +7,35 @@
     <div class="row  align-items-center">
         <div class="col">
            <h4 class="text-center">Profile Details</h4>
-           <table class="table table-striped table-bordered table-hover">
+           <table class="table table-striped table-bordered table-hover tbl-profile">
                <tbody>
                <tr>
-                   <th style="width: 30%;" class="table-success">Donor ID</th>
-                   <td>{{donorDetails._id}}</td> 
+                   <th style="width: 30%;" class="table-success text-center">Donor ID</th>
+                   <td class="td-section">{{donorDetails._id}}</td> 
                </tr>
                <tr>
-                   <th class="table-success">Name</th>
-                   <td>{{donorDetails.full_name}}</td> 
+                   <th class="table-success text-center">Name</th>
+                   <td class="td-section">{{donorDetails.full_name}}</td> 
                </tr>
                <tr>
-                   <th class="table-success">NIC No</th>
-                   <td>{{donorDetails.donor_nic}}</td>  
+                   <th class="table-success text-center">NIC No</th>
+                   <td class="td-section">{{donorDetails.donor_nic}}</td>  
                </tr>
                <tr>
-                  <th class="table-success">Contact Number</th>
-                  <td>{{donorDetails.contact}}</td>
+                  <th class="table-success text-center">Contact Number</th>
+                  <td class="td-section">{{donorDetails.contact}}</td>
                </tr>
                <tr>
-                  <th class="table-success">Email</th>
-                  <td>{{donorDetails.email}}</td>
+                  <th class="table-success text-center">Email</th>
+                  <td class="td-section">{{donorDetails.email}}</td>
                </tr>
                <tr>
-                  <th class="table-success">Profile Status</th>
-                  <td>active</td>
+                    <th class="table-success text-center">Last Donate Date</th>
+                    <td class="td-section">{{donorDetails.last_donate_date}}</td>
+               </tr>
+               <tr>
+                  <th class="table-success text-center">Profile Status</th>
+                  <td class="td-section">{{donorDetails.profile_status}}</td>
                </tr>
                </tbody>
            </table>
@@ -68,7 +72,7 @@
                     <td>{{apnts.location}}</td>
                     <td>{{apnts.date}}</td>
                     <td>{{apnts.time}}</td>
-                    <td>Pending</td>
+                    <td>{{apnts.status}}</td>
                     <td>
                         <a class="btn btn-small btn-danger" (click)="onCancel(apnts._id)" style="margin-right: 10px;">Cancel</a>
                     </td>

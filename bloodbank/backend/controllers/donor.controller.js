@@ -80,6 +80,7 @@ module.exports.donor_profile = (req, res, next) =>{
                     'spouce',
                     'health',
                     'photo',
+                    'profile_status',
                 ]) });
         }
     );

@@ -37,6 +37,7 @@ export class HospitalRegisterComponent implements OnInit {
   resetForm(form: NgForm) {
 
     this.hospitalService.selectedUser = {
+      _id: '',
       hospital_name : '',
       address : '',
       contact : '',

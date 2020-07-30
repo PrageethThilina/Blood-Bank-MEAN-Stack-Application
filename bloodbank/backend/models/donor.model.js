@@ -76,6 +76,10 @@ var donorSchema = new mongoose.Schema({
     photo: {
         type: String,
     },
+    profile_status: {
+        type: String,
+        default: 'active',
+    },
     saltSecret: String
 });
 
@@ -103,7 +107,11 @@ donorSchema.methods.verifyPassword = function (password) {
 };
 
 donorSchema.methods.generateJwt = function () {
-    return jwt.sign({ _id: this._id},
+    return jwt.sign({ 
+        _id: this._id,
+        email:this.email,
+        donor_nic:this.donor_nic,
+    },
         process.env.JWT_SECRET,
     {
         expiresIn: process.env.JWT_EXP
