@@ -7,6 +7,9 @@ import autoTable from 'jspdf-autotable'
 import { BloodInventory } from '../../shared/blood-inventory.model';
 import { BloodInventoryService } from '../../shared/blood-inventory.service'
 
+
+declare const toggleSidebar : any;
+
 @Component({
   selector: 'app-view-blood-storage',
   templateUrl: './view-blood-storage.component.html',
@@ -42,5 +45,10 @@ export class ViewBloodStorageComponent implements OnInit {
     doc.save('Available_Blood_Storage.pdf')
 
   }
+
+  
+toggleSidebar(){ 
+  toggleSidebar();
+}
 
 }

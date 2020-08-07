@@ -5,6 +5,9 @@ import { Router } from "@angular/router";
 import { Donee } from '../../shared/donee.model';
 import { DoneeService } from '../../shared/donee.service'
 
+
+declare const toggleSidebar : any;
+
 @Component({
   selector: 'app-manage-registered-donee',
   templateUrl: './manage-registered-donee.component.html',
@@ -35,4 +38,9 @@ export class ManageRegisteredDoneeComponent implements OnInit {
       });
     }
   }
+
+  toggleSidebar(){ 
+    toggleSidebar();
+}
+
 }

@@ -36,5 +36,20 @@ export class HospitalBloodRequestService {
     hospital_cancel_order(_id) {
       return this.http.get(environment.apiBaseUrl + `/hospital-order-blood/${_id}`);
     }
+
+    //to get purticular hspital orders
+    getHospitalBloodRequests() {
+      return this.http.get(environment.apiBaseUrl + '/manage-hopital-blood-orders');
+    }
+
+    //to get purticular pending hspital orders
+    getPendingHospitalBloodRequests() {
+      return this.http.get(environment.apiBaseUrl + '/hospital-blood-request-table');
+    }
+    
+    //hospital cancel orders 
+    onDelete(_id) {
+      return this.http.get(environment.apiBaseUrl + `/manage-hopital-blood-orders/${_id}`);
+    }
     
 }

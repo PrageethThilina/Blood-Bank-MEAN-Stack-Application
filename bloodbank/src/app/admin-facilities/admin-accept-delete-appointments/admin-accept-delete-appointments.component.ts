@@ -6,6 +6,10 @@ import { Router } from "@angular/router";
 import { Appointment } from '../../shared/appointment.model';
 import { AppointmentService } from '../../shared/appointment.service'
 
+declare const toggleSidebar : any;
+declare const changeStatus : any;
+
+
 @Component({
   selector: 'app-admin-accept-delete-appointments',
   templateUrl: './admin-accept-delete-appointments.component.html',
@@ -14,22 +18,26 @@ import { AppointmentService } from '../../shared/appointment.service'
 export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
 
   showSucessMessage: boolean;
+  acceptMessage: boolean;
 
   constructor(public appointmentService: AppointmentService, private router : Router) { }
 
   ngOnInit(): void {
     this.getAppointments();
   }
+  
+  onSubmit(form: NgForm) {
+    this.appointmentService.onAccept(form.value).subscribe((res) => {
+    this.acceptMessage = true;
+    setTimeout(() => this.acceptMessage = false, 3000);
+    this.getAppointments();
+  });
+}
 
   getAppointments() {
     this.appointmentService.getAppointments().subscribe((res) => {
       this.appointmentService.appointments = res as Appointment[];
     });
-  }
-  
-  onAccept(appointment: Appointment) {
-    this.appointmentService.selectedAppointment = appointment;
-    setTimeout(() => this.router.navigateByUrl('/update-blood-storage'));
   }
 
   onDelete(_id) {
@@ -40,6 +48,20 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
         this.getAppointments();
       });
     }
+  }
+
+  onEdit(appointment: Appointment) {
+    this.appointmentService.selectedAppointment = appointment;
+    setTimeout(() => this.router.navigateByUrl('/admin-accept-delete-appointments'));
+    changeStatus();
+  }
+
+  changeStatus(){
+    changeStatus();
+  }
+
+  toggleSidebar(){ 
+    toggleSidebar();
   }
 
 }

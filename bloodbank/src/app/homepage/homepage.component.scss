@@ -62,7 +62,10 @@ footer {
     margin-top: 20px;
 }
 .c1 img{
+    width: 320px;
+    height:265px; 
     float: left;
+    padding-right: 20px;
 }
 .c2{
     margin-top: 20px;
@@ -139,3 +142,15 @@ h3{
 .view-blood-campaigns{
     overflow: hidden;
 }
+.img-post{
+    width: 150px;
+    height: 150px;
+  }
+  .blood-camp-head{
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(31, 116, 31);
+  }
+  th{
+    background: rgb(43, 124, 43);
+  }

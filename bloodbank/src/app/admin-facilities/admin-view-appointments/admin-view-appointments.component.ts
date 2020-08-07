@@ -7,6 +7,8 @@ import autoTable from 'jspdf-autotable'
 import { Appointment } from '../../shared/appointment.model';
 import { AppointmentService } from '../../shared/appointment.service'
 
+declare const toggleSidebar : any;
+
 @Component({
   selector: 'app-admin-view-appointments',
   templateUrl: './admin-view-appointments.component.html',
@@ -40,5 +42,10 @@ export class AdminViewAppointmentsComponent implements OnInit {
       doc.save('Available_Blood_Storage.pdf')
 
   }
+
+  
+toggleSidebar(){ 
+  toggleSidebar();
+}
 
 }

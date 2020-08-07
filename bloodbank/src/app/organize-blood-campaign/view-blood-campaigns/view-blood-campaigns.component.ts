@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BloodCampaignsService } from '../../shared/blood-campaigns.service';
 import { BloodCampaigns } from '../../shared/blood-campaigns.model';
 import { Router } from "@angular/router";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -12,20 +14,28 @@ import { Router } from "@angular/router";
 })
 export class ViewBloodCampaignsComponent implements OnInit {
 
-  bloodcampaigns: BloodCampaigns = { _id: '', imageUrl: '', province: '', district: '',address: '', organiser: '',date: '', time: '',contact: '', email: '', created: null };
-  isLoadingResults = true;
+  posts: BloodCampaigns[] = [];
+  isLoading = false;
+  private postsSub: Subscription;
 
-  constructor(  private route: ActivatedRoute,  public api: BloodCampaignsService ,private router : Router) { }
+  constructor(public postsService: BloodCampaignsService) {}
 
-  ngOnInit(): void {
-    this.getPosts();
+  ngOnInit() {
+    this.isLoading = true;
+    this.postsService.getPosts();
+    this.postsSub = this.postsService.getPostUpdateListener()
+      .subscribe((posts: BloodCampaigns[]) => {
+        this.isLoading = false;
+        this.posts = posts;
+      });
   }
 
-  getPosts(){
-    this.api.getPosts().subscribe((res) => {
-      this.api.bloodcampaigns = res as BloodCampaigns[];
+  onDelete(postId: string) {
+    this.postsService.deletePost(postId);
+  }
 
-      });
+  ngOnDestroy() {
+    this.postsSub.unsubscribe();
   }
 
 }

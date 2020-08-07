@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg fixed-bottom" style="background: transparent;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+   
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav ml-auto">
+            <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-robot"></i>
+                </button>
+
+        </ul>
+    </div>
+</nav>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                   <div class="col">
+                       <img src="assets/images/logo.png" class="img img-fluid text-center" alt="">
+                       <h5 class="text-center header">National Blood Bank Sri Lanka</h5>          
+                        <div #scrollMe class="msg-scroll">
+                            <ng-container *ngFor="let message of messages | async">
+                            <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot', 'to':   message.sentBy === 'user' }">
+                                {{ message.content }}
+                            </div>
+                            </ng-container>
+                        </div>
+                        <div class="input-btns form-group">
+                            <label for="nameField" class="nameField">Your Message</label>
+                            <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" class="form-control" type="text">
+                            <button class="btn btn-success float-right" (click)="sendMessage()">Send</button>
+                        </div>        
+                   </div>
+                </div>
+            </div>            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+

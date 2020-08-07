@@ -260,5 +260,14 @@ function analyseData_Clear_Values()
 
 }
 
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle('active');
+    document.getElementById("toggle_container_one").classList.toggle('active');
+}
+
+function changeStatus(){
+  document.getElementById("status").value = "Accepted";
+}
+
 
 

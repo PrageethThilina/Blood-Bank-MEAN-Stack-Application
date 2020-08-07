@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 
 import { BloodInventoryService } from '../../shared/blood-inventory.service'
 
+declare const toggleSidebar : any;
+
 @Component({
   selector: 'app-add-blood-storage',
   templateUrl: './add-blood-storage.component.html',
@@ -53,5 +55,9 @@ export class AddBloodStorageComponent implements OnInit {
     form.resetForm();
     this.serverErrorMessages = '';
   }
+
+  toggleSidebar(){ 
+    toggleSidebar();
+}
 
 }

@@ -18,13 +18,19 @@ appointmentrouter.get('/appointments', ctrlappointment.view_donors_appointments)
 //appointmentrouter.get('/appointments/:donor_id', ctrlappointment.view_donors_appointments);
 
 //bloodbank delete appointmnet
-//appointmentrouter.get('/admin-accept-delete-appointments/:id', ctrlappointment.delete_appointment);
+appointmentrouter.get('/admin-accept-delete-appointments/:id', ctrlappointment.delete_appointment);
 
 //Hospital delete appointments
 appointmentrouter.get('/hospital-manage-appointments/:id', ctrlappointment.delete_appointment);
 
 //donor delete appoitntment
 appointmentrouter.get('/appointments/:id', ctrlappointment.delete_appointment);
+
+//admin accept appointment
+appointmentrouter.post('/admin-accept-delete-appointments/:id', ctrlappointment.accept_appointment);
+
+//get the appointment count of blood bank
+appointmentrouter.get('/pending-appointments', ctrlappointment.appointment_count);
 
 module.exports = appointmentrouter;
 

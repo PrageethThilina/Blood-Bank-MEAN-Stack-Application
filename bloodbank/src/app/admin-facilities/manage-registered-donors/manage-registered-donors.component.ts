@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { Donor } from '../../shared/donor.model';
 import { DonorService } from '../../shared/donor.service'
 
+declare const toggleSidebar : any;
+
 @Component({
   selector: 'app-manage-registered-donors',
   templateUrl: './manage-registered-donors.component.html',
@@ -43,5 +45,10 @@ export class ManageRegisteredDonorsComponent implements OnInit {
       });
     }
   }
+
+  
+toggleSidebar(){ 
+  toggleSidebar();
+}
 
 }

@@ -21,7 +21,7 @@ module.exports.view_appointments = (req, res, next) => {
 
 //hospital view appoitnment
 module.exports.view_hospital_appointments = (req, res, next) => {
-    Appointment.find({"location": "Karapitiya Hospital"},(err, docs) => {
+    Appointment.find({"location": "Karapitiya Hospital","status":"Pending"},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }
@@ -134,4 +134,36 @@ module.exports.delete_appointment = (req, res, next) => {
     });
 }
 
+// Admin accept appointment
+module.exports.accept_appointment = (req, res, next) => {
+    Appointment.findById(req.params.id, function (err, appointment) {
+    if (!appointment)
+    return next(new Error('Unable To Find Appointment With This Id'));
+    else {
+
+    appointment.status = req.body.status;
+   
+    appointment.save().then(bloodinv => {
+    res.json('Appointment Accepted Successfully');
+    })
+    .catch(err => {
+    res.status(400).send("Error");
+    });
+    }
+    });
+}
+
+// get the pending appointment count in admin dashboard
+module.exports.appointment_count = (req, res, next) => {
+    Appointment.countDocuments({"location": "National Blood Center - Narahenpita","status":"Pending"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+
+            //console.log("Number of Appointments :" , count)
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
 

@@ -1,136 +1,120 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 mx-auto">
-      <div class="example-container mat-elevation-z8">
-        <h2 class="text-center">Register Blood Campaign</h2>
-        <div class="example-loading-shade" *ngIf="isLoadingResults">
-          <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-        </div>
-        <mat-card class="example-card">
-          <form [formGroup]="bloodcampform" (ngSubmit)="onFormSubmit()">
-            <mat-form-field class="example-full-width">
-              <mat-label>Province</mat-label>
-              <select matNativeControl placeholder="Province" formControlName="province" [errorStateMatcher]="matcher">
-                <option selected>Select an option</option>
-                <option value="Southern Province">Southern Province</option>
-                <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
-                <option value="Western Province">Western Province</option>
-                <option value="Uva Province">Uva Province</option>
-                <option value="Eastern Province">Eastern Province</option>
-                <option value="Central Province">Central Province</option>
-                <option value="North-Western Province">North-Western Province</option>
-                <option value="North-Central Province">North-Central Province</option>
-                <option value="Nothern Province">Nothern Province</option>
-              </select>
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('province').valid && bloodcampform.get('province').touched">Please
-                  select the province</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>District</mat-label>
-              <select matNativeControl placeholder="District" formControlName="district" [errorStateMatcher]="matcher">
-                <option selected>Select an option</option>
-                <option value="Ampara">Ampara</option>
-                <option value="Anuradhapura">Anuradhapura</option>
-                <option value="Badulla">Badulla</option>
-                <option value="Baticaloa">Baticaloa</option>
-                <option value="Colombo">Colombo</option>
-                <option value="Galle">Galle</option>
-                <option value="Gampaha">Gampaha</option>
-                <option value="Hambanthota">Hambanthota</option>
-                <option value="Jaffna">Jaffna</option>
-                <option value="Kalutara">Kalutara</option>
-                <option value="Kandy">Kandy</option>
-                <option value="Kegalle">Kegalle</option>
-                <option value="Kilinochchi">Kilinochchi</option>
-                <option value="Kurunegala">Kurunegala</option>
-                <option value="Mannar">Mannar</option>
-                <option value="Matale">Matale</option>
-                <option value="Matara">Matara</option>
-                <option value="Monaragala">Monaragala</option>
-                <option value="Mullaitivu">Mullaitivu</option>
-                <option value="Nuwara Eliya">Nuwara Eliya</option>
-                <option value="Polonnaruwa">Polonnaruwa</option>
-                <option value="Puttalam">Puttalam</option>
-                <option value="Rathnapura">Rathnapura</option>
-                <option value="Trincomalee">Trincomalee</option>
-                <option value="Vavuniya">Vavuniya</option>
-              </select>
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('district').valid && bloodcampform.get('district').touched">Please
-                  select the District</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Address" formControlName="address" [errorStateMatcher]="matcher">
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('address').valid && bloodcampform.get('address').touched">Please enter
-                  Address</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Organiser</mat-label>
-              <input matInput placeholder="Organiser" formControlName="organiser" [errorStateMatcher]="matcher">
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('organiser').valid && bloodcampform.get('organiser').touched">Please
-                  enter Organiser</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Date</mat-label>
-              <input type="date" matInput placeholder="Date" formControlName="date" [errorStateMatcher]="matcher">
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('date').valid && bloodcampform.get('date').touched">Please
-                  enter Date</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Time</mat-label>
-              <input type="time" matInput placeholder="Time" formControlName="time" [errorStateMatcher]="matcher">
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('time').valid && bloodcampform.get('time').touched">Please
-                  enter the Time</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Organiser Contact Number</mat-label>
-              <input type="tel" matInput placeholder="000 0000000" formControlName="contact" [errorStateMatcher]="matcher">
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('contact').valid && bloodcampform.get('contact').touched">Please
-                  enter Contact number</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Organiser Email</mat-label>
-              <input type="email" matInput placeholder="abcd@example.com" formControlName="email" [errorStateMatcher]="matcher">
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('email').valid && bloodcampform.get('email').touched">Please
-                  enter Email</span>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Upload Image</mat-label>
-              <ngx-mat-file-input formControlName="imageFile" placeholder="Select Image"
-                valuePlaceholder="No image file selected" [errorStateMatcher]="matcher"></ngx-mat-file-input>
-              <mat-icon matSuffix>folder</mat-icon>
-              <mat-error>
-                <span *ngIf="!bloodcampform.get('imageFile').valid">Please select image file</span>
-              </mat-error>
-            </mat-form-field>
-            <div class="button-row text-center">
-              <button type="submit" mat-flat-button color="primary">Register</button>
-              <button type="clear" mat-flat-button color="accent">Clear</button>
-              <button type="clear" mat-flat-button color="warn">Cancel</button>
+  <div class="row mat-elevation-z8 mat-row">
+    <div class="col mx-auto">
+            
+            <!-- Success message -->
+            <div class="success text-center" *ngIf="showSucessMessage">
+              Saved successfully
             </div>
-          </form>
-        </mat-card>
-      </div>
+      
+            <!-- Error message -->
+            <div class="alert" *ngIf="serverErrorMessages">
+              {{serverErrorMessages}}
+            </div>
+      
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+          <h4 class="text-center bld-camp-header">Register Blood Campaign</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="input-fieled">
+                <mat-label>Province</mat-label>
+                <select matNativeControl placeholder="Province" formControlName="province" required>
+                  <option value="Southern Province">Southern Province</option>
+                  <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
+                  <option value="Western Province">Western Province</option>
+                  <option value="Uva Province">Uva Province</option>
+                  <option value="Eastern Province">Eastern Province</option>
+                  <option value="Central Province">Central Province</option>
+                  <option value="North-Western Province">North-Western Province</option>
+                  <option value="North-Central Province">North-Central Province</option>
+                  <option value="Nothern Province">Nothern Province</option>
+                </select>
+                <mat-error *ngIf="form.get('province').invalid">Please enter District.</mat-error>
+              </mat-form-field>
+              <mat-form-field class="input-fieled">
+                <mat-label>District</mat-label>
+                <select matNativeControl placeholder="District" formControlName="district" required>
+                  <option selected>Select an option</option>
+                  <option value="Ampara">Ampara</option>
+                  <option value="Anuradhapura">Anuradhapura</option>
+                  <option value="Badulla">Badulla</option>
+                  <option value="Baticaloa">Baticaloa</option>
+                  <option value="Colombo">Colombo</option>
+                  <option value="Galle">Galle</option>
+                  <option value="Gampaha">Gampaha</option>
+                  <option value="Hambanthota">Hambanthota</option>
+                  <option value="Jaffna">Jaffna</option>
+                  <option value="Kalutara">Kalutara</option>
+                  <option value="Kandy">Kandy</option>
+                  <option value="Kegalle">Kegalle</option>
+                  <option value="Kilinochchi">Kilinochchi</option>
+                  <option value="Kurunegala">Kurunegala</option>
+                  <option value="Mannar">Mannar</option>
+                  <option value="Matale">Matale</option>
+                  <option value="Matara">Matara</option>
+                  <option value="Monaragala">Monaragala</option>
+                  <option value="Mullaitivu">Mullaitivu</option>
+                  <option value="Nuwara Eliya">Nuwara Eliya</option>
+                  <option value="Polonnaruwa">Polonnaruwa</option>
+                  <option value="Puttalam">Puttalam</option>
+                  <option value="Rathnapura">Rathnapura</option>
+                  <option value="Trincomalee">Trincomalee</option>
+                  <option value="Vavuniya">Vavuniya</option>
+                </select>
+                <mat-error *ngIf="form.get('district').invalid">Please enter District.</mat-error>
+              </mat-form-field>
+              <mat-form-field class="input-fieled">
+                <mat-label>Address</mat-label>
+                <textarea matInput rows="2" formControlName="address" placeholder="Address" required></textarea>
+                <mat-error *ngIf="form.get('address').invalid">Please enter Address.</mat-error>
+              </mat-form-field>
+              <mat-form-field class="input-fieled">
+                <input matInput type="text" formControlName="organiser" placeholder="Organiser" required>
+                <mat-error *ngIf="form.get('organiser').invalid">Please enter a Organiser.</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="input-fieled">
+                <mat-label>Date</mat-label>
+                <input type="date" matInput placeholder="Date" formControlName="date" required>
+                <mat-error *ngIf="form.get('date').invalid">Please enter Date.</mat-error>
+              </mat-form-field>
+              <mat-form-field class="input-fieled">
+                <mat-label>Time</mat-label>
+                <input type="time" matInput placeholder="Time" formControlName="time" required>
+                <mat-error *ngIf="form.get('time').invalid">Please enter Time.</mat-error>
+              </mat-form-field>
+              <mat-form-field class="input-fieled">
+                <mat-label>Organiser Contact Number</mat-label>
+                <input type="tel" matInput placeholder="000 0000000" formControlName="contact" required>
+                <mat-error *ngIf="form.get('contact').invalid">Please enter Organiser Contact.</mat-error>
+              </mat-form-field>
+              <mat-form-field class="input-fieled">
+                <mat-label>Organiser Email</mat-label>
+                <input type="email" matInput placeholder="abcd@example.com" formControlName="email" required>
+                <mat-error *ngIf="form.get('email').invalid">Please enter Organiser Email.</mat-error>
+              </mat-form-field>
+              <div>
+                <button mat-stroked-button type="button" (click)="filePicker.click()" style="margin-left: 20px;">Pick Image</button>
+                <input type="file" #filePicker (change)="onImagePicked($event)" required>
+              </div>
+              <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+                <img [src]="imagePreview">
+              </div>
+            </div>
+          </div>
+          <div class="text-center" style="margin-top: 20px;">
+            <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Register</button>
+            <button type="clear" mat-flat-button color="accent" style="margin-left: 10px;">Clear</button>
+            <button type="clear" mat-flat-button color="warn" style="margin-left: 10px;">Cancel</button>
+          </div>
+      </form>
     </div>
   </div>
 </div>
+
 
 <app-footer></app-footer>

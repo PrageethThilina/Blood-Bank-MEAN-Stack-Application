@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<app-chat-bot></app-chat-bot>
 
 <!-- banner -->
 <div class="container-fluid" id="bannernbts">
@@ -237,7 +238,44 @@
 
 <!-- Upcoming Blood Campaigns -->
 <div class="view-blood-campaigns" data-aos="fade-right">
-   <app-view-blood-campaigns></app-view-blood-campaigns>
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col">
+        <h4 class="text-center blood-camp-head">Upcoming Blood Campaigns</h4>
+        <table *ngIf="postsService.posts" datatable="ng" class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="table-success">District</th>
+              <th class="table-success">Province</th>
+              <th class="table-success">Address</th>
+              <th class="table-success">Organiser</th>
+              <th class="table-success">Date</th>
+              <th class="table-success">Time</th>
+              <th class="table-success">Contact Number</th>
+              <th class="table-success">Email</th>
+              <th class="table-success">Image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pst of postsService.posts">
+              <td>{{pst.province}}</td>
+              <td>{{pst.district}}</td>
+              <td>{{pst.address}}</td>
+              <td>{{pst.organiser}}</td>
+              <td>{{pst.date}}</td>
+              <td>{{pst.time}}</td>
+              <td>{{pst.contact}}</td>
+              <td>{{pst.email}}</td>
+              <td>
+                <img class="img-post" [src]="pst.imagePath">
+              </td>
+  
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Upcoming Blood Campaigns -->
 

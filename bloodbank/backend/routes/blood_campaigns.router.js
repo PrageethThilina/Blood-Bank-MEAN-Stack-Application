@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var multer  = require('multer');
+var ObjectId = require('mongoose').Types.ObjectId;
+var nodemailer = require('nodemailer');
+const cors = require("cors");
+const bodyParser = require("body-parser");
 var Blood_Campaigns = require('../models/blood_campaigns.model.js');
 
 
@@ -29,7 +33,7 @@ const storage = multer.diskStorage({
   }
 });
 
-router.post( "/register-blood-campaigns",
+router.post( "/register-blood-campaign",
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -45,18 +49,71 @@ router.post( "/register-blood-campaigns",
       imagePath: url + "/images/" + req.file.filename
     });
     blood_campaigns.save().then(createdPost => {
+
+      console.log("request came");
+      let blood_campaigns = req.body;
+      sendMail(blood_campaigns, info => {
+        console.log(`The mail has been send and the id is ${info.messageId}`);
+        //res.send(info);
+      });
+      
       res.status(201).json({
         message: "Post added successfully",
+        
         blood_campaigns: {
           ...createdPost,
-          id: createdPost._id
+          id: createdPost._id,
+          
         }
+
       });
     });
   }
 );
 
-router.put("/:id",multer({ storage: storage }).single("image"),
+async function sendMail(blood_campaigns, callback) {
+  // reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: "prageeththilina8@gmail.com",
+      pass: "prageeth199541312345"
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+  });
+
+  let mailOptions = {
+    from: '"National Blood Transfussion service"<example.gmail.com>', // sender address
+    to: blood_campaigns.email, // list of receivers
+    subject: "We Recived Request", // Subject line
+    html: `
+    <head>
+    </head>
+    <body>
+    <h1>Dear : ${blood_campaigns.organiser}</h1><br>
+    <h3>Thanks for Organising Blood Donation Campaign : </h3><br>
+    <h5>Province : ${blood_campaigns.province}</h5><br>
+    <h5>District : ${blood_campaigns.district}</h5><br>
+    <h5>Address : ${blood_campaigns.address}</h5><br>
+    <h5>Date : ${blood_campaigns.date}</h5><br>
+    <h5>Time : ${blood_campaigns.time}</h5><br>
+    <h2>Your Request has been verified</h2><br>
+    <h4>If there is any issue free to contact us or email us (prageeththilina8@gmail.com)</h4>
+    </body>
+    `
+  };
+
+  // send mail with defined transport object
+  let info = await transporter.sendMail(mailOptions);
+
+  callback(info);
+}
+
+router.put("/register-blood-campaign/:id",multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
     if (req.file) {
@@ -72,7 +129,7 @@ router.put("/:id",multer({ storage: storage }).single("image"),
       time: req.body.time,
       contact: req.body.contact,
       email: req.body.email,
-      imagePath: imagePath
+      imagePath: imagePath,
     });
     console.log(blood_campaigns);
     Blood_Campaigns.updateOne({ _id: req.params.id }, blood_campaigns).then(result => {
@@ -82,6 +139,15 @@ router.put("/:id",multer({ storage: storage }).single("image"),
 );
 
 router.get("/view-blood-campaigns", (req, res, next) => {
+  Blood_Campaigns.find().then(documents => {
+    res.status(200).json({
+      message: "Posts fetched successfully!",
+      posts: documents
+    });
+  });
+});
+
+router.get("/homepage", (req, res, next) => {
   Blood_Campaigns.find().then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",

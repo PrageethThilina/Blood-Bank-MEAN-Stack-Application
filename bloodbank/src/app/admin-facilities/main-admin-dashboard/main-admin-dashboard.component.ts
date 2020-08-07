@@ -3,6 +3,16 @@ import {Chart} from 'node_modules/chart.js';
 import { AdminService } from '../../shared/admin.service';
 import { Router } from "@angular/router";
 
+import { NgForm } from '@angular/forms';
+
+import { HospitalBloodRequest } from '../../shared/hospital-blood-request.model';
+import { HospitalBloodRequestService } from '../../shared/hospital-blood-request.service'
+
+import { Appointment } from '../../shared/appointment.model';
+import { AppointmentService } from '../../shared/appointment.service'
+
+declare const toggleSidebar : any;
+
 @Component({
   selector: 'app-main-admin-dashboard',
   templateUrl: './main-admin-dashboard.component.html',
@@ -10,55 +20,15 @@ import { Router } from "@angular/router";
 })
 export class MainAdminDashboardComponent implements OnInit {
 
-constructor(private adminService: AdminService, private router: Router) { }
+constructor(private adminService: AdminService,public hospitalbloodrequestService: HospitalBloodRequestService,public appointmentService: AppointmentService, private router: Router) { }
 
 onLogout(){
     this.adminService.deleteToken();
     this.router.navigate(['/admin-login']);
-  }
+
+}
 
   ngOnInit() {
-
-    var myChart = new Chart("myChart", {
-        type: 'bar',
-        data: {
-            labels: ['A+', 'B+', 'AB+', 'O+', 'A-', 'B-', 'AB-', 'O-'],
-            datasets: [{
-                label: 'Available Storage',
-                data: [12, 19, 3, 5, 2, 3, 5, 2],
-                backgroundColor: [
-                    'red',
-                    'Green',
-                    'Yellow',
-                    'Blue',
-                    'Purple',
-                    'Orange',
-                    'Cyan',
-                    'Grey'
-                ],
-                borderColor: [
-                    'black',
-                    'black',
-                    'black', 
-                    'black', 
-                    'black', 
-                    'black', 
-                    'black', 
-                    'black',      
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
 
     var myChart = new Chart("myChart2", {
         type: 'bar',
@@ -158,6 +128,11 @@ onLogout(){
         }
     });
 
+  }
+
+
+  toggleSidebar(){ 
+    toggleSidebar();
   }
 
 }

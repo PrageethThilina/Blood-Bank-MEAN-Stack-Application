@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Appointment } from './appointment.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class AppointmentService {
     donor_nic: '',
     email: '',
     contact: '',
+    status: '',
 
   };
 
@@ -56,8 +58,9 @@ export class AppointmentService {
   //   return this.http.get( environment.apiBaseUrl + `/appointments/${donor_id}`);
   // }
 
-  onAccept(_id){
-
+  //admin accept appointment
+  onAccept(appointment: Appointment) {
+    return this.http.post(environment.apiBaseUrl + `/admin-accept-delete-appointments/${appointment._id}`, appointment);
   }
 
   onCancel(apnts,_id){
@@ -74,6 +77,10 @@ export class AppointmentService {
     return this.http.get(environment.apiBaseUrl + `/appointments/${_id}`);
   }
 
+
+  getAppointmentCount():Observable<any> {
+    return this.http.get<{count:number}>(environment.apiBaseUrl + '/pending-appointments');
+  }
 
 
 }

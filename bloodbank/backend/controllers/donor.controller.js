@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
 var ObjectId = require('mongoose').Types.ObjectId;
+var nodemailer = require('nodemailer');
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const Donor = mongoose.model('Donor');
 
@@ -25,8 +28,16 @@ module.exports.donor_register = (req, res, next) => {
     donor.health = req.body.health,
     donor.photo = req.body.photo,
     donor.save((err, doc) => {
-        if (!err)
+        if (!err){
             res.send(doc);
+
+            console.log("request came");
+            let donor = req.body;
+            sendMail(donor, info => {
+              console.log(`The mail has been send and the id is ${info.messageId}`);
+              //res.send(info);
+            });
+        }
         else {
             if (err.code == 11000)
                 res.status(422).send(['Duplicate email adrress found.']);
@@ -35,6 +46,45 @@ module.exports.donor_register = (req, res, next) => {
         }
 
     });
+}
+
+async function sendMail(donor, callback) {
+    // reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: "prageeththilina8@gmail.com",
+        pass: "prageeth199541312345"
+      },
+      tls: {
+          rejectUnauthorized: false
+      }
+    });
+
+    let mailOptions = {
+      from: '"National Blood Transfussion service"<example.gmail.com>', // sender address
+      to: donor.email, // list of receivers
+      subject: "Successfully registered as Donor", // Subject line
+      html: `
+      <head>
+      </head>
+      <body>
+      <h1>Dear : ${donor.full_name}</h1><br>
+      <h3>Thank you for register as donor </h3><br>
+      <h5>Contact : ${donor.contact}</h5><br>
+      <h5>Email : ${donor.email}</h5><br>
+      <h2>Be a active Donor</h2><br>
+      <h4>If there is any issue free to contact us or email us (prageeththilina8@gmail.com)</h4>
+      </body>
+      `
+    };
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail(mailOptions);
+
+    callback(info);
 }
 
 module.exports.view_donors = (req, res, next) => {

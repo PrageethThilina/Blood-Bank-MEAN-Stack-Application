@@ -1,12 +1,10 @@
-.container{
-    margin: 70px 15px 0 315px;
+.container-fluid{
+    margin-top: 70px;
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
     transition: 0.5s;
-    height: 1100px;
-    overflow: auto;
-    width: 1030px;
+    height: 500px;
 }
 .col-md-10{
 	background: rgb(0, 0, 0);
@@ -103,4 +101,8 @@ label.validation-message{
 	background-color:#249424; /* Green */
 	color: white;
 	margin-bottom: 15px;
+  }
+  img{
+	width: 400px;
+	height: 400px;
   }

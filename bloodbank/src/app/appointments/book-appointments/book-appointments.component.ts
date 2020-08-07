@@ -54,6 +54,7 @@ export class BookAppointmentsComponent implements OnInit {
       email: '',
       donor_nic: '',
       contact: '',
+      status: '',
 
     };
     form.resetForm();

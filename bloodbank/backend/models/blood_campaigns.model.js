@@ -41,6 +41,10 @@ var Blood_Campaigns_Schema = new mongoose.Schema({
     type: Date, 
     default: Date.now 
   },
+  status: { 
+    type: String, 
+    default: 'Pending',
+  },
 });
 
 module.exports = mongoose.model('Blood_Campaigns', Blood_Campaigns_Schema);

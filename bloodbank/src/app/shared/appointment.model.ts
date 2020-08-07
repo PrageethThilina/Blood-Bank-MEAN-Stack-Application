@@ -8,4 +8,5 @@ export class Appointment {
     donor_nic : string;
     contact : string;
     email : string;
+    status : string;
 }

@@ -18,6 +18,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 //components
 import { AppComponent } from './app.component';
@@ -94,6 +97,26 @@ import { ViewBloodRequestComponent } from './donee-facilities/view-blood-request
 import { UpdateBloodRequestComponent } from './donee-facilities/update-blood-request/update-blood-request.component';
 import { UpdateBloodStorageComponent } from './admin-facilities/update-blood-storage/update-blood-storage.component';
 import { HospitalManageAppointmentsComponent } from './hospital-facilities/hospital-manage-appointments/hospital-manage-appointments.component';
+import { APositiveComponent } from './admin-facilities/admin-dashboard-components/a-positive/a-positive.component';
+import { ANegativeComponent } from './admin-facilities/admin-dashboard-components/a-negative/a-negative.component';
+import { BPositiveComponent } from './admin-facilities/admin-dashboard-components/b-positive/b-positive.component';
+import { BNegativeComponent } from './admin-facilities/admin-dashboard-components/b-negative/b-negative.component';
+import { AbPositiveComponent } from './admin-facilities/admin-dashboard-components/ab-positive/ab-positive.component';
+import { AbNegativeComponent } from './admin-facilities/admin-dashboard-components/ab-negative/ab-negative.component';
+import { OPositiveComponent } from './admin-facilities/admin-dashboard-components/o-positive/o-positive.component';
+import { ONegativeComponent } from './admin-facilities/admin-dashboard-components/o-negative/o-negative.component';
+import { DonorsCountComponent } from './admin-facilities/admin-dashboard-components/donors-count/donors-count.component';
+import { DoneeRequestsCountComponent } from './admin-facilities/admin-dashboard-components/donee-requests-count/donee-requests-count.component';
+import { PendingBloodCampaignsComponent } from './admin-facilities/admin-dashboard-components/pending-blood-campaigns/pending-blood-campaigns.component';
+import { AcceptedBloodCampaignsComponent } from './admin-facilities/admin-dashboard-components/accepted-blood-campaigns/accepted-blood-campaigns.component';
+import { PendingAppointmentsComponent } from './admin-facilities/admin-dashboard-components/pending-appointments/pending-appointments.component';
+import { AcceptedAppointmentsComponent } from './admin-facilities/admin-dashboard-components/accepted-appointments/accepted-appointments.component';
+import { FinishedAppointmentsComponent } from './admin-facilities/admin-dashboard-components/finished-appointments/finished-appointments.component';
+import { HospitalBloodRequestCountComponent } from './admin-facilities/admin-dashboard-components/hospital-blood-request-count/hospital-blood-request-count.component';
+import { AvailableBloodStorageChartComponent } from './admin-facilities/admin-dashboard-components/available-blood-storage-chart/available-blood-storage-chart.component';
+import { HospitalBloodRequestTableComponent } from './admin-facilities/admin-dashboard-components/hospital-blood-request-table/hospital-blood-request-table.component';
+import { ReceivedBloodStorageChartComponent } from './admin-facilities/admin-dashboard-components/received-blood-storage-chart/received-blood-storage-chart.component';
+import { IssuedBloodStorageChartComponent } from './admin-facilities/admin-dashboard-components/issued-blood-storage-chart/issued-blood-storage-chart.component';
 
 import { HospitalService } from './shared/hospital.service';
 import { AdminService } from './shared/admin.service';
@@ -105,6 +128,8 @@ import { HospitalBloodRequestService } from './shared/hospital-blood-request.ser
 import { DoneeBloodRequestService } from './shared/donee-blood-request.service';
 import { BloodCampaignsService } from './shared/blood-campaigns.service';
 
+//other modules
+import { ChatModule } from './chat-bot/chat/chat.module';
 
 //other
 import { HospitalGuard } from './auth/hospital.guard';
@@ -189,7 +214,27 @@ const routes: Routes = [
   { path: 'update-blood-request', component:   UpdateBloodRequestComponent,canActivate:[DoneeGuard]},
   { path: 'update-blood-storage', component:   UpdateBloodStorageComponent,canActivate:[AdminGuard]},
   { path: 'hospital-manage-appointments', component:   HospitalManageAppointmentsComponent,canActivate:[HospitalGuard]},
-
+  { path: 'a-positive', component: APositiveComponent},
+  { path: 'a-negative', component: ANegativeComponent},
+  { path: 'b-positive', component: BPositiveComponent},
+  { path: 'b-negative', component: BNegativeComponent},
+  { path: 'ab-positive', component: AbPositiveComponent},
+  { path: 'ab-negative', component: AbNegativeComponent},
+  { path: 'o-positive', component: OPositiveComponent},
+  { path: 'o-negative', component: ONegativeComponent},
+  { path: 'donors-count', component: DonorsCountComponent},
+  { path: 'donee-requests-count', component: DoneeRequestsCountComponent},
+  { path: 'pending-blood-campaigns', component: PendingBloodCampaignsComponent},
+  { path: 'accepted-blood-campaigns', component: AcceptedBloodCampaignsComponent},
+  { path: 'pending-appointments', component: PendingAppointmentsComponent},
+  { path: 'accepted-appointments', component: AcceptedAppointmentsComponent},
+  { path: 'finished-appointments', component: FinishedAppointmentsComponent},
+  { path: 'hospital-blood-request-count', component: HospitalBloodRequestCountComponent},
+  { path: 'available-blood-storage-chart', component: AvailableBloodStorageChartComponent},
+  { path: 'hospital-blood-request-table', component: HospitalBloodRequestTableComponent},
+  { path: 'received-blood-storage-chart', component: ReceivedBloodStorageChartComponent},
+  { path: 'issued-blood-storage-chart', component: IssuedBloodStorageChartComponent},
+ 
 ];
 
 
@@ -271,9 +316,31 @@ const routes: Routes = [
       UpdateBloodStorageComponent,
       HospitalManageAppointmentsComponent,
       HospitalManageAppointmentsComponent,
+      APositiveComponent,
+      ANegativeComponent,
+      BPositiveComponent,
+      BNegativeComponent,
+      AbPositiveComponent,
+      AbNegativeComponent,
+      OPositiveComponent,
+      ONegativeComponent,
+      DonorsCountComponent,
+      DoneeRequestsCountComponent,
+      PendingBloodCampaignsComponent,
+      AcceptedBloodCampaignsComponent,
+      PendingAppointmentsComponent,
+      AcceptedAppointmentsComponent,
+      FinishedAppointmentsComponent,
+      HospitalBloodRequestCountComponent,
+      AvailableBloodStorageChartComponent,
+      HospitalBloodRequestTableComponent,
+      ReceivedBloodStorageChartComponent,
+      IssuedBloodStorageChartComponent,
 
   ],
   imports: [
+    
+    ChatModule, 
     
     BrowserModule,
     FormsModule,
@@ -289,6 +356,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatDatepickerModule,
     MaterialFileInputModule,
+    MatToolbarModule,
+    MatExpansionModule,
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({ apiKey: ''}),
     

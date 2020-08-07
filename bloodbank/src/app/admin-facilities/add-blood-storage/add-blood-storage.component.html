@@ -1,10 +1,82 @@
 <app-admin-header></app-admin-header>
-<app-admin-side-nav></app-admin-side-nav>
 
-<div class="container">
+<!-- sidebar -->
+<div id="sidebar">
+  <div class="toggle-btn" (click)="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+  </div>
+
+  <aside class="sidebar">
+      <div class="user-info" style="background: url(assets/images/user-img-background.jpg)">
+          <div class="logo-section">
+              <div class="image">
+                  <img src="assets/images/user.png" width="48" height="48" alt="User" />
+              </div>
+              <div class="info-container">
+                  <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blood Bank Sri
+                      Lanka</div>
+                  <div class="email">info@nbts.health.gov.lk</div>
+              </div>
+          </div>
+      </div>
+      <div class="menu">
+          <ul class="list">
+              <li class="header"><i class="fa fa-eye online-icon"></i> Online</li>
+          </ul>
+          <ul class="menu-bar">
+              <li><a routerLink="/main-admin-dashboard"><i class="fas fa-book-reader"></i>Dashboard</a></li>
+              <li>
+                  <a><i class="fas fa-book"></i>Blood Storage</a>
+                  <ul class="sub-menu">
+                      <li><a routerLink="/view-blood-storage"><i class="fa fa-eye"></i>View Blood Storage</a></li>
+                      <li><a routerLink="/manage-blood-storage"><i class="fa fa-eye"></i>Manage Blood Storage</a></li>
+                      <li><a routerLink="/add-blood-storage"><i class="fa fa-eye"></i>Add Blood Storage</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a><i class="far fa-calendar-check"></i>Appointments</a>
+                  <ul class="sub-menu">
+                      <li><a routerLink="/admin-view-appointments"><i class="fas fa-eye"></i>View Appointments</a>
+                      </li>
+                      <li><a routerLink="/admin-accept-delete-appointments"><i class="fas fa-eye"></i>Manage
+                              Appointments</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a><i class="fa fa-first-aid"></i>Blood Camps</a>
+                  <ul class="sub-menu">
+                      <li><a routerLink="/view-blood-campaigns"><i class="fa fa-eye"></i>View Blood Camps</a></li>
+                      <li><a routerLink="/register-blood-campaign"><i class="fa fa-eye"></i>Add Blood Camps</a></li>
+                      <li><a routerLink="/manage-blood-campaigns"><i class="fa fa-eye"></i>Manage Blood Camps</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a><i class="fas fa-book"></i>Manage Registered Donors</a>
+                  <ul class="sub-menu">
+                      <li><a routerLink="/manage-registered-donors"><i class="fa fa-eye"></i>Manage & Contact</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a><i class="fas fa-book"></i>Manage Registered Donee</a>
+                  <ul class="sub-menu">
+                      <li><a routerLink="/manage-registered-donee"><i class="fa fa-eye"></i>Manage & Contact</a></li>
+                  </ul>
+              </li>
+              <li><a routerLink="/hospital-register"><i class="fa fa-link"></i>Add a New Hospital</a></li>
+              <li><a routerLink="/manage-hopital-blood-orders"><i class="far fa-calendar-check"></i>Manage Hospital
+                      Blood Orders</a></li>
+          </ul>
+      </div>
+  </aside>
+</div>
+
+
+<div class="container" id="toggle_container_one">
       <form #bloodinventoryForm="ngForm" (ngSubmit)="onSubmit(bloodinventoryForm)">
    	    <div class="row">         
-           <div class="col-md-10 mx-auto">
+           <div class="col-md-8 mx-auto">
             <h2 class="text-center">Add Blood Storage</h2>
 
               <!-- Success message -->
@@ -40,11 +112,11 @@
               </div>
               <div class="input-group">
                 <label class="label control-label">Blood Received Date :</label>
-                <input type="date" name="received_date" #received_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.received_date" class="form-control" required>
+                <input type="date" name="received_date" #received_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.received_date" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
               </div>
               <div class="input-group">
                 <label class="label control-label">Blood Expiry Date :</label>
-                <input type="date" name="expiry_date" #expiry_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.expiry_date" class="form-control" required>
+                <input type="date" name="expiry_date" #expiry_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.expiry_date" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
               </div> 
               <input type="submit" name="storagesubmit" [disabled]="!bloodinventoryForm.valid" class="btn btn-success" value="Submit"  style="margin-left: 18%;">
               <input type="reset" name="storageclear" (click)="resetForm(bloodinventoryForm)" class="btn btn-danger" value="Clear">

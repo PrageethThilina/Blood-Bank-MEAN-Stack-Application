@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { BloodInventory } from '../../shared/blood-inventory.model';
 import { BloodInventoryService } from '../../shared/blood-inventory.service'
 
+declare const toggleSidebar : any;
+
 @Component({
   selector: 'app-manage-blood-storage',
   templateUrl: './manage-blood-storage.component.html',
@@ -40,4 +42,9 @@ export class ManageBloodStorageComponent implements OnInit {
       });
     }
   }
+
+  toggleSidebar(){ 
+    toggleSidebar();
+}
+
 }
