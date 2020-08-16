@@ -7,6 +7,7 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { GoogleChartsModule } from 'angular-google-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Angular materials
@@ -117,6 +118,14 @@ import { AvailableBloodStorageChartComponent } from './admin-facilities/admin-da
 import { HospitalBloodRequestTableComponent } from './admin-facilities/admin-dashboard-components/hospital-blood-request-table/hospital-blood-request-table.component';
 import { ReceivedBloodStorageChartComponent } from './admin-facilities/admin-dashboard-components/received-blood-storage-chart/received-blood-storage-chart.component';
 import { IssuedBloodStorageChartComponent } from './admin-facilities/admin-dashboard-components/issued-blood-storage-chart/issued-blood-storage-chart.component';
+import { APositiveChartComponent } from './admin-facilities/blood-type-charts/a-positive-chart/a-positive-chart.component';
+import { ANegativeChartComponent } from './admin-facilities/blood-type-charts/a-negative-chart/a-negative-chart.component';
+import { BPositiveChartComponent } from './admin-facilities/blood-type-charts/b-positive-chart/b-positive-chart.component';
+import { BNegativeChartComponent } from './admin-facilities/blood-type-charts/b-negative-chart/b-negative-chart.component';
+import { AbPositveChartComponent } from './admin-facilities/blood-type-charts/ab-positve-chart/ab-positve-chart.component';
+import { AbNegativeChartComponent } from './admin-facilities/blood-type-charts/ab-negative-chart/ab-negative-chart.component';
+import { ONegativeChartComponent } from './admin-facilities/blood-type-charts/o-negative-chart/o-negative-chart.component';
+import { OPositiveChartComponent } from './admin-facilities/blood-type-charts/o-positive-chart/o-positive-chart.component';
 
 import { HospitalService } from './shared/hospital.service';
 import { AdminService } from './shared/admin.service';
@@ -234,7 +243,15 @@ const routes: Routes = [
   { path: 'hospital-blood-request-table', component: HospitalBloodRequestTableComponent},
   { path: 'received-blood-storage-chart', component: ReceivedBloodStorageChartComponent},
   { path: 'issued-blood-storage-chart', component: IssuedBloodStorageChartComponent},
- 
+  { path: 'a-positive-chart', component: APositiveChartComponent},
+  { path: 'a-negative-chart', component: ANegativeChartComponent},
+  { path: 'b-positive-chart', component: BPositiveChartComponent},
+  { path: 'b-negative-chart', component: BNegativeChartComponent},
+  { path: 'ab-positve-chart', component: AbPositveChartComponent},
+  { path: 'ab-negative-chart', component: AbNegativeChartComponent},
+  { path: 'o-positive-chart', component: ONegativeChartComponent},
+  { path: 'o-negative-chart', component: OPositiveChartComponent},
+  
 ];
 
 
@@ -336,12 +353,20 @@ const routes: Routes = [
       HospitalBloodRequestTableComponent,
       ReceivedBloodStorageChartComponent,
       IssuedBloodStorageChartComponent,
+      APositiveChartComponent,
+      ANegativeChartComponent,
+      BPositiveChartComponent,
+      BNegativeChartComponent,
+      AbPositveChartComponent,
+      AbNegativeChartComponent,
+      ONegativeChartComponent,
+      OPositiveChartComponent,
 
   ],
   imports: [
     
-    ChatModule, 
-    
+    ChatModule,
+    GoogleChartsModule, 
     BrowserModule,
     FormsModule,
     HttpClientModule,

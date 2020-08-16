@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Donor } from './donor.model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -66,6 +67,10 @@ insertRecords(donor: Donor) {
 
 deleteDonor(_id) {
   return this.http.get(environment.apiBaseUrl + `/manage-registered-donors/${_id}`);
+}
+
+Donors_Count():Observable<any> {
+  return this.http.get<{count:number}>(environment.apiBaseUrl + '/donors-count');
 }
 
 // getAppointment(_id) {

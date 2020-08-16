@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
+import { BloodCampaigns } from '../../../shared/blood-campaigns.model';
+import { BloodCampaignsService } from '../../../shared/blood-campaigns.service'
 
 @Component({
   selector: 'app-pending-blood-campaigns',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingBloodCampaignsComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+          pending_blood_campaigns : number;
+              
+           constructor(public bloodcampaignService: BloodCampaignsService, private router: Router) { }
+              
+            ngOnInit(): void {
+              
+                  this.bloodcampaignService.pending_blood_campaigns().subscribe(data => {
+                    this.pending_blood_campaigns = data;
+              
+                 });
+            }
 
 }

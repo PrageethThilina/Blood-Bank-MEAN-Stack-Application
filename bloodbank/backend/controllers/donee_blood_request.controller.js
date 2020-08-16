@@ -94,3 +94,16 @@ module.exports.update_donee_request = (req, res, next) => {
     }
     });
 }
+
+// get the pending appointment count in admin dashboard
+module.exports.donee_request_count = (req, res, next) => {
+    Donee_Blood_Request.countDocuments((err, count) => {
+        if (!err) {
+            res.json(count) 
+
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}

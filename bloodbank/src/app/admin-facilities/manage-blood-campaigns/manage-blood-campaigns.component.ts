@@ -14,6 +14,7 @@ declare const toggleSidebar : any;
 })
 export class ManageBloodCampaignsComponent implements OnInit {
 
+  showSucessMessage: boolean;
   posts: BloodCampaigns[] = [];
   isLoading = false;
   private postsSub: Subscription;
@@ -22,16 +23,22 @@ export class ManageBloodCampaignsComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.postsService.getPosts();
+    this.postsService.get_Posts_Admin();
     this.postsSub = this.postsService.getPostUpdateListener()
       .subscribe((posts: BloodCampaigns[]) => {
         this.isLoading = false;
         this.posts = posts;
       });
   }
-
-  onDelete(postId: string) {
-    this.postsService.deletePost(postId);
+  
+  onDelete(_id) {
+    if (confirm('Are you sure to delete this record ?') == true) {
+      this.postsService.deletePost(_id).subscribe((res) => {
+        this.showSucessMessage = true;
+        setTimeout(() => this.showSucessMessage = false, 2000);
+        this.postsService.get_Posts_Admin();
+      });
+    }
   }
 
   ngOnDestroy() {

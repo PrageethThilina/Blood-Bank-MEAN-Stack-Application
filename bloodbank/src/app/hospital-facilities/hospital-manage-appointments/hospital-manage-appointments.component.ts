@@ -22,7 +22,7 @@ export class HospitalManageAppointmentsComponent implements OnInit {
 
   constructor(public appointmentService: AppointmentService,private hospitalService: HospitalService, private router : Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     
     this.hospitalService.getUserProfile().subscribe(
       res => {
@@ -34,7 +34,9 @@ export class HospitalManageAppointmentsComponent implements OnInit {
       }
     );
 
-    this.getAppointments();
+    this.appointmentService.getHospitalAppointments().subscribe((res) => {
+      this.appointmentService.appointments = res as Appointment[];
+    });
 
 
   }
@@ -53,12 +55,6 @@ export class HospitalManageAppointmentsComponent implements OnInit {
     doc.save('Available_Blood_Storage.pdf')
 
 }
-
-  getAppointments() {
-    this.appointmentService.getHospitalAppointments().subscribe((res) => {
-      this.appointmentService.appointments = res as Appointment[];
-    });
-  }
   
   onAccept(appointment: Appointment) {
     this.appointmentService.selectedAppointment = appointment;
@@ -69,7 +65,6 @@ export class HospitalManageAppointmentsComponent implements OnInit {
       this.appointmentService.manageappointments(_id).subscribe((res) => {
         this.showSucessMessage = true;
         setTimeout(() => this.showSucessMessage = false, 3000);
-        this.getAppointments();
       });
     }
   }

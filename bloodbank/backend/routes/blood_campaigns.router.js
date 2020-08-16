@@ -130,6 +130,7 @@ router.put("/register-blood-campaign/:id",multer({ storage: storage }).single("i
       contact: req.body.contact,
       email: req.body.email,
       imagePath: imagePath,
+      status: status,
     });
     console.log(blood_campaigns);
     Blood_Campaigns.updateOne({ _id: req.params.id }, blood_campaigns).then(result => {
@@ -139,6 +140,15 @@ router.put("/register-blood-campaign/:id",multer({ storage: storage }).single("i
 );
 
 router.get("/view-blood-campaigns", (req, res, next) => {
+  Blood_Campaigns.find().then(documents => {
+    res.status(200).json({
+      message: "Posts fetched successfully!",
+      posts: documents
+    });
+  });
+});
+
+router.get("/manage-blood-campaigns", (req, res, next) => {
   Blood_Campaigns.find().then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
@@ -166,64 +176,33 @@ router.get("/view-blood-campaigns/:id", (req, res, next) => {
   });
 });
 
-router.delete("/manage-blood-campaigns/:id", (req, res, next) => {
-  Blood_Campaigns.deleteOne({ _id: req.params.id }).then(result => {
-    console.log(result);
-    res.status(200).json({ message: "Post deleted!" });
+router.get("/manage-blood-campaigns/:id", (req, res, next) => {
+  Blood_Campaigns.findByIdAndRemove({ _id: req.params.id }, function (err, bloodcampaigns) {
+      if (err) res.json(err);
+      else res.json('Blood Campaign Deleted Successfully');
+  });
+});
+
+router.get("/pending-blood-campaigns", (req, res, next) => {
+  Blood_Campaigns.countDocuments((err, count) => {
+      if (!err) {
+          res.json(count) 
+      }
+      else { 
+          console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+      }
+  });
+});
+
+router.get("/accepted-blood-campaigns", (req, res, next) => {
+  Blood_Campaigns.countDocuments((err, count) => {
+      if (!err) {
+          res.json(count) 
+      }
+      else { 
+          console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+      }
   });
 });
 
 module.exports = router;
-
-
-
-
-
-// // Save file to server storage
-// var storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//       cb(null, './backend/images');
-//     },
-//     filename: (req, file, cb) => {
-//       console.log(file);
-//       var filetype = '';
-//       if(file.mimetype === 'image/gif') {
-//         filetype = 'gif';
-//       }
-//       if(file.mimetype === 'image/png') {
-//         filetype = 'png';
-//       }
-//       if(file.mimetype === 'image/jpeg') {
-//         filetype = 'jpg';
-//       }
-//       cb(null, 'image-' + Date.now() + '.' + filetype);
-//     }
-// });
-
-// var upload = multer({storage: storage});
-
-// // get data
-// router.get('/view-blood-campaigns', function(req, res, next) {
-//     Blood_Campaigns.find((err, bloodcampaigns) => {
-//         if (err) return next(err);
-//         res.json(bloodcampaigns);
-//     });
-// });
-
-  
-// // post data
-// router.post('/register-blood-campaigns', upload.single('file'), function(req, res, next) {
-//     if(!req.file) {
-//         return res.status(500).send({ message: 'Upload fail'});
-//     } else {
-//         req.body.imageUrl = 'http://192.168.0.7:3000/backend/images/' + req.file.filename;
-//         Blood_Campaigns.create(req.body, function (err, bloodcampaigns) {
-//             if (err) {
-//                 console.log(err);
-//                 return next(err);
-//             }
-//             res.json(bloodcampaigns);
-//         });
-//     }
-// });
-

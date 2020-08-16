@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { HospitalBloodRequest } from './hospital-blood-request.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,10 @@ export class HospitalBloodRequestService {
     //hospital cancel orders 
     onDelete(_id) {
       return this.http.get(environment.apiBaseUrl + `/manage-hopital-blood-orders/${_id}`);
+    }
+
+    get_hospital_blood_request_count():Observable<any> {
+      return this.http.get<{count:number}>(environment.apiBaseUrl + '/hospital-blood-request-count');
     }
     
 }

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+
+  import { Component, OnInit } from '@angular/core';
+  import { Router } from "@angular/router";
+  
+  import { BloodInventory } from '../../../shared/blood-inventory.model';
+  import { BloodInventoryService } from '../../../shared/blood-inventory.service'
 
 @Component({
   selector: 'app-b-negative',
@@ -7,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BNegativeComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+    b_negative_count : number;
+        
+     constructor(public bloodinventoryService: BloodInventoryService, private router: Router) { }
+        
+      ngOnInit(): void {
+        
+            this.bloodinventoryService.get_B_Negative_BloodCount().subscribe(data => {
+              this.b_negative_count = data;
+        
+           });
+      }
 
 }

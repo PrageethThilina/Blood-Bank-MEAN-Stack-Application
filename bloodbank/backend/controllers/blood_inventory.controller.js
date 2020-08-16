@@ -66,3 +66,99 @@ module.exports.manage_blood_storage = (req, res, next) => {
     else res.json('Blood Inventory Deleted Successfully');
     });
 }
+
+// get the A+ Blood Count
+module.exports.a_positive_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "A+"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the A- Blood Count
+module.exports.a_negative_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "A-"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the B+ Blood Count
+module.exports.b_positive_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "B+"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the B- Blood Count
+module.exports.b_negative_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "B-"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the AB+ Blood Count
+module.exports.ab_positive_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "AB+"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the AB- Blood Count
+module.exports.ab_negative_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "AB-"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the O+ Blood Count
+module.exports.o_positive_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "O+"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the O- Blood Count
+module.exports.o_negative_count = (req, res, next) => {
+    Blood_Inventory.countDocuments({"blood_group": "O-"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}

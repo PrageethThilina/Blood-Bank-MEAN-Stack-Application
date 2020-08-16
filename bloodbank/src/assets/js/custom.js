@@ -265,8 +265,9 @@ function toggleSidebar() {
     document.getElementById("toggle_container_one").classList.toggle('active');
 }
 
-function changeStatus(){
-  document.getElementById("status").value = "Accepted";
+function getCurrentDate(){
+  var today = new Date();
+  document.getElementById("blood_stock_date").innerHTML = today;
 }
 
 

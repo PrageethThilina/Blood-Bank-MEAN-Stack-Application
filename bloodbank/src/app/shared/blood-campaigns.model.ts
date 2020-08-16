@@ -1,6 +1,6 @@
 export class BloodCampaigns {
 
-    id: string;
+    _id: string;
     province: string;
     district: string;
     address : string;
@@ -11,5 +11,6 @@ export class BloodCampaigns {
     email: string;
     imagePath: string;
     created: string;
+    status: string;
 
 }

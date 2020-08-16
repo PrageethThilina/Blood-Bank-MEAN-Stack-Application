@@ -12,6 +12,7 @@ donorrouter.get('/donor-facilities',jwtHelper.donorverifyJwtToken, ctrlDonor.don
 donorrouter.post('/book-appointments/:id', ctrlDonor.insert_record_details);
 donorrouter.post('/update-donor-details/:id', ctrlDonor.update_donor_details);
 donorrouter.get('/manage-registered-donors/:id', ctrlDonor.delete_donors);
+donorrouter.get('/donors-count', ctrlDonor.donors_count);
 
 
 module.exports = donorrouter;

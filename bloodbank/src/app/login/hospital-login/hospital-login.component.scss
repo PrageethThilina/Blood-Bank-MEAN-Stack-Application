@@ -1,11 +1,10 @@
 h3{
 	color: rgb(255, 255, 255);
-	margin-top: 15px;
-	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 15px;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
 }
-.col{
+.col-md-5{
     margin-top: 40px;
 	background: rgb(0, 0, 0);
 	padding-top: 5px;
@@ -98,3 +97,13 @@ label.validation-message{
 	margin-bottom: 5px;
 	font-size: 18px;
   }
+  .login-header{
+	background: transparent;
+	color: rgb(255, 255, 255);
+	border: 1px solid rgb(6, 145, 87);
+	width: 110px;
+	margin-right: 5px;
+}
+.login-header:hover{
+	border-bottom: 1px solid red;
+}

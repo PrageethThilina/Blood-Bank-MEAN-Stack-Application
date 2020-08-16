@@ -1,16 +1,16 @@
 .container-fluid{
-    margin: 70px 15px 15px;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    height: 1100px;
-    overflow: hidden;
-    width: 1030px;
-    position: absolute;
-    flex: 1;
-    left: 300px;
-    transition: all 500ms linear;
+  margin: 70px 15px 15px;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  height: 1100px;
+  overflow: auto;
+  width: 1030px;
+  position: absolute;
+  flex: 1;
+  left: 300px;
+  transition: all 500ms linear;
 
 }
 
@@ -18,7 +18,12 @@
     width: 150px;
     height: 150px;
 }
-
+.table{
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
+  white-space: nowrap;
+}
 h4{
     font-weight: bold;
     font-size: 25px;
@@ -184,5 +189,11 @@ ul ul li a{
   height: 5px;
   background: black;
   margin: 5px 0px;
+}
+.success{
+	padding: 20px;
+	background-color:#249424; /* Green */
+	color: white;
+	margin-bottom: 15px;
 }
 

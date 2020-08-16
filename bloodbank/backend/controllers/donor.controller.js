@@ -196,3 +196,15 @@ module.exports.delete_donors = (req, res, next) => {
     else res.json('Donor Account Deleted Successfully..!!!');
     });
 }
+
+// get the O- Blood Count
+module.exports.donors_count = (req, res, next) => {
+    Donor.countDocuments((err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}

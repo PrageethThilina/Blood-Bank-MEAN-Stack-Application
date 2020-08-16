@@ -14,5 +14,6 @@ hospitalbloodrequestrouter.get('/manage-hopital-blood-orders', ctrlhospitalblood
 hospitalbloodrequestrouter.get('/manage-hopital-blood-orders/:id', ctrlhospitalbloodrequest.admin_delete_orders);
 //view all pending Hospital of Blood requests
 hospitalbloodrequestrouter.get('/hospital-blood-request-table', ctrlhospitalbloodrequest.admin_view_hospital_orders);
+hospitalbloodrequestrouter.get('/hospital-blood-request-count', ctrlhospitalbloodrequest.hospital_blood_request_count);
 
 module.exports = hospitalbloodrequestrouter;

@@ -50,7 +50,7 @@ export class RegisterBloodCampaignComponent implements OnInit {
           this.postsService.getPost(this.postId).subscribe(postData => {
             this.isLoading = false;
             this.post = {
-              id: postData._id,
+              _id: postData._id,
               province: postData.province,
               district: postData.district,
               address: postData.address,
@@ -60,7 +60,8 @@ export class RegisterBloodCampaignComponent implements OnInit {
               contact: postData.contact,
               email: postData.email,
               created: postData.created,
-              imagePath: postData.imagePath
+              status: postData.status,
+              imagePath: postData.imagePath,
             };
             this.form.setValue({
               province: this.post.province,

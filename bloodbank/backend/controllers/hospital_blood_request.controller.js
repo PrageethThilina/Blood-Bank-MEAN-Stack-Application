@@ -113,3 +113,15 @@ module.exports.admin_delete_orders = (req, res, next) => {
         else res.json('Order Deleted Successfully');
     });
 }
+
+// get hospital blood request count
+module.exports.hospital_blood_request_count = (req, res, next) => {
+    Hospital_Blood_Request.countDocuments((err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}

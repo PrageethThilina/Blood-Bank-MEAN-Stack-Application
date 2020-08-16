@@ -25,14 +25,8 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
   ngOnInit(): void {
     this.getAppointments();
   }
-  
-  onSubmit(form: NgForm) {
-    this.appointmentService.onAccept(form.value).subscribe((res) => {
-    this.acceptMessage = true;
-    setTimeout(() => this.acceptMessage = false, 3000);
-    this.getAppointments();
-  });
-}
+
+
 
   getAppointments() {
     this.appointmentService.getAppointments().subscribe((res) => {
@@ -50,10 +44,18 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
     }
   }
 
-  onEdit(appointment: Appointment) {
-    this.appointmentService.selectedAppointment = appointment;
-    setTimeout(() => this.router.navigateByUrl('/admin-accept-delete-appointments'));
-    changeStatus();
+  onEditnew(_id :string,
+    donor_nic:string,
+    location:string,
+    date:string,
+    time:string,
+    contact:string,
+    status:string,) {
+    status = "Accepted";
+    this.appointmentService.onEdit(_id,status).subscribe((res)=>{
+    console.log(res);
+
+  });
   }
 
   changeStatus(){

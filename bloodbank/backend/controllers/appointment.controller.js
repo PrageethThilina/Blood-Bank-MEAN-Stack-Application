@@ -141,6 +141,7 @@ module.exports.accept_appointment = (req, res, next) => {
     return next(new Error('Unable To Find Appointment With This Id'));
     else {
 
+    console.log( req.body.status);
     appointment.status = req.body.status;
    
     appointment.save().then(bloodinv => {

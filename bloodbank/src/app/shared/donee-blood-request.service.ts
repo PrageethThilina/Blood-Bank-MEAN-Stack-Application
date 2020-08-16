@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { DoneeBloodRequest } from './donee-blood-request.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,9 @@ export class DoneeBloodRequestService {
 
       updateBloodRequest(doneebloodrequest: DoneeBloodRequest) {
         return this.http.post(environment.apiBaseUrl + `/update-blood-request/${doneebloodrequest._id}`, doneebloodrequest);
+      }
+
+      get_donee_blood_requests():Observable<any> {
+        return this.http.get<{count:number}>(environment.apiBaseUrl + '/donee-requests-count');
       }
 }

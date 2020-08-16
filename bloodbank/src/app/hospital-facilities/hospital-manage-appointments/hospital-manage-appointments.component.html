@@ -33,12 +33,12 @@
                 <tr *ngFor="let apnts of appointmentService.appointments">
                     <td>{{apnts.donor_id}}</td>
                     <td>{{apnts._id}}</td>
-                    <td>{{apnts.donor_NIC}}</td>
+                    <td>{{apnts.donor_nic}}</td>
                     <td>{{apnts.location}}</td>
                     <td>{{apnts.date}}</td>
                     <td>{{apnts.time}}</td>
                     <td>{{apnts.contact}}</td>
-                    <td>{{apnts.donor_email}}</td>
+                    <td>{{apnts.email}}</td>
                     <td>
                         <a class="btn btn-small btn-success" (click)="onAccept(apnts)" style="margin-right: 10px;">Accept</a>
                         <a class="btn btn-small btn-danger" (click)="onDelete(apnts._id)">Delete</a>

@@ -59,8 +59,10 @@ export class AppointmentService {
   // }
 
   //admin accept appointment
-  onAccept(appointment: Appointment) {
-    return this.http.post(environment.apiBaseUrl + `/admin-accept-delete-appointments/${appointment._id}`, appointment);
+  onEdit(_id:string, status: string) {
+    console.log(status);
+    const statusobj = {_id:_id, status:status}
+    return this.http.post(environment.apiBaseUrl + `/admin-accept-delete-appointments/${statusobj._id}`, statusobj);
   }
 
   onCancel(apnts,_id){

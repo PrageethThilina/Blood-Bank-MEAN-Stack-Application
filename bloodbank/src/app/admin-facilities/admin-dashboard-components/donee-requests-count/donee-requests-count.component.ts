@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
+import { DoneeBloodRequest } from '../../../shared/donee-blood-request.model';
+import { DoneeBloodRequestService } from '../../../shared/donee-blood-request.service'
 
 @Component({
   selector: 'app-donee-requests-count',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoneeRequestsCountComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  donee_blood_requests : number;
+            
+         constructor(public doneebloodrequestService: DoneeBloodRequestService, private router: Router) { }
+            
+          ngOnInit(): void {
+            
+                this.doneebloodrequestService.get_donee_blood_requests().subscribe(data => {
+                  this.donee_blood_requests = data;
+            
+               });
+          }
 
 }

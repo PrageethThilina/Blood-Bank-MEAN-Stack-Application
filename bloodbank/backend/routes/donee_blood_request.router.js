@@ -13,4 +13,6 @@ doneebloodrequestrouter.get('/view-donee-requests', ctrldoneebloodrequest.view_a
 //update blood request
 doneebloodrequestrouter.post('/update-blood-request/:id', ctrldoneebloodrequest.update_donee_request);
 
+doneebloodrequestrouter.get('/donee-requests-count', ctrldoneebloodrequest.donee_request_count);
+
 module.exports = doneebloodrequestrouter;

@@ -116,11 +116,7 @@
                     <td>{{apnts.email}}</td>
                     <td>{{apnts.status}}</td>
                     <td>
-                        <form #appointmentbookForm="ngForm" (ngSubmit)="onSubmit(appointmentbookForm)">
-                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="appointmentService.selectedAppointment._id" value={{apnts._id}}>
-                            <input type="hidden" id="status" name="status" #status="ngModel" [(ngModel)]="appointmentService.selectedAppointment.status">
-                            <input type="submit" class="btn btn-xs btn-success" value="Accept"  style="margin-right: 10px;">
-                        </form>
+                        <a class="btn btn-xs btn-danger" (click)="onEditnew(apnts._id,apnts.donor_nic,apnts.location,apnts.date,apnts.time,apnts.contact,apnts.status)">Accept</a>
                         <a class="btn btn-xs btn-danger" (click)="onDelete(apnts._id)">Delete</a>
                     </td>
                 </tr>
