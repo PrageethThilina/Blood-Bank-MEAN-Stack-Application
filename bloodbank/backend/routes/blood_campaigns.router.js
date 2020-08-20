@@ -140,7 +140,7 @@ router.put("/register-blood-campaign/:id",multer({ storage: storage }).single("i
 );
 
 router.get("/view-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.find().then(documents => {
+  Blood_Campaigns.find({"status":"Accepted"},).then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
       posts: documents
@@ -149,7 +149,7 @@ router.get("/view-blood-campaigns", (req, res, next) => {
 });
 
 router.get("/manage-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.find().then(documents => {
+  Blood_Campaigns.find({"status":"Pending"},).then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
       posts: documents
@@ -158,7 +158,7 @@ router.get("/manage-blood-campaigns", (req, res, next) => {
 });
 
 router.get("/homepage", (req, res, next) => {
-  Blood_Campaigns.find().then(documents => {
+  Blood_Campaigns.find({"status":"Accepted"},).then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
       posts: documents
@@ -184,7 +184,7 @@ router.get("/manage-blood-campaigns/:id", (req, res, next) => {
 });
 
 router.get("/pending-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.countDocuments((err, count) => {
+  Blood_Campaigns.countDocuments({"status":"Pending"},(err, count) => {
       if (!err) {
           res.json(count) 
       }
@@ -195,13 +195,33 @@ router.get("/pending-blood-campaigns", (req, res, next) => {
 });
 
 router.get("/accepted-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.countDocuments((err, count) => {
+  Blood_Campaigns.countDocuments({"status":"Accepted"},(err, count) => {
       if (!err) {
           res.json(count) 
       }
       else { 
           console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
       }
+  });
+});
+
+// Admin accept appointment
+router.post('/manage-blood-campaigns/:id', (req, res, next) => {
+  Blood_Campaigns.findById(req.params.id, function (err, bloodcampaign) {
+  if (!bloodcampaign)
+  return next(new Error('Unable To Find Blood campaign With This Id'));
+  else {
+
+  console.log( req.body.status);
+  bloodcampaign.status = req.body.status;
+ 
+  bloodcampaign.save().then(bloodinv => {
+  res.json('Blood campaign Accepted Successfully');
+  })
+  .catch(err => {
+  res.status(400).send("Error");
+  });
+  }
   });
 });
 

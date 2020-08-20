@@ -86,6 +86,18 @@ module.exports.view_hospital_orders = (req, res, next) => {
     });
 }
 
+// to view purticular hospital's previous orders
+module.exports.view_hospital_previous_orders = (req, res, next) => {
+    Hospital_Blood_Request.find({"hospital_name": "Karapitiya Hospital","order_status":"Accepted"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Orders :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
 //delete orders
 module.exports.delete_orders = (req, res, next) => {
     Hospital_Blood_Request.findByIdAndRemove({ _id: req.params.id }, function (err, hospital_blood_request) {
@@ -116,12 +128,32 @@ module.exports.admin_delete_orders = (req, res, next) => {
 
 // get hospital blood request count
 module.exports.hospital_blood_request_count = (req, res, next) => {
-    Hospital_Blood_Request.countDocuments((err, count) => {
+    Hospital_Blood_Request.countDocuments({"order_status":"Pending"},(err, count) => {
         if (!err) {
             res.json(count) 
         }
         else { 
             console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
         }
+    });
+}
+
+// Admin accept appointment
+module.exports.accept_blood_order = (req, res, next) => {
+    Hospital_Blood_Request.findById(req.params.id, function (err, hospitalbloodrequest) {
+    if (!hospitalbloodrequest)
+    return next(new Error('Unable To Find Blood Request With This Id'));
+    else {
+
+    console.log( req.body.order_status);
+    hospitalbloodrequest.order_status = req.body.order_status;
+   
+    hospitalbloodrequest.save().then(bloodinv => {
+    res.json('Order Accepted Successfully');
+    })
+    .catch(err => {
+    res.status(400).send("Error");
+    });
+    }
     });
 }

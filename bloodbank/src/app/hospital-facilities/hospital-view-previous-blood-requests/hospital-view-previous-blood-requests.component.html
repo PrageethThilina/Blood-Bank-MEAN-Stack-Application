@@ -1,0 +1,29 @@
+<app-hospital-header></app-hospital-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        
+            <h4 class="text-center">Previous Orders</h4>
+              <table *ngIf="hospitalbloodrequestService.hospitalbloodrequests" class="table table-primary table-bordered table-hover display" datatable="ng">
+                <thead>
+                        <tr>
+                            <th class="table-success">Date</th>
+                            <th class="table-success">Blood Group</th>
+                            <th class="table-success">Quantity</th>
+                            <th class="table-success">Order Status</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let hsptlbldrqst of hospitalbloodrequestService.hospitalbloodrequests">
+                        <td>{{hsptlbldrqst.date}}</td>
+                        <td>{{hsptlbldrqst.blood_group}}</td>
+                        <td>{{hsptlbldrqst.quantity}}</td>
+                        <td>{{hsptlbldrqst.order_status}}</td>
+                    </tr>
+                </tbody>
+              </table>
+          </div>
+    </div>
+</div>
+

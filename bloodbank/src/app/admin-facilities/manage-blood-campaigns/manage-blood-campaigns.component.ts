@@ -15,6 +15,7 @@ declare const toggleSidebar : any;
 export class ManageBloodCampaignsComponent implements OnInit {
 
   showSucessMessage: boolean;
+  acceptSucessMessage: boolean;
   posts: BloodCampaigns[] = [];
   isLoading = false;
   private postsSub: Subscription;
@@ -38,6 +39,31 @@ export class ManageBloodCampaignsComponent implements OnInit {
         setTimeout(() => this.showSucessMessage = false, 2000);
         this.postsService.get_Posts_Admin();
       });
+    }
+  }
+
+  onAccept(
+    _id: string,
+    province: string,
+    district: string,
+    address: string,
+    organiser: string,
+    date: string,
+    time: string,
+    contact: string,
+    email: string,
+    imagePath: string,
+    status: string,
+    ) {
+    if (confirm('Are you sure to Accept the Blood Campaign ?') == true) {
+      status = "Accepted";
+      this.postsService.onAccept(_id, status).subscribe((res) => {
+        console.log(res);
+        this.acceptSucessMessage = true;
+        setTimeout(() => this.acceptSucessMessage = false, 2000);
+        window.location.reload();
+      });
+
     }
   }
 

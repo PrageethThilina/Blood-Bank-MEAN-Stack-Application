@@ -18,8 +18,41 @@ module.exports.view_appointments = (req, res, next) => {
         }
     });
 }
+//blood bank get pending appointments
+module.exports.get_pending_appointments = (req, res, next) => {
+    Appointment.find({"location": "National Blood Center - Narahenpita","status":"Pending"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+//blood bank get accepted appointments
+module.exports.get_accepted_appointments = (req, res, next) => {
+    Appointment.find({"location": "National Blood Center - Narahenpita","status":"Accepted"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+//blood bank get finished appointments
+module.exports.get_finished_appointments = (req, res, next) => {
+    Appointment.find({"location": "National Blood Center - Narahenpita","status":"Finished"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
 
-//hospital view appoitnment
+//hospital view pending appoitnment
 module.exports.view_hospital_appointments = (req, res, next) => {
     Appointment.find({"location": "Karapitiya Hospital","status":"Pending"},(err, docs) => {
         if (!err) { 
@@ -31,9 +64,9 @@ module.exports.view_hospital_appointments = (req, res, next) => {
     });
 }
 
-// to view puticular donor's appointments
-module.exports.view_donors_appointments = (req, res, next) => {
-    Appointment.find({"donor_nic": "951043028v"},(err, docs) => {
+//hospital view accepted appoitnment
+module.exports.view_hospital_accepted_appointments = (req, res, next) => {
+    Appointment.find({"location": "Karapitiya Hospital","status":"Accepted"},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }
@@ -43,16 +76,29 @@ module.exports.view_donors_appointments = (req, res, next) => {
     });
 }
 
-// //view one appoitnment by id
-// module.exports.view_appointment = (req, res, next) => {
-//     if (!ObjectId.isValid(req.params.donor_id))
-//         return res.status(400).send(`No record with given id : ${req.params.donor_id}`);
+// to view puticular donor's appointments
+module.exports.view_donors_appointments = (req, res, next) => {
+    Appointment.find({"donor_nic": "951043028v","status":"Pending"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
 
-//     Appointment.find({donor_id: req.params.donor_id}, (err, doc) => {
-//         if (!err) { res.send(doc); }
-//         else { console.log('Error in Retriving Appointment :' + JSON.stringify(err, undefined, 2)); }
-//     });
-// }
+// to view puticular donor's accepetd appointments
+module.exports.view_donors_accepted_appointments = (req, res, next) => {
+    Appointment.find({"donor_nic": "951043028v","status":"Accepted"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
 
 //add appoitment & send mail
 module.exports.add_appointment = (req, res, next) => {
@@ -154,13 +200,32 @@ module.exports.accept_appointment = (req, res, next) => {
     });
 }
 
+// Admin accept appointment
+module.exports.finish_appointment = (req, res, next) => {
+    Appointment.findById(req.params.id, function (err, appointment) {
+    if (!appointment)
+    return next(new Error('Unable To Find Appointment With This Id'));
+    else {
+
+    console.log( req.body.status);
+    appointment.status = req.body.status;
+   
+    appointment.save().then(bloodinv => {
+    res.json('Appointment mark as finished');
+    })
+    .catch(err => {
+    res.status(400).send("Error");
+    });
+    }
+    });
+}
+
 // get the pending appointment count in admin dashboard
 module.exports.appointment_count = (req, res, next) => {
     Appointment.countDocuments({"location": "National Blood Center - Narahenpita","status":"Pending"},(err, count) => {
         if (!err) {
             res.json(count) 
 
-            //console.log("Number of Appointments :" , count)
         }
         else { 
             console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
@@ -168,3 +233,26 @@ module.exports.appointment_count = (req, res, next) => {
     });
 }
 
+// get the accepted appointment count in admin dashboard
+module.exports.accepted_appointment_count = (req, res, next) => {
+    Appointment.countDocuments({"location": "National Blood Center - Narahenpita","status":"Accepted"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the accepted appointment count in admin dashboard
+module.exports.finished_appointment_count = (req, res, next) => {
+    Appointment.countDocuments({"location": "National Blood Center - Narahenpita","status":"Finished"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}

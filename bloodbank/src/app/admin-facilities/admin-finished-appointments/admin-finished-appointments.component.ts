@@ -8,13 +8,12 @@ import { AppointmentService } from '../../shared/appointment.service'
 
 declare const toggleSidebar: any;
 
-
 @Component({
-  selector: 'app-admin-accept-delete-appointments',
-  templateUrl: './admin-accept-delete-appointments.component.html',
-  styleUrls: ['./admin-accept-delete-appointments.component.scss']
+  selector: 'app-admin-finished-appointments',
+  templateUrl: './admin-finished-appointments.component.html',
+  styleUrls: ['./admin-finished-appointments.component.scss']
 })
-export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
+export class AdminFinishedAppointmentsComponent implements OnInit {
 
   showSucessMessage: boolean;
   acceptMessage: boolean;
@@ -26,7 +25,7 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
   }
 
   getAppointments() {
-    this.appointmentService.getPendingAppointments().subscribe((res) => {
+    this.appointmentService.getFinishedAppointments().subscribe((res) => {
       this.appointmentService.appointments = res as Appointment[];
     });
   }
@@ -53,11 +52,14 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
       this.appointmentService.onEdit(_id, status).subscribe((res) => {
         console.log(res);
         this.acceptMessage = true;
-        setTimeout(() => this.acceptMessage = false, 3000);
+        setTimeout(() => this.acceptMessage = false, 2000);
+        this.getAppointments();
         window.location.reload();
+
       });
 
     }
+    //this.location.reload();
   }
 
   toggleSidebar() {

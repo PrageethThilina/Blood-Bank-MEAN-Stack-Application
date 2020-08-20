@@ -19,6 +19,7 @@ export class HospitalManageAppointmentsComponent implements OnInit {
 
   hospitalDetails;
   showSucessMessage: boolean;
+  acceptMessage: boolean;
 
   constructor(public appointmentService: AppointmentService,private hospitalService: HospitalService, private router : Router) { }
 
@@ -56,9 +57,24 @@ export class HospitalManageAppointmentsComponent implements OnInit {
 
 }
   
-  onAccept(appointment: Appointment) {
-    this.appointmentService.selectedAppointment = appointment;
+onEditnew(_id: string,
+  donor_nic: string,
+  location: string,
+  date: string,
+  time: string,
+  contact: string,
+  status: string,) {
+  if (confirm('Are you sure to Accept the Appointment ?') == true) {
+    status = "Accepted";
+    this.appointmentService.onEdit(_id, status).subscribe((res) => {
+      console.log(res);
+      this.acceptMessage = true;
+      setTimeout(() => this.acceptMessage = false, 3000);
+      window.location.reload();
+    });
+
   }
+}
 
   onDelete(_id) {
     if (confirm('Are you sure to delete this record ?') == true) {

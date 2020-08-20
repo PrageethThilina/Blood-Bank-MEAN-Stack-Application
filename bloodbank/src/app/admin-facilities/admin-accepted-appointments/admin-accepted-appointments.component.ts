@@ -8,16 +8,15 @@ import { AppointmentService } from '../../shared/appointment.service'
 
 declare const toggleSidebar: any;
 
-
 @Component({
-  selector: 'app-admin-accept-delete-appointments',
-  templateUrl: './admin-accept-delete-appointments.component.html',
-  styleUrls: ['./admin-accept-delete-appointments.component.scss']
+  selector: 'app-admin-accepted-appointments',
+  templateUrl: './admin-accepted-appointments.component.html',
+  styleUrls: ['./admin-accepted-appointments.component.scss']
 })
-export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
+export class AdminAcceptedAppointmentsComponent implements OnInit {
 
   showSucessMessage: boolean;
-  acceptMessage: boolean;
+  finishMessage: boolean;
 
   constructor(public appointmentService: AppointmentService, private router: Router) { }
 
@@ -26,7 +25,7 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
   }
 
   getAppointments() {
-    this.appointmentService.getPendingAppointments().subscribe((res) => {
+    this.appointmentService.getAcceptedAppointments().subscribe((res) => {
       this.appointmentService.appointments = res as Appointment[];
     });
   }
@@ -41,7 +40,7 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
     }
   }
 
-  onEditnew(_id: string,
+  onFinished(_id: string,
     donor_nic: string,
     location: string,
     date: string,
@@ -49,11 +48,11 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
     contact: string,
     status: string,) {
     if (confirm('Are you sure to Accept the Appointment ?') == true) {
-      status = "Accepted";
-      this.appointmentService.onEdit(_id, status).subscribe((res) => {
+      status = "Finished";
+      this.appointmentService.onFinished(_id, status).subscribe((res) => {
         console.log(res);
-        this.acceptMessage = true;
-        setTimeout(() => this.acceptMessage = false, 3000);
+        this.finishMessage = true;
+        setTimeout(() => this.finishMessage = false, 2000);
         window.location.reload();
       });
 

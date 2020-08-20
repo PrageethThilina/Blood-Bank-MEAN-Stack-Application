@@ -39,6 +39,21 @@ export class AppointmentService {
     return this.http.get(environment.apiBaseUrl+ '/admin-view-appointmets');
   }
 
+  //get bloodbank appointments
+  getPendingAppointments() {
+    return this.http.get(environment.apiBaseUrl+ '/admin-accept-delete-appointments');
+  }
+
+  //get bloodbank accepted appointments
+  getAcceptedAppointments() {
+      return this.http.get(environment.apiBaseUrl+ '/admin-accepted-appointments');
+  }
+
+  //get bloodbank finished appointments
+  getFinishedAppointments() {
+    return this.http.get(environment.apiBaseUrl+ '/admin-finished-appointments');
+  }
+
   //to get purticular Hospital appointments
   getHospitalAppointments() {
     return this.http.get(environment.apiBaseUrl + '/hospital-manage-appointments');
@@ -53,17 +68,20 @@ export class AppointmentService {
     return this.http.post(environment.apiBaseUrl + `/appointments/${appointment._id}`, appointment);
   }
 
-  // // To Get Appointment Details For Single Record Using Id
-  // getAppointment(donor_id) {
-  //   return this.http.get( environment.apiBaseUrl + `/appointments/${donor_id}`);
-  // }
-
   //admin accept appointment
   onEdit(_id:string, status: string) {
     console.log(status);
     const statusobj = {_id:_id, status:status}
     return this.http.post(environment.apiBaseUrl + `/admin-accept-delete-appointments/${statusobj._id}`, statusobj);
   }
+
+  //admin accept appointment
+  onFinished(_id:string, status: string) {
+      console.log(status);
+      const statusobj = {_id:_id, status:status}
+      return this.http.post(environment.apiBaseUrl + `/admin-accepted-appointments/${statusobj._id}`, statusobj);
+  }
+  
 
   onCancel(apnts,_id){
 
@@ -84,5 +102,12 @@ export class AppointmentService {
     return this.http.get<{count:number}>(environment.apiBaseUrl + '/pending-appointments');
   }
 
+  getAcceptedAppointmentCount():Observable<any> {
+    return this.http.get<{count:number}>(environment.apiBaseUrl + '/accepted-appointments');
+  }
+
+  getfinishedAppointmentCount():Observable<any> {
+    return this.http.get<{count:number}>(environment.apiBaseUrl + '/finished-appointments');
+  }
 
 }

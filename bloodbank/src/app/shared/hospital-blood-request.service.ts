@@ -33,6 +33,11 @@ export class HospitalBloodRequestService {
       return this.http.get(environment.apiBaseUrl + '/hospital-order-blood');
     }
 
+    //to get purticular hspital orders
+    getHospitalPreviousOrders() {
+        return this.http.get(environment.apiBaseUrl + '/hospital-view-previous-blood-requests');
+    }
+
     //hospital cancel orders 
     hospital_cancel_order(_id) {
       return this.http.get(environment.apiBaseUrl + `/hospital-order-blood/${_id}`);
@@ -51,6 +56,12 @@ export class HospitalBloodRequestService {
     //hospital cancel orders 
     onDelete(_id) {
       return this.http.get(environment.apiBaseUrl + `/manage-hopital-blood-orders/${_id}`);
+    }
+
+    onAccept(_id:string, order_status: string) {
+      console.log(order_status);
+      const statusobj = {_id:_id, order_status:order_status}
+      return this.http.post(environment.apiBaseUrl + `/manage-hopital-blood-orders/${statusobj._id}`, statusobj);
     }
 
     get_hospital_blood_request_count():Observable<any> {

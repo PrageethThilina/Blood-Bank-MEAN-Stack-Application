@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
+import { Appointment } from '../../../shared/appointment.model';
+import { AppointmentService } from '../../../shared/appointment.service'
 
 @Component({
   selector: 'app-finished-appointments',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinishedAppointmentsComponent implements OnInit {
 
-  constructor() { }
+  finished_appointments : number;
+
+  constructor(public appointmentService: AppointmentService, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.appointmentService.getfinishedAppointmentCount().subscribe(data => {
+      this.finished_appointments = data;
+
+   });
+
   }
 
 }

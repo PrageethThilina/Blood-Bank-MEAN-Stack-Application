@@ -126,6 +126,10 @@ import { AbPositveChartComponent } from './admin-facilities/blood-type-charts/ab
 import { AbNegativeChartComponent } from './admin-facilities/blood-type-charts/ab-negative-chart/ab-negative-chart.component';
 import { ONegativeChartComponent } from './admin-facilities/blood-type-charts/o-negative-chart/o-negative-chart.component';
 import { OPositiveChartComponent } from './admin-facilities/blood-type-charts/o-positive-chart/o-positive-chart.component';
+import { AdminAcceptedAppointmentsComponent } from './admin-facilities/admin-accepted-appointments/admin-accepted-appointments.component';
+import { AdminFinishedAppointmentsComponent } from './admin-facilities/admin-finished-appointments/admin-finished-appointments.component';
+import { DonorViewPreviousAppointmentComponent } from './appointments/donor-view-previous-appointment/donor-view-previous-appointment.component';
+import { HospitalViewPreviousBloodRequestsComponent } from './hospital-facilities/hospital-view-previous-blood-requests/hospital-view-previous-blood-requests.component';
 
 import { HospitalService } from './shared/hospital.service';
 import { AdminService } from './shared/admin.service';
@@ -136,6 +140,7 @@ import { AppointmentService } from './shared/appointment.service';
 import { HospitalBloodRequestService } from './shared/hospital-blood-request.service';
 import { DoneeBloodRequestService } from './shared/donee-blood-request.service';
 import { BloodCampaignsService } from './shared/blood-campaigns.service';
+import { Covid19DashboardService } from './shared/covid-19-dashboard.service.service';
 
 //other modules
 import { ChatModule } from './chat-bot/chat/chat.module';
@@ -251,6 +256,10 @@ const routes: Routes = [
   { path: 'ab-negative-chart', component: AbNegativeChartComponent},
   { path: 'o-positive-chart', component: ONegativeChartComponent},
   { path: 'o-negative-chart', component: OPositiveChartComponent},
+  { path: 'admin-accepted-appointments', component: AdminAcceptedAppointmentsComponent,canActivate:[AdminGuard]},
+  { path: 'admin-finished-appointments', component: AdminFinishedAppointmentsComponent,canActivate:[AdminGuard]},
+  { path: 'donor-view-previous-appointment', component: DonorViewPreviousAppointmentComponent,canActivate:[DonorGuard]},
+  { path: 'hospital-view-previous-blood-requests', component: HospitalViewPreviousBloodRequestsComponent,canActivate:[HospitalGuard]},
   
 ];
 
@@ -361,6 +370,10 @@ const routes: Routes = [
       AbNegativeChartComponent,
       ONegativeChartComponent,
       OPositiveChartComponent,
+      AdminAcceptedAppointmentsComponent,
+      AdminFinishedAppointmentsComponent,
+      DonorViewPreviousAppointmentComponent,
+      HospitalViewPreviousBloodRequestsComponent,
 
   ],
   imports: [
@@ -405,6 +418,8 @@ const routes: Routes = [
     HospitalBloodRequestService,
     DoneeBloodRequestService,
     BloodCampaignsService,
+    Covid19DashboardService,
+
   ],
 
   bootstrap: [AppComponent]

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
+import { BloodCampaigns } from '../../../shared/blood-campaigns.model';
+import { BloodCampaignsService } from '../../../shared/blood-campaigns.service'
 
 @Component({
   selector: 'app-accepted-blood-campaigns',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcceptedBloodCampaignsComponent implements OnInit {
 
-  constructor() { }
-
+  accepted_blood_campaigns: number;
+  
+  constructor(public bloodcampaignService: BloodCampaignsService, private router: Router) { }
+              
   ngOnInit(): void {
+    
+        this.bloodcampaignService.accepted_blood_campaigns().subscribe(data => {
+          this.accepted_blood_campaigns = data;
+    
+       });
   }
 
 }

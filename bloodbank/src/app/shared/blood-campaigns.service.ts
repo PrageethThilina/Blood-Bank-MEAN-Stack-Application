@@ -218,4 +218,11 @@ export class BloodCampaignsService {
     return this.http.get<{count:number}>(environment.apiBaseUrl + '/accepted-blood-campaigns');
   }
 
+  //admin accept blood campaigns
+  onAccept(_id:string, status: string) {
+      console.log(status);
+      const statusobj = {_id:_id, status:status}
+      return this.http.post(environment.apiBaseUrl + `/manage-blood-campaigns/${statusobj._id}`, statusobj);
+  }
+
 }

@@ -1,16 +1,16 @@
 .container-fluid{
-  margin: 70px 15px 15px;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  height: 1100px;
-  overflow: hidden;
-  width: 1030px;
-  position: absolute;
-  flex: 1;
-  left: 300px;
-  transition: all 500ms linear;
+    margin: 70px 15px 15px;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    height: 1100px;
+    overflow: hidden;
+    width: 1030px;
+    position: absolute;
+    flex: 1;
+    left: 300px;
+    transition: all 500ms linear;
 
 }
   .tbl-section{
@@ -41,7 +41,6 @@ h4{
 th{
     padding-left: 10px;
     padding-right: 10px;
-    width: 250px;
 
 }
 td{
@@ -50,9 +49,14 @@ td{
 
 }
 .btn{
-    margin-bottom: 20px;
+    color: white;
 }
-
+.success{
+	padding: 20px;
+	background-color:#249424; /* Green */
+	color: white;
+	margin-bottom: 15px;
+}
 //sidebar
 .sidebar 
 {
@@ -134,8 +138,8 @@ td{
   list-style: none;
 }
 .menu-bar li{
-  line-height: 47px;
-  border-bottom: 1px solid black;
+    line-height: 47px;
+    border-bottom: 1px solid black;
   margin-left: -16%;
   border-right-color: cyan;
 }
@@ -197,7 +201,7 @@ ul ul li a{
 }
 #toggle_container_one.active{
   left: 0px;
-  width: 1300px;
+  width: 1320px;
 }
 #sidebar .toggle-btn{
   position: absolute;

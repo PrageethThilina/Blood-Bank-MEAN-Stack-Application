@@ -23,13 +23,11 @@ export class HospitalOrderBloodComponent implements OnInit {
   constructor(public hospitalbloodrequestService: HospitalBloodRequestService, public hospitalService: HospitalService, private router : Router) { }
 
   ngOnInit() {
-    this.getHospitalOrders();
-  }
 
-  getHospitalOrders() {
     this.hospitalbloodrequestService.getHospitalOrders().subscribe((res) => {
       this.hospitalbloodrequestService.hospitalbloodrequests = res as HospitalBloodRequest[];
     });
+
   }
 
   onSubmit(form: NgForm) {
@@ -47,7 +45,6 @@ export class HospitalOrderBloodComponent implements OnInit {
         this.serverErrorMessages = 'Something went wrong when adding.Please contact admin.';
     }
     );
-    this.getHospitalOrders();
 }
 
   onCancel(_id) {
@@ -56,7 +53,6 @@ export class HospitalOrderBloodComponent implements OnInit {
         this.ordershowSucessMessage = true;
         setTimeout(() => this.ordershowSucessMessage = false, 3000);
         location.reload();
-        this.getHospitalOrders();
       });
     }
   }
