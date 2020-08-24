@@ -1,0 +1,61 @@
+<app-admin-header></app-admin-header>
+
+<!-- sidebar -->
+<div id="sidebar">
+    <div class="toggle-btn" (click)="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <aside class="sidebar">
+        <div class="user-info" style="background: url(assets/images/user-img-background.jpg)">
+            <div class="logo-section">
+                <div class="image">
+                    <img src="assets/images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blood Bank Sri
+                        Lanka</div>
+                    <div class="email">info@nbts.health.gov.lk</div>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <ul class="list">
+                <li class="header"><i class="fa fa-eye online-icon"></i> Online</li>
+            </ul>
+            <ul class="menu-bar">
+                <li>
+                    <a><i class="fas fa-book"></i>Blood Inventory</a>
+                    <ul class="sub-menu">
+                        <li><a routerLink="/blood-inventory-report"><i class="fa fa-eye"></i>View Report</a></li>
+                        <li><a href="https://app.powerbi.com/reportEmbed?reportId=2483299f-99a9-465e-9656-9fee81442842&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"><i class="fa fa-eye"></i>Generate Pdf & CSV</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a><i class="fas fa-book"></i>Donor Reports</a>
+                    <ul class="sub-menu">
+                        <li><a routerLink="/donors-report"><i class="fa fa-eye"></i>View Report</a></li>
+                        <li><a ><i class="fa fa-eye"></i>Generate Pdf & CSV</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a><i class="fas fa-book"></i>Other Reports</a>
+                    <ul class="sub-menu">
+                        <li><a routerLink="/other-reports"><i class="fa fa-eye"></i>View Report</a></li>
+                        <li><a ><i class="fa fa-eye"></i>Generate Pdf & CSV</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<div class="container" id="toggle_container_one">
+    <div class="row">
+        <div class="col">
+            <iframe width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2483299f-99a9-465e-9656-9fee81442842&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+    </div>
+</div>

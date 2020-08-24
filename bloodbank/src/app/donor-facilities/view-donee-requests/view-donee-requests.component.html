@@ -5,12 +5,12 @@
         <div class="col">
 
              <!-- Success message -->
-        <div class="success" *ngIf="showSucessMessage">
-            Saved successfully
+        <div class="success text-center" *ngIf="showSucessMessage">
+            Email Send Successfully...
           </div>
         
           <!-- Error message -->
-          <div class="alert" *ngIf="serverErrorMessages">
+          <div class="alert text-center" *ngIf="serverErrorMessages">
             {{serverErrorMessages}}
           </div>
   
@@ -19,7 +19,9 @@
                 <thead>
                     <tr>
                         <th class="table-success">Date</th>
+                        <th class="table-success">Birthday</th>
                         <th class="table-success">Email</th>
+                        <th class="table-success">Phone</th>
                         <th class="table-success">Blood Group</th>
                         <th class="table-success">Spouce Details</th>
                         <th class="table-success">Health Issues</th>
@@ -31,18 +33,19 @@
                 <tbody>
                     <tr *ngFor="let dnebldrqst of doneebloodrequestService.doneebloodrequests">
                         <td>{{dnebldrqst.date}}</td>
+                        <td>{{dnebldrqst.birthday}}</td>
                         <td>{{dnebldrqst.email}}</td>
+                        <td>{{dnebldrqst.contact}}</td>
                         <td>{{dnebldrqst.blood_group}}</td>
                         <td>{{dnebldrqst.spouce}}</td>
                         <td>{{dnebldrqst.health}}</td>
                         <td><img src='assets/images/donee-requests/{{dnebldrqst.email}}.jpg' alt="" class="medical"></td>
-                        <td>{{dnebldrqst.status}}</td>
+                        <td style="color: rgb(230, 7, 7);">{{dnebldrqst.status}}</td>
                         <td class="text-center">
-                            <a class="action-btn btn btn-primary" (click)="onComment(dnebldrqst)" style="margin-right: 5px;">Comment</a>
                             <a class="action-btn" (click)="onCall(dnebldrqst)">
-                                <i class="fa fa-phone" style="margin-right: 5px;"></i>
+                                <i class="fa fa-phone" style="margin-right: 20px;"></i>
                             </a>
-                            <a class="action-btn" (click)="onEmail(dnebldrqst)">
+                            <a class="action-btn" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fa fa-envelope"></i>
                             </a>
                         </td>
@@ -52,3 +55,33 @@
         </div>
     </div>
 </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Send Email to Donee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">        
+            <form >
+                <div class="form-group">
+                    <label class="label control-label">Email :</label>
+                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

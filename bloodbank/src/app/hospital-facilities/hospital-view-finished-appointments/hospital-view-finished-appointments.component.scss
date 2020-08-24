@@ -1,0 +1,53 @@
+.container-fluid{
+    margin-top: 30px;
+    padding-bottom: 50px;
+    overflow: auto;
+  }
+  .tbl-section{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .tbl-header{
+    background: rgb(5, 173, 56);
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
+  }
+  .table{
+    display: block;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+  }
+h4{
+    margin-top: 20px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 20px;
+}
+th{
+    padding-left: 10px;
+    padding-right: 10px;
+    background: green;
+    color: rgb(255, 255, 255);
+    width: 200px;
+}
+td{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.btn{
+    color: white;
+    margin-right: 20px;
+}
+.success{
+	padding: 20px;
+	background-color:#249424; /* Green */
+	color: white;
+	margin-bottom: 15px;
+  }
+  .btn{
+    margin-bottom: 20px;
+  }

@@ -1,6 +1,6 @@
 <app-hospital-header></app-hospital-header>
 
-<div class="container-fluid">
+<div class="container">
 
   <div class="row">
     <div class="col">
@@ -149,7 +149,7 @@
 
       <h4 class="text-center" style="color: black;">Pending Orders</h4>
       <table *ngIf="hospitalbloodrequestService.hospitalbloodrequests"
-        class="table table-danger table-bordered table-hover display" datatable="ng">
+        class="table table-success table-bordered table-hover display" datatable="ng">
         <thead>
           <tr>
             <th class="table-success">Date</th>
@@ -164,7 +164,7 @@
             <td>{{hsptlbldrqst.date}}</td>
             <td>{{hsptlbldrqst.blood_group}}</td>
             <td>{{hsptlbldrqst.quantity}}</td>
-            <td>{{hsptlbldrqst.order_status}}</td>
+            <td style="color: rgb(230, 7, 7);">{{hsptlbldrqst.order_status}}</td>
             <td>
               <a class="btn btn-small btn-danger" style="margin-left: 35px;"
                 (click)="onCancel(hsptlbldrqst._id)">Cancel</a>

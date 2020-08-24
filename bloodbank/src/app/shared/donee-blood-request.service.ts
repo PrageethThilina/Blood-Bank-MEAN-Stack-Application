@@ -38,6 +38,10 @@ export class DoneeBloodRequestService {
       postBloodRequest(doneebloodrequest: DoneeBloodRequest){
         return this.http.post(environment.apiBaseUrl+'/donee-request-blood',doneebloodrequest);
       }
+
+      sendEmailtoDonee(doneebloodrequest: DoneeBloodRequest){
+        return this.http.post(environment.apiBaseUrl+'/view-donee-requests',doneebloodrequest);
+      }
   
       //to get purticular donee requests
       getDoneeOrders() {
@@ -48,6 +52,13 @@ export class DoneeBloodRequestService {
       getAllDoneeOrders() {
         return this.http.get(environment.apiBaseUrl + '/view-donee-requests');
       }
+    
+      //donee found request
+      onSuccess(_id:string, status: string) {
+      console.log(status);
+      const statusobj = {_id:_id, status:status}
+      return this.http.post(environment.apiBaseUrl + `/view-blood-request/${statusobj._id}`, statusobj);
+    }
   
       //donee cancel orders 
       donee_cancel_request(_id) {

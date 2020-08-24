@@ -215,3 +215,9 @@ ul ul li a{
   background: black;
   margin: 5px 0px;
 }
+.table{
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
+  white-space: nowrap;
+}

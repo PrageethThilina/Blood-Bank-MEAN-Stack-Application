@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 
 import { DoneeBloodRequest } from 'src/app/shared/donee-blood-request.model';
 import { DoneeBloodRequestService } from '../../shared/donee-blood-request.service'
+import { DoneeService } from '../../shared/donee.service'
 
 @Component({
   selector: 'app-view-donee-requests',
@@ -20,8 +21,8 @@ export class ViewDoneeRequestsComponent implements OnInit {
   ngOnInit() {
 
     this.getAllDoneeOrders();
-
   }
+
 
   getAllDoneeOrders() {
     this.doneebloodrequestService.getAllDoneeOrders().subscribe((res) => {
@@ -33,12 +34,25 @@ export class ViewDoneeRequestsComponent implements OnInit {
 
   }
 
-  onEmail(_id){
 
-  }
+  // onEmail(
+  // _id: string,
+  // date: string,
+  // birthday: string,
+  // email: string,
+  // contact: string,
+  // blood_group: string,
+  // spouce: string,
+  // health: string,) {
+  // if (confirm('Are you sure to want to send an Email ?') == true) {
+  //   this.doneebloodrequestService.onEmail(_id, status).subscribe((res) => {
+  //     console.log(res);
+  //     this.showSucessMessage = true;
+  //     setTimeout(() => this.showSucessMessage = false, 3000);
+  //     //window.location.reload();
+  //     });
 
-  onComment(_id){
+  //   }
 
-  }
-
+  // }
 }

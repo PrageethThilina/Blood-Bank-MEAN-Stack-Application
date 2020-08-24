@@ -3,6 +3,7 @@
 <div class="container">
     <div>
       <button class="btn btnn btn-success" (click)="onEdit(donorDetails)">Make an Appointment</button>
+      <button class="btn btnn btn-success" routerLink="/donor-view-previous-appointment">Previous appointments</button>
     </div>
     <div class="row  align-items-center">
         <div class="col">
@@ -74,7 +75,7 @@
                     <td>{{apnts.time}}</td>
                     <td>{{apnts.status}}</td>
                     <td>
-                        <a class="btn btn-small btn-danger" (click)="onCancel(apnts._id)" style="margin-right: 10px;">Cancel</a>
+                        <a class="btn btn-small btn-danger" (click)="onDelete(apnts._id)" style="margin-right: 10px;">Cancel</a>
                     </td>
 
                </tr>

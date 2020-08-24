@@ -15,4 +15,7 @@ doneebloodrequestrouter.post('/update-blood-request/:id', ctrldoneebloodrequest.
 
 doneebloodrequestrouter.get('/donee-requests-count', ctrldoneebloodrequest.donee_request_count);
 
+//hospital accept appointment
+doneebloodrequestrouter.post('/view-blood-request/:id', ctrldoneebloodrequest.donne_found_request);
+
 module.exports = doneebloodrequestrouter;

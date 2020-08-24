@@ -43,7 +43,7 @@ async function sendMail(hospital_blood_request, callback) {
       secure: true, // true for 465, false for other ports
       auth: {
         user: "prageeththilina8@gmail.com",
-        pass: "prageeth199541312345"
+        pass: "prageeth199541312345###"
       },
       tls: {
           rejectUnauthorized: false
@@ -155,5 +155,29 @@ module.exports.accept_blood_order = (req, res, next) => {
     res.status(400).send("Error");
     });
     }
+    });
+}
+
+// get hospital blood request count
+module.exports.each_hospital_pending_blood_request_count = (req, res, next) => {
+    Hospital_Blood_Request.countDocuments({"hospital_name": "Karapitiya Hospital","order_status":"Pending"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get hospital blood request count
+module.exports.each_hospital_accepted_blood_request_count = (req, res, next) => {
+    Hospital_Blood_Request.countDocuments({"hospital_name": "Karapitiya Hospital","order_status":"Accepted"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
     });
 }

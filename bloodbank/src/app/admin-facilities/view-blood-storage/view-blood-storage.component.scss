@@ -22,8 +22,7 @@ h4{
 th{
     padding-left: 10px;
     padding-right: 10px;
-    width: 250px;
-
+    width: 300px;
 }
 td{
     padding-left: 10px;
@@ -130,9 +129,11 @@ td{
   background: rgb(69, 117, 206);
 }
 .table{
-  overflow-x: auto;
+  display: block;
   overflow-y: auto;
+  overflow-x: auto;
   white-space: nowrap;
+  height: 450px;
 }
 //sidebar
 .sidebar 

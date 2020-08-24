@@ -7,12 +7,17 @@
             <h2 class="text-center">Previous Requests</h2>
 
             <!-- Success message -->
-            <div class="success" *ngIf="requestshowSucessMessage">
+            <div class="success text-center" *ngIf="requestshowSucessMessage">
                 Cancelled successfully...
             </div>
 
+            <!-- Success message -->
+            <div class="success text-center" *ngIf="acceptMessage">
+                Saved successfully...
+            </div>
+
             <!-- Error message -->
-            <div class="alert" *ngIf="requestserverErrorMessages">
+            <div class="alert text-center" *ngIf="requestserverErrorMessages">
                 {{requestserverErrorMessages}}
             </div>
 
@@ -36,11 +41,11 @@
                         <td>{{dnebldrqst.blood_group}}</td>
                         <td>{{dnebldrqst.spouce}}</td>
                         <td>{{dnebldrqst.health}}</td>
-                        <td><img src="assets/images/Kidney_disease.jpg" alt="" class="medical"></td>
-                        <td>{{dnebldrqst.status}}</td>
+                        <td><img src='assets/images/donee-requests/{{dnebldrqst.email}}.jpg' alt="" class="medical"></td>
+                        <td style="color: rgb(230, 7, 7);">{{dnebldrqst.status}}</td>
                         <td>
                             <a class="btn btn-small btn-success td-btn" style="margin-left: 10px;"
-                                (click)="onSuccess(dnebldrqst._id)">Found</a>
+                                (click)="onSuccess(dnebldrqst._id,dnebldrqst.date,dnebldrqst.email,dnebldrqst.blood_group,dnebldrqst.spouce,dnebldrqst.health,dnebldrqst.status)">Found</a>
                             <a class="btn btn-small btn-primary td-btn" style="margin-left: 10px;"
                                 (click)="onUpdate(dnebldrqst)">Update</a>
                             <a class="btn btn-small btn-danger td-btn" style="margin-left: 10px;"

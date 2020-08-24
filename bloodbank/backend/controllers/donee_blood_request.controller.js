@@ -54,7 +54,7 @@ module.exports.delete_requests = (req, res, next) => {
 
 // to view purticular donee's requests
 module.exports.view_all_donee_request = (req, res, next) => {
-    Donee_Blood_Request.find((err, docs) => {
+    Donee_Blood_Request.find({"status": "Pending"},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }
@@ -97,7 +97,7 @@ module.exports.update_donee_request = (req, res, next) => {
 
 // get the pending appointment count in admin dashboard
 module.exports.donee_request_count = (req, res, next) => {
-    Donee_Blood_Request.countDocuments((err, count) => {
+    Donee_Blood_Request.countDocuments({"status": "Pending"},(err, count) => {
         if (!err) {
             res.json(count) 
 
@@ -105,5 +105,65 @@ module.exports.donee_request_count = (req, res, next) => {
         else { 
             console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
         }
+    });
+}
+
+async function sendMail(appointment, callback) {
+    // reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: "prageeththilina8@gmail.com",
+        pass: "prageeth199541312345###"
+      },
+      tls: {
+          rejectUnauthorized: false
+      }
+    });
+
+    let mailOptions = {
+      from: '"National Blood Transfussion service"<example.gmail.com>', // sender address
+      to: appointment.email, // list of receivers
+      subject: "We Recived Request", // Subject line
+      html: `
+      <head>
+      </head>
+      <body>
+      <h1>Dear : ${appointment.full_name}</h1><br>
+      <h3>Thanks for Join to donate blood Appointment Booked successfully for : </h3><br>
+      <h5>Venue : ${appointment.location}</h5><br>
+      <h5>Date : ${appointment.date}</h5><br>
+      <h5>Time : ${appointment.time}</h5><br>
+      <h2>Your Apppointment has been verified</h2><br>
+      <h4>If there is any issue reagrding the appointment booking free to contact us or email us (prageeththilina8@gmail.com)</h4>
+      </body>
+      `
+    };
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail(mailOptions);
+
+    callback(info);
+  }
+
+  // Hospital accept appointment
+module.exports.donne_found_request = (req, res, next) => {
+    Donee_Blood_Request.findById(req.params.id, function (err, donee_blood_request) {
+    if (!donee_blood_request)
+    return next(new Error('Unable To Find Request with this id'));
+    else {
+
+    donee_blood_request.status = req.body.status;  
+    donee_blood_request.save().then(bloodinv => {
+   
+    res.json('Blood request found Successfully');
+
+    })
+    .catch(err => {
+    res.status(400).send("Error");
+    });
+    }
     });
 }

@@ -18,9 +18,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   
   }
-  .table-danger{
-    background: rgb(69, 117, 206);
-  }
+
   .table{
     display: block;
     overflow-x: auto;
@@ -36,6 +34,8 @@ h4{
 th{
     padding-left: 10px;
     padding-right: 10px;
+    color: rgb(255, 255, 255);
+    background: rgb(12, 163, 45);
 
 }
 td{

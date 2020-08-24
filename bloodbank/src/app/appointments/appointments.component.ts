@@ -43,16 +43,6 @@ export class AppointmentsComponent implements OnInit {
       this.appointmentService.appointments = res as Appointment[];
     });
   }
-  
-  onCancel(_id) {
-    if (confirm('Are you sure want to Cancel the appointment ?') == true) {
-      this.appointmentService.donorcancelAppointment(_id).subscribe((res) => {
-        this.showSucessMessage = true;
-        setTimeout(() => this.showSucessMessage = false, 3000);
-        this.getDonorsAppointments();
-      });
-    }
-  }
 
   onDelete(_id) {
     if (confirm('Are you sure to delete this record ?') == true) {

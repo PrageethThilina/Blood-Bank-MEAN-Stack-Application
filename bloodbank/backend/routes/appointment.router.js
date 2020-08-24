@@ -5,32 +5,43 @@ const ctrlappointment = require('../controllers/appointment.controller');
 //add appointment
 appointmentrouter.post('/book-appointments', ctrlappointment.add_appointment);
 
-//Blood Bank View appointment
-appointmentrouter.get('/admin-view-appointmets', ctrlappointment.view_appointments);
+//donor delete appoitntment
+appointmentrouter.get('/appointments/:id', ctrlappointment.delete_appointment);
+
+//view all appointments of purticular donor
+appointmentrouter.get('/appointments', ctrlappointment.view_donors_appointments);
+
+appointmentrouter.get('/donor-view-previous-appointment', ctrlappointment.view_donors_accepted_appointments);
 
 //Hospital View appointment
 appointmentrouter.get('/hospital-manage-appointments', ctrlappointment.view_hospital_appointments);
 
 //hospital accept appointment
-appointmentrouter.post('/hospital-manage-appointments/:id', ctrlappointment.accept_appointment);
+appointmentrouter.post('/hospital-manage-appointments/:id', ctrlappointment.hospital_accept_appointment);
 
-//view all appointments of purticular donor
-appointmentrouter.get('/appointments', ctrlappointment.view_donors_appointments);
+//Hospital delete appointments
+appointmentrouter.get('/hospital-manage-appointments/:id', ctrlappointment.delete_appointment);
 
+//Hospital View accepted appointment
+appointmentrouter.get('/hospital-finish-appointments-component', ctrlappointment.view_hospital_accepted_appointments);
 
-appointmentrouter.get('/donor-view-previous-appointment', ctrlappointment.view_donors_accepted_appointments);
+//hospital finish appointment
+appointmentrouter.post('/hospital-finish-appointments-component/:id', ctrlappointment.accept_appointment);
+
+//Hospital delete appointments
+appointmentrouter.get('/hospital-finish-appointments-component/:id', ctrlappointment.delete_appointment);
+
+//Hospital View Finished appointment
+appointmentrouter.get('/hospital-view-finished-appointments', ctrlappointment.view_hospital_finished_appointments);
+
+//Blood Bank View appointment
+appointmentrouter.get('/admin-view-appointmets', ctrlappointment.view_appointments);
 
 //bloodbank delete appointmnet
 appointmentrouter.get('/admin-accept-delete-appointments/:id', ctrlappointment.delete_appointment);
 
 //bloodbank delete appointmnet
 appointmentrouter.get('/admin-accepted-appointments/:id', ctrlappointment.delete_appointment);
-
-//Hospital delete appointments
-appointmentrouter.get('/hospital-manage-appointments/:id', ctrlappointment.delete_appointment);
-
-//donor delete appoitntment
-appointmentrouter.get('/appointments/:id', ctrlappointment.delete_appointment);
 
 //Blood Bank View appointment
 appointmentrouter.get('/admin-accept-delete-appointments', ctrlappointment.get_pending_appointments);
@@ -53,7 +64,17 @@ appointmentrouter.get('/pending-appointments', ctrlappointment.appointment_count
 //get the accepted appointment count of blood bank
 appointmentrouter.get('/accepted-appointments', ctrlappointment.accepted_appointment_count);
 
+//finished appointment count
 appointmentrouter.get('/finished-appointments', ctrlappointment.finished_appointment_count);
+
+//get the appointment count of hospital
+appointmentrouter.get('/pending-appointment-count', ctrlappointment.hospital_appointment_count);
+
+//get the accepted appointment count of hospital
+appointmentrouter.get('/accepted-appointment-count', ctrlappointment.hospital_accepted_appointment_count);
+
+//finished appointment count of hospital
+appointmentrouter.get('/finished-appointment-count', ctrlappointment.hospital_finished_appointment_count);
 
 module.exports = appointmentrouter;
 

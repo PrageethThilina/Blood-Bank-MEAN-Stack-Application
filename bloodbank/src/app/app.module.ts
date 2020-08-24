@@ -130,6 +130,16 @@ import { AdminAcceptedAppointmentsComponent } from './admin-facilities/admin-acc
 import { AdminFinishedAppointmentsComponent } from './admin-facilities/admin-finished-appointments/admin-finished-appointments.component';
 import { DonorViewPreviousAppointmentComponent } from './appointments/donor-view-previous-appointment/donor-view-previous-appointment.component';
 import { HospitalViewPreviousBloodRequestsComponent } from './hospital-facilities/hospital-view-previous-blood-requests/hospital-view-previous-blood-requests.component';
+import { HospitalViewFinishedAppointmentsComponent } from './hospital-facilities/hospital-view-finished-appointments/hospital-view-finished-appointments.component';
+import { HospitalFinishAppointmentsComponentComponent } from './hospital-facilities/hospital-finish-appointments-component/hospital-finish-appointments-component.component';
+import { PendingBloodRequestCountComponent } from './hospital-facilities/hospital-dashoard-component/pending-blood-request-count/pending-blood-request-count.component';
+import { AcceptedBloodRequestCountComponent } from './hospital-facilities/hospital-dashoard-component/accepted-blood-request-count/accepted-blood-request-count.component';
+import { PendingAppointmentCountComponent } from './hospital-facilities/hospital-dashoard-component/pending-appointment-count/pending-appointment-count.component';
+import { AcceptedAppointmentCountComponent } from './hospital-facilities/hospital-dashoard-component/accepted-appointment-count/accepted-appointment-count.component';
+import { FinishedAppointmentCountComponent } from './hospital-facilities/hospital-dashoard-component/finished-appointment-count/finished-appointment-count.component';
+import { BloodInventoryReportComponent } from './admin-facilities/reports/blood-inventory-report/blood-inventory-report.component';
+import { DonorsReportComponent } from './admin-facilities/reports/donors-report/donors-report.component';
+import { OtherReportsComponent } from './admin-facilities/reports/other-reports/other-reports.component';
 
 import { HospitalService } from './shared/hospital.service';
 import { AdminService } from './shared/admin.service';
@@ -260,9 +270,18 @@ const routes: Routes = [
   { path: 'admin-finished-appointments', component: AdminFinishedAppointmentsComponent,canActivate:[AdminGuard]},
   { path: 'donor-view-previous-appointment', component: DonorViewPreviousAppointmentComponent,canActivate:[DonorGuard]},
   { path: 'hospital-view-previous-blood-requests', component: HospitalViewPreviousBloodRequestsComponent,canActivate:[HospitalGuard]},
-  
-];
+  { path: 'hospital-view-finished-appointments', component: HospitalViewFinishedAppointmentsComponent,canActivate:[HospitalGuard]},
+  { path: 'hospital-finish-appointments-component', component: HospitalFinishAppointmentsComponentComponent,canActivate:[HospitalGuard]},
+  { path: 'pending-blood-request-count', component: PendingBloodRequestCountComponent,canActivate:[HospitalGuard]},
+  { path: 'accepted-blood-request-count', component: AcceptedBloodRequestCountComponent,canActivate:[HospitalGuard]},
+  { path: 'pending-appointment-count', component: PendingAppointmentCountComponent,canActivate:[HospitalGuard]},
+  { path: 'accepted-appointment-count', component: AcceptedAppointmentCountComponent,canActivate:[HospitalGuard]},
+  { path: 'finished-appointment-count ', component: FinishedAppointmentCountComponent,canActivate:[HospitalGuard]},
+  { path: 'blood-inventory-report', component: BloodInventoryReportComponent,canActivate:[AdminGuard]},
+  { path: 'donors-report', component: DonorsReportComponent,canActivate:[AdminGuard]},
+  { path: 'other-reports', component: OtherReportsComponent,canActivate:[AdminGuard]}, 
 
+];
 
 @NgModule({
 
@@ -374,6 +393,16 @@ const routes: Routes = [
       AdminFinishedAppointmentsComponent,
       DonorViewPreviousAppointmentComponent,
       HospitalViewPreviousBloodRequestsComponent,
+      HospitalViewFinishedAppointmentsComponent,
+      HospitalFinishAppointmentsComponentComponent,
+      PendingBloodRequestCountComponent,
+      AcceptedBloodRequestCountComponent,
+      PendingAppointmentCountComponent,
+      AcceptedAppointmentCountComponent,
+      FinishedAppointmentCountComponent,
+      BloodInventoryReportComponent,
+      DonorsReportComponent,
+      OtherReportsComponent,
 
   ],
   imports: [

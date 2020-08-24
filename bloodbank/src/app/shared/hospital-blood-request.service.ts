@@ -67,5 +67,13 @@ export class HospitalBloodRequestService {
     get_hospital_blood_request_count():Observable<any> {
       return this.http.get<{count:number}>(environment.apiBaseUrl + '/hospital-blood-request-count');
     }
+
+    get_each_hospital_pending_blood_request_count():Observable<any> {
+      return this.http.get<{count:number}>(environment.apiBaseUrl + '/pending-blood-request-count');
+    }
+
+    get_each_hospital_accepted_blood_request_count():Observable<any> {
+      return this.http.get<{count:number}>(environment.apiBaseUrl + '/accepted-blood-request-count');
+    }
     
 }

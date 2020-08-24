@@ -123,7 +123,7 @@
               <td>
                 <img class="img-post" [src]="pst.imagePath">
               </td>
-              <td>{{pst.status}}</td>
+              <td style="color: rgb(230, 7, 7);">{{pst.status}}</td>
               <td>
                 <a class="btn btn-xs btn-success" (click)="onAccept(pst._id,pst.province,pst.district,pst.address,pst.organiser,pst.date,pst.time,pst.contact,pst.email,pst.imagePath,pst.status)">Accept</a>
                 <a class="btn btn-xs btn-danger" (click)="onDelete(pst._id)">Delete</a>

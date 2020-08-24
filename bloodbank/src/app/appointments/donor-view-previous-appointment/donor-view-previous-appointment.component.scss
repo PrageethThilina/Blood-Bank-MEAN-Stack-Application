@@ -1,0 +1,32 @@
+.container{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.tabel{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+h4{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 20px;
+}
+th{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+td{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.table-success{
+    background: rgb(12, 119, 35);
+    color: rgb(255, 255, 255);
+}
+.td-section{
+    padding-left: 30px;
+    font-weight: bold;
+}

@@ -76,6 +76,18 @@ module.exports.view_hospital_accepted_appointments = (req, res, next) => {
     });
 }
 
+//hospital view accepted appoitnment
+module.exports.view_hospital_finished_appointments = (req, res, next) => {
+    Appointment.find({"location": "Karapitiya Hospital","status":"Finished"},(err, docs) => {
+        if (!err) { 
+            res.send(docs); 
+        }
+        else { 
+            console.log('Error in Retriving Appointments :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
 // to view puticular donor's appointments
 module.exports.view_donors_appointments = (req, res, next) => {
     Appointment.find({"donor_nic": "951043028v","status":"Pending"},(err, docs) => {
@@ -88,9 +100,9 @@ module.exports.view_donors_appointments = (req, res, next) => {
     });
 }
 
-// to view puticular donor's accepetd appointments
+// to view puticular donor's previous appointments
 module.exports.view_donors_accepted_appointments = (req, res, next) => {
-    Appointment.find({"donor_nic": "951043028v","status":"Accepted"},(err, docs) => {
+    Appointment.find({"donor_nic": "951043028v",$or:[{"status":"Accepted"},{"status":"Finished"}]},(err, docs) => {
         if (!err) { 
             res.send(docs); 
         }
@@ -117,7 +129,6 @@ module.exports.add_appointment = (req, res, next) => {
         if (!err) {
             res.send(doc);  
             
-            console.log("request came");
             let appointment = req.body;
             sendMail(appointment, info => {
               console.log(`The mail has been send and the id is ${info.messageId}`);
@@ -140,7 +151,7 @@ async function sendMail(appointment, callback) {
       secure: true, // true for 465, false for other ports
       auth: {
         user: "prageeththilina8@gmail.com",
-        pass: "prageeth199541312345"
+        pass: "prageeth199541312345###"
       },
       tls: {
           rejectUnauthorized: false
@@ -156,11 +167,11 @@ async function sendMail(appointment, callback) {
       </head>
       <body>
       <h1>Dear : ${appointment.full_name}</h1><br>
-      <h3>Thanks for Join to donate blood Appointment Booked successfully for : </h3><br>
+      <h3>Thanks for Join to donate blood, Appointment Requested successfully for : </h3><br>
       <h5>Venue : ${appointment.location}</h5><br>
       <h5>Date : ${appointment.date}</h5><br>
       <h5>Time : ${appointment.time}</h5><br>
-      <h2>Your Apppointment has been verified</h2><br>
+      <h2>Our Admin will get back to you soon</h2><br>
       <h4>If there is any issue reagrding the appointment booking free to contact us or email us (prageeththilina8@gmail.com)</h4>
       </body>
       `
@@ -191,7 +202,30 @@ module.exports.accept_appointment = (req, res, next) => {
     appointment.status = req.body.status;
    
     appointment.save().then(bloodinv => {
+   
     res.json('Appointment Accepted Successfully');
+
+    })
+    .catch(err => {
+    res.status(400).send("Error");
+    });
+    }
+    });
+}
+
+// Hospital accept appointment
+module.exports.hospital_accept_appointment = (req, res, next) => {
+    Appointment.findById(req.params.id, function (err, appointment) {
+    if (!appointment)
+    return next(new Error('Unable To Find Appointment With This Id'));
+    else {
+
+    appointment.status = req.body.status;
+   
+    appointment.save().then(bloodinv => {
+   
+    res.json('Appointment Accepted Successfully');
+
     })
     .catch(err => {
     res.status(400).send("Error");
@@ -248,6 +282,43 @@ module.exports.accepted_appointment_count = (req, res, next) => {
 // get the accepted appointment count in admin dashboard
 module.exports.finished_appointment_count = (req, res, next) => {
     Appointment.countDocuments({"location": "National Blood Center - Narahenpita","status":"Finished"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the pending appointment count in hospital dashboard
+module.exports.hospital_appointment_count = (req, res, next) => {
+    Appointment.countDocuments({"location": "Karapitiya Hospital","status":"Pending"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the accepted appointment count in hospital dashboard
+module.exports.hospital_accepted_appointment_count = (req, res, next) => {
+    Appointment.countDocuments({"location": "Karapitiya Hospital","status":"Accepted"},(err, count) => {
+        if (!err) {
+            res.json(count) 
+        }
+        else { 
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        }
+    });
+}
+
+// get the accepted appointment count in hospital dashboard
+module.exports.hospital_finished_appointment_count = (req, res, next) => {
+    Appointment.countDocuments({"location": "Karapitiya Hospital","status":"Finished"},(err, count) => {
         if (!err) {
             res.json(count) 
         }

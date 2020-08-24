@@ -14,6 +14,8 @@ export class ViewBloodRequestComponent implements OnInit {
 
   requestshowSucessMessage: boolean;
   requestserverErrorMessages: string;
+  acceptMessage: boolean;
+  
 
   constructor(public doneebloodrequestService: DoneeBloodRequestService, private router : Router) { }
 
@@ -38,8 +40,23 @@ export class ViewBloodRequestComponent implements OnInit {
     }
   }
 
-  onSuccess(_id)
-  {
+  onSuccess( _id: string,
+    date: string,
+    email: string,
+    blood_group: string,
+    spouce: string,
+    health: string,
+    status: string,) {
+    if (confirm('Are you sure to Save the changes ?') == true) {
+      status = "Found";
+      this.doneebloodrequestService.onSuccess(_id, status).subscribe((res) => {
+        console.log(res);
+        this.acceptMessage = true;
+        setTimeout(() => this.acceptMessage = false, 3000);
+        window.location.reload();
+      });
+
+    }
 
   }
   

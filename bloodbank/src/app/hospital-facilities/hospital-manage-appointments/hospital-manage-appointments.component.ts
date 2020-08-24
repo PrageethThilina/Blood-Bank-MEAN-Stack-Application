@@ -4,9 +4,6 @@ import { Router } from "@angular/router";
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 
-import { Hospital } from '../../shared/hospital.model';
-import { HospitalService } from '../../shared/hospital.service';
-
 import { Appointment } from '../../shared/appointment.model';
 import { AppointmentService } from '../../shared/appointment.service'
 
@@ -17,23 +14,12 @@ import { AppointmentService } from '../../shared/appointment.service'
 })
 export class HospitalManageAppointmentsComponent implements OnInit {
 
-  hospitalDetails;
   showSucessMessage: boolean;
   acceptMessage: boolean;
 
-  constructor(public appointmentService: AppointmentService,private hospitalService: HospitalService, private router : Router) { }
+  constructor(public appointmentService: AppointmentService, private router : Router) { }
 
   ngOnInit() {
-    
-    this.hospitalService.getUserProfile().subscribe(
-      res => {
-        this.hospitalDetails = res['hospital'];
-      },
-      err => { 
-        console.log(err);
-        
-      }
-    );
 
     this.appointmentService.getHospitalAppointments().subscribe((res) => {
       this.appointmentService.appointments = res as Appointment[];
@@ -53,11 +39,11 @@ export class HospitalManageAppointmentsComponent implements OnInit {
     showHead:'firstPage',
     margin: {top:10}
   })
-    doc.save('Available_Blood_Storage.pdf')
+    doc.save('Accepted_appointment_List.pdf')
 
 }
   
-onEditnew(_id: string,
+on_hospital_Accept(_id: string,
   donor_nic: string,
   location: string,
   date: string,
@@ -66,8 +52,7 @@ onEditnew(_id: string,
   status: string,) {
   if (confirm('Are you sure to Accept the Appointment ?') == true) {
     status = "Accepted";
-    this.appointmentService.onEdit(_id, status).subscribe((res) => {
-      console.log(res);
+    this.appointmentService.on_hospital_Accept(_id, status).subscribe((res) => {
       this.acceptMessage = true;
       setTimeout(() => this.acceptMessage = false, 3000);
       window.location.reload();
@@ -76,9 +61,9 @@ onEditnew(_id: string,
   }
 }
 
-  onDelete(_id) {
+hospital_delete_pending_appointments(_id) {
     if (confirm('Are you sure to delete this record ?') == true) {
-      this.appointmentService.manageappointments(_id).subscribe((res) => {
+      this.appointmentService.hospital_delete_pending_appointments(_id).subscribe((res) => {
         this.showSucessMessage = true;
         setTimeout(() => this.showSucessMessage = false, 3000);
       });

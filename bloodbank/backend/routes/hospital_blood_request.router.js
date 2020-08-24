@@ -21,5 +21,10 @@ hospitalbloodrequestrouter.get('/hospital-blood-request-count', ctrlhospitalbloo
 
 hospitalbloodrequestrouter.post('/manage-hopital-blood-orders/:id', ctrlhospitalbloodrequest.accept_blood_order);
 
+hospitalbloodrequestrouter.get('/pending-blood-request-count', ctrlhospitalbloodrequest.each_hospital_pending_blood_request_count);
+
+hospitalbloodrequestrouter.get('/accepted-blood-request-count', ctrlhospitalbloodrequest.each_hospital_accepted_blood_request_count);
+
+
 
 module.exports = hospitalbloodrequestrouter;
