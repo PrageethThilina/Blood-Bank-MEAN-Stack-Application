@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+import { CalendarOptions } from '@fullcalendar/angular';
+
 
 import { AppointmentService } from '../../shared/appointment.service'
 import { DonorService } from '../../shared/donor.service'
@@ -21,6 +23,27 @@ export class BookAppointmentsComponent implements OnInit {
   constructor(public appointmentService: AppointmentService, public donorService: DonorService, private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    dateClick: this.handleDateClick.bind(this),
+    events: [
+      { title: 'Karapitiya', date: '2020-09-10' },
+      { title: 'Kurunegala', date: '2020-08-30' },
+      { title: 'National Blood Bank', date: '2019-09-25' },
+      { title: 'Karapitiya', date: '2019-08-28' },
+      { title: 'Anuradapura', date: '2020-08-18' },
+      { title: 'National Blood Bank', date: '2020-09-03' },
+      { title: 'Karapitiya', date: '2020-10-15' },
+      { title: 'Peradeniya', date: '2020-09-08' },
+      { title: 'National Blood Bank', date: '2020-09-24' },
+      { title: 'Karapitiya', date: '2020-10-20' },
+    ]
+  };
+
+  handleDateClick(arg) {
+    alert('date click! ' + arg.dateStr)
   }
 
   onSubmit(form: NgForm) {

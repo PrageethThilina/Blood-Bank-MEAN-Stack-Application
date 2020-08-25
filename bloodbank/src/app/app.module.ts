@@ -9,6 +9,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FullCalendarModule } from '@fullcalendar/angular'; 
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+
 
 //Angular materials
 import { MatInputModule } from '@angular/material/input';
@@ -140,6 +144,7 @@ import { FinishedAppointmentCountComponent } from './hospital-facilities/hospita
 import { BloodInventoryReportComponent } from './admin-facilities/reports/blood-inventory-report/blood-inventory-report.component';
 import { DonorsReportComponent } from './admin-facilities/reports/donors-report/donors-report.component';
 import { OtherReportsComponent } from './admin-facilities/reports/other-reports/other-reports.component';
+import { CovidDashboardComponent } from './covid-dashboard/covid-dashboard.component';
 
 import { HospitalService } from './shared/hospital.service';
 import { AdminService } from './shared/admin.service';
@@ -280,8 +285,14 @@ const routes: Routes = [
   { path: 'blood-inventory-report', component: BloodInventoryReportComponent,canActivate:[AdminGuard]},
   { path: 'donors-report', component: DonorsReportComponent,canActivate:[AdminGuard]},
   { path: 'other-reports', component: OtherReportsComponent,canActivate:[AdminGuard]}, 
+  { path: 'covid-dashboard', component: CovidDashboardComponent}, 
 
 ];
+
+FullCalendarModule.registerPlugins([ 
+  dayGridPlugin,
+  interactionPlugin,
+]);
 
 @NgModule({
 
@@ -403,6 +414,7 @@ const routes: Routes = [
       BloodInventoryReportComponent,
       DonorsReportComponent,
       OtherReportsComponent,
+      CovidDashboardComponent,
 
   ],
   imports: [
@@ -425,6 +437,7 @@ const routes: Routes = [
     MaterialFileInputModule,
     MatToolbarModule,
     MatExpansionModule,
+    FullCalendarModule,
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({ apiKey: ''}),
     

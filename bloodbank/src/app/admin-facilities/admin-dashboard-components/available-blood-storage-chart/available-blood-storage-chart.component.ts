@@ -20,7 +20,7 @@ export class AvailableBloodStorageChartComponent implements OnInit {
           labels: ['A+', 'B+', 'AB+', 'O+', 'A-', 'B-', 'AB-', 'O-'],
           datasets: [{
               label: 'Available Storage',
-              data: [12, 19, 3, 5, 2, 3, 5, 2],
+              data: [8, 6, 5, 6, 6, 6, 7, 5],
               backgroundColor: [
                   'red',
                   'Green',

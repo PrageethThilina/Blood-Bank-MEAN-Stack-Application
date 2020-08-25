@@ -43,4 +43,8 @@ export class ManageRegisteredDoneeComponent implements OnInit {
     toggleSidebar();
 }
 
+  onCall(_id){
+
+  }
+
 }

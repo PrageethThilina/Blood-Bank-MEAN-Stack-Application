@@ -139,7 +139,7 @@
   position: absolute;
   z-index: 1;
   left: 0;
-  height: 1200px;
+  height: 1230px;
   -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   -ms-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -260,7 +260,6 @@ ul ul li a{
 #sidebar {
   position: absolute;
   width: 300px;
-  height: 1200px;
   left: 0px;
   transition: all 500ms linear;
 }
@@ -281,6 +280,10 @@ ul ul li a{
   height: 5px;
   background: black;
   margin: 5px 0px;
+}
+.col-md-2{
+  padding-left: 30%;
+  padding-bottom: 30%;
 }
 
 

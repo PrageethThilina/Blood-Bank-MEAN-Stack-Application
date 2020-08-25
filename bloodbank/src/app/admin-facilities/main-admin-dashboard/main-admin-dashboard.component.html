@@ -71,6 +71,7 @@
                 <li><a routerLink="/hospital-register"><i class="fa fa-link"></i>Add a New Hospital</a></li>
                 <li><a routerLink="/manage-hopital-blood-orders"><i class="far fa-calendar-check"></i>Manage Hospital
                         Blood Orders</a></li>
+                <li><a routerLink="/blood-inventory-report"><i class="fas fa-book-reader"></i>Reports</a></li>
             </ul>
         </div>
     </aside>
@@ -121,76 +122,9 @@
             <app-hospital-blood-request-table></app-hospital-blood-request-table>
         </div>
     </div>
-    <div class="row clearfix" style="margin-top: -50%;">
-        <div class="col-md-5" style="margin-right: 60px;">
-            <h4 class="text-center">Received Blood Storage</h4>
-            <div class="filter-section">
-                <div class="input-group">
-                    <label class="label control-label">Year :</label>
-                    <select class="form-control">
-                      <option selected>Select an option</option>
-                      <option value="1">2018</option>
-                      <option value="2">2019</option>
-                      <option value="3">2020</option>
-                      <option value="4">2021</option>
-                      <option value="5">2022</option>
-                      <option value="6">2023</option>
-                      <option value="7">2024</option>
-                      <option value="8">2025</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label class="label control-label">Blood Group :</label>
-                    <select class="form-control">
-                      <option selected>Select an option</option>
-                      <option value="1">A+</option>
-                      <option value="2">A-</option>
-                      <option value="3">B+</option>
-                      <option value="4">B-</option>
-                      <option value="5">AB+</option>
-                      <option value="6">AB-</option>
-                      <option value="7">O+</option>
-                      <option value="8">O-</option>
-                    </select>
-                </div>
-                 <button class="btn btn-danger">Print</button>
-            </div>
-            <app-received-blood-storage-chart></app-received-blood-storage-chart>           
-        </div>
-        <div class="col-md-5">
-            <h4 class="text-center">Issued Blood Storage</h4>
-            <div class="filter-section">
-                <div class="input-group">
-                    <label class="label control-label">Year :</label>
-                    <select class="form-control">
-                      <option selected>Select an option</option>
-                      <option value="1">2018</option>
-                      <option value="2">2019</option>
-                      <option value="3">2020</option>
-                      <option value="4">2021</option>
-                      <option value="5">2022</option>
-                      <option value="6">2023</option>
-                      <option value="7">2024</option>
-                      <option value="8">2025</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label class="label control-label">Blood Group :</label>
-                    <select class="form-control">
-                      <option selected>Select an option</option>
-                      <option value="1">A+</option>
-                      <option value="2">A-</option>
-                      <option value="3">B+</option>
-                      <option value="4">B-</option>
-                      <option value="5">AB+</option>
-                      <option value="6">AB-</option>
-                      <option value="7">O+</option>
-                      <option value="8">O-</option>
-                    </select>
-                </div>
-                 <a class="btn btn-danger" href="https://app.powerbi.com/reportEmbed?reportId=5d73809f-74df-43aa-a70c-da8c5da8f221&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D">Print</a>
-            </div>
-            <app-issued-blood-storage-chart></app-issued-blood-storage-chart>           
+    <div class="row" style="margin-top: -53%;">
+        <div class="col">
+            <iframe width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2483299f-99a9-465e-9656-9fee81442842&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </div>
 </div>

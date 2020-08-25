@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@fullcalendar/angular": "^5.3.0",
     "@fullcalendar/daygrid": "^5.3.0",
+    "@fullcalendar/interaction": "^5.3.0",
     "angular-datatables": "^9.0.2",
     "angular-fastclick": "^1.0.7",
     "angular-google-charts": "^1.1.4",
