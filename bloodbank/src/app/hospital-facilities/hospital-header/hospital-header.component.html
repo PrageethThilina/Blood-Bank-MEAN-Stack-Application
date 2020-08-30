@@ -8,22 +8,26 @@
     </div>
   </div>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>    
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-     <ul class="navbar-nav ml-auto">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
 
-       <button class="btn btn-primary" routerLink="/hospital-manage-appointments" routerLinkActive="active">Manage Appointments</button>
-       <button class="btn btn-primary" routerLink="/add-donors" routerLinkActive="active">Add Donors</button>
-       <button class="btn btn-primary" routerLink="/hospital-view-previous-blood-requests" routerLinkActive="active">Previous Orders</button>
-       <button class="btn btn-primary" (click)="onEdit(hospitalDetails)">Order Blood From Blood Bank</button>
-       
-       <div *ngIf="hospitalDetails">
-       <button class="btn btn-success my-2 my-sm-0" (click)="onLogout()"><i class="fa fa-user" style="margin-right: 10px;"></i>Logout</button>
-       </div> 
-       
-     </ul>
-    </div>
+      <button class="btn btn-primary" (click)="getHospitalAppointments(hospitalDetails.hospital_name)">Manage
+        Appointments</button>
+      <button class="btn btn-primary" routerLink="/add-donors" routerLinkActive="active">Add Donors</button>
+      <button class="btn btn-primary" (click)="getHospitalPreviousOrders(hospitalDetails.hospital_name)">Previous
+        Orders</button>
+      <button class="btn btn-primary" (click)="onEdit(hospitalDetails)">Order Blood From Blood Bank</button>
+
+      <div *ngIf="hospitalDetails">
+        <button class="btn btn-success my-2 my-sm-0" (click)="onLogout()"><i class="fa fa-user"
+            style="margin-right: 10px;"></i>Logout</button>
+      </div>
+
+    </ul>
+  </div>
 </nav>

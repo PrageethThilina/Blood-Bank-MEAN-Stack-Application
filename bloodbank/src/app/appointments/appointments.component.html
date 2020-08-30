@@ -1,45 +1,49 @@
 <app-donor-header></app-donor-header>
 
 <div class="container">
-    <div>
-      <button class="btn btnn btn-success" (click)="onEdit(donorDetails)">Make an Appointment</button>
-      <button class="btn btnn btn-success" routerLink="/donor-view-previous-appointment">Previous appointments</button>
+    <div class="row">
+        <button class="btn btnn btn-success" style="margin-right: 20px" (click)="onEdit(donorDetails)">Make an
+            Appointment</button>
+        <button class="btn btnn btn-success" style="margin-right: 20px"
+            (click)="getDonorsAppointments(donorDetails._id)">View Current Appointment</button>
+        <button class="btn btnn btn-success" (click)="getDonorsPreviousAppointments(donorDetails._id)">View Previous
+            Appointment</button>
     </div>
-    <div class="row  align-items-center">
+    <div class="row profile  align-items-center">
         <div class="col">
-           <h4 class="text-center">Profile Details</h4>
-           <table class="table table-striped table-bordered table-hover tbl-profile">
-               <tbody>
-               <tr>
-                   <th style="width: 30%;" class="table-success text-center">Donor ID</th>
-                   <td class="td-section">{{donorDetails._id}}</td> 
-               </tr>
-               <tr>
-                   <th class="table-success text-center">Name</th>
-                   <td class="td-section">{{donorDetails.full_name}}</td> 
-               </tr>
-               <tr>
-                   <th class="table-success text-center">NIC No</th>
-                   <td class="td-section">{{donorDetails.donor_nic}}</td>  
-               </tr>
-               <tr>
-                  <th class="table-success text-center">Contact Number</th>
-                  <td class="td-section">{{donorDetails.contact}}</td>
-               </tr>
-               <tr>
-                  <th class="table-success text-center">Email</th>
-                  <td class="td-section">{{donorDetails.email}}</td>
-               </tr>
-               <tr>
-                    <th class="table-success text-center">Last Donate Date</th>
-                    <td class="td-section">{{donorDetails.last_donate_date}}</td>
-               </tr>
-               <tr>
-                  <th class="table-success text-center">Profile Status</th>
-                  <td class="td-section">{{donorDetails.profile_status}}</td>
-               </tr>
-               </tbody>
-           </table>
+            <h4 class="text-center">Profile Details</h4>
+            <table class="table table-striped table-bordered table-hover tbl-profile">
+                <tbody>
+                    <tr>
+                        <th style="width: 30%;" class="table-success text-center">Donor ID</th>
+                        <td class="td-section">{{donorDetails._id}}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success text-center">Name</th>
+                        <td class="td-section">{{donorDetails.full_name}}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success text-center">NIC No</th>
+                        <td class="td-section">{{donorDetails.donor_nic}}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success text-center">Contact Number</th>
+                        <td class="td-section">{{donorDetails.contact}}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success text-center">Email</th>
+                        <td class="td-section">{{donorDetails.email}}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success text-center">Last Donate Date</th>
+                        <td class="td-section">{{donorDetails.last_donate_date}}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success text-center">Profile Status</th>
+                        <td class="td-section">{{donorDetails.profile_status}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -47,40 +51,45 @@
 <div class="container">
     <div class="row">
         <div class="col">
-          <!-- Success message -->
+            <!-- Success message -->
             <div class="success" *ngIf="showSucessMessage">
-             Appointment Deleted successfully..!!!
+                Appointment Deleted successfully..!!!
             </div>
         </div>
     </div>
     <div class="row align-items-center">
         <div class="col">
-           <h4 class="text-center">Appointment History</h4>
-           <table class="table table-striped table-bordered table-hover">
-            <thead>
-            <tr>
-                <th class="table-success">Appointment ID</th>
-                <th class="table-success">Location</th>
-                <th class="table-success">Date</th>
-                <th class="table-success">Time</th>
-                <th class="table-success">Booking Status</th>
-                <th class="table-success">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let apnts of appointmentService.appointments">
-                    <td>{{apnts._id}}</td>
-                    <td>{{apnts.location}}</td>
-                    <td>{{apnts.date}}</td>
-                    <td>{{apnts.time}}</td>
-                    <td>{{apnts.status}}</td>
-                    <td>
-                        <a class="btn btn-small btn-danger" (click)="onDelete(apnts._id)" style="margin-right: 10px;">Cancel</a>
-                    </td>
+            <div *ngIf="show_container">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="table-success text-center">Current Appointment</th>
+                        </tr>
+                        <tr>
+                            <th class="table-success">Appointment ID</th>
+                            <th class="table-success">Location</th>
+                            <th class="table-success">Date</th>
+                            <th class="table-success">Time</th>
+                            <th class="table-success">Booking Status</th>
+                            <th class="table-success">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let apnts of details">
+                            <td>{{apnts._id}}</td>
+                            <td>{{apnts.location}}</td>
+                            <td>{{apnts.date}}</td>
+                            <td>{{apnts.time}}</td>
+                            <td>{{apnts.status}}</td>
+                            <td>
+                                <a class="btn btn-small btn-danger" (click)="onDelete(apnts._id)"
+                                    style="margin-right: 10px;">Cancel</a>
+                            </td>
 
-               </tr>
-            </tbody>
-           </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

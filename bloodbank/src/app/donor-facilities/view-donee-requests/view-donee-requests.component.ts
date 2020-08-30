@@ -16,7 +16,7 @@ export class ViewDoneeRequestsComponent implements OnInit {
   showSucessMessage: boolean;
   serverErrorMessages: string;
 
-  constructor(public doneebloodrequestService: DoneeBloodRequestService, private router : Router) { }
+  constructor(public doneebloodrequestService: DoneeBloodRequestService, private router: Router) { }
 
   ngOnInit() {
 
@@ -30,29 +30,7 @@ export class ViewDoneeRequestsComponent implements OnInit {
     });
   }
 
-  onCall(_id){
+  onCall(_id) {
 
   }
-
-
-  // onEmail(
-  // _id: string,
-  // date: string,
-  // birthday: string,
-  // email: string,
-  // contact: string,
-  // blood_group: string,
-  // spouce: string,
-  // health: string,) {
-  // if (confirm('Are you sure to want to send an Email ?') == true) {
-  //   this.doneebloodrequestService.onEmail(_id, status).subscribe((res) => {
-  //     console.log(res);
-  //     this.showSucessMessage = true;
-  //     setTimeout(() => this.showSucessMessage = false, 3000);
-  //     //window.location.reload();
-  //     });
-
-  //   }
-
-  // }
 }

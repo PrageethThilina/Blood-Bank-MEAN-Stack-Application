@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+//Blood campaigns schema
 var Blood_Campaigns_Schema = new mongoose.Schema({
   province: {
     type: String,
@@ -34,15 +35,15 @@ var Blood_Campaigns_Schema = new mongoose.Schema({
     required: 'Email can\'t be empty',
   },
   imagePath: {
-    type: String, 
-    required: true ,
+    type: String,
+    required: true,
   },
-  created: { 
-    type: Date, 
-    default: Date.now 
+  created: {
+    type: Date,
+    default: Date.now
   },
-  status: { 
-    type: String, 
+  status: {
+    type: String,
     default: 'Pending',
   },
 });

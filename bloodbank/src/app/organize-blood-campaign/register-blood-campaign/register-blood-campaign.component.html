@@ -3,114 +3,115 @@
 <div class="container">
   <div class="row mat-elevation-z8 mat-row">
     <div class="col mx-auto">
-            
-            <!-- Success message -->
-            <div class="success text-center" *ngIf="showSucessMessage">
-              Saved successfully
-            </div>
-      
-            <!-- Error message -->
-            <div class="alert" *ngIf="serverErrorMessages">
-              {{serverErrorMessages}}
-            </div>
-      
+
+      <!-- Success message -->
+      <div class="success text-center" *ngIf="showSucessMessage">
+        Saved successfully
+      </div>
+
+      <!-- Error message -->
+      <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+      </div>
+
       <mat-spinner *ngIf="isLoading"></mat-spinner>
       <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
-          <h4 class="text-center bld-camp-header">Register Blood Campaign</h4>
-          <div class="row">
-            <div class="col-md-6">
-              <mat-form-field class="input-fieled">
-                <mat-label>Province</mat-label>
-                <select matNativeControl placeholder="Province" formControlName="province" required>
-                  <option value="Southern Province">Southern Province</option>
-                  <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
-                  <option value="Western Province">Western Province</option>
-                  <option value="Uva Province">Uva Province</option>
-                  <option value="Eastern Province">Eastern Province</option>
-                  <option value="Central Province">Central Province</option>
-                  <option value="North-Western Province">North-Western Province</option>
-                  <option value="North-Central Province">North-Central Province</option>
-                  <option value="Nothern Province">Nothern Province</option>
-                </select>
-                <mat-error *ngIf="form.get('province').invalid">Please enter District.</mat-error>
-              </mat-form-field>
-              <mat-form-field class="input-fieled">
-                <mat-label>District</mat-label>
-                <select matNativeControl placeholder="District" formControlName="district" required>
-                  <option selected>Select an option</option>
-                  <option value="Ampara">Ampara</option>
-                  <option value="Anuradhapura">Anuradhapura</option>
-                  <option value="Badulla">Badulla</option>
-                  <option value="Baticaloa">Baticaloa</option>
-                  <option value="Colombo">Colombo</option>
-                  <option value="Galle">Galle</option>
-                  <option value="Gampaha">Gampaha</option>
-                  <option value="Hambanthota">Hambanthota</option>
-                  <option value="Jaffna">Jaffna</option>
-                  <option value="Kalutara">Kalutara</option>
-                  <option value="Kandy">Kandy</option>
-                  <option value="Kegalle">Kegalle</option>
-                  <option value="Kilinochchi">Kilinochchi</option>
-                  <option value="Kurunegala">Kurunegala</option>
-                  <option value="Mannar">Mannar</option>
-                  <option value="Matale">Matale</option>
-                  <option value="Matara">Matara</option>
-                  <option value="Monaragala">Monaragala</option>
-                  <option value="Mullaitivu">Mullaitivu</option>
-                  <option value="Nuwara Eliya">Nuwara Eliya</option>
-                  <option value="Polonnaruwa">Polonnaruwa</option>
-                  <option value="Puttalam">Puttalam</option>
-                  <option value="Rathnapura">Rathnapura</option>
-                  <option value="Trincomalee">Trincomalee</option>
-                  <option value="Vavuniya">Vavuniya</option>
-                </select>
-                <mat-error *ngIf="form.get('district').invalid">Please enter District.</mat-error>
-              </mat-form-field>
-              <mat-form-field class="input-fieled">
-                <mat-label>Address</mat-label>
-                <textarea matInput rows="2" formControlName="address" placeholder="Address" required></textarea>
-                <mat-error *ngIf="form.get('address').invalid">Please enter Address.</mat-error>
-              </mat-form-field>
-              <mat-form-field class="input-fieled">
-                <input matInput type="text" formControlName="organiser" placeholder="Organiser" required>
-                <mat-error *ngIf="form.get('organiser').invalid">Please enter a Organiser.</mat-error>
-              </mat-form-field>
+        <h4 class="text-center bld-camp-header">Register Blood Campaign</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="input-fieled">
+              <mat-label>Province</mat-label>
+              <select matNativeControl placeholder="Province" formControlName="province" required>
+                <option value="Southern Province">Southern Province</option>
+                <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
+                <option value="Western Province">Western Province</option>
+                <option value="Uva Province">Uva Province</option>
+                <option value="Eastern Province">Eastern Province</option>
+                <option value="Central Province">Central Province</option>
+                <option value="North-Western Province">North-Western Province</option>
+                <option value="North-Central Province">North-Central Province</option>
+                <option value="Nothern Province">Nothern Province</option>
+              </select>
+              <mat-error *ngIf="form.get('province').invalid">Please enter District.</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-fieled">
+              <mat-label>District</mat-label>
+              <select matNativeControl placeholder="District" formControlName="district" required>
+                <option selected>Select an option</option>
+                <option value="Ampara">Ampara</option>
+                <option value="Anuradhapura">Anuradhapura</option>
+                <option value="Badulla">Badulla</option>
+                <option value="Baticaloa">Baticaloa</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Galle">Galle</option>
+                <option value="Gampaha">Gampaha</option>
+                <option value="Hambanthota">Hambanthota</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Kalutara">Kalutara</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Kegalle">Kegalle</option>
+                <option value="Kilinochchi">Kilinochchi</option>
+                <option value="Kurunegala">Kurunegala</option>
+                <option value="Mannar">Mannar</option>
+                <option value="Matale">Matale</option>
+                <option value="Matara">Matara</option>
+                <option value="Monaragala">Monaragala</option>
+                <option value="Mullaitivu">Mullaitivu</option>
+                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                <option value="Polonnaruwa">Polonnaruwa</option>
+                <option value="Puttalam">Puttalam</option>
+                <option value="Rathnapura">Rathnapura</option>
+                <option value="Trincomalee">Trincomalee</option>
+                <option value="Vavuniya">Vavuniya</option>
+              </select>
+              <mat-error *ngIf="form.get('district').invalid">Please enter District.</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-fieled">
+              <mat-label>Address</mat-label>
+              <textarea matInput rows="2" formControlName="address" placeholder="Address" required></textarea>
+              <mat-error *ngIf="form.get('address').invalid">Please enter Address.</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-fieled">
+              <input matInput type="text" formControlName="organiser" placeholder="Organiser" required>
+              <mat-error *ngIf="form.get('organiser').invalid">Please enter a Organiser.</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="input-fieled">
+              <mat-label>Date</mat-label>
+              <input type="date" matInput placeholder="Date" formControlName="date" required>
+              <mat-error *ngIf="form.get('date').invalid">Please enter Date.</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-fieled">
+              <mat-label>Time</mat-label>
+              <input type="time" matInput placeholder="Time" formControlName="time" required>
+              <mat-error *ngIf="form.get('time').invalid">Please enter Time.</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-fieled">
+              <mat-label>Organiser Contact Number</mat-label>
+              <input type="tel" matInput placeholder="000 0000000" formControlName="contact" required>
+              <mat-error *ngIf="form.get('contact').invalid">Please enter Organiser Contact.</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-fieled">
+              <mat-label>Organiser Email</mat-label>
+              <input type="email" matInput placeholder="abcd@example.com" formControlName="email" required>
+              <mat-error *ngIf="form.get('email').invalid">Please enter Organiser Email.</mat-error>
+            </mat-form-field>
+            <div>
+              <button mat-stroked-button type="button" (click)="filePicker.click()" style="margin-left: 20px;">Pick
+                Image</button>
+              <input type="file" #filePicker (change)="onImagePicked($event)" required>
             </div>
-            <div class="col-md-6">
-              <mat-form-field class="input-fieled">
-                <mat-label>Date</mat-label>
-                <input type="date" matInput placeholder="Date" formControlName="date" required>
-                <mat-error *ngIf="form.get('date').invalid">Please enter Date.</mat-error>
-              </mat-form-field>
-              <mat-form-field class="input-fieled">
-                <mat-label>Time</mat-label>
-                <input type="time" matInput placeholder="Time" formControlName="time" required>
-                <mat-error *ngIf="form.get('time').invalid">Please enter Time.</mat-error>
-              </mat-form-field>
-              <mat-form-field class="input-fieled">
-                <mat-label>Organiser Contact Number</mat-label>
-                <input type="tel" matInput placeholder="000 0000000" formControlName="contact" required>
-                <mat-error *ngIf="form.get('contact').invalid">Please enter Organiser Contact.</mat-error>
-              </mat-form-field>
-              <mat-form-field class="input-fieled">
-                <mat-label>Organiser Email</mat-label>
-                <input type="email" matInput placeholder="abcd@example.com" formControlName="email" required>
-                <mat-error *ngIf="form.get('email').invalid">Please enter Organiser Email.</mat-error>
-              </mat-form-field>
-              <div>
-                <button mat-stroked-button type="button" (click)="filePicker.click()" style="margin-left: 20px;">Pick Image</button>
-                <input type="file" #filePicker (change)="onImagePicked($event)" required>
-              </div>
-              <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
-                <img [src]="imagePreview">
-              </div>
+            <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+              <img [src]="imagePreview">
             </div>
           </div>
-          <div class="text-center" style="margin-top: 20px;">
-            <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Register</button>
-            <button type="clear" mat-flat-button color="accent" style="margin-left: 10px;">Clear</button>
-            <button type="clear" mat-flat-button color="warn" style="margin-left: 10px;">Cancel</button>
-          </div>
+        </div>
+        <div class="text-center" style="margin-top: 20px;">
+          <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Register</button>
+          <button type="clear" mat-flat-button color="accent" style="margin-left: 10px;">Clear</button>
+          <button type="clear" mat-flat-button color="warn" style="margin-left: 10px;">Cancel</button>
+        </div>
       </form>
     </div>
   </div>

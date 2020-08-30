@@ -13,8 +13,8 @@ export class AdminHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
- 
-  onLogout(){
+
+  onLogout() {
     this.adminService.deleteToken();
     this.router.navigate(['/admin-login']);
   }

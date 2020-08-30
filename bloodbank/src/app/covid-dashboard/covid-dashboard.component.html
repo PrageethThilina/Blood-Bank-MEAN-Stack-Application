@@ -1,1 +1,45 @@
-<h4>{{deaths}}</h4>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4 class="text-center">Covid 19 Dashboard</h4><br>
+            <h6 class="text-center">Last Update Date : <span>{{update_date_time}}</span></h6>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    Local Stat
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">local active cases <span class="stat">{{local_active_cases}}</span></li>
+                    <li class="list-group-item">local deaths <span class="stat">{{local_deaths}}</span></li>
+                    <li class="list-group-item">local new cases <span class="stat">{{local_new_cases}}</span></li>
+                    <li class="list-group-item">local new deaths <span class="stat">{{local_new_deaths}}</span></li>
+                    <li class="list-group-item">local recovered <span class="stat">{{local_recovered}}</span></li>
+                    <li class="list-group-item">local total cases <span class="stat">{{local_total_cases}}</span></li>
+                    <li class="list-group-item">local total number of individuals in hospitals <span
+                            class="stat">{{local_total_number_of_individuals_in_hospitals}}</span></li>
+                    <li class="list-group-item">total pcr testing count <span
+                            class="stat">{{total_pcr_testing_count}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    Global Stat
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">global deaths <span class="stat">{{global_deaths}}</span></li>
+                    <li class="list-group-item">global new cases <span class="stat">{{global_new_cases}}</span></li>
+                    <li class="list-group-item">global new deaths<span class="stat">{{global_new_deaths}}</span></li>
+                    <li class="list-group-item">global recovered <span class="stat">{{global_recovered}}</span></li>
+                    <li class="list-group-item">global total cases <span class="stat">{{global_total_cases}}</span></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

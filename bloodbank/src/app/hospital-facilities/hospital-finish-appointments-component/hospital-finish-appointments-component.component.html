@@ -14,10 +14,11 @@
     </div>
     <div class="row align-items-center">
         <div class="col">
+                <input type="button" class="btn btn-success" (click)="onDownload()" value="Generate Documents"/>
+                <button class="btn btn-success" (click)="getHospitalAppointments(hospitalDetails.hospital_name)" routerLinkActive="active">Pending Appointments</button>
+                <input type="button" class="btn btn-success" (click)="getHospitalAcceptedAppointments(hospitalDetails.hospital_name)" value="Accepted Appointments"/>
+                <input type="button" class="btn btn-success" (click)="getHospitalFinishedAppointments(hospitalDetails.hospital_name)" value="Finished Appointments"/>
            <h4 class="text-center">Accept Appointments</h4>
-              <input type="button" class="btn btn-success" (click)="onDownload()" value="Generate Documents"/>
-              <input type="button" class="btn btn-success" routerLink="/hospital-finish-appointments-component" value="Accepted Appointments"/>
-              <input type="button" class="btn btn-success" routerLink="/hospital-view-finished-appointments" value="Finished Appointments"/>
            <table *ngIf="appointmentService.appointments" datatable="ng" class="table table-striped table-bordered table-hover display" id="my-table">
             <thead>
                 <tr>

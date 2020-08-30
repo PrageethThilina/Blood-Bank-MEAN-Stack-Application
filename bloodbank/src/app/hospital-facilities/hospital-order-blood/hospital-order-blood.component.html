@@ -137,41 +137,47 @@
 
     <div class="col-md-7 col2">
 
-      <!-- Success message -->
-      <div class="order-success" *ngIf="ordershowSucessMessage">
-        Cancelled successfully...
-      </div>
+      <button class="btn btn-primary" style="margin-left: 35%"
+        (click)="getHospitalOrders(hospitalDetails.hospital_name)" *ngIf="show_container_btn">View Pending
+        Requests</button>
 
-      <!-- Error message -->
-      <div class="order-alert" *ngIf="orderserverErrorMessages">
-        {{orderserverErrorMessages}}
-      </div>
+      <div *ngIf="show_container">
+        <!-- Success message -->
+        <div class="order-success" *ngIf="ordershowSucessMessage">
+          Cancelled successfully...
+        </div>
 
-      <h4 class="text-center" style="color: black;">Pending Orders</h4>
-      <table *ngIf="hospitalbloodrequestService.hospitalbloodrequests"
-        class="table table-success table-bordered table-hover display" datatable="ng">
-        <thead>
-          <tr>
-            <th class="table-success">Date</th>
-            <th class="table-success">Blood Group</th>
-            <th class="table-success">Quantity</th>
-            <th class="table-success">Order Status</th>
-            <th class="table-success" style="width: 150px;">Action </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let hsptlbldrqst of hospitalbloodrequestService.hospitalbloodrequests">
-            <td>{{hsptlbldrqst.date}}</td>
-            <td>{{hsptlbldrqst.blood_group}}</td>
-            <td>{{hsptlbldrqst.quantity}}</td>
-            <td style="color: rgb(230, 7, 7);">{{hsptlbldrqst.order_status}}</td>
-            <td>
-              <a class="btn btn-small btn-danger" style="margin-left: 35px;"
-                (click)="onCancel(hsptlbldrqst._id)">Cancel</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <!-- Error message -->
+        <div class="order-alert" *ngIf="orderserverErrorMessages">
+          {{orderserverErrorMessages}}
+        </div>
+
+        <h4 class="text-center" style="color: black;">Pending Orders</h4>
+        <table *ngIf="hospitalbloodrequestService.hospitalbloodrequests"
+          class="table table-success table-bordered table-hover display" datatable="ng">
+          <thead>
+            <tr>
+              <th class="table-success">Date</th>
+              <th class="table-success">Blood Group</th>
+              <th class="table-success">Quantity</th>
+              <th class="table-success">Order Status</th>
+              <th class="table-success" style="width: 150px;">Action </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hsptlbldrqst of hospitalbloodrequestService.hospitalbloodrequests">
+              <td>{{hsptlbldrqst.date}}</td>
+              <td>{{hsptlbldrqst.blood_group}}</td>
+              <td>{{hsptlbldrqst.quantity}}</td>
+              <td style="color: rgb(230, 7, 7);">{{hsptlbldrqst.order_status}}</td>
+              <td>
+                <a class="btn btn-small btn-danger" style="margin-left: 35px;"
+                  (click)="onCancel(hsptlbldrqst._id)">Cancel</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
   </div>

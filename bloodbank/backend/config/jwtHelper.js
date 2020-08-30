@@ -3,6 +3,7 @@ const donorjwt = require('jsonwebtoken');
 const doneejwt = require('jsonwebtoken');
 const adminjwt = require('jsonwebtoken');
 
+//admin verify the token
 module.exports.adminverifyJwtToken = (req, res, next) => {
     var admintoken;
     if ('authorization' in req.headers)
@@ -24,6 +25,7 @@ module.exports.adminverifyJwtToken = (req, res, next) => {
     }
 }
 
+//donee verify the token
 module.exports.doneeverifyJwtToken = (req, res, next) => {
     var doneetoken;
     if ('authorization' in req.headers)
@@ -45,6 +47,7 @@ module.exports.doneeverifyJwtToken = (req, res, next) => {
     }
 }
 
+//donor verify the token
 module.exports.donorverifyJwtToken = (req, res, next) => {
     var donortoken;
     if ('authorization' in req.headers)
@@ -68,6 +71,7 @@ module.exports.donorverifyJwtToken = (req, res, next) => {
     }
 }
 
+//hospital verify the token
 module.exports.hospitalverifyJwtToken = (req, res, next) => {
     var hospitaltoken;
     if ('authorization' in req.headers)

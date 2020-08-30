@@ -3,16 +3,16 @@
 <div class="container">
     <div class="row">
         <div class="col">
-        
             <h4 class="text-center">Previous Orders</h4>
-              <table *ngIf="hospitalbloodrequestService.hospitalbloodrequests" class="table table-primary table-bordered table-hover display" datatable="ng">
+            <table *ngIf="hospitalbloodrequestService.hospitalbloodrequests"
+                class="table table-primary table-bordered table-hover display" datatable="ng">
                 <thead>
-                        <tr>
-                            <th class="table-success">Date</th>
-                            <th class="table-success">Blood Group</th>
-                            <th class="table-success">Quantity</th>
-                            <th class="table-success">Order Status</th>
-                        </tr>
+                    <tr>
+                        <th class="table-success">Date</th>
+                        <th class="table-success">Blood Group</th>
+                        <th class="table-success">Quantity</th>
+                        <th class="table-success">Order Status</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let hsptlbldrqst of hospitalbloodrequestService.hospitalbloodrequests">
@@ -22,8 +22,7 @@
                         <td style="color: rgb(230, 7, 7);">{{hsptlbldrqst.order_status}}</td>
                     </tr>
                 </tbody>
-              </table>
-          </div>
+            </table>
+        </div>
     </div>
 </div>
-

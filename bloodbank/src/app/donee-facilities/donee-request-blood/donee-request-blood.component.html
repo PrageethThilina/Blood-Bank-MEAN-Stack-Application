@@ -4,154 +4,157 @@
   <div class="row">
     <div class="col">
 
-  <h2 class="text-center">Request Blood</h2>
+      <h2 class="text-center">Request Blood</h2>
 
-  <!-- Success message -->
-  <div class="success" *ngIf="showSucessMessage">
-    Request Added successfully
-  </div>
-
-  <!-- Error message -->
-  <div class="alert" *ngIf="serverErrorMessages">
-    {{serverErrorMessages}}
-  </div>
-
-  <form #requestBloodForm="ngForm" (ngSubmit)="requestBloodForm.valid && onSubmit(requestBloodForm)"
-    enctype="multipart/form-data">
-    <div class="row">
-      <div class="col-md-6">
-
-        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="doneebloodrequestService.selecteddoneebloodrequest._id" class="form-control" readonly>
-
-        <div class="input-group">
-          <label class="label control-label">Donee ID :</label>
-          <input type="text" name="_id" #_id="ngModel" [(ngModel)]="doneeService.selectedUser._id" class="form-control"
-            placeholder="Donee ID" readonly>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Donee NIC :</label>
-          <input type="text" name="donee_nic" #donee_nic="ngModel" [(ngModel)]="doneeService.selectedUser.donee_nic"
-            class="form-control" placeholder="Donne NIC" required readonly>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Full Name :</label>
-          <input type="text" name="full_name" #full_name="ngModel" [(ngModel)]="doneeService.selectedUser.full_name"
-            class="form-control" placeholder="Full Name" required readonly>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Gender :</label>
-          <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="doneeService.selectedUser.gender" id="male"
-            class="radio form-control" value="male" readonly><label id="rd">Male</label>
-          <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="doneeService.selectedUser.gender" id="female"
-            class="radio form-control" value="female" readonly><label id="rd">Female</label>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">Birthday :</label>
-          <input type="date" name="birthday" #birthday="ngModel" [(ngModel)]="doneeService.selectedUser.birthday"
-            class="form-control" required readonly>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Province :</label>
-          <select class="form-control" name="province" #province="ngModel"
-            [(ngModel)]="doneeService.selectedUser.province" required style="color: black;background: rgb(255, 255, 255);">
-            <option selected>Select an option</option>
-            <option value="Southern Province">Southern Province</option>
-            <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
-            <option value="Western Province">Western Province</option>
-            <option value="Uva Province">Uva Province</option>
-            <option value="Eastern Province">Eastern Province</option>
-            <option value="Central Province">Central Province</option>
-            <option value="North-Western Province">North-Western Province</option>
-            <option value="North-Central Province">North-Central Province</option>
-            <option value="Nothern Province">Nothern Province</option>
-          </select>
-        </div>
-
-        <div class="input-group">
-          <label class="label control-label">District :</label>
-          <select class="form-control" name="district" #district="ngModel"
-            [(ngModel)]="doneeService.selectedUser.district" required style="color: black;background: rgb(255, 255, 255);">
-            <option selected>Select an option</option>
-            <option value="Ampara">Ampara</option>
-            <option value="Anuradhapura">Anuradhapura</option>
-            <option value="Badulla">Badulla</option>
-            <option value="Baticaloa">Baticaloa</option>
-            <option value="Colombo">Colombo</option>
-            <option value="Galle">Galle</option>
-            <option value="Gampaha">Gampaha</option>
-            <option value="Hambanthota">Hambanthota</option>
-            <option value="Jaffna">Jaffna</option>
-            <option value="Kalutara">Kalutara</option>
-            <option value="Kandy">Kandy</option>
-            <option value="Kegalle">Kegalle</option>
-            <option value="Kilinochchi">Kilinochchi</option>
-            <option value="Kurunegala">Kurunegala</option>
-            <option value="Mannar">Mannar</option>
-            <option value="Matale">Matale</option>
-            <option value="Matara">Matara</option>
-            <option value="Monaragala">Monaragala</option>
-            <option value="Mullaitivu">Mullaitivu</option>
-            <option value="Nuwara Eliya">Nuwara Eliya</option>
-            <option value="Polonnaruwa">Polonnaruwa</option>
-            <option value="Puttalam">Puttalam</option>
-            <option value="Rathnapura">Rathnapura</option>
-            <option value="Trincomalee">Trincomalee</option>
-            <option value="Vavuniya">Vavuniya</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Address :</label>
-          <input type="text" name="address" #address="ngModel" [(ngModel)]="doneeService.selectedUser.address"
-            class="form-control" placeholder="Address" required>
-        </div>
+      <!-- Success message -->
+      <div class="success" *ngIf="showSucessMessage">
+        Request Added successfully
       </div>
-      <div class="col-md-6">
-        <div class="input-group">
-          <label class="label control-label">Contact No :</label>
-          <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="doneeService.selectedUser.contact"
-            class="form-control" placeholder="Contact No" required>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Email :</label>
-          <input type="email" name="email" #email="ngModel" [(ngModel)]="doneeService.selectedUser.email"
-            class="form-control" [pattern]="emailRegex" placeholder="Email" required>
-        </div>
 
-        <div class="input-group">
-          <label class="label control-label">Blood Group :</label>
-          <input type="text" class="form-control" name="blood_group" #blood_group="ngModel"
-            [(ngModel)]="doneeService.selectedUser.blood_group" readonly required>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Spouce Details :</label>
-          <textarea name="spouce" #spouce="ngModel" [(ngModel)]="doneeService.selectedUser.spouce" class="form-control"
-            placeholder="Spouce Details" required></textarea>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Health Issues :</label>
-          <textarea name="health" #health="ngModel" [(ngModel)]="doneeService.selectedUser.health" class="form-control"
-            placeholder="Health Issues" required></textarea>
-        </div>
-        <div class="input-group">
-          <label class="label control-label">Medical Reports :</label>
-          <input type="file" name="medical_report" #medical_report="ngModel"
-            [(ngModel)]="doneebloodrequestService.selecteddoneebloodrequest.medical_report"
-            [ngClass]="{'invalid-textbox' :requestBloodForm.submitted && !medical_report.valid }" class="form-control"
-            required>
-          <div *ngIf="requestBloodForm.submitted && !medical_report.valid">
-            <label class="validation-message">This field is required.</label>
+      <!-- Error message -->
+      <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+      </div>
+
+      <form #requestBloodForm="ngForm" (ngSubmit)="requestBloodForm.valid && onSubmit(requestBloodForm)"
+        enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6">
+
+            <input type="hidden" name="_id" #_id="ngModel"
+              [(ngModel)]="doneebloodrequestService.selecteddoneebloodrequest._id" class="form-control" readonly>
+
+            <div class="input-group">
+              <label class="label control-label">Donee ID :</label>
+              <input type="text" name="_id" #_id="ngModel" [(ngModel)]="doneeService.selectedUser._id"
+                class="form-control" placeholder="Donee ID" readonly>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Donee NIC :</label>
+              <input type="text" name="donee_nic" #donee_nic="ngModel" [(ngModel)]="doneeService.selectedUser.donee_nic"
+                class="form-control" placeholder="Donne NIC" required readonly>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Full Name :</label>
+              <input type="text" name="full_name" #full_name="ngModel" [(ngModel)]="doneeService.selectedUser.full_name"
+                class="form-control" placeholder="Full Name" required readonly>
+            </div>
+            <div class="input-group">
+              <label class="label control-label">Gender :</label>
+              <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="doneeService.selectedUser.gender"
+                id="male" class="radio form-control" value="male" readonly><label id="rd">Male</label>
+              <input type="radio" name="gender" #gender="ngModel" [(ngModel)]="doneeService.selectedUser.gender"
+                id="female" class="radio form-control" value="female" readonly><label id="rd">Female</label>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Birthday :</label>
+              <input type="date" name="birthday" #birthday="ngModel" [(ngModel)]="doneeService.selectedUser.birthday"
+                class="form-control" required readonly>
+            </div>
+            <div class="input-group">
+              <label class="label control-label">Province :</label>
+              <select class="form-control" name="province" #province="ngModel"
+                [(ngModel)]="doneeService.selectedUser.province" required
+                style="color: black;background: rgb(255, 255, 255);">
+                <option selected>Select an option</option>
+                <option value="Southern Province">Southern Province</option>
+                <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
+                <option value="Western Province">Western Province</option>
+                <option value="Uva Province">Uva Province</option>
+                <option value="Eastern Province">Eastern Province</option>
+                <option value="Central Province">Central Province</option>
+                <option value="North-Western Province">North-Western Province</option>
+                <option value="North-Central Province">North-Central Province</option>
+                <option value="Nothern Province">Nothern Province</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">District :</label>
+              <select class="form-control" name="district" #district="ngModel"
+                [(ngModel)]="doneeService.selectedUser.district" required
+                style="color: black;background: rgb(255, 255, 255);">
+                <option selected>Select an option</option>
+                <option value="Ampara">Ampara</option>
+                <option value="Anuradhapura">Anuradhapura</option>
+                <option value="Badulla">Badulla</option>
+                <option value="Baticaloa">Baticaloa</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Galle">Galle</option>
+                <option value="Gampaha">Gampaha</option>
+                <option value="Hambanthota">Hambanthota</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Kalutara">Kalutara</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Kegalle">Kegalle</option>
+                <option value="Kilinochchi">Kilinochchi</option>
+                <option value="Kurunegala">Kurunegala</option>
+                <option value="Mannar">Mannar</option>
+                <option value="Matale">Matale</option>
+                <option value="Matara">Matara</option>
+                <option value="Monaragala">Monaragala</option>
+                <option value="Mullaitivu">Mullaitivu</option>
+                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                <option value="Polonnaruwa">Polonnaruwa</option>
+                <option value="Puttalam">Puttalam</option>
+                <option value="Rathnapura">Rathnapura</option>
+                <option value="Trincomalee">Trincomalee</option>
+                <option value="Vavuniya">Vavuniya</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label class="label control-label">Address :</label>
+              <input type="text" name="address" #address="ngModel" [(ngModel)]="doneeService.selectedUser.address"
+                class="form-control" placeholder="Address" required>
+            </div>
           </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <label class="label control-label">Contact No :</label>
+              <input type="tel" name="contact" #contact="ngModel" [(ngModel)]="doneeService.selectedUser.contact"
+                class="form-control" placeholder="Contact No" required>
+            </div>
+            <div class="input-group">
+              <label class="label control-label">Email :</label>
+              <input type="email" name="email" #email="ngModel" [(ngModel)]="doneeService.selectedUser.email"
+                class="form-control" [pattern]="emailRegex" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+              <label class="label control-label">Blood Group :</label>
+              <input type="text" class="form-control" name="blood_group" #blood_group="ngModel"
+                [(ngModel)]="doneeService.selectedUser.blood_group" readonly required>
+            </div>
+            <div class="input-group">
+              <label class="label control-label">Spouce Details :</label>
+              <textarea name="spouce" #spouce="ngModel" [(ngModel)]="doneeService.selectedUser.spouce"
+                class="form-control" placeholder="Spouce Details" required></textarea>
+            </div>
+            <div class="input-group">
+              <label class="label control-label">Health Issues :</label>
+              <textarea name="health" #health="ngModel" [(ngModel)]="doneeService.selectedUser.health"
+                class="form-control" placeholder="Health Issues" required></textarea>
+            </div>
+            <div class="input-group">
+              <label class="label control-label">Medical Reports :</label>
+              <input type="file" name="medical_report" #medical_report="ngModel"
+                [(ngModel)]="doneebloodrequestService.selecteddoneebloodrequest.medical_report"
+                [ngClass]="{'invalid-textbox' :requestBloodForm.submitted && !medical_report.valid }"
+                class="form-control" required>
+              <div *ngIf="requestBloodForm.submitted && !medical_report.valid">
+                <label class="validation-message">This field is required.</label>
+              </div>
+            </div>
+          </div>
+          <input type="submit" name="check" [disabled]="!requestBloodForm.valid" class="btn btn-form btn-success"
+            value="Order" style="margin-left: 18%;">
+          <input type="reset" name="clear" class="btn btn-form btn-danger" value="Clear">
+          <input type="reset" name="cancel" class="btn btn-form btn-danger" value="Cancel">
         </div>
-      </div>
-        <input type="submit" name="check" [disabled]="!requestBloodForm.valid" class="btn btn-form btn-success"
-          value="Order" style="margin-left: 18%;">
-        <input type="reset" name="clear" class="btn btn-form btn-danger" value="Clear">
-        <input type="reset" name="cancel" class="btn btn-form btn-danger" value="Cancel">
-      </div>
-  </form>
-</div>
-</div>
+      </form>
+    </div>
+  </div>
 </div>

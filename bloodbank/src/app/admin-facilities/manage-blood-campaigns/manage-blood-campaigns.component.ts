@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs';
 
-declare const toggleSidebar : any;
+declare const toggleSidebar: any;
 
 @Component({
   selector: 'app-manage-blood-campaigns',
@@ -20,7 +20,7 @@ export class ManageBloodCampaignsComponent implements OnInit {
   isLoading = false;
   private postsSub: Subscription;
 
-  constructor(public postsService: BloodCampaignsService) {}
+  constructor(public postsService: BloodCampaignsService) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -31,7 +31,7 @@ export class ManageBloodCampaignsComponent implements OnInit {
         this.posts = posts;
       });
   }
-  
+
   onDelete(_id) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.postsService.deletePost(_id).subscribe((res) => {
@@ -54,7 +54,7 @@ export class ManageBloodCampaignsComponent implements OnInit {
     email: string,
     imagePath: string,
     status: string,
-    ) {
+  ) {
     if (confirm('Are you sure to Accept the Blood Campaign ?') == true) {
       status = "Accepted";
       this.postsService.onAccept(_id, status).subscribe((res) => {
@@ -71,9 +71,9 @@ export class ManageBloodCampaignsComponent implements OnInit {
     this.postsSub.unsubscribe();
   }
 
-  
-toggleSidebar(){ 
-  toggleSidebar();
-}
+
+  toggleSidebar() {
+    toggleSidebar();
+  }
 
 }

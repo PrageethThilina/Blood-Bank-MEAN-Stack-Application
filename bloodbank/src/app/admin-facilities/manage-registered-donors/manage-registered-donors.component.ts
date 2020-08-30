@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { Donor } from '../../shared/donor.model';
 import { DonorService } from '../../shared/donor.service'
 
-declare const toggleSidebar : any;
+declare const toggleSidebar: any;
 
 @Component({
   selector: 'app-manage-registered-donors',
@@ -16,7 +16,7 @@ export class ManageRegisteredDonorsComponent implements OnInit {
 
   showSucessMessage: boolean;
 
-  constructor(public donorService: DonorService, private router : Router) { }
+  constructor(public donorService: DonorService, private router: Router) { }
 
   ngOnInit() {
     this.getDonorList();
@@ -27,12 +27,12 @@ export class ManageRegisteredDonorsComponent implements OnInit {
       this.donorService.dnrs = res as Donor[];
     });
   }
-  
 
-  onCall(_id){
+
+  onCall(_id) {
 
   }
-  onEmail(_id){
+  onEmail(_id) {
 
   }
 
@@ -46,9 +46,9 @@ export class ManageRegisteredDonorsComponent implements OnInit {
     }
   }
 
-  
-toggleSidebar(){ 
-  toggleSidebar();
-}
+
+  toggleSidebar() {
+    toggleSidebar();
+  }
 
 }

@@ -3,13 +3,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const uniqueValidator = require('mongoose-unique-validator');
 
+//donee schema
 var doneeSchema = new mongoose.Schema({
     donee_nic: {
         type: String,
         required: 'nic can\'t be empty',
-        index:true, 
-        unique:true,
-        sparse:true
+        index: true,
+        unique: true,
+        sparse: true
     },
     full_name: {
         type: String,
@@ -38,9 +39,9 @@ var doneeSchema = new mongoose.Schema({
     email: {
         type: String,
         required: 'Email can\'t be empty',
-        index:true, 
-        unique:true,
-        sparse:true
+        index: true,
+        unique: true,
+        sparse: true
     },
     blood_group: {
         type: String,
@@ -92,11 +93,11 @@ doneeSchema.methods.verifyPassword = function (password) {
 };
 
 doneeSchema.methods.generateJwt = function () {
-    return jwt.sign({ _id: this._id},
+    return jwt.sign({ _id: this._id },
         process.env.JWT_SECRET,
-    {
-        expiresIn: process.env.JWT_EXP
-    });
+        {
+            expiresIn: process.env.JWT_EXP
+        });
 }
 
 

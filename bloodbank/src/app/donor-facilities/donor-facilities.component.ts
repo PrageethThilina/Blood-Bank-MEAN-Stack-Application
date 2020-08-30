@@ -20,28 +20,29 @@ export class DonorFacilitiesComponent {
       res => {
         this.donorDetails = res['donor'];
       },
-      err => { 
+      err => {
         console.log(err);
-        
+
       }
     );
   }
 
-  onLogout(){
+  onLogout() {
     this.donorService.deleteToken();
     this.router.navigate(['/donor-login']);
   }
 
-  onDownload(){
+  onDownload() {
 
-      const doc = new jsPDF()
-      autoTable(doc, { html: '#my-table',
-      theme:'plain',
-      headStyles:{halign:'center',fontSize: 20,fontStyle: 'bold', fillColor:[221, 221, 221]},
-      columnStyles:{0: {fontSize: 10,fontStyle: 'bold'}},
-      margin: {top:10}
-     })
-      doc.save('Donor_Profile.pdf')
+    const doc = new jsPDF()
+    autoTable(doc, {
+      html: '#my-table',
+      theme: 'plain',
+      headStyles: { halign: 'center', fontSize: 20, fontStyle: 'bold', fillColor: [221, 221, 221] },
+      columnStyles: { 0: { fontSize: 10, fontStyle: 'bold' } },
+      margin: { top: 10 }
+    })
+    doc.save('Donor_Profile.pdf')
 
   }
 

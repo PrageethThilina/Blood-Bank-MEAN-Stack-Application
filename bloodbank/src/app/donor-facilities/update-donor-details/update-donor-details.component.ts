@@ -19,7 +19,7 @@ export class UpdateDonorDetailsComponent implements OnInit {
 
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-constructor(public donorService: DonorService, private router : Router) { }
+  constructor(public donorService: DonorService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -36,24 +36,24 @@ constructor(public donorService: DonorService, private router : Router) { }
   resetForm(form: NgForm) {
 
     this.donorService.selectedUser = {
-      _id : '',
-      donor_nic : '', 
-      full_name : '',
-      gender : '',
-      birthday : '',
-      last_donate_date : '',
-      province : '',
-      district : '',
-      weight : '',
-      height : '',
-      blood_group : '',
-      address : '',
-      email : '',
-      contact : '',
-      password : '',
-      spouce : '',
-      health : '',
-      photo : '',
+      _id: '',
+      donor_nic: '',
+      full_name: '',
+      gender: '',
+      birthday: '',
+      last_donate_date: '',
+      province: '',
+      district: '',
+      weight: '',
+      height: '',
+      blood_group: '',
+      address: '',
+      email: '',
+      contact: '',
+      password: '',
+      spouce: '',
+      health: '',
+      photo: '',
       profile_status: '',
     };
 
@@ -61,12 +61,11 @@ constructor(public donorService: DonorService, private router : Router) { }
     this.serverErrorMessages = '';
   }
 
-  pswrdvisible()
-  {
+  pswrdvisible() {
     pswrdvisible();
   }
 
-  validateUpdateDetails(){
+  validateUpdateDetails() {
     validateUpdateDetails();
   }
 }

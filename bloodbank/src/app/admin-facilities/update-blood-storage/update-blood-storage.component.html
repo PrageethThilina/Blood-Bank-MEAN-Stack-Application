@@ -1,52 +1,62 @@
 <div class="container">
-      <form #bloodinventoryForm="ngForm" (ngSubmit)="onSubmit(bloodinventoryForm)">
-   	    <div class="row">         
-           <div class="col-md-6 mx-auto">
-            <h2 class="text-center">Update Blood Storage</h2>
+  <form #bloodinventoryForm="ngForm" (ngSubmit)="onSubmit(bloodinventoryForm)">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h2 class="text-center">Update Blood Storage</h2>
 
-              <!-- Success message -->
-              <div class="success" *ngIf="showupdateSucessMessage">
-                Updated successfully..!!
-              </div>
-
-              <!-- Error message -->
-              <div class="alert" *ngIf="serverErrorMessages">
-                {{serverErrorMessages}}
-              </div>
-
-              <div class="input-group">
-                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory._id">
-              </div>
-              <div class="input-group">
-                <label class="label control-label">Blood Group :</label>
-                <select class="form-control" name="blood_group" #blood_group="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.blood_group" placeholder="Blood Group" required>
-                  <option selected>Select an option</option>
-                  <option value="A+">A+</option>
-                  <option value="A-">A-</option>
-                  <option value="B+">B+</option>
-                  <option value="B-">B-</option>
-                  <option value="AB+">AB+</option>
-                  <option value="AB-">AB-</option>
-                  <option value="O+">O+</option>
-                  <option value="O-">O-</option>
-                </select>
-              </div>
-              <div class="input-group">
-                <label class="label control-label">Volume (ml) :</label>
-               <input type="number" name="volume" #volume="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.volume" class="form-control" placeholder="Volume" required>
-              </div>
-              <div class="input-group">
-                <label class="label control-label">Blood Received Date :</label>
-                <input type="date" name="received_date" #received_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.received_date" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
-              </div>
-              <div class="input-group">
-                <label class="label control-label">Blood Expiry Date :</label>
-                <input type="date" name="expiry_date" #expiry_date="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory.expiry_date" class="form-control" required style="color: black;background: rgb(255, 255, 255);">
-              </div> 
-              <input type="submit" name="storagesubmit" [disabled]="!bloodinventoryForm.valid" class="btn btn-success" value="Update"  style="margin-left: 18%;">
-              <input type="reset" name="storageclear" (click)="resetForm(bloodinventoryForm)" class="btn btn-danger" value="Clear">
-              <input type="reset" name="storagereset" class="btn btn-danger" value="Cancel" routerLink="/main-admin-dashboard">                 
-   	   	   </div>		   
+        <!-- Success message -->
+        <div class="success" *ngIf="showupdateSucessMessage">
+          Updated successfully..!!
         </div>
-    </form>
+
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
+        </div>
+
+        <div class="input-group">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="bloodinventoryService.selectedBloodInventory._id">
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Blood Group :</label>
+          <select class="form-control" name="blood_group" #blood_group="ngModel"
+            [(ngModel)]="bloodinventoryService.selectedBloodInventory.blood_group" placeholder="Blood Group" required>
+            <option selected>Select an option</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Volume (ml) :</label>
+          <input type="number" name="volume" #volume="ngModel"
+            [(ngModel)]="bloodinventoryService.selectedBloodInventory.volume" class="form-control" placeholder="Volume"
+            required>
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Blood Received Date :</label>
+          <input type="date" name="received_date" #received_date="ngModel"
+            [(ngModel)]="bloodinventoryService.selectedBloodInventory.received_date" class="form-control" required
+            style="color: black;background: rgb(255, 255, 255);">
+        </div>
+        <div class="input-group">
+          <label class="label control-label">Blood Expiry Date :</label>
+          <input type="date" name="expiry_date" #expiry_date="ngModel"
+            [(ngModel)]="bloodinventoryService.selectedBloodInventory.expiry_date" class="form-control" required
+            style="color: black;background: rgb(255, 255, 255);">
+        </div>
+        <input type="submit" name="storagesubmit" [disabled]="!bloodinventoryForm.valid" class="btn btn-success"
+          value="Update" style="margin-left: 18%;">
+        <input type="reset" name="storageclear" (click)="resetForm(bloodinventoryForm)" class="btn btn-danger"
+          value="Clear">
+        <input type="reset" name="storagereset" class="btn btn-danger" value="Cancel"
+          routerLink="/main-admin-dashboard">
+      </div>
+    </div>
+  </form>
 </div>

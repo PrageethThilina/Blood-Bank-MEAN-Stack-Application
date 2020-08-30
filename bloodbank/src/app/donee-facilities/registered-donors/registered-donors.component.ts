@@ -12,7 +12,7 @@ import { DonorService } from '../../shared/donor.service'
 })
 export class RegisteredDonorsComponent implements OnInit {
 
-  constructor(public donorService: DonorService, private router : Router) { }
+  constructor(public donorService: DonorService, private router: Router) { }
 
   ngOnInit() {
     this.getDonorList();
@@ -23,12 +23,12 @@ export class RegisteredDonorsComponent implements OnInit {
       this.donorService.dnrs = res as Donor[];
     });
   }
-  
 
-  onCall(_id){
+
+  onCall(_id) {
 
   }
-  onEmail(_id){
+  onEmail(_id) {
 
   }
 }

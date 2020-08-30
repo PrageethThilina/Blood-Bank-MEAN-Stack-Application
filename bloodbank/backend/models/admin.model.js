@@ -3,13 +3,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const uniqueValidator = require('mongoose-unique-validator');
 
+//admin schema
 var adminSchema = new mongoose.Schema({
     admin_username: {
         type: String,
         required: 'username can\'t be empty',
-        index:true, 
-        unique:true,
-        sparse:true,
+        index: true,
+        unique: true,
+        sparse: true,
     },
     password: {
         type: String,
@@ -38,11 +39,11 @@ adminSchema.methods.verifyPassword = function (password) {
 };
 
 adminSchema.methods.generateJwt = function () {
-    return jwt.sign({ _id: this._id},
+    return jwt.sign({ _id: this._id },
         process.env.JWT_SECRET,
-    {
-        expiresIn: process.env.JWT_EXP
-    });
+        {
+            expiresIn: process.env.JWT_EXP
+        });
 }
 
 

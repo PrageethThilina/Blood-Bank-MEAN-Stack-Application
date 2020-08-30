@@ -4,9 +4,10 @@ const _ = require('lodash');
 
 const Admin = mongoose.model('Admin');
 
+//admin login
 module.exports.admin_login = (req, res, next) => {
     // call for passport authentication
-    passport.authenticate('admin', (err, admin, info) => {       
+    passport.authenticate('admin', (err, admin, info) => {
         // error from passport middleware
         if (err) return res.status(400).json(err);
         // registered user
@@ -16,16 +17,19 @@ module.exports.admin_login = (req, res, next) => {
     })(req, res);
 }
 
-module.exports.admin_profile = (req, res, next) =>{
+//get the admin profile
+module.exports.admin_profile = (req, res, next) => {
     Admin.findOne({ _id: req._id },
         (err, admin) => {
             if (!admin)
                 return res.status(404).json({ status: false, message: 'Record not found.' });
             else
-                return res.status(200).json({ status: true, donor : _.pick(admin,
-                    ['_id',
-                    'admin_username',
-                ]) });
+                return res.status(200).json({
+                    status: true, donor: _.pick(admin,
+                        ['_id',
+                            'admin_username',
+                        ])
+                });
         }
     );
 }

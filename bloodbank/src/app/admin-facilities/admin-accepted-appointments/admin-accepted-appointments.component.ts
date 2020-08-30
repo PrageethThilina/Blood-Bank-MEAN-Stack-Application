@@ -46,7 +46,7 @@ export class AdminAcceptedAppointmentsComponent implements OnInit {
     date: string,
     time: string,
     contact: string,
-    status: string,) {
+    status: string, ) {
     if (confirm('Are you sure to Accept the Appointment ?') == true) {
       status = "Finished";
       this.appointmentService.onFinished(_id, status).subscribe((res) => {

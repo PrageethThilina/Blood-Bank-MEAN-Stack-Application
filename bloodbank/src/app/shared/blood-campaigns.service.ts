@@ -109,12 +109,12 @@ export class BloodCampaignsService {
   }
 
   getPost(_id: string) {
-    return this.http.get<{ _id: string, province: string, district: string,address: string, organiser: string,date: string, time: string,contact: string, email: string,created: string,status: string, imagePath: string }>(
+    return this.http.get<{ _id: string, province: string, district: string, address: string, organiser: string, date: string, time: string, contact: string, email: string, created: string, status: string, imagePath: string }>(
       "http://localhost:3000/api/view-blood-campaigns/" + _id
     );
   }
 
-  addPost(province: string, district: string,address: string, organiser: string,date: string, time: string,contact: string, email: string,created: string, image: File) {
+  addPost(province: string, district: string, address: string, organiser: string, date: string, time: string, contact: string, email: string, created: string, image: File) {
     const postData = new FormData();
     postData.append("province", province);
     postData.append("district", district);
@@ -126,7 +126,7 @@ export class BloodCampaignsService {
     postData.append("email", email);
     postData.append("created", created);
     postData.append("image", image);
-    this.http  .post<{ message: string; post: BloodCampaigns }>("http://localhost:3000/api/register-blood-campaign", postData )
+    this.http.post<{ message: string; post: BloodCampaigns }>("http://localhost:3000/api/register-blood-campaign", postData)
       .subscribe(responseData => {
         const post: BloodCampaigns = {
           _id: responseData.post._id,
@@ -148,7 +148,7 @@ export class BloodCampaignsService {
       });
   }
 
-  updatePost(_id: string,province: string, district: string,address: string, organiser: string,date: string, time: string,contact: string, email: string,created: string, image: File | string) {
+  updatePost(_id: string, province: string, district: string, address: string, organiser: string, date: string, time: string, contact: string, email: string, created: string, image: File | string) {
     let postData: BloodCampaigns | FormData;
     if (typeof image === "object") {
       postData = new FormData();
@@ -210,19 +210,19 @@ export class BloodCampaignsService {
     return this.http.get(environment.apiBaseUrl + `/manage-blood-campaigns/${_id}`);
   }
 
-  pending_blood_campaigns():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/pending-blood-campaigns');
+  pending_blood_campaigns(): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + '/pending-blood-campaigns');
   }
 
-  accepted_blood_campaigns():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/accepted-blood-campaigns');
+  accepted_blood_campaigns(): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + '/accepted-blood-campaigns');
   }
 
   //admin accept blood campaigns
-  onAccept(_id:string, status: string) {
-      console.log(status);
-      const statusobj = {_id:_id, status:status}
-      return this.http.post(environment.apiBaseUrl + `/manage-blood-campaigns/${statusobj._id}`, statusobj);
+  onAccept(_id: string, status: string) {
+    console.log(status);
+    const statusobj = { _id: _id, status: status }
+    return this.http.post(environment.apiBaseUrl + `/manage-blood-campaigns/${statusobj._id}`, statusobj);
   }
 
 }

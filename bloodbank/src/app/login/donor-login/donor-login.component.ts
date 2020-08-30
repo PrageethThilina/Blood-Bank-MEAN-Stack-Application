@@ -12,23 +12,23 @@ declare const pswrdvisible: any;
 })
 export class DonorLoginComponent implements OnInit {
 
-  constructor(private donorService: DonorService,private router : Router) { }
+  constructor(private donorService: DonorService, private router: Router) { }
 
   model = {
 
-    donor_nic :'',
-    password:'',
-    
+    donor_nic: '',
+    password: '',
+
   };
-  
+
   serverErrorMessages: string;
 
   ngOnInit() {
-    if(this.donorService.isLoggedIn())
-    this.router.navigateByUrl('/donor-facilities');
+    if (this.donorService.isLoggedIn())
+      this.router.navigateByUrl('/donor-facilities');
   }
 
-  onSubmit(form : NgForm){
+  onSubmit(form: NgForm) {
     this.donorService.login(form.value).subscribe(
       res => {
         this.donorService.setToken(res['token']);

@@ -8,17 +8,17 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
-  constructor(private adminService : AdminService,private router : Router){}
+  constructor(private adminService: AdminService, private router: Router) { }
 
-canActivate(
+  canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      if (!this.adminService.isLoggedIn()) {
-        this.router.navigateByUrl('/admin-login');
-        this.adminService.deleteToken();
-        return false;
-      }
+    if (!this.adminService.isLoggedIn()) {
+      this.router.navigateByUrl('/admin-login');
+      this.adminService.deleteToken();
+      return false;
+    }
     return true;
   }
-  
+
 }

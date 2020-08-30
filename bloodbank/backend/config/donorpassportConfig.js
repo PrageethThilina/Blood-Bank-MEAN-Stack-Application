@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 var Donor = mongoose.model('Donor');
 
+//donor authenticate
 donorpassport.use('donor',
     new donorlocalStrategy({ usernameField: 'donor_nic' },
         (username, password, done) => {

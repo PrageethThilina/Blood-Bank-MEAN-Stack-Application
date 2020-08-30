@@ -12,23 +12,23 @@ declare const pswrdvisible: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private adminService: AdminService,private router : Router) { }
+  constructor(private adminService: AdminService, private router: Router) { }
 
   model = {
 
-    admin_username :'',
-    password:'',
-    
+    admin_username: '',
+    password: '',
+
   };
-  
+
   serverErrorMessages: string;
 
   ngOnInit() {
-    if(this.adminService.isLoggedIn())
-    this.router.navigateByUrl('/main-admin-dashboard');
+    if (this.adminService.isLoggedIn())
+      this.router.navigateByUrl('/main-admin-dashboard');
   }
 
-  onSubmit(form : NgForm){
+  onSubmit(form: NgForm) {
     this.adminService.login(form.value).subscribe(
       res => {
         this.adminService.setToken(res['token']);

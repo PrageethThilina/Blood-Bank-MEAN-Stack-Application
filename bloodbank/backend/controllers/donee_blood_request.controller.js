@@ -3,12 +3,12 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var { Donee_Blood_Request } = require('../models/donee_blood_request.model');
 
-//add Blood request
+//donee add Blood request
 module.exports.request_blood = (req, res, next) => {
     var donee_blood_request = new Donee_Blood_Request({
         donee_id: req.body._id,
         donee_nic: req.body.donee_nic,
-        full_name:  req.body.full_name,
+        full_name: req.body.full_name,
         gender: req.body.gender,
         birthday: req.body.birthday,
         province: req.body.province,
@@ -23,28 +23,28 @@ module.exports.request_blood = (req, res, next) => {
 
     });
     donee_blood_request.save((err, doc) => {
-        if (!err) { 
-            res.send(doc); 
+        if (!err) {
+            res.send(doc);
         }
-        else { 
-            console.log('Error in Requesting Blood :' + JSON.stringify(err, undefined, 2)); 
+        else {
+            console.log('Error in Requesting Blood :' + JSON.stringify(err, undefined, 2));
         }
     });
 }
 
 // to view purticular donee's requests
 module.exports.view_donee_request = (req, res, next) => {
-    Donee_Blood_Request.find({"donee_nic": "951043028v"},(err, docs) => {
-        if (!err) { 
-            res.send(docs); 
+    Donee_Blood_Request.find({ donee_id: req.params.donee_id, "status": "Pending" }, (err, docs) => {
+        if (!err) {
+            res.send(docs);
         }
-        else { 
-            console.log('Error in Retriving Requests :' + JSON.stringify(err, undefined, 2)); 
+        else {
+            console.log('Error in Retriving Requests :' + JSON.stringify(err, undefined, 2));
         }
     });
 }
 
-//delete orders
+//delete request
 module.exports.delete_requests = (req, res, next) => {
     Donee_Blood_Request.findByIdAndRemove({ _id: req.params.id }, function (err, donee_blood_request) {
         if (err) res.json(err);
@@ -52,14 +52,14 @@ module.exports.delete_requests = (req, res, next) => {
     });
 }
 
-// to view purticular donee's requests
+// to view particular donee's requests
 module.exports.view_all_donee_request = (req, res, next) => {
-    Donee_Blood_Request.find({"status": "Pending"},(err, docs) => {
-        if (!err) { 
-            res.send(docs); 
+    Donee_Blood_Request.find({ "status": "Pending" }, (err, docs) => {
+        if (!err) {
+            res.send(docs);
         }
-        else { 
-            console.log('Error in Retriving Requests :' + JSON.stringify(err, undefined, 2)); 
+        else {
+            console.log('Error in Retriving Requests :' + JSON.stringify(err, undefined, 2));
         }
     });
 }
@@ -67,43 +67,43 @@ module.exports.view_all_donee_request = (req, res, next) => {
 // To Update The donee blood request Details
 module.exports.update_donee_request = (req, res, next) => {
     Donee_Blood_Request.findById(req.params.id, function (err, doneebloodrequest) {
-    if (!doneebloodrequest)
-    return next(new Error('Unable To Find Blood Request With This Id'));
-    else {
-    doneebloodrequest.donee_id = req.body.donee_id;
-    doneebloodrequest.donee_nic = req.body.donee_nic;
-    doneebloodrequest.full_name = req.body.full_name;
-    doneebloodrequest.gender = req.body.gender;
-    doneebloodrequest.birthday = req.body.birthday;
-    doneebloodrequest.province = req.body.province;
-    doneebloodrequest.district = req.body.district;
-    doneebloodrequest.contact = req.body.contact;
-    doneebloodrequest.email = req.body.email;
-    doneebloodrequest.blood_group = req.body.blood_group;
-    doneebloodrequest.address = req.body.address;
-    doneebloodrequest.spouce = req.body.spouce;
-    doneebloodrequest.health = req.body.health;
-    doneebloodrequest.medical_report = req.body.medical_report;
-   
-    doneebloodrequest.save().then(dnebldrq => {
-    res.json('Request Updated Successfully');
-    })
-    .catch(err => {
-    res.status(400).send("Unable To Update Blood Request");
-    });
-    }
+        if (!doneebloodrequest)
+            return next(new Error('Unable To Find Blood Request With This Id'));
+        else {
+            doneebloodrequest.donee_id = req.body.donee_id;
+            doneebloodrequest.donee_nic = req.body.donee_nic;
+            doneebloodrequest.full_name = req.body.full_name;
+            doneebloodrequest.gender = req.body.gender;
+            doneebloodrequest.birthday = req.body.birthday;
+            doneebloodrequest.province = req.body.province;
+            doneebloodrequest.district = req.body.district;
+            doneebloodrequest.contact = req.body.contact;
+            doneebloodrequest.email = req.body.email;
+            doneebloodrequest.blood_group = req.body.blood_group;
+            doneebloodrequest.address = req.body.address;
+            doneebloodrequest.spouce = req.body.spouce;
+            doneebloodrequest.health = req.body.health;
+            doneebloodrequest.medical_report = req.body.medical_report;
+
+            doneebloodrequest.save().then(dnebldrq => {
+                res.json('Request Updated Successfully');
+            })
+                .catch(err => {
+                    res.status(400).send("Unable To Update Blood Request");
+                });
+        }
     });
 }
 
 // get the pending appointment count in admin dashboard
 module.exports.donee_request_count = (req, res, next) => {
-    Donee_Blood_Request.countDocuments({"status": "Pending"},(err, count) => {
+    Donee_Blood_Request.countDocuments({ "status": "Pending" }, (err, count) => {
         if (!err) {
-            res.json(count) 
+            res.json(count)
 
         }
-        else { 
-            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
+        else {
+            console.log('Cant get the count :' + JSON.stringify(err, undefined, 2));
         }
     });
 }
@@ -111,23 +111,23 @@ module.exports.donee_request_count = (req, res, next) => {
 async function sendMail(appointment, callback) {
     // reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // true for 465, false for other ports
-      auth: {
-        user: "prageeththilina8@gmail.com",
-        pass: "prageeth199541312345###"
-      },
-      tls: {
-          rejectUnauthorized: false
-      }
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: "prageeththilina8@gmail.com",
+            pass: "prageeth199541312345###"
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
     });
 
     let mailOptions = {
-      from: '"National Blood Transfussion service"<example.gmail.com>', // sender address
-      to: appointment.email, // list of receivers
-      subject: "We Recived Request", // Subject line
-      html: `
+        from: '"National Blood Transfussion service"<example.gmail.com>', // sender address
+        to: appointment.email, // list of receivers
+        subject: "We Recived Request", // Subject line
+        html: `
       <head>
       </head>
       <body>
@@ -146,24 +146,24 @@ async function sendMail(appointment, callback) {
     let info = await transporter.sendMail(mailOptions);
 
     callback(info);
-  }
+}
 
-  // Hospital accept appointment
+// Donee change the request status
 module.exports.donne_found_request = (req, res, next) => {
     Donee_Blood_Request.findById(req.params.id, function (err, donee_blood_request) {
-    if (!donee_blood_request)
-    return next(new Error('Unable To Find Request with this id'));
-    else {
+        if (!donee_blood_request)
+            return next(new Error('Unable To Find Request with this id'));
+        else {
 
-    donee_blood_request.status = req.body.status;  
-    donee_blood_request.save().then(bloodinv => {
-   
-    res.json('Blood request found Successfully');
+            donee_blood_request.status = req.body.status;
+            donee_blood_request.save().then(bloodinv => {
 
-    })
-    .catch(err => {
-    res.status(400).send("Error");
-    });
-    }
+                res.json('Blood request found Successfully');
+
+            })
+                .catch(err => {
+                    res.status(400).send("Error");
+                });
+        }
     });
 }

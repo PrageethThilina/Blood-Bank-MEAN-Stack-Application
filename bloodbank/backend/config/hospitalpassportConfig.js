@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 var Hospital = mongoose.model('Hospital');
 
+//hospital authenticate
 hospitalpassport.use('hospital',
     new hospitallocalStrategy({ usernameField: 'hospital_username' },
         (username, password, done) => {

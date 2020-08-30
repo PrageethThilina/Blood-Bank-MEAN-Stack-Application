@@ -20,14 +20,14 @@ export class AddDonorsComponent {
   showSucessMessage: boolean;
   serverErrorMessages: string;
 
-  constructor(public donorService: DonorService, private router : Router) { }
+  constructor(public donorService: DonorService, private router: Router) { }
 
   ngOnInit(): void {
 
   }
 
   onSubmit(form: NgForm) {
-    
+
     this.donorService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
@@ -48,40 +48,40 @@ export class AddDonorsComponent {
   resetForm(form: NgForm) {
 
     this.donorService.selectedUser = {
-      _id : '',
-      donor_nic : '',
-      full_name : '',
-      gender : '',
-      birthday : '',
-      last_donate_date : '',
-      province : '',
-      district : '',
-      weight : '',
-      height : '',
-      blood_group : '',
-      address : '',
-      email : '',
-      contact : '',
-      password : '',
-      spouce : '',
-      health : '',
-      photo : '',
+      _id: '',
+      donor_nic: '',
+      full_name: '',
+      gender: '',
+      birthday: '',
+      last_donate_date: '',
+      province: '',
+      district: '',
+      weight: '',
+      height: '',
+      blood_group: '',
+      address: '',
+      email: '',
+      contact: '',
+      password: '',
+      spouce: '',
+      health: '',
+      photo: '',
       profile_status: '',
     };
     form.resetForm();
     this.serverErrorMessages = '';
   }
 
-  angpswrdVisible(){
+  angpswrdVisible() {
     pswrdvisible();
   }
 
-  angrepswrdVisible(){
+  angrepswrdVisible() {
     repswrdvisible();
-  } 
+  }
 
-  validateDetails(){
+  validateDetails() {
     validateDetails();
-  } 
+  }
 
 }

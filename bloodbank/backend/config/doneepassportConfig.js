@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 var Donee = mongoose.model('Donee');
 
+// donee authenticate
 doneepassport.use('donee',
     new doneelocalStrategy({ usernameField: 'donee_nic' },
         (username, password, done) => {

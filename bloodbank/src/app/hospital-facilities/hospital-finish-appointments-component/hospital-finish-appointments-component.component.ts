@@ -4,6 +4,9 @@ import { Router } from "@angular/router";
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable';
 
+import { Hospital } from '../../shared/hospital.model';
+import { HospitalService } from '../../shared/hospital.service';
+
 import { Appointment } from '../../shared/appointment.model';
 import { AppointmentService } from '../../shared/appointment.service';
 
@@ -16,15 +19,22 @@ export class HospitalFinishAppointmentsComponentComponent implements OnInit {
 
   showSucessMessage: boolean;
   finishMessage: boolean;
-
-  constructor(public appointmentService: AppointmentService, private router : Router) { }
+  hospitalDetails;
+  details;
+ 
+  constructor(private hospitalService: HospitalService, public appointmentService: AppointmentService, private router: Router) { }
 
   ngOnInit() {
 
-    this.appointmentService.getHospitalAcceptedAppointments().subscribe((res) => {
-      this.appointmentService.appointments = res as Appointment[];
-    });
-
+    this.hospitalService.getUserProfile().subscribe(
+      res => {
+        this.hospitalDetails = res['hospital'];
+      },
+      err => { 
+        console.log(err);
+        
+      }
+    );
 
   }
 
@@ -60,6 +70,29 @@ onEdion_hospital_Finishtnew(_id: string,
     });
 
   }
+}
+
+getHospitalAppointments(location : string) {
+  this.appointmentService.getHospitalAppointments(location).subscribe((res) => {
+    setTimeout(() => this.router.navigateByUrl('/hospital-manage-appointments'));
+    this.appointmentService.appointments = res as Appointment[];
+    this.details = res;
+  });
+}
+
+getHospitalAcceptedAppointments(location : string) {
+  this.appointmentService.getHospitalAcceptedAppointments(location).subscribe((res) => {
+    this.appointmentService.appointments = res as Appointment[];
+    this.details = res;
+  });
+}
+
+getHospitalFinishedAppointments(location : string) {
+  this.appointmentService.getHospitalFinishedAppointments(location).subscribe((res) => {
+    setTimeout(() => this.router.navigateByUrl('/hospital-view-finished-appointments'));
+    this.appointmentService.appointments = res as Appointment[];
+    this.details = res;
+  });
 }
 
 hospital_delete_accepted_appointments(_id) {

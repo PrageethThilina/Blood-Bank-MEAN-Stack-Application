@@ -3,57 +3,61 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
+            <div *ngIf="show_container">
 
-            <h2 class="text-center">Previous Requests</h2>
+                <h2 class="text-center">Previous Requests</h2>
 
-            <!-- Success message -->
-            <div class="success text-center" *ngIf="requestshowSucessMessage">
-                Cancelled successfully...
+                <!-- Success message -->
+                <div class="success text-center" *ngIf="requestshowSucessMessage">
+                    Cancelled successfully...
+                </div>
+
+                <!-- Success message -->
+                <div class="success text-center" *ngIf="acceptMessage">
+                    Saved successfully...
+                </div>
+
+                <!-- Error message -->
+                <div class="alert text-center" *ngIf="requestserverErrorMessages">
+                    {{requestserverErrorMessages}}
+                </div>
+
+                <table *ngIf="doneebloodrequestService.doneebloodrequests"
+                    class="table table-primary table-bordered table-hover display" datatable="ng">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Email</th>
+                            <th>Blood Group</th>
+                            <th>Spouce Details</th>
+                            <th>Health Issues</th>
+                            <th>Medical Reports</th>
+                            <th>Order Status</th>
+                            <th>Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dnebldrqst of doneebloodrequestService.doneebloodrequests">
+                            <td>{{dnebldrqst.date}}</td>
+                            <td>{{dnebldrqst.email}}</td>
+                            <td>{{dnebldrqst.blood_group}}</td>
+                            <td>{{dnebldrqst.spouce}}</td>
+                            <td>{{dnebldrqst.health}}</td>
+                            <td><img src='assets/images/donee-requests/{{dnebldrqst.email}}.jpg' alt="" class="medical">
+                            </td>
+                            <td style="color: rgb(230, 7, 7);">{{dnebldrqst.status}}</td>
+                            <td>
+                                <a class="btn btn-small btn-success td-btn" style="margin-left: 10px;"
+                                    (click)="onSuccess(dnebldrqst._id,dnebldrqst.date,dnebldrqst.email,dnebldrqst.blood_group,dnebldrqst.spouce,dnebldrqst.health,dnebldrqst.status)">Found</a>
+                                <a class="btn btn-small btn-primary td-btn" style="margin-left: 10px;"
+                                    (click)="onUpdate(dnebldrqst)">Update</a>
+                                <a class="btn btn-small btn-danger td-btn" style="margin-left: 10px;"
+                                    (click)="onCancel(dnebldrqst._id)">Cancel</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <!-- Success message -->
-            <div class="success text-center" *ngIf="acceptMessage">
-                Saved successfully...
-            </div>
-
-            <!-- Error message -->
-            <div class="alert text-center" *ngIf="requestserverErrorMessages">
-                {{requestserverErrorMessages}}
-            </div>
-
-            <table *ngIf="doneebloodrequestService.doneebloodrequests" class="table table-primary table-bordered table-hover display" datatable="ng">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Email</th>
-                        <th>Blood Group</th>
-                        <th>Spouce Details</th>
-                        <th>Health Issues</th>
-                        <th>Medical Reports</th>
-                        <th>Order Status</th>
-                        <th>Action </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let dnebldrqst of doneebloodrequestService.doneebloodrequests">
-                        <td>{{dnebldrqst.date}}</td>
-                        <td>{{dnebldrqst.email}}</td>
-                        <td>{{dnebldrqst.blood_group}}</td>
-                        <td>{{dnebldrqst.spouce}}</td>
-                        <td>{{dnebldrqst.health}}</td>
-                        <td><img src='assets/images/donee-requests/{{dnebldrqst.email}}.jpg' alt="" class="medical"></td>
-                        <td style="color: rgb(230, 7, 7);">{{dnebldrqst.status}}</td>
-                        <td>
-                            <a class="btn btn-small btn-success td-btn" style="margin-left: 10px;"
-                                (click)="onSuccess(dnebldrqst._id,dnebldrqst.date,dnebldrqst.email,dnebldrqst.blood_group,dnebldrqst.spouce,dnebldrqst.health,dnebldrqst.status)">Found</a>
-                            <a class="btn btn-small btn-primary td-btn" style="margin-left: 10px;"
-                                (click)="onUpdate(dnebldrqst)">Update</a>
-                            <a class="btn btn-small btn-danger td-btn" style="margin-left: 10px;"
-                                (click)="onCancel(dnebldrqst._id)">Cancel</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

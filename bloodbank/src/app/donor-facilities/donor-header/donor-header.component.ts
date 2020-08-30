@@ -21,19 +21,19 @@ export class DonorHeaderComponent implements OnInit {
       res => {
         this.donorDetails = res['donor'];
       },
-      err => { 
+      err => {
         console.log(err);
-        
+
       }
     );
   }
- 
+
   onEdit(donor: Donor) {
     this.donorService.selectedUser = donor;
     setTimeout(() => this.router.navigateByUrl('/update-donor-details'));
   }
 
-  onLogout(){
+  onLogout() {
     this.donorService.deleteToken();
     this.router.navigate(['/donor-login']);
   }

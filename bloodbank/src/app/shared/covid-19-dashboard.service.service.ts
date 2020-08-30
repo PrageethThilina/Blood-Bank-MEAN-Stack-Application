@@ -13,12 +13,9 @@ import { Router } from "@angular/router";
 export class Covid19DashboardService {
 
 
-  constructor(private http :HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getStatistics():Observable<any>{
-      return this.http.get<{data:any}>("https://hpb.health.gov.lk/api/get-current-statistical");
+  getStatistics(): Observable<any> {
+    return this.http.get<{ data: any }>("https://hpb.health.gov.lk/api/get-current-statistical");
   }
-
- // <{count:number}>
-
 }

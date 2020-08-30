@@ -1,20 +1,21 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
+//Blood Inventory schema
 var Blood_Inventory = mongoose.model('Blood_Inventory', {
-    blood_group: { 
+    blood_group: {
         type: String,
         required: 'blood_group can\'t be empty',
     },
-    volume: { 
+    volume: {
         type: String,
         required: 'Volume can\'t be empty',
     },
-    received_date: { 
+    received_date: {
         type: String,
         required: 'received_date can\'t be empty',
     },
-    expiry_date: { 
+    expiry_date: {
         type: String,
         required: 'expiry_date can\'t be empty',
     }

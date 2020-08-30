@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+//donor schema
 var donorSchema = new mongoose.Schema({
     donor_nic: {
         type: String,

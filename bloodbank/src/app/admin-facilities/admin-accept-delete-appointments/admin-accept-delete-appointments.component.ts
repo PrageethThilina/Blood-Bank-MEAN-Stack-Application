@@ -25,12 +25,14 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
     this.getAppointments();
   }
 
+  //get appointments
   getAppointments() {
     this.appointmentService.getPendingAppointments().subscribe((res) => {
       this.appointmentService.appointments = res as Appointment[];
     });
   }
 
+  //delete appointment
   onDelete(_id) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.appointmentService.manageappointments(_id).subscribe((res) => {
@@ -41,13 +43,14 @@ export class AdminAcceptDeleteAppointmentsComponent implements OnInit {
     }
   }
 
+  //accpet appointment
   onEditnew(_id: string,
     donor_nic: string,
     location: string,
     date: string,
     time: string,
     contact: string,
-    status: string,) {
+    status: string, ) {
     if (confirm('Are you sure to Accept the Appointment ?') == true) {
       status = "Accepted";
       this.appointmentService.onEdit(_id, status).subscribe((res) => {

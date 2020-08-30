@@ -8,7 +8,7 @@ import { AppointmentService } from '../../shared/appointment.service'
 import { DonorService } from '../../shared/donor.service'
 import { Appointment } from 'src/app/shared/appointment.model';
 
-declare const checkDonateEligibility: any; 
+declare const checkDonateEligibility: any;
 
 @Component({
   selector: 'app-book-appointments',
@@ -20,7 +20,7 @@ export class BookAppointmentsComponent implements OnInit {
   showSucessMessage: boolean;
   serverErrorMessages: string;
 
-  constructor(public appointmentService: AppointmentService, public donorService: DonorService, private router : Router) { }
+  constructor(public appointmentService: AppointmentService, public donorService: DonorService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -47,7 +47,7 @@ export class BookAppointmentsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-      this.appointmentService.postAppointment(form.value).subscribe(
+    this.appointmentService.postAppointment(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
         setTimeout(() => this.showSucessMessage = false, 2000);
@@ -61,19 +61,19 @@ export class BookAppointmentsComponent implements OnInit {
         else
           this.serverErrorMessages = 'Something went wrong when adding.Please contact admin.';
       }
-      );
+    );
   }
 
 
   resetForm(form: NgForm) {
 
     this.appointmentService.selectedAppointment = {
-      _id : '',
+      _id: '',
       donor_id: '',
-      location : '',
-      date : '',
-      time : '',
-      full_name : '',
+      location: '',
+      date: '',
+      time: '',
+      full_name: '',
       email: '',
       donor_nic: '',
       contact: '',
@@ -84,7 +84,7 @@ export class BookAppointmentsComponent implements OnInit {
     this.serverErrorMessages = '';
   }
 
-  checkDonateEligibility(){
+  checkDonateEligibility() {
     checkDonateEligibility();
   }
 

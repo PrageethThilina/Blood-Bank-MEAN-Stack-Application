@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
+import { Hospital } from '../../shared/hospital.model';
+import { HospitalService } from '../../shared/hospital.service';
+
 import { HospitalBloodRequestService } from '../../shared/hospital-blood-request.service'
 import { HospitalBloodRequest } from 'src/app/shared/hospital-blood-request.model';
 
@@ -11,14 +14,29 @@ import { HospitalBloodRequest } from 'src/app/shared/hospital-blood-request.mode
 })
 export class HospitalViewPreviousBloodRequestsComponent implements OnInit {
 
-  constructor(public hospitalbloodrequestService: HospitalBloodRequestService, private router : Router) { }
+  show_container: boolean;
+  hospitalDetails;
+
+  constructor(public hospitalService: HospitalService, public hospitalbloodrequestService: HospitalBloodRequestService, private router: Router) { }
 
   ngOnInit() {
-    this.getHospitalPreviousOrders();
+
+
+    this.hospitalService.getUserProfile().subscribe(
+      res => {
+        this.hospitalDetails = res['hospital'];
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
+
   }
 
-  getHospitalPreviousOrders() {
-    this.hospitalbloodrequestService.getHospitalPreviousOrders().subscribe((res) => {
+  getHospitalPreviousOrders(hospital_name: string) {
+    this.hospitalbloodrequestService.getHospitalPreviousOrders(hospital_name).subscribe((res) => {
+      console.log(hospital_name);
       this.hospitalbloodrequestService.hospitalbloodrequests = res as HospitalBloodRequest[];
     });
   }

@@ -13,66 +13,66 @@ export class HospitalService {
   hsptl: Hospital[];
   selectedUser: Hospital = {
     _id: '',
-    hospital_name : '',
-    address : '',
-    contact : '',
-    email : '',
-    hospital_username : '',
-    password : '',
+    hospital_name: '',
+    address: '',
+    contact: '',
+    email: '',
+    hospital_username: '',
+    password: '',
   };
 
-noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
+  noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-//HttpMethods
+  //HttpMethods
 
-postUser(hospital: Hospital){
-  return this.http.post(environment.apiBaseUrl+'/hospital-register',hospital,this.noAuthHeader);
-}
-
-login(authCredentials) {
-  return this.http.post(environment.apiBaseUrl + '/hospital-login', authCredentials,this.noAuthHeader);
-}
-
-getUserProfile() {
-  return this.http.get(environment.apiBaseUrl + '/hospital-facilities');
-}
-
-insertRecords(hospital: Hospital) {
-  return this.http.post(environment.apiBaseUrl + `/hospital-order-blood/${hospital._id}`, hospital);
-}
-
-//Helper Methods
-
-setToken(token: string) {
-  localStorage.setItem('token', token);
-}
-
-getToken() {
-  return localStorage.getItem('token');
-}
-
-deleteToken() {
-  localStorage.removeItem('token');
-}
-
-getUserPayload() {
-  var token = this.getToken();
-  if (token) {
-    var userPayload = atob(token.split('.')[1]);
-    return JSON.parse(userPayload);
+  postUser(hospital: Hospital) {
+    return this.http.post(environment.apiBaseUrl + '/hospital-register', hospital, this.noAuthHeader);
   }
-  else
-    return null;
-}
 
-isLoggedIn() {
-  var userPayload = this.getUserPayload();
-  if (userPayload)
-    return userPayload.exp > Date.now() / 1000;
-  else
-    return false;
-}
+  login(authCredentials) {
+    return this.http.post(environment.apiBaseUrl + '/hospital-login', authCredentials, this.noAuthHeader);
+  }
+
+  getUserProfile() {
+    return this.http.get(environment.apiBaseUrl + '/hospital-facilities');
+  }
+
+  insertRecords(hospital: Hospital) {
+    return this.http.post(environment.apiBaseUrl + `/hospital-order-blood/${hospital._id}`, hospital);
+  }
+
+  //Helper Methods
+
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  deleteToken() {
+    localStorage.removeItem('token');
+  }
+
+  getUserPayload() {
+    var token = this.getToken();
+    if (token) {
+      var userPayload = atob(token.split('.')[1]);
+      return JSON.parse(userPayload);
+    }
+    else
+      return null;
+  }
+
+  isLoggedIn() {
+    var userPayload = this.getUserPayload();
+    if (userPayload)
+      return userPayload.exp > Date.now() / 1000;
+    else
+      return false;
+  }
 
 }

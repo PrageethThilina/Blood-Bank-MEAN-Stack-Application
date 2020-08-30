@@ -12,16 +12,16 @@ import { BloodCampaignsService } from '../../../shared/blood-campaigns.service'
 export class PendingBloodCampaignsComponent implements OnInit {
 
 
-          pending_blood_campaigns : number;
-              
-           constructor(public bloodcampaignService: BloodCampaignsService, private router: Router) { }
-              
-            ngOnInit(): void {
-              
-                  this.bloodcampaignService.pending_blood_campaigns().subscribe(data => {
-                    this.pending_blood_campaigns = data;
-              
-                 });
-            }
+  pending_blood_campaigns: number;
+
+  constructor(public bloodcampaignService: BloodCampaignsService, private router: Router) { }
+
+  ngOnInit(): void {
+
+    this.bloodcampaignService.pending_blood_campaigns().subscribe(data => {
+      this.pending_blood_campaigns = data;
+
+    });
+  }
 
 }

@@ -23,57 +23,57 @@ export class HospitalBloodRequestService {
 
   constructor(private http: HttpClient) { }
 
-    //request blood order
-    postBloodOrder(hospitalbloodrequest: HospitalBloodRequest){
-      return this.http.post(environment.apiBaseUrl+'/hospital-order-blood',hospitalbloodrequest);
-    }
+  //request blood order
+  postBloodOrder(hospitalbloodrequest: HospitalBloodRequest) {
+    return this.http.post(environment.apiBaseUrl + '/hospital-order-blood', hospitalbloodrequest);
+  }
 
-    //to get purticular hspital orders
-    getHospitalOrders() {
-      return this.http.get(environment.apiBaseUrl + '/hospital-order-blood');
-    }
+  //to get purticular hspital orders
+  getHospitalOrders(hospital_name: string) {
+    return this.http.get(environment.apiBaseUrl + `/hospital-order-blood/${hospital_name}`);
+  }
 
-    //to get purticular hspital orders
-    getHospitalPreviousOrders() {
-        return this.http.get(environment.apiBaseUrl + '/hospital-view-previous-blood-requests');
-    }
+  //to get purticular hspital orders
+  getHospitalPreviousOrders(hospital_name: string) {
+    return this.http.get(environment.apiBaseUrl + `/hospital-view-previous-blood-requests/${hospital_name}`);
+  }
 
-    //hospital cancel orders 
-    hospital_cancel_order(_id) {
-      return this.http.get(environment.apiBaseUrl + `/hospital-order-blood/${_id}`);
-    }
+  //hospital cancel orders 
+  hospital_cancel_order(_id) {
+    return this.http.delete(environment.apiBaseUrl + `/hospital-order-blood/${_id}`);
+  }
 
-    //to get purticular hspital orders
-    getHospitalBloodRequests() {
-      return this.http.get(environment.apiBaseUrl + '/manage-hopital-blood-orders');
-    }
+  //to get purticular hspital orders
+  getHospitalBloodRequests() {
+    return this.http.get(environment.apiBaseUrl + '/manage-hopital-blood-orders');
+  }
 
-    //to get purticular pending hspital orders
-    getPendingHospitalBloodRequests() {
-      return this.http.get(environment.apiBaseUrl + '/hospital-blood-request-table');
-    }
-    
-    //hospital cancel orders 
-    onDelete(_id) {
-      return this.http.get(environment.apiBaseUrl + `/manage-hopital-blood-orders/${_id}`);
-    }
+  //to get purticular pending hspital orders
+  getPendingHospitalBloodRequests() {
+    return this.http.get(environment.apiBaseUrl + '/hospital-blood-request-table');
+  }
 
-    onAccept(_id:string, order_status: string) {
-      console.log(order_status);
-      const statusobj = {_id:_id, order_status:order_status}
-      return this.http.post(environment.apiBaseUrl + `/manage-hopital-blood-orders/${statusobj._id}`, statusobj);
-    }
+  //hospital cancel orders 
+  onDelete(_id) {
+    return this.http.delete(environment.apiBaseUrl + `/manage-hopital-blood-orders/${_id}`);
+  }
 
-    get_hospital_blood_request_count():Observable<any> {
-      return this.http.get<{count:number}>(environment.apiBaseUrl + '/hospital-blood-request-count');
-    }
+  onAccept(_id: string, order_status: string) {
+    console.log(order_status);
+    const statusobj = { _id: _id, order_status: order_status }
+    return this.http.post(environment.apiBaseUrl + `/manage-hopital-blood-orders/${statusobj._id}`, statusobj);
+  }
 
-    get_each_hospital_pending_blood_request_count():Observable<any> {
-      return this.http.get<{count:number}>(environment.apiBaseUrl + '/pending-blood-request-count');
-    }
+  get_hospital_blood_request_count(): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + '/hospital-blood-request-count');
+  }
 
-    get_each_hospital_accepted_blood_request_count():Observable<any> {
-      return this.http.get<{count:number}>(environment.apiBaseUrl + '/accepted-blood-request-count');
-    }
-    
+  get_each_hospital_pending_blood_request_count(hospital_name: string): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + `/pending-blood-request-count/${hospital_name}`);
+  }
+
+  get_each_hospital_accepted_blood_request_count(hospital_name: string): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + `/accepted-blood-request-count/${hospital_name}`);
+  }
+
 }

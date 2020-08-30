@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var multer  = require('multer');
+var multer = require('multer');
 var ObjectId = require('mongoose').Types.ObjectId;
 var nodemailer = require('nodemailer');
 const cors = require("cors");
@@ -33,7 +33,8 @@ const storage = multer.diskStorage({
   }
 });
 
-router.post( "/register-blood-campaign",
+//register blood campaign
+router.post("/register-blood-campaign",
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -56,14 +57,14 @@ router.post( "/register-blood-campaign",
         console.log(`The mail has been send and the id is ${info.messageId}`);
         //res.send(info);
       });
-      
+
       res.status(201).json({
         message: "Post added successfully",
-        
+
         blood_campaigns: {
           ...createdPost,
           id: createdPost._id,
-          
+
         }
 
       });
@@ -82,7 +83,7 @@ async function sendMail(blood_campaigns, callback) {
       pass: "prageeth199541312345"
     },
     tls: {
-        rejectUnauthorized: false
+      rejectUnauthorized: false
     }
   });
 
@@ -113,7 +114,8 @@ async function sendMail(blood_campaigns, callback) {
   callback(info);
 }
 
-router.put("/register-blood-campaign/:id",multer({ storage: storage }).single("image"),
+//update blood campaign
+router.put("/register-blood-campaign/:id", multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
     if (req.file) {
@@ -139,8 +141,9 @@ router.put("/register-blood-campaign/:id",multer({ storage: storage }).single("i
   }
 );
 
+// view blood campaigns
 router.get("/view-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.find({"status":"Accepted"},).then(documents => {
+  Blood_Campaigns.find({ "status": "Accepted" }).then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
       posts: documents
@@ -148,8 +151,9 @@ router.get("/view-blood-campaigns", (req, res, next) => {
   });
 });
 
+//admin view pending blood campaigns
 router.get("/manage-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.find({"status":"Pending"},).then(documents => {
+  Blood_Campaigns.find({ "status": "Pending" }).then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
       posts: documents
@@ -157,8 +161,9 @@ router.get("/manage-blood-campaigns", (req, res, next) => {
   });
 });
 
+//get blood campaigns in homepage
 router.get("/homepage", (req, res, next) => {
-  Blood_Campaigns.find({"status":"Accepted"},).then(documents => {
+  Blood_Campaigns.find({ "status": "Accepted" }).then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
       posts: documents
@@ -166,6 +171,7 @@ router.get("/homepage", (req, res, next) => {
   });
 });
 
+//get single blood camp
 router.get("/view-blood-campaigns/:id", (req, res, next) => {
   Blood_Campaigns.findById(req.params.id).then(post => {
     if (post) {
@@ -176,52 +182,54 @@ router.get("/view-blood-campaigns/:id", (req, res, next) => {
   });
 });
 
+//admin delete blood campaign
 router.get("/manage-blood-campaigns/:id", (req, res, next) => {
   Blood_Campaigns.findByIdAndRemove({ _id: req.params.id }, function (err, bloodcampaigns) {
-      if (err) res.json(err);
-      else res.json('Blood Campaign Deleted Successfully');
+    if (err) res.json(err);
+    else res.json('Blood Campaign Deleted Successfully');
   });
 });
 
 router.get("/pending-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.countDocuments({"status":"Pending"},(err, count) => {
-      if (!err) {
-          res.json(count) 
-      }
-      else { 
-          console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
-      }
+  Blood_Campaigns.countDocuments({ "status": "Pending" }, (err, count) => {
+    if (!err) {
+      res.json(count)
+    }
+    else {
+      console.log('Cant get the count :' + JSON.stringify(err, undefined, 2));
+    }
   });
 });
 
+//accepted blood campaign count
 router.get("/accepted-blood-campaigns", (req, res, next) => {
-  Blood_Campaigns.countDocuments({"status":"Accepted"},(err, count) => {
-      if (!err) {
-          res.json(count) 
-      }
-      else { 
-          console.log('Cant get the count :' + JSON.stringify(err, undefined, 2)); 
-      }
+  Blood_Campaigns.countDocuments({ "status": "Accepted" }, (err, count) => {
+    if (!err) {
+      res.json(count)
+    }
+    else {
+      console.log('Cant get the count :' + JSON.stringify(err, undefined, 2));
+    }
   });
 });
 
-// Admin accept appointment
+// Admin accept blood campaign
 router.post('/manage-blood-campaigns/:id', (req, res, next) => {
   Blood_Campaigns.findById(req.params.id, function (err, bloodcampaign) {
-  if (!bloodcampaign)
-  return next(new Error('Unable To Find Blood campaign With This Id'));
-  else {
+    if (!bloodcampaign)
+      return next(new Error('Unable To Find Blood campaign With This Id'));
+    else {
 
-  console.log( req.body.status);
-  bloodcampaign.status = req.body.status;
- 
-  bloodcampaign.save().then(bloodinv => {
-  res.json('Blood campaign Accepted Successfully');
-  })
-  .catch(err => {
-  res.status(400).send("Error");
-  });
-  }
+      console.log(req.body.status);
+      bloodcampaign.status = req.body.status;
+
+      bloodcampaign.save().then(bloodinv => {
+        res.json('Blood campaign Accepted Successfully');
+      })
+        .catch(err => {
+          res.status(400).send("Error");
+        });
+    }
   });
 });
 

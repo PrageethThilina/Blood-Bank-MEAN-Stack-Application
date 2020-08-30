@@ -5,7 +5,8 @@ import { Router } from "@angular/router";
 import { Donee } from '../../shared/donee.model';
 import { DoneeService } from '../../shared/donee.service';
 
-
+import { DoneeBloodRequest } from 'src/app/shared/donee-blood-request.model';
+import { DoneeBloodRequestService } from '../../shared/donee-blood-request.service'
 
 @Component({
   selector: 'app-donee-header',
@@ -16,16 +17,16 @@ export class DoneeHeaderComponent implements OnInit {
 
   doneeDetails;
 
-  constructor(private doneeService: DoneeService, private router: Router) { }
+  constructor(public doneebloodrequestService: DoneeBloodRequestService, private doneeService: DoneeService, private router: Router) { }
 
   ngOnInit(): void {
     this.doneeService.getUserProfile().subscribe(
       res => {
         this.doneeDetails = res['donee'];
       },
-      err => { 
+      err => {
         console.log(err);
-        
+
       }
     );
   }
@@ -40,10 +41,17 @@ export class DoneeHeaderComponent implements OnInit {
     setTimeout(() => this.router.navigateByUrl('/donee-request-blood'));
   }
 
- 
-  onLogout(){
+
+  onLogout() {
     this.doneeService.deleteToken();
     this.router.navigate(['/donee-login']);
+  }
+
+  getDoneeOrders(donee_id: string) {
+    setTimeout(() => this.router.navigateByUrl('/view-blood-request'));
+    this.doneebloodrequestService.getDoneeOrders(donee_id).subscribe((res) => {
+      this.doneebloodrequestService.doneebloodrequests = res as DoneeBloodRequest[];
+    });
   }
 
 }

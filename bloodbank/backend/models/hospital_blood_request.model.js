@@ -2,42 +2,43 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 var DateOnly = require('dateonly');
 
+//hospital blood request schema
 var Hospital_Blood_Request = mongoose.model('Hospital_Blood_Request', {
-    hospital_id: { 
+    hospital_id: {
         type: String,
         required: 'Hospital Id can\'t be empty',
     },
-    hospital_name: { 
+    hospital_name: {
         type: String,
         required: 'Hospital Name can\'t be empty',
     },
-    date: { 
+    date: {
         type: Date,
-        default: Date.now,      
+        default: Date.now,
     },
-    address: { 
+    address: {
         type: String,
         required: 'Address can\'t be empty',
     },
-    contact: { 
+    contact: {
         type: String,
         required: 'Contact Number can\'t be empty',
     },
-    email: { 
+    email: {
         type: String,
         required: 'Email can\'t be empty',
     },
-    blood_group: { 
+    blood_group: {
         type: String,
         required: 'Blood Group can\'t be empty',
     },
-    quantity: { 
+    quantity: {
         type: String,
         required: 'Quantity can\'t be empty',
     },
-    order_status: { 
+    order_status: {
         type: String,
-        default: 'Pending',      
+        default: 'Pending',
     },
 });
 

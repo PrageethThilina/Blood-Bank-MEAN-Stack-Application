@@ -15,9 +15,9 @@ declare const getCurrentDate: any;
 })
 export class HomepageComponent implements OnInit {
 
-    posts: BloodCampaigns[] = [];
-    isLoading = false;
-    private postsSub: Subscription;
+  posts: BloodCampaigns[] = [];
+  isLoading = false;
+  private postsSub: Subscription;
 
   constructor(public postsService: BloodCampaignsService) { }
 
@@ -29,19 +29,19 @@ export class HomepageComponent implements OnInit {
       .subscribe((posts: BloodCampaigns[]) => {
         this.isLoading = false;
         this.posts = posts;
-    });
+      });
 
     AOS.init({
-        duration: 2000,
+      duration: 2000,
     });
 
-    $(document).ready( function () {
+    $(document).ready(function () {
       getCurrentDate();
     });
 
   }
 
-  getCurrentDate(){
+  getCurrentDate() {
     getCurrentDate();
   }
 

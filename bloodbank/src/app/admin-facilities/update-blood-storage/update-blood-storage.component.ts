@@ -14,13 +14,13 @@ export class UpdateBloodStorageComponent implements OnInit {
   showupdateSucessMessage: boolean;
   serverErrorMessages: string;
 
-  constructor(public bloodinventoryService: BloodInventoryService, private router : Router) { }
+  constructor(public bloodinventoryService: BloodInventoryService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-      this.bloodinventoryService.putBloodStorage(form.value).subscribe((res) => {
+    this.bloodinventoryService.putBloodStorage(form.value).subscribe((res) => {
       this.showupdateSucessMessage = true;
       setTimeout(() => this.showupdateSucessMessage = false, 3000);
       this.resetForm(form);
@@ -31,11 +31,11 @@ export class UpdateBloodStorageComponent implements OnInit {
   resetForm(form: NgForm) {
 
     this.bloodinventoryService.selectedBloodInventory = {
-      _id : '',
-      blood_group : '',
-      volume : '',
-      received_date : '',
-      expiry_date : '',
+      _id: '',
+      blood_group: '',
+      volume: '',
+      received_date: '',
+      expiry_date: '',
     };
     form.resetForm();
     this.serverErrorMessages = '';

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 
+import { Donor } from '../../shared/donor.model';
+import { DonorService } from '../../shared/donor.service';
+
 import { Appointment } from '../../shared/appointment.model';
 import { AppointmentService } from '../../shared/appointment.service'
 
@@ -12,18 +15,44 @@ import { AppointmentService } from '../../shared/appointment.service'
 })
 export class DonorViewPreviousAppointmentComponent implements OnInit {
 
-  constructor(public appointmentService: AppointmentService, private router : Router) { }
+  donorDetails;
+  details;
+
+  constructor(public donorService: DonorService, public appointmentService: AppointmentService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.getDonorsPreviousAppointments();
+    this.donorService.getUserProfile().subscribe(
+      res => {
+        this.donorDetails = res['donor'];
+        console.log(this.donorDetails)
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
 
   }
 
-  getDonorsPreviousAppointments() {
-    this.appointmentService.getDonorsPreviousAppointments().subscribe((res) => {
+  onEdit(donor: Donor) {
+    this.donorService.selectedUser = donor;
+    setTimeout(() => this.router.navigateByUrl('/book-appointments'));
+  }
+
+  getDonorsAppointments(id: string) {
+    this.appointmentService.getDonorsAppointment(id).subscribe((res) => {
       this.appointmentService.appointments = res as Appointment[];
+      this.details = res;
     });
   }
+
+  getDonorsPreviousAppointments(id: string) {
+    this.appointmentService.getDonorsPreviousAppointments(id).subscribe((res) => {
+      this.appointmentService.appointments = res as Appointment[];
+      this.details = res;
+    });
+  }
+
 
 }

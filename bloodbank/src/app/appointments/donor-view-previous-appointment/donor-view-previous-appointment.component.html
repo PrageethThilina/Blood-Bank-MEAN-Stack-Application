@@ -1,30 +1,38 @@
 <app-donor-header></app-donor-header>
 
 <div class="container">
-    <div class="row align-items-center">
+    <div class="row">
+        <button class="btn btnn btn-success" style="margin-right: 20px" (click)="onEdit(donorDetails)">Make an
+            Appointment</button>
+        <button class="btn btnn btn-success" style="margin-right: 20px"
+            (click)="getDonorsAppointments(donorDetails._id)">View Current Appointment</button>
+        <button class="btn btnn btn-success" (click)="getDonorsPreviousAppointments(donorDetails._id)">View Previous
+            Appointment</button>
+    </div>
+    <div class="row profile align-items-center">
         <div class="col">
-           <h4 class="text-center">Appointment History</h4>
-           <table class="table table-striped table-bordered table-hover">
-            <thead>
-            <tr>
-                <th class="table-success">Appointment ID</th>
-                <th class="table-success">Location</th>
-                <th class="table-success">Date</th>
-                <th class="table-success">Time</th>
-                <th class="table-success">Booking Status</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let apnts of appointmentService.appointments">
-                    <td>{{apnts._id}}</td>
-                    <td>{{apnts.location}}</td>
-                    <td>{{apnts.date}}</td>
-                    <td>{{apnts.time}}</td>
-                    <td style="color: rgb(230, 7, 7);">{{apnts.status}}</td>
+            <h4 class="text-center">Appointment History</h4>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="table-success">Appointment ID</th>
+                        <th class="table-success">Location</th>
+                        <th class="table-success">Date</th>
+                        <th class="table-success">Time</th>
+                        <th class="table-success">Booking Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let apnts of appointmentService.appointments">
+                        <td>{{apnts._id}}</td>
+                        <td>{{apnts.location}}</td>
+                        <td>{{apnts.date}}</td>
+                        <td>{{apnts.time}}</td>
+                        <td style="color: rgb(230, 7, 7);">{{apnts.status}}</td>
 
-               </tr>
-            </tbody>
-           </table>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

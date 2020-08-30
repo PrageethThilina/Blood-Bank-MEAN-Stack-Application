@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { BloodInventory } from '../../shared/blood-inventory.model';
 import { BloodInventoryService } from '../../shared/blood-inventory.service'
 
-declare const toggleSidebar : any;
+declare const toggleSidebar: any;
 
 @Component({
   selector: 'app-manage-blood-storage',
@@ -16,7 +16,7 @@ export class ManageBloodStorageComponent implements OnInit {
 
   showSucessMessage: boolean;
 
-  constructor(public bloodinventoryService: BloodInventoryService, private router : Router) { }
+  constructor(public bloodinventoryService: BloodInventoryService, private router: Router) { }
 
   ngOnInit() {
     this.refreshBloodInventoryList();
@@ -27,7 +27,7 @@ export class ManageBloodStorageComponent implements OnInit {
       this.bloodinventoryService.blood_inventories = res as BloodInventory[];
     });
   }
-  
+
   onEdit(bloodinventory: BloodInventory) {
     this.bloodinventoryService.selectedBloodInventory = bloodinventory;
     setTimeout(() => this.router.navigateByUrl('/update-blood-storage'));
@@ -43,8 +43,8 @@ export class ManageBloodStorageComponent implements OnInit {
     }
   }
 
-  toggleSidebar(){ 
+  toggleSidebar() {
     toggleSidebar();
-}
+  }
 
 }

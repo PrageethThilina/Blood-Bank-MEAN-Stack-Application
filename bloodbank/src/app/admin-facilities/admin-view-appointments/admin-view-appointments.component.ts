@@ -7,7 +7,7 @@ import autoTable from 'jspdf-autotable'
 import { Appointment } from '../../shared/appointment.model';
 import { AppointmentService } from '../../shared/appointment.service'
 
-declare const toggleSidebar : any;
+declare const toggleSidebar: any;
 
 @Component({
   selector: 'app-admin-view-appointments',
@@ -16,7 +16,7 @@ declare const toggleSidebar : any;
 })
 export class AdminViewAppointmentsComponent implements OnInit {
 
-  constructor(public appointmentService: AppointmentService, private router : Router) { }
+  constructor(public appointmentService: AppointmentService, private router: Router) { }
 
   ngOnInit(): void {
     this.refreshBloodInventoryList();
@@ -28,24 +28,25 @@ export class AdminViewAppointmentsComponent implements OnInit {
     });
   }
 
-    onDownload(){
+  onDownload() {
 
-      const doc = new jsPDF('landscape')
-      autoTable(doc, { html: '#my-table',
-      body:[[{styles:{halign:'center'}}]],
-      theme:'plain',
-      headStyles:{ halign:'center',fontSize: 12,fontStyle: 'bold', fillColor:[221, 221, 221]},
-      pageBreak:'avoid',
-      showHead:'firstPage',
-      margin: {top:10}
+    const doc = new jsPDF('landscape')
+    autoTable(doc, {
+      html: '#my-table',
+      body: [[{ styles: { halign: 'center' } }]],
+      theme: 'plain',
+      headStyles: { halign: 'center', fontSize: 12, fontStyle: 'bold', fillColor: [221, 221, 221] },
+      pageBreak: 'avoid',
+      showHead: 'firstPage',
+      margin: { top: 10 }
     })
-      doc.save('Available_Blood_Storage.pdf')
+    doc.save('Available_Blood_Storage.pdf')
 
   }
 
-  
-toggleSidebar(){ 
-  toggleSidebar();
-}
+
+  toggleSidebar() {
+    toggleSidebar();
+  }
 
 }

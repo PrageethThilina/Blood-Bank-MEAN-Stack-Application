@@ -30,132 +30,126 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
   //add an appointment
-  postAppointment(appointment: Appointment){
-    return this.http.post(environment.apiBaseUrl+'/book-appointments',appointment);
+  postAppointment(appointment: Appointment) {
+    return this.http.post(environment.apiBaseUrl + '/book-appointments', appointment);
   }
 
   //get bloodbank appointments
   getAppointments() {
-    return this.http.get(environment.apiBaseUrl+ '/admin-view-appointmets');
+    return this.http.get(environment.apiBaseUrl + '/admin-view-appointmets');
   }
 
   //get bloodbank pending appointments
   getPendingAppointments() {
-    return this.http.get(environment.apiBaseUrl+ '/admin-accept-delete-appointments');
+    return this.http.get(environment.apiBaseUrl + '/admin-accept-delete-appointments');
   }
 
   //get bloodbank accepted appointments
   getAcceptedAppointments() {
-      return this.http.get(environment.apiBaseUrl+ '/admin-accepted-appointments');
+    return this.http.get(environment.apiBaseUrl + '/admin-accepted-appointments');
   }
 
   //get bloodbank finished appointments
   getFinishedAppointments() {
-    return this.http.get(environment.apiBaseUrl+ '/admin-finished-appointments');
+    return this.http.get(environment.apiBaseUrl + '/admin-finished-appointments');
   }
 
-    //admin accept appointment
-    onEdit(_id:string, status: string) {
-      console.log(status);
-      const statusobj = {_id:_id, status:status}
-      return this.http.post(environment.apiBaseUrl + `/admin-accept-delete-appointments/${statusobj._id}`, statusobj);
-    }
-  
-    //admin accept appointment
-    onFinished(_id:string, status: string) {
-        console.log(status);
-        const statusobj = {_id:_id, status:status}
-        return this.http.post(environment.apiBaseUrl + `/admin-accepted-appointments/${statusobj._id}`, statusobj);
-    }
-    
-  
-    //admin delete appointments
-    manageappointments(_id) {
-      return this.http.get(environment.apiBaseUrl + `/admin-accept-delete-appointments/${_id}`);
-    }
+  //admin accept appointment
+  onEdit(_id: string, status: string) {
+    console.log(status);
+    const statusobj = { _id: _id, status: status }
+    return this.http.post(environment.apiBaseUrl + `/admin-accept-delete-appointments/${statusobj._id}`, statusobj);
+  }
+
+  //admin accept appointment
+  onFinished(_id: string, status: string) {
+    console.log(status);
+    const statusobj = { _id: _id, status: status }
+    return this.http.post(environment.apiBaseUrl + `/admin-accepted-appointments/${statusobj._id}`, statusobj);
+  }
+
+
+  //admin delete appointments
+  manageappointments(_id) {
+    return this.http.delete(environment.apiBaseUrl + `/admin-accept-delete-appointments/${_id}`);
+  }
 
   //to get purticular Hospital pending appointments
-  getHospitalAppointments() {
-    return this.http.get(environment.apiBaseUrl + '/hospital-manage-appointments');
+  getHospitalAppointments(location: string) {
+    return this.http.get(environment.apiBaseUrl + `/hospital-manage-appointments/${location}`);
   }
 
   //to get purticular Hospital Accepted appointments
-  getHospitalAcceptedAppointments() {
-      return this.http.get(environment.apiBaseUrl + '/hospital-finish-appointments-component');
+  getHospitalAcceptedAppointments(location: string) {
+    return this.http.get(environment.apiBaseUrl + `/hospital-finish-appointments-component/${location}`);
   }
 
   //to get purticular Hospital finished appointments
-  getHospitalFinishedAppointments() {
-      return this.http.get(environment.apiBaseUrl + '/hospital-view-finished-appointments');
+  getHospitalFinishedAppointments(location: string) {
+    return this.http.get(environment.apiBaseUrl + `/hospital-view-finished-appointments/${location}`);
   }
-  
+
   //hospital delete pending appointments
   hospital_delete_pending_appointments(_id) {
-      return this.http.get(environment.apiBaseUrl + `/hospital-manage-appointments/${_id}`);
+    return this.http.delete(environment.apiBaseUrl + `/hospital-manage-appointments/${_id}`);
   }
 
   //hospital delete accepted appointments
   hospital_delete_accepted_appointments(_id) {
-      return this.http.get(environment.apiBaseUrl + `/hospital-finish-appointments-component/${_id}`);
+    return this.http.delete(environment.apiBaseUrl + `/hospital-finish-appointments-component/${_id}`);
   }
 
-    //admin accept appointment
-    on_hospital_Accept(_id:string, status: string) {
-     // console.log(status);
-      const statusobj = {_id:_id, status:status}
-      return this.http.post(environment.apiBaseUrl + `/hospital-manage-appointments/${statusobj._id}`, statusobj);
-    }
-  
-    //admin accept appointment
-    on_hospital_Finish(_id:string, status: string) {
-        console.log(status);
-        const statusobj = {_id:_id, status:status}
-        return this.http.post(environment.apiBaseUrl + `/hospital-finish-appointments-component/${statusobj._id}`, statusobj);
-    }
-    
+  //admin accept appointment
+  on_hospital_Accept(_id: string, status: string) {
+    // console.log(status);
+    const statusobj = { _id: _id, status: status }
+    return this.http.post(environment.apiBaseUrl + `/hospital-manage-appointments/${statusobj._id}`, statusobj);
+  }
+
+  //admin accept appointment
+  on_hospital_Finish(_id: string, status: string) {
+    console.log(status);
+    const statusobj = { _id: _id, status: status }
+    return this.http.post(environment.apiBaseUrl + `/hospital-finish-appointments-component/${statusobj._id}`, statusobj);
+  }
+
   //to get purticular donors appointments
-  getDonorsAppointments() {
-    return this.http.get(environment.apiBaseUrl + '/appointments');
+  getDonorsAppointment(id: string) {
+    return this.http.get(environment.apiBaseUrl + `/appointments/${id}`);
   }
 
-    //to get purticular donors previous appointments
-    getDonorsPreviousAppointments() {
-      return this.http.get(environment.apiBaseUrl + '/donor-view-previous-appointment');
-    }
-
-  donorcancelAppointment(appointment: Appointment) {
-    return this.http.post(environment.apiBaseUrl + `/appointments/${appointment._id}`, appointment);
+  //to get purticular donors previous appointments
+  getDonorsPreviousAppointments(id: string) {
+    return this.http.get(environment.apiBaseUrl + `/donor-view-previous-appointment/${id}`);
   }
-  
+
   //donor delete appointments 
   managedonorappointments(_id) {
-    return this.http.get(environment.apiBaseUrl + `/appointments/${_id}`);
+    return this.http.delete(environment.apiBaseUrl + `/appointments/${_id}`);
   }
 
-
-  getAppointmentCount():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/pending-appointments');
+  getAppointmentCount(): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + '/pending-appointments');
   }
 
-  getAcceptedAppointmentCount():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/accepted-appointments');
+  getAcceptedAppointmentCount(): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + '/accepted-appointments');
   }
 
-  getfinishedAppointmentCount():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/finished-appointments');
+  getfinishedAppointmentCount(): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + '/finished-appointments');
   }
 
-  
-  gethospitalpendingAppointmentCount():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/pending-appointment-count');
+  gethospitalpendingAppointmentCount(location: string): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + `/pending-appointment-count/${location}`);
   }
 
-  gethospitalAcceptedAppointmentCount():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/accepted-appointment-count');
+  gethospitalAcceptedAppointmentCount(location: string): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + `/accepted-appointment-count/${location}`);
   }
 
-  gethospitalfinishedAppointmentCount():Observable<any> {
-    return this.http.get<{count:number}>(environment.apiBaseUrl + '/finished-appointment-count');
+  gethospitalfinishedAppointmentCount(location: string): Observable<any> {
+    return this.http.get<{ count: number }>(environment.apiBaseUrl + `/finished-appointment-count/${location}`);
   }
 
 }

@@ -11,7 +11,7 @@ import { AppointmentService } from '../../../shared/appointment.service'
 })
 export class PendingAppointmentsComponent implements OnInit {
 
-  current_appointments : number;
+  current_appointments: number;
 
   constructor(public appointmentService: AppointmentService, private router: Router) { }
 
@@ -20,7 +20,7 @@ export class PendingAppointmentsComponent implements OnInit {
     this.appointmentService.getAppointmentCount().subscribe(data => {
       this.current_appointments = data;
 
-   });
+    });
   }
 
 }

@@ -6,7 +6,7 @@ import { Donee } from '../../shared/donee.model';
 import { DoneeService } from '../../shared/donee.service'
 
 
-declare const toggleSidebar : any;
+declare const toggleSidebar: any;
 
 @Component({
   selector: 'app-manage-registered-donee',
@@ -17,7 +17,7 @@ export class ManageRegisteredDoneeComponent implements OnInit {
 
   showSucessMessage: boolean;
 
-  constructor(public doneeService: DoneeService, private router : Router) { }
+  constructor(public doneeService: DoneeService, private router: Router) { }
 
   ngOnInit() {
     this.getDoneeList();
@@ -29,7 +29,7 @@ export class ManageRegisteredDoneeComponent implements OnInit {
     });
   }
 
- onDelete(_id) {
+  onDelete(_id) {
     if (confirm('Are you sure want to delete this Donee ?') == true) {
       this.doneeService.deleteDonee(_id).subscribe((res) => {
         this.showSucessMessage = true;
@@ -39,11 +39,11 @@ export class ManageRegisteredDoneeComponent implements OnInit {
     }
   }
 
-  toggleSidebar(){ 
+  toggleSidebar() {
     toggleSidebar();
-}
+  }
 
-  onCall(_id){
+  onCall(_id) {
 
   }
 

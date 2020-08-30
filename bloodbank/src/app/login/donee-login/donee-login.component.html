@@ -1,44 +1,47 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <div class="row">
-      <div class="col-md-5 mx-auto">
+  <div class="row">
+    <div class="col-md-5 mx-auto">
 
       <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
 
         <!-- Error message -->
-          <div class="alert" *ngIf="serverErrorMessages">
-            {{serverErrorMessages}}
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
+        </div>
+
+        <h3 class="text-center">Login</h3>
+        <div class="row">
+          <h5 class="login-header text-center" routerLink="/donor-login" routerLinkActive="active"
+            style="margin-left: 10px;">Donor</h5>
+          <h5 class="login-header text-center" routerLink="/donee-login" routerLinkActive="active">Donee</h5>
+          <h5 class="login-header text-center" routerLink="/hospital-login" routerLinkActive="active">Hospital</h5>
+          <h5 class="login-header text-center" routerLink="/admin-login" routerLinkActive="active">Admin</h5>
+        </div> <label class="label control-label">NIC</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fas fa-user" style="font-size: 35px"></i></span>
+          <input type="text" class="form-control" name="donee_nic" #donee_nic="ngModel" [(ngModel)]="model.donee_nic"
+            placeholder="NIC">
+        </div>
+        <label class="label control-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fas fa-lock" style="font-size: 35px"></i></span>
+          <input type="Password" class="form-control" name="password" #password="ngModel" [(ngModel)]="model.password"
+            minlength="4" [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }" id="password"
+            placeholder="Password" required>
+          <div *ngIf="signInForm.submitted && password.errors?.minlength">
+            <label class="validation-message">Minimum 4 characters.</label>
           </div>
-          
-          <h3 class="text-center">Login</h3>
-          <div class="row">
-             <h5 class="login-header text-center" routerLink="/donor-login" routerLinkActive="active" style="margin-left: 10px;">Donor</h5>
-             <h5 class="login-header text-center" routerLink="/donee-login" routerLinkActive="active">Donee</h5>
-             <h5 class="login-header text-center" routerLink="/hospital-login" routerLinkActive="active">Hospital</h5>
-             <h5 class="login-header text-center" routerLink="/admin-login" routerLinkActive="active">Admin</h5>
-          </div>            <label class="label control-label">NIC</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fas fa-user" style="font-size: 35px"></i></span>
-            <input type="text" class="form-control" name="donee_nic" #donee_nic="ngModel" [(ngModel)]="model.donee_nic" placeholder="NIC">
-          </div>
-            <label class="label control-label">Password</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fas fa-lock" style="font-size: 35px"></i></span>
-            <input type="Password" class="form-control" name="password" #password="ngModel" [(ngModel)]="model.password" minlength="4"
-            [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }" id="password" placeholder="Password" required>
-            <div *ngIf="signInForm.submitted && password.errors?.minlength">
-              <label class="validation-message">Minimum 4 characters.</label>
-            </div>
-          </div>
-            <input type="checkbox" (click)="angpswrdVisible()"><small>&nbsp; Show Password</small><br>
-            <input type="checkbox"><small>&nbsp; Remember me</small>		
-            <p class="text-right"><a routerLink="/forget-password">Forget Password</a></p>
-          <div class="form-group"> 
-            <input type="submit" name="loginsubmit" class="btn btn-default btn-outline-primary" value="SIGN IN">
-            <p class="text-center">Don't have an account yet? <a routerLink="/donee-register">SIGN UP</a></p>
-          </div> 
+        </div>
+        <input type="checkbox" (click)="angpswrdVisible()"><small>&nbsp; Show Password</small><br>
+        <input type="checkbox"><small>&nbsp; Remember me</small>
+        <p class="text-right"><a routerLink="/forget-password">Forget Password</a></p>
+        <div class="form-group">
+          <input type="submit" name="loginsubmit" class="btn btn-default btn-outline-primary" value="SIGN IN">
+          <p class="text-center">Don't have an account yet? <a routerLink="/donee-register">SIGN UP</a></p>
+        </div>
       </form>
     </div>
-    </div>	
+  </div>
 </div>

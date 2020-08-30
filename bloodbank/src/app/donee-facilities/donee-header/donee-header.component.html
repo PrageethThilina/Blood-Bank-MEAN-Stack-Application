@@ -17,7 +17,7 @@
       <button class="btn btn-primary" (click)="onEdit(doneeDetails)">Update My Details</button>
       <button class="btn btn-primary" routerLink="/registered-donors">View & Contact Donors</button>
       <button class="btn btn-primary" (click)="onRequest(doneeDetails)">Add Blood Request</button>
-      <button class="btn btn-primary" routerLink="/view-blood-request">Prevoius Blood Requests</button>
+      <button class="btn btn-primary" (click)="getDoneeOrders(doneeDetails._id)">Prevoius Blood Requests</button>
 
       <button class="btn btn-success my-2 my-sm-0" (click)="onLogout()"><i class="fa fa-user"
           style="margin-right: 10px;"></i>Logout</button>

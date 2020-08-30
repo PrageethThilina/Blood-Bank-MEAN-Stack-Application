@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 var Admin = mongoose.model('Admin');
 
+//admin authenticate
 adminpassport.use('admin',
     new adminlocalStrategy({ usernameField: 'admin_username', session: false },
         (username, password, done) => {
