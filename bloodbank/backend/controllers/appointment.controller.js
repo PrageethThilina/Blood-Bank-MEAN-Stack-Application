@@ -150,8 +150,8 @@ async function sendMail(appointment, callback) {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: "prageeththilina8@gmail.com",
-            pass: "prageeth199541312345###"
+            user: "abcd.com",
+            pass: "abcd"
         },
         tls: {
             rejectUnauthorized: false
@@ -172,7 +172,7 @@ async function sendMail(appointment, callback) {
       <h5>Date : ${appointment.date}</h5><br>
       <h5>Time : ${appointment.time}</h5><br>
       <h2>Our Admin will get back to you soon</h2><br>
-      <h4>If there is any issue reagrding the appointment booking free to contact us or email us (prageeththilina8@gmail.com)</h4>
+      <h4>If there is any issue reagrding the appointment booking free to contact us or email us (abcd.com)</h4>
       </body>
       `
     };
