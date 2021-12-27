@@ -56,8 +56,8 @@ async function sendMail(donor, callback) {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: "prageeththilina8@gmail.com",
-            pass: "prageeth199541312345###"
+            user: "abcd.com",
+            pass: "abcd"
         },
         tls: {
             rejectUnauthorized: false
@@ -77,7 +77,7 @@ async function sendMail(donor, callback) {
       <h5>Contact : ${donor.contact}</h5><br>
       <h5>Email : ${donor.email}</h5><br>
       <h2>Be a active Donor</h2><br>
-      <h4>If there is any issue free to contact us or email us (prageeththilina8@gmail.com)</h4>
+      <h4>If there is any issue free to contact us or email us (abcd.com)</h4>
       </body>
       `
     };
